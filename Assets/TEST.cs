@@ -1,16 +1,31 @@
+using System;
 using UnityEngine;
 
 public class TEST : MonoBehaviour
 {
-    private float test = 1f;
+    public float speed;
+    public float jumpForce;
+    
+    private Rigidbody2D rb;
+    private float dirInput;
+    private Vector2 movement;
+    
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("JUMP !");
+            rb.AddForce(Vector2.up * jumpForce);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        rb.linearVelocityX = Input.GetAxis("Horizontal") * speed;
     }
 }
