@@ -1,11 +1,18 @@
-using UnityEngine;
+using System.Collections.Generic;using UnityEngine;
 using UnityEngine.InputSystem;
 public enum BoostStates
 {
-    speed,
-    jump,
-    gravity
+    SuperSlow,
+    Slow,
+    Base,
+    Swift,
+    SuperSwift
 }
+
+// public class Stats(float, int)
+// {
+//     public static List<Stats>(float test, int test2);
+// }
 
 public class PlayerBoost : MonoBehaviour
 {
@@ -16,18 +23,13 @@ public class PlayerBoost : MonoBehaviour
     
     [Header("Stats")]
     public float groundSpeedBonus;
-    private float groundSpeedBase;
-    
     public float airSpeedBonus;
-    private float airSpeedBase;
-    
     public float jumpForceBonus;
-    private float jumpForceBase;
 
     [Header("Player Boosts")]
     public float timerMult;
     
-    public bool isBoosted;
+    public BoostStates boostStates;
     public float boostTimerMult;
     
     void Start()
@@ -35,66 +37,44 @@ public class PlayerBoost : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         timerController = GetComponent<PlayerTimer>();
         playerControls = playerController.playerControls;
-        
-        groundSpeedBase = playerController.groundSpeed;
-        airSpeedBase = playerController.airSpeed;
-        jumpForceBase = playerController.jumpForce;
-        
         TimerAlterator();
     }
     
     void Update()
     {
-        if (playerControls.Player.SpeedBoost.WasPressedThisFrame())
-        {
-            if (!isBoosted)
-            {
-                // Debug.Log("SPEED BOOST !");
-                playerController.groundSpeed = groundSpeedBonus;
-                isBoosted = true;
-                TimerAlterator();
-            }
-            else
-            {
-                // Debug.Log("SPEED BOOST STOP !");
-                playerController.groundSpeed = groundSpeedBase;
-                isBoosted = false;
-                TimerAlterator();
-            }
-            
-        }
+        if (playerControls.Player.Upgrade.WasPressedThisFrame())
+            boostStates += 1;
+
+        if (playerControls.Player.Downgrade.WasPressedThisFrame())
+            boostStates -= 1;
         
-        // if (playerControls.Player.JumpBoost.WasPressedThisFrame())
-        // {
-        //     if (!isJumpBoosted)
-        //     {
-        //         // Debug.Log("JUMP BOOST !");
-        //         playerController.jumpForce = jumpForceBonus;
-        //         playerController.airSpeed = airSpeedBonus;
-        //         isJumpBoosted = true;
-        //         TimerAlterator();
-        //     }
-        //     else
-        //     {
-        //         // Debug.Log("JUMP BOOST !");
-        //         playerController.jumpForce = jumpForceBase;
-        //         playerController.airSpeed = airSpeedBase;
-        //         isJumpBoosted = false;
-        //         TimerAlterator();
-        //     }
-        //     
-        // }
+        switch (boostStates)
+        {
+            case BoostStates.SuperSlow:
+                
+                break;
+                
+            case BoostStates.Slow:
+                
+                break;
+                
+            case BoostStates.Base:
+                
+                break;
+                
+            case BoostStates.Swift:
+                
+                break;
+                
+            case BoostStates.SuperSwift:
+                
+                break;
+        }
     }
     
     void TimerAlterator()
     {
-        timerMult = 1f;
-
-        if (isBoosted)
-            timerMult *= boostTimerMult;
-        if (isJumpBoosted)
-            timerMult *= jumpBoostMult;
-        
+        timerMult = 1f * boostTimerMult;
         Debug.Log("Speed Boost = " + timerMult);
     }
 }

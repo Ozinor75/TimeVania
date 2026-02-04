@@ -25,7 +25,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SpeedBoost",
+                    "name": "Upgrade",
                     "type": "Button",
                     "id": "ce12dca5-00ba-49e5-8cd5-eb00f2af463f",
                     "expectedControlType": "",
@@ -34,7 +34,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "JumpBoost",
+                    "name": "Downgrade",
                     "type": "Button",
                     "id": "b4e7050b-4566-4841-a38c-8c041580a306",
                     "expectedControlType": "",
@@ -91,22 +91,22 @@
                 {
                     "name": "",
                     "id": "fa63a207-3da8-454d-b492-08918e44be7a",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SpeedBoost",
+                    "action": "Upgrade",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "c5534894-f2ff-4535-b2e4-b5bb4c6d82ed",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "JumpBoost",
+                    "action": "Downgrade",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

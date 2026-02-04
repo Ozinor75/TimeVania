@@ -111,7 +111,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SpeedBoost"",
+                    ""name"": ""Upgrade"",
                     ""type"": ""Button"",
                     ""id"": ""ce12dca5-00ba-49e5-8cd5-eb00f2af463f"",
                     ""expectedControlType"": """",
@@ -120,7 +120,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""JumpBoost"",
+                    ""name"": ""Downgrade"",
                     ""type"": ""Button"",
                     ""id"": ""b4e7050b-4566-4841-a38c-8c041580a306"",
                     ""expectedControlType"": """",
@@ -177,22 +177,22 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""fa63a207-3da8-454d-b492-08918e44be7a"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SpeedBoost"",
+                    ""action"": ""Upgrade"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""c5534894-f2ff-4535-b2e4-b5bb4c6d82ed"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""JumpBoost"",
+                    ""action"": ""Downgrade"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -233,8 +233,8 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Direction = m_Player.FindAction("Direction", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_SpeedBoost = m_Player.FindAction("SpeedBoost", throwIfNotFound: true);
-        m_Player_JumpBoost = m_Player.FindAction("JumpBoost", throwIfNotFound: true);
+        m_Player_Upgrade = m_Player.FindAction("Upgrade", throwIfNotFound: true);
+        m_Player_Downgrade = m_Player.FindAction("Downgrade", throwIfNotFound: true);
         // DEBUG
         m_DEBUG = asset.FindActionMap("DEBUG", throwIfNotFound: true);
         m_DEBUG_TimerReset = m_DEBUG.FindAction("TimerReset", throwIfNotFound: true);
@@ -321,8 +321,8 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Direction;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_SpeedBoost;
-    private readonly InputAction m_Player_JumpBoost;
+    private readonly InputAction m_Player_Upgrade;
+    private readonly InputAction m_Player_Downgrade;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -343,13 +343,13 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         /// <summary>
-        /// Provides access to the underlying input action "Player/SpeedBoost".
+        /// Provides access to the underlying input action "Player/Upgrade".
         /// </summary>
-        public InputAction @SpeedBoost => m_Wrapper.m_Player_SpeedBoost;
+        public InputAction @Upgrade => m_Wrapper.m_Player_Upgrade;
         /// <summary>
-        /// Provides access to the underlying input action "Player/JumpBoost".
+        /// Provides access to the underlying input action "Player/Downgrade".
         /// </summary>
-        public InputAction @JumpBoost => m_Wrapper.m_Player_JumpBoost;
+        public InputAction @Downgrade => m_Wrapper.m_Player_Downgrade;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -382,12 +382,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @SpeedBoost.started += instance.OnSpeedBoost;
-            @SpeedBoost.performed += instance.OnSpeedBoost;
-            @SpeedBoost.canceled += instance.OnSpeedBoost;
-            @JumpBoost.started += instance.OnJumpBoost;
-            @JumpBoost.performed += instance.OnJumpBoost;
-            @JumpBoost.canceled += instance.OnJumpBoost;
+            @Upgrade.started += instance.OnUpgrade;
+            @Upgrade.performed += instance.OnUpgrade;
+            @Upgrade.canceled += instance.OnUpgrade;
+            @Downgrade.started += instance.OnDowngrade;
+            @Downgrade.performed += instance.OnDowngrade;
+            @Downgrade.canceled += instance.OnDowngrade;
         }
 
         /// <summary>
@@ -405,12 +405,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @SpeedBoost.started -= instance.OnSpeedBoost;
-            @SpeedBoost.performed -= instance.OnSpeedBoost;
-            @SpeedBoost.canceled -= instance.OnSpeedBoost;
-            @JumpBoost.started -= instance.OnJumpBoost;
-            @JumpBoost.performed -= instance.OnJumpBoost;
-            @JumpBoost.canceled -= instance.OnJumpBoost;
+            @Upgrade.started -= instance.OnUpgrade;
+            @Upgrade.performed -= instance.OnUpgrade;
+            @Upgrade.canceled -= instance.OnUpgrade;
+            @Downgrade.started -= instance.OnDowngrade;
+            @Downgrade.performed -= instance.OnDowngrade;
+            @Downgrade.canceled -= instance.OnDowngrade;
         }
 
         /// <summary>
@@ -562,19 +562,19 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "SpeedBoost" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Upgrade" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSpeedBoost(InputAction.CallbackContext context);
+        void OnUpgrade(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "JumpBoost" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Downgrade" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnJumpBoost(InputAction.CallbackContext context);
+        void OnDowngrade(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DEBUG" which allows adding and removing callbacks.
