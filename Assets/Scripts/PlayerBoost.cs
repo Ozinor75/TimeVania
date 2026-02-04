@@ -1,5 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+public enum BoostStates
+{
+    speed,
+    jump,
+    gravity
+}
 
 public class PlayerBoost : MonoBehaviour
 {
@@ -17,15 +23,12 @@ public class PlayerBoost : MonoBehaviour
     
     public float jumpForceBonus;
     private float jumpForceBase;
-    
+
     [Header("Player Boosts")]
-    public float speedBoostTimer;
-    public float speedBoostT;
-    public bool isSpeedBoosted;
+    public float timerMult;
     
-    public float jumpBoostTimer;
-    public float jumpBoostT;
-    public bool isJumpBoosted;
+    public bool isBoosted;
+    public float boostTimerMult;
     
     void Start()
     {
@@ -33,57 +36,65 @@ public class PlayerBoost : MonoBehaviour
         timerController = GetComponent<PlayerTimer>();
         playerControls = playerController.playerControls;
         
-        
         groundSpeedBase = playerController.groundSpeed;
         airSpeedBase = playerController.airSpeed;
         jumpForceBase = playerController.jumpForce;
+        
+        TimerAlterator();
     }
     
     void Update()
     {
-        BoostTimerEffect();
-        
         if (playerControls.Player.SpeedBoost.WasPressedThisFrame())
         {
-            Debug.Log("SPEED BOOST !");             // ACCELERATE TIME
-            timerController.t -= speedBoostTimer;   // remove time to timer
-            speedBoostT = speedBoostTimer;          // reset boost timeer
-            playerController.groundSpeed += groundSpeedBonus;                       // apply boost
-            isSpeedBoosted = true;                  // apply boost bool
+            if (!isBoosted)
+            {
+                // Debug.Log("SPEED BOOST !");
+                playerController.groundSpeed = groundSpeedBonus;
+                isBoosted = true;
+                TimerAlterator();
+            }
+            else
+            {
+                // Debug.Log("SPEED BOOST STOP !");
+                playerController.groundSpeed = groundSpeedBase;
+                isBoosted = false;
+                TimerAlterator();
+            }
+            
         }
         
-        if (playerControls.Player.JumpBoost.WasPressedThisFrame())
-        {
-            Debug.Log("JUMP BOOST !");
-            timerController.t -= jumpBoostTimer;
-            jumpBoostT = jumpBoostTimer;
-            playerController.jumpForce += jumpForceBonus;
-            playerController.airSpeed += airSpeedBonus;
-            isJumpBoosted = true;
-        }
+        // if (playerControls.Player.JumpBoost.WasPressedThisFrame())
+        // {
+        //     if (!isJumpBoosted)
+        //     {
+        //         // Debug.Log("JUMP BOOST !");
+        //         playerController.jumpForce = jumpForceBonus;
+        //         playerController.airSpeed = airSpeedBonus;
+        //         isJumpBoosted = true;
+        //         TimerAlterator();
+        //     }
+        //     else
+        //     {
+        //         // Debug.Log("JUMP BOOST !");
+        //         playerController.jumpForce = jumpForceBase;
+        //         playerController.airSpeed = airSpeedBase;
+        //         isJumpBoosted = false;
+        //         TimerAlterator();
+        //     }
+        //     
+        // }
     }
     
-    void BoostTimerEffect()
+    void TimerAlterator()
     {
-        if (isSpeedBoosted)
-        {
-            speedBoostT -= Time.deltaTime;
-            if (speedBoostT <= 0f)
-            {
-                playerController.groundSpeed = groundSpeedBase;
-                isSpeedBoosted = false;
-            }
-        }
-        
+        timerMult = 1f;
+
+        if (isBoosted)
+            timerMult *= boostTimerMult;
         if (isJumpBoosted)
-        {
-            jumpBoostT -= Time.deltaTime;
-            if (jumpBoostT <= 0f)
-            {
-                playerController.jumpForce = jumpForceBase;
-                playerController.airSpeed = airSpeedBase;
-                isJumpBoosted = false;
-            }
-        }
+            timerMult *= jumpBoostMult;
+        
+        Debug.Log("Speed Boost = " + timerMult);
     }
 }

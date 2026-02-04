@@ -1992,15 +1992,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6680cdfb8d85d0498f559bb4de86e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundSpeedBonus: 8
-  airSpeedBonus: 3
-  jumpForceBonus: 8
-  speedBoostTimer: 10
-  speedBoostT: 0
+  groundSpeedBonus: 16
+  airSpeedBonus: 6
+  jumpForceBonus: 16
+  timerMult: 0
   isSpeedBoosted: 0
-  jumpBoostTimer: 10
-  jumpBoostT: 0
+  speedBoostMult: 2
   isJumpBoosted: 0
+  jumpBoostMult: 2
 --- !u!1 &862677794
 GameObject:
   m_ObjectHideFlags: 0
