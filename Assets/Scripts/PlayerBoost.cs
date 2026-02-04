@@ -31,11 +31,11 @@ public class PlayerPresets
         this.timerMult = timerMult;
     }
     
-    public static PlayerPresets SuperSlow = new(1f, 1f, 1f, 1f);
-    public static PlayerPresets Slow = new(5f, 5f, 5f, 5f);
-    public static PlayerPresets Mid = new(10f, 10f, 10f, 10f);
-    public static PlayerPresets Swift = new(20f, 20f, 20f, 20f);
-    public static PlayerPresets SuperSwift = new(50f, 50f, 50f, 50f);
+    public static PlayerPresets SuperSlow = new(1f, 1f, 1f, 0.5f);  // Truc de base, chiant donc lent, mais écoulement du timer lent
+    public static PlayerPresets Slow = new(5f, 5f, 5f, 1f);         // Ici un peu plus haut, jpense lent mais un minimum agréable, c'est lécoulement normal
+    public static PlayerPresets Mid = new(10f, 10f, 10f, 3f);       // Mid, ptet ici l'écoulement de base
+    public static PlayerPresets Swift = new(20f, 20f, 20f, 10f);    // les chaussures qui courent vite
+    public static PlayerPresets SuperSwift = new(50f, 50f, 50f, 20f);   // Flash McQueen
 }
 
 public class PlayerBoost : MonoBehaviour

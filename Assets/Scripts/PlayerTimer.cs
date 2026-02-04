@@ -21,6 +21,7 @@ public class PlayerTimer : MonoBehaviour
         
         if (t <= 0f)
         {
+            tMult = 0;      // en vrai faudra pas faire ça, mais c'est juste que pr le moment on remonte pas le temps
             Debug.Log("OUTTA TIME !!!");
         }
     }
