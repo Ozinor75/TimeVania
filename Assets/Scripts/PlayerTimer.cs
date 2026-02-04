@@ -6,18 +6,17 @@ public class PlayerTimer : MonoBehaviour
 {
     public float timer;
     public float t;
+    public float tMult;
     public TextMeshProUGUI text;
-    private PlayerBoost playerBoost;
     
     void Start()
     {
-        playerBoost = GetComponent<PlayerBoost>();
         t = timer;
     }
     
     void Update()
     {
-        t -= Time.deltaTime * playerBoost.timerMult;
+        t -= Time.deltaTime * tMult;
         text.text = t.ToString("0.00");
         
         if (t <= 0f)

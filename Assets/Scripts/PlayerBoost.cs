@@ -1,80 +1,92 @@
-using System.Collections.Generic;using UnityEngine;
+using System;
+using System.Collections.Generic;
+using Unity.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+using Debug = UnityEngine.Debug;
+
 public enum BoostStates
 {
-    SuperSlow,
-    Slow,
-    Base,
-    Swift,
-    SuperSwift
+    Gear1,
+    Gear2,
+    Gear3,
+    Gear4,
+    Gear5
 }
 
-// public class Stats(float, int)
-// {
-//     public static List<Stats>(float test, int test2);
-// }
+public class PlayerPresets
+{
+    [Header("Stats")]
+    public float groundSpeed;
+    public float airSpeed;
+    public float jumpForce;
+    public float timerMult;
+
+    public PlayerPresets(float groundSpeed, float airSpeed, float jumpForce, float timerMult)
+    {
+        this.groundSpeed = groundSpeed;
+        this.airSpeed = airSpeed;
+        this.jumpForce = jumpForce;
+        this.timerMult = timerMult;
+    }
+    
+    public static PlayerPresets SuperSlow = new(1f, 1f, 1f, 1f);
+    public static PlayerPresets Slow = new(5f, 5f, 5f, 5f);
+    public static PlayerPresets Mid = new(10f, 10f, 10f, 10f);
+    public static PlayerPresets Swift = new(20f, 20f, 20f, 20f);
+    public static PlayerPresets SuperSwift = new(50f, 50f, 50f, 50f);
+}
 
 public class PlayerBoost : MonoBehaviour
 {
     [Header("References")]
-    private PlayerController playerController;
     private CustomInputs playerControls;
     private PlayerTimer timerController;
+    public Material mat;
     
-    [Header("Stats")]
-    public float groundSpeedBonus;
-    public float airSpeedBonus;
-    public float jumpForceBonus;
-
-    [Header("Player Boosts")]
-    public float timerMult;
-    
-    public BoostStates boostStates;
-    public float boostTimerMult;
+    public BoostStates boostState;
+    private PlayerController playerController;
+    public float totalTimerMult;
     
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
         timerController = GetComponent<PlayerTimer>();
-        playerControls = playerController.playerControls;
-        TimerAlterator();
     }
-    
-    void Update()
-    {
-        if (playerControls.Player.Upgrade.WasPressedThisFrame())
-            boostStates += 1;
 
-        if (playerControls.Player.Downgrade.WasPressedThisFrame())
-            boostStates -= 1;
-        
-        switch (boostStates)
+    public PlayerPresets ReturnGearSpeed()
+    { 
+        PlayerPresets preset = PlayerPresets.SuperSlow;
+
+        switch (boostState)
         {
-            case BoostStates.SuperSlow:
-                
+            case BoostStates.Gear1:
+                preset = PlayerPresets.SuperSlow;
+                mat.color = new Color(0f, 0f, 1f);
                 break;
                 
-            case BoostStates.Slow:
-                
+            case BoostStates.Gear2:
+                preset = PlayerPresets.Slow;
+                mat.color = new Color(0f, 1f, 1f);
                 break;
                 
-            case BoostStates.Base:
-                
+            case BoostStates.Gear3:
+                preset = PlayerPresets.Mid;
+                mat.color = new Color(0f, 1f, 0f);
                 break;
                 
-            case BoostStates.Swift:
-                
+            case BoostStates.Gear4:
+                preset = PlayerPresets.Swift;
+                mat.color = new Color(1f, 1f, 0f);
                 break;
                 
-            case BoostStates.SuperSwift:
-                
+            case BoostStates.Gear5:
+                preset = PlayerPresets.SuperSwift;
+                mat.color = new Color(1f, 0f, 0f);
                 break;
         }
-    }
-    
-    void TimerAlterator()
-    {
-        timerMult = 1f * boostTimerMult;
-        Debug.Log("Speed Boost = " + timerMult);
+        
+        Debug.Log(preset.groundSpeed);
+        return preset;
     }
 }

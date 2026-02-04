@@ -7,12 +7,9 @@ using UnityEngine.InputSystem.HID;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Stats")]
-    public float groundSpeed;
-    
-    public float airSpeed;
-    
-    public float jumpForce;
-    
+    private float groundSpeed;
+    private float airSpeed;
+    private float jumpForce;
     public float gravity;
     
     private float effectiveSpeed;
@@ -20,9 +17,13 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player refs")]
     public CustomInputs playerControls;
+    
     private Rigidbody2D rb;
     private CapsuleCollider2D selfCollider;
+    
     private PlayerTimer timerController;
+    private PlayerBoost playerBoost;
+    public PlayerPresets activePreset;
     
     [Header("Player Debug")]
     public bool isGrounded = true;
@@ -32,7 +33,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        playerControls = new CustomInputs();
+        if (playerControls == null)
+            playerControls = new CustomInputs();
+        
         playerControls.Enable();
     }
     private void OnDisable()
@@ -42,9 +45,15 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        timerController = GetComponent<PlayerTimer>();
         selfCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        
+        playerBoost = GetComponent<PlayerBoost>();
+        playerBoost.boostState = BoostStates.Gear1;
+        activePreset = playerBoost.ReturnGearSpeed();
+        
+        timerController = GetComponent<PlayerTimer>();
+        timerController.tMult = activePreset.timerMult;
         
         Physics2D.queriesStartInColliders = false;
         Physics2D.gravity = new Vector2(0, -gravity);
@@ -55,6 +64,20 @@ public class PlayerController : MonoBehaviour
         if (playerControls.DEBUG.TimerReset.WasPressedThisFrame())
             timerController.t = timerController.timer;
         
+        if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.Gear5))
+        {
+            playerBoost.boostState ++;
+            activePreset = playerBoost.ReturnGearSpeed();
+            timerController.tMult = activePreset.timerMult;
+        }
+        
+        if (playerControls.Player.Downgrade.WasPressedThisFrame() && (playerBoost.boostState > BoostStates.Gear1))
+        {
+            playerBoost.boostState --;
+            activePreset = playerBoost.ReturnGearSpeed();
+            timerController.tMult = activePreset.timerMult;
+        }        
+        
         movementLeftRight = playerControls.Player.Direction.ReadValue<float>();
         
         IsGrounded();
@@ -62,7 +85,7 @@ public class PlayerController : MonoBehaviour
         if (playerControls.Player.Jump.WasPressedThisFrame() && isGrounded)
         {
             Debug.Log("JUMP !");
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * activePreset.jumpForce, ForceMode2D.Impulse);
         }
     }
 
@@ -79,12 +102,12 @@ public class PlayerController : MonoBehaviour
         if (hit && hit.collider.CompareTag("Ground"))
         {
             isGrounded = true;
-            effectiveSpeed = groundSpeed;
+            effectiveSpeed = activePreset.groundSpeed;
         }
         else
         {
             isGrounded = false;
-            effectiveSpeed = airSpeed;
+            effectiveSpeed = activePreset.airSpeed;
         }
     }
 }

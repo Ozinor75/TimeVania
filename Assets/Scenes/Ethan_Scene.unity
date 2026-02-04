@@ -1960,9 +1960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0244fd80369de54aa8ddd7ff017e07e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundSpeed: 8
-  airSpeed: 3
-  jumpForce: 8
   gravity: 10
   isGrounded: 0
 --- !u!114 &764508417
@@ -1977,8 +1974,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeeacf6f15434248b8e00daa49c392d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 60
+  timer: 600
   t: 0
+  tMult: 0
   text: {fileID: 1593792122}
 --- !u!114 &764508418
 MonoBehaviour:
@@ -1992,14 +1990,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6680cdfb8d85d0498f559bb4de86e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundSpeedBonus: 16
-  airSpeedBonus: 6
-  jumpForceBonus: 16
-  timerMult: 0
-  isSpeedBoosted: 0
-  speedBoostMult: 2
-  isJumpBoosted: 0
-  jumpBoostMult: 2
+  mat: {fileID: 2100000, guid: 4fb3484ee457ee14bad929590b538729, type: 2}
+  boostState: 0
+  totalTimerMult: 0
 --- !u!1 &862677794
 GameObject:
   m_ObjectHideFlags: 0
