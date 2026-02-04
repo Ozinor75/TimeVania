@@ -1859,6 +1859,7 @@ GameObject:
   - component: {fileID: 764508414}
   - component: {fileID: 764508416}
   - component: {fileID: 764508417}
+  - component: {fileID: 764508418}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1960,19 +1961,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundSpeed: 8
-  groundSpeedBonus: 8
   airSpeed: 3
-  airSpeedBonus: 3
   jumpForce: 8
-  jumpForceBonus: 8
   gravity: 10
-  gravityBonus: 0
-  speedBoostTimer: 10
-  speedBoostT: 0
-  isSpeedBoosted: 0
-  jumpBoostTimer: 10
-  jumpBoostT: 0
-  isJumpBoosted: 0
   isGrounded: 0
 --- !u!114 &764508417
 MonoBehaviour:
@@ -1989,6 +1980,27 @@ MonoBehaviour:
   timer: 60
   t: 0
   text: {fileID: 1593792122}
+--- !u!114 &764508418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764508410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6680cdfb8d85d0498f559bb4de86e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundSpeedBonus: 8
+  airSpeedBonus: 3
+  jumpForceBonus: 8
+  speedBoostTimer: 10
+  speedBoostT: 0
+  isSpeedBoosted: 0
+  jumpBoostTimer: 10
+  jumpBoostT: 0
+  isJumpBoosted: 0
 --- !u!1 &862677794
 GameObject:
   m_ObjectHideFlags: 0

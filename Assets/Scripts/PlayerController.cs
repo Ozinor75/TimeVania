@@ -8,35 +8,35 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Stats")]
     public float groundSpeed;
-    public float groundSpeedBonus;
-    private float groundSpeedBase;
+    // public float groundSpeedBonus;
+    // private float groundSpeedBase;
     
     public float airSpeed;
-    public float airSpeedBonus;
-    private float airSpeedBase;
+    // public float airSpeedBonus;
+    // private float airSpeedBase;
     
     public float jumpForce;
-    public float jumpForceBonus;
-    private float jumpForceBase;
+    // public float jumpForceBonus;
+    // private float jumpForceBase;
     
     public float gravity;
-    public float gravityBonus;
-    private float gravityBase;
+    // public float gravityBonus;
+    // private float gravityBase;
     
     private float effectiveSpeed;
     private float effectiveJumpForce;   // Unused, l'utiliser plus tard si nécéssaire
     
-    [Header("Player Boosts")]
-    public float speedBoostTimer;
-    public float speedBoostT;
-    public bool isSpeedBoosted;
-    
-    public float jumpBoostTimer;
-    public float jumpBoostT;
-    public bool isJumpBoosted;
+    // [Header("Player Boosts")]
+    // public float speedBoostTimer;
+    // public float speedBoostT;
+    // public bool isSpeedBoosted;
+    //
+    // public float jumpBoostTimer;
+    // public float jumpBoostT;
+    // public bool isJumpBoosted;
     
     [Header("Player refs")]
-    private CustomInputs playerControls;
+    public CustomInputs playerControls;
     private Rigidbody2D rb;
     private CapsuleCollider2D selfCollider;
     private PlayerTimer timerController;
@@ -66,9 +66,9 @@ public class PlayerController : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
         Physics2D.gravity = new Vector2(0, -gravity);
         
-        groundSpeedBase = groundSpeed;
-        airSpeedBase = airSpeed;
-        jumpForceBase = jumpForce;
+        // groundSpeedBase = groundSpeed;
+        // airSpeedBase = airSpeed;
+        // jumpForceBase = jumpForce;
     }
     
     private void Update()
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         movementLeftRight = playerControls.Player.Direction.ReadValue<float>();
         
         IsGrounded();
-        BoostTimerEffect();
+        // BoostTimerEffect();
         
         if (playerControls.Player.Jump.WasPressedThisFrame() && isGrounded)
         {
@@ -87,24 +87,24 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
-        if (playerControls.Player.SpeedBoost.WasPressedThisFrame())
-        {
-            Debug.Log("SPEED BOOST !");             // ACCELERATE TIME
-            timerController.t -= speedBoostTimer;   // remove time to timer
-            speedBoostT = speedBoostTimer;          // reset boost timeer
-            groundSpeed += groundSpeedBonus;                       // apply boost
-            isSpeedBoosted = true;                  // apply boost bool
-        }
-        
-        if (playerControls.Player.JumpBoost.WasPressedThisFrame())
-        {
-            Debug.Log("JUMP BOOST !");
-            timerController.t -= jumpBoostTimer;
-            jumpBoostT = jumpBoostTimer;
-            jumpForce += jumpForceBonus;
-            airSpeed += airSpeedBonus;
-            isJumpBoosted = true;
-        }
+        // if (playerControls.Player.SpeedBoost.WasPressedThisFrame())
+        // {
+        //     Debug.Log("SPEED BOOST !");             // ACCELERATE TIME
+        //     timerController.t -= speedBoostTimer;   // remove time to timer
+        //     speedBoostT = speedBoostTimer;          // reset boost timeer
+        //     groundSpeed += groundSpeedBonus;                       // apply boost
+        //     isSpeedBoosted = true;                  // apply boost bool
+        // }
+        //
+        // if (playerControls.Player.JumpBoost.WasPressedThisFrame())
+        // {
+        //     Debug.Log("JUMP BOOST !");
+        //     timerController.t -= jumpBoostTimer;
+        //     jumpBoostT = jumpBoostTimer;
+        //     jumpForce += jumpForceBonus;
+        //     airSpeed += airSpeedBonus;
+        //     isJumpBoosted = true;
+        // }
     }
 
     void FixedUpdate()
@@ -129,27 +129,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void BoostTimerEffect()
-    {
-        if (isSpeedBoosted)
-        {
-            speedBoostT -= Time.deltaTime;
-            if (speedBoostT <= 0f)
-            {
-                groundSpeed = groundSpeedBase;
-                isSpeedBoosted = false;
-            }
-        }
-        
-        if (isJumpBoosted)
-        {
-            jumpBoostT -= Time.deltaTime;
-            if (jumpBoostT <= 0f)
-            {
-                jumpForce = jumpForceBase;
-                airSpeed = airSpeedBase;
-                isJumpBoosted = false;
-            }
-        }
-    }
+    // void BoostTimerEffect()
+    // {
+    //     if (isSpeedBoosted)
+    //     {
+    //         speedBoostT -= Time.deltaTime;
+    //         if (speedBoostT <= 0f)
+    //         {
+    //             groundSpeed = groundSpeedBase;
+    //             isSpeedBoosted = false;
+    //         }
+    //     }
+    //     
+    //     if (isJumpBoosted)
+    //     {
+    //         jumpBoostT -= Time.deltaTime;
+    //         if (jumpBoostT <= 0f)
+    //         {
+    //             jumpForce = jumpForceBase;
+    //             airSpeed = airSpeedBase;
+    //             isJumpBoosted = false;
+    //         }
+    //     }
+    // }
 }
