@@ -109,6 +109,24 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpeedBoost"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce12dca5-00ba-49e5-8cd5-eb00f2af463f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JumpBoost"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4e7050b-4566-4841-a38c-8c041580a306"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -155,6 +173,56 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa63a207-3da8-454d-b492-08918e44be7a"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpeedBoost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5534894-f2ff-4535-b2e4-b5bb4c6d82ed"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpBoost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""DEBUG"",
+            ""id"": ""3e081440-f495-42f0-a609-f5db3ff83d5c"",
+            ""actions"": [
+                {
+                    ""name"": ""TimerReset"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c3ba7f2-9e81-4c2f-a218-f3fff328789c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e32d5ab2-1534-4586-a17f-2dd6a37a7a75"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TimerReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -165,11 +233,17 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Direction = m_Player.FindAction("Direction", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_SpeedBoost = m_Player.FindAction("SpeedBoost", throwIfNotFound: true);
+        m_Player_JumpBoost = m_Player.FindAction("JumpBoost", throwIfNotFound: true);
+        // DEBUG
+        m_DEBUG = asset.FindActionMap("DEBUG", throwIfNotFound: true);
+        m_DEBUG_TimerReset = m_DEBUG.FindAction("TimerReset", throwIfNotFound: true);
     }
 
     ~@CustomInputs()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, CustomInputs.Player.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_DEBUG.enabled, "This will cause a leak and performance issues, CustomInputs.DEBUG.Disable() has not been called.");
     }
 
     /// <summary>
@@ -247,6 +321,8 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Direction;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_SpeedBoost;
+    private readonly InputAction m_Player_JumpBoost;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -266,6 +342,14 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SpeedBoost".
+        /// </summary>
+        public InputAction @SpeedBoost => m_Wrapper.m_Player_SpeedBoost;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/JumpBoost".
+        /// </summary>
+        public InputAction @JumpBoost => m_Wrapper.m_Player_JumpBoost;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -298,6 +382,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @SpeedBoost.started += instance.OnSpeedBoost;
+            @SpeedBoost.performed += instance.OnSpeedBoost;
+            @SpeedBoost.canceled += instance.OnSpeedBoost;
+            @JumpBoost.started += instance.OnJumpBoost;
+            @JumpBoost.performed += instance.OnJumpBoost;
+            @JumpBoost.canceled += instance.OnJumpBoost;
         }
 
         /// <summary>
@@ -315,6 +405,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @SpeedBoost.started -= instance.OnSpeedBoost;
+            @SpeedBoost.performed -= instance.OnSpeedBoost;
+            @SpeedBoost.canceled -= instance.OnSpeedBoost;
+            @JumpBoost.started -= instance.OnJumpBoost;
+            @JumpBoost.performed -= instance.OnJumpBoost;
+            @JumpBoost.canceled -= instance.OnJumpBoost;
         }
 
         /// <summary>
@@ -348,6 +444,102 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
     /// </summary>
     public PlayerActions @Player => new PlayerActions(this);
+
+    // DEBUG
+    private readonly InputActionMap m_DEBUG;
+    private List<IDEBUGActions> m_DEBUGActionsCallbackInterfaces = new List<IDEBUGActions>();
+    private readonly InputAction m_DEBUG_TimerReset;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "DEBUG".
+    /// </summary>
+    public struct DEBUGActions
+    {
+        private @CustomInputs m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public DEBUGActions(@CustomInputs wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "DEBUG/TimerReset".
+        /// </summary>
+        public InputAction @TimerReset => m_Wrapper.m_DEBUG_TimerReset;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_DEBUG; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="DEBUGActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(DEBUGActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="DEBUGActions" />
+        public void AddCallbacks(IDEBUGActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DEBUGActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DEBUGActionsCallbackInterfaces.Add(instance);
+            @TimerReset.started += instance.OnTimerReset;
+            @TimerReset.performed += instance.OnTimerReset;
+            @TimerReset.canceled += instance.OnTimerReset;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="DEBUGActions" />
+        private void UnregisterCallbacks(IDEBUGActions instance)
+        {
+            @TimerReset.started -= instance.OnTimerReset;
+            @TimerReset.performed -= instance.OnTimerReset;
+            @TimerReset.canceled -= instance.OnTimerReset;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="DEBUGActions.UnregisterCallbacks(IDEBUGActions)" />.
+        /// </summary>
+        /// <seealso cref="DEBUGActions.UnregisterCallbacks(IDEBUGActions)" />
+        public void RemoveCallbacks(IDEBUGActions instance)
+        {
+            if (m_Wrapper.m_DEBUGActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="DEBUGActions.AddCallbacks(IDEBUGActions)" />
+        /// <seealso cref="DEBUGActions.RemoveCallbacks(IDEBUGActions)" />
+        /// <seealso cref="DEBUGActions.UnregisterCallbacks(IDEBUGActions)" />
+        public void SetCallbacks(IDEBUGActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DEBUGActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DEBUGActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="DEBUGActions" /> instance referencing this action map.
+    /// </summary>
+    public DEBUGActions @DEBUG => new DEBUGActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
     /// </summary>
@@ -369,5 +561,34 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SpeedBoost" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpeedBoost(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "JumpBoost" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnJumpBoost(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DEBUG" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="DEBUGActions.AddCallbacks(IDEBUGActions)" />
+    /// <seealso cref="DEBUGActions.RemoveCallbacks(IDEBUGActions)" />
+    public interface IDEBUGActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "TimerReset" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTimerReset(InputAction.CallbackContext context);
     }
 }
