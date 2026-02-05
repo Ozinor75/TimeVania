@@ -10,10 +10,10 @@ public class PlayerController : MonoBehaviour
     private float groundSpeed;
     private float airSpeed;
     private float jumpForce;
-    public float gravity;
+    private float gravity;
     
     private float effectiveSpeed;
-    private float effectiveJumpForce;   // Unused, l'utiliser plus tard si nécéssaire
+    // private float effectiveJumpForce;   // Unused, l'utiliser plus tard si nécéssaire
 
     [Header("Player refs")]
     public CustomInputs playerControls;
@@ -27,10 +27,11 @@ public class PlayerController : MonoBehaviour
     
     [Header("Player Debug")]
     public bool isGrounded = true;
-    public bool isJumping = false;
+    // public bool isJumping = false;
     private float dirInput;
     private float movementLeftRight;
     private Vector2 movement;
+    public float vMax;
 
     private void OnEnable()
     {
@@ -50,14 +51,14 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         
         playerBoost = GetComponent<PlayerBoost>();
-        playerBoost.boostState = BoostStates.Gear1;
+        playerBoost.boostState = BoostStates.BaseMode;
         activePreset = playerBoost.ReturnGearSpeed();
         
         timerController = GetComponent<PlayerTimer>();
         timerController.tMult = activePreset.timerMult;
         
         Physics2D.queriesStartInColliders = false;
-        Physics2D.gravity = new Vector2(0, -gravity);
+        Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
     }
     
     private void Update()
@@ -65,19 +66,29 @@ public class PlayerController : MonoBehaviour
         if (playerControls.DEBUG.TimerReset.WasPressedThisFrame())
             timerController.t = timerController.timer;
         
-        if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.Gear5))
+        if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.SuperBoost))
         {
             playerBoost.boostState ++;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
+            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
         }
         
-        if (playerControls.Player.Downgrade.WasPressedThisFrame() && (playerBoost.boostState > BoostStates.Gear1))
+        if (playerControls.Player.Downgrade.WasPressedThisFrame() && (playerBoost.boostState > BoostStates.LowEnergy))
         {
             playerBoost.boostState --;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
-        }        
+            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+        }
+
+        if (playerControls.DEBUG.AdminGear.WasPressedThisFrame())
+        {
+            playerBoost.boostState = BoostStates.DEBUG;
+            activePreset = playerBoost.ReturnGearSpeed();
+            timerController.tMult = activePreset.timerMult;
+            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+        }
         
         movementLeftRight = playerControls.Player.Direction.ReadValue<float>();
         
@@ -86,7 +97,7 @@ public class PlayerController : MonoBehaviour
         if (playerControls.Player.Jump.WasPressedThisFrame() && isGrounded)
         {
             Debug.Log("JUMP !");
-            isJumping = true;
+            // isJumping = true;
             rb.AddForce(Vector2.up * activePreset.jumpForce, ForceMode2D.Impulse);
         }
     }
@@ -104,14 +115,14 @@ public class PlayerController : MonoBehaviour
         if (hit && hit.collider.CompareTag("Ground"))
         {
             isGrounded = true;
-            isJumping = false;
+            // isJumping = false;
             effectiveSpeed = activePreset.groundSpeed;
         }
         else
         {
             isGrounded = false;
-            if (isJumping)
-                effectiveSpeed = activePreset.airSpeed;
+            // if (isJumping)
+            effectiveSpeed = activePreset.airSpeed;
         }
     }
 }

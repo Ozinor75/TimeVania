@@ -210,6 +210,15 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AdminGear"",
+                    ""type"": ""Button"",
+                    ""id"": ""4f4204b9-ad1d-482d-90ac-fe1b1890535d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -221,6 +230,17 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""TimerReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1fb77025-e81f-48b7-b556-2fe6673a714d"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AdminGear"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -238,6 +258,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         // DEBUG
         m_DEBUG = asset.FindActionMap("DEBUG", throwIfNotFound: true);
         m_DEBUG_TimerReset = m_DEBUG.FindAction("TimerReset", throwIfNotFound: true);
+        m_DEBUG_AdminGear = m_DEBUG.FindAction("AdminGear", throwIfNotFound: true);
     }
 
     ~@CustomInputs()
@@ -449,6 +470,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_DEBUG;
     private List<IDEBUGActions> m_DEBUGActionsCallbackInterfaces = new List<IDEBUGActions>();
     private readonly InputAction m_DEBUG_TimerReset;
+    private readonly InputAction m_DEBUG_AdminGear;
     /// <summary>
     /// Provides access to input actions defined in input action map "DEBUG".
     /// </summary>
@@ -464,6 +486,10 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "DEBUG/TimerReset".
         /// </summary>
         public InputAction @TimerReset => m_Wrapper.m_DEBUG_TimerReset;
+        /// <summary>
+        /// Provides access to the underlying input action "DEBUG/AdminGear".
+        /// </summary>
+        public InputAction @AdminGear => m_Wrapper.m_DEBUG_AdminGear;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -493,6 +519,9 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @TimerReset.started += instance.OnTimerReset;
             @TimerReset.performed += instance.OnTimerReset;
             @TimerReset.canceled += instance.OnTimerReset;
+            @AdminGear.started += instance.OnAdminGear;
+            @AdminGear.performed += instance.OnAdminGear;
+            @AdminGear.canceled += instance.OnAdminGear;
         }
 
         /// <summary>
@@ -507,6 +536,9 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @TimerReset.started -= instance.OnTimerReset;
             @TimerReset.performed -= instance.OnTimerReset;
             @TimerReset.canceled -= instance.OnTimerReset;
+            @AdminGear.started -= instance.OnAdminGear;
+            @AdminGear.performed -= instance.OnAdminGear;
+            @AdminGear.canceled -= instance.OnAdminGear;
         }
 
         /// <summary>
@@ -590,5 +622,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTimerReset(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AdminGear" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAdminGear(InputAction.CallbackContext context);
     }
 }
