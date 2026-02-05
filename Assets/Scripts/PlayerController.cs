@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     
     [Header("Player Debug")]
     public bool isGrounded = true;
+    public bool isJumping = false;
     private float dirInput;
     private float movementLeftRight;
     private Vector2 movement;
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour
         if (playerControls.Player.Jump.WasPressedThisFrame() && isGrounded)
         {
             Debug.Log("JUMP !");
+            isJumping = true;
             rb.AddForce(Vector2.up * activePreset.jumpForce, ForceMode2D.Impulse);
         }
     }
@@ -102,12 +104,14 @@ public class PlayerController : MonoBehaviour
         if (hit && hit.collider.CompareTag("Ground"))
         {
             isGrounded = true;
+            isJumping = false;
             effectiveSpeed = activePreset.groundSpeed;
         }
         else
         {
             isGrounded = false;
-            effectiveSpeed = activePreset.airSpeed;
+            if (isJumping)
+                effectiveSpeed = activePreset.airSpeed;
         }
     }
 }
