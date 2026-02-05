@@ -32,10 +32,10 @@ public class PlayerPresets
     }
     
     public static PlayerPresets SuperSlow = new(1f, 1f, 1f, 0.5f);  // Truc de base, chiant donc lent, mais écoulement du timer lent
-    public static PlayerPresets Slow = new(5f, 5f, 5f, 1f);         // Ici un peu plus haut, jpense lent mais un minimum agréable, c'est lécoulement normal
-    public static PlayerPresets Mid = new(10f, 10f, 10f, 3f);       // Mid, ptet ici l'écoulement de base
-    public static PlayerPresets Swift = new(20f, 20f, 20f, 10f);    // les chaussures qui courent vite
-    public static PlayerPresets SuperSwift = new(50f, 50f, 50f, 20f);   // Flash McQueen
+    public static PlayerPresets Slow = new(6f, 3f, 7f, 0.5f);         // Ici un peu plus haut, jpense lent mais un minimum agréable, c'est lécoulement normal
+    public static PlayerPresets Mid = new(9f, 5f, 10f, 1f);       // Mid, ptet ici l'écoulement de base
+    public static PlayerPresets Swift = new(14f, 8f, 12f, 2f);    // les chaussures qui courent vite
+    public static PlayerPresets SuperSwift = new(22f, 10f, 15f, 5f);   // Flash McQueen
 }
 
 public class PlayerBoost : MonoBehaviour
