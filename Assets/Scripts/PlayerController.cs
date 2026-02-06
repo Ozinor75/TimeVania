@@ -12,26 +12,22 @@ public class PlayerController : MonoBehaviour
     private float airSpeed;
     private float jumpForce;
     private float gravity;
-    
     private float effectiveSpeed;
-    // private float effectiveJumpForce;   // Unused, l'utiliser plus tard si nécéssaire
+    public float upGravityFactor;
+    public float downGravityFactor;
 
     [Header("Player refs")]
     public CustomInputs playerControls;
-    
     private Rigidbody2D rb;
     private CapsuleCollider2D selfCollider;
-    
     private PlayerTimer timerController;
     private PlayerBoost playerBoost;
     public PlayerPresets activePreset;
     
     [Header("Player Debug")]
     public bool isGrounded = true;
-
     public bool isDashing = false;
-    // public bool isJumping = false;
-    private float dirInput;
+    private float movementUpDown;
     private float movementLeftRight;
     private Vector2 movement;
     public float vMax;
@@ -46,7 +42,6 @@ public class PlayerController : MonoBehaviour
     {
         playerControls.Disable();
     }
-    
     void Start()
     {
         selfCollider = GetComponent<CapsuleCollider2D>();
@@ -65,9 +60,11 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
-        if (playerControls.DEBUG.TimerReset.WasPressedThisFrame())
-            timerController.t = timerController.timer;
+        IsGrounded();
+        movementLeftRight = playerControls.Player.Direction.ReadValue<Vector2>().x;
+        movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
         
+        // CONTROL INPUTS
         if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.SuperBoost))
         {
             playerBoost.boostState ++;
@@ -83,7 +80,18 @@ public class PlayerController : MonoBehaviour
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
         }
-
+        
+        if (playerControls.Player.Jump.WasPressedThisFrame() && isGrounded)
+        {
+            rb.AddForce(Vector2.up * activePreset.jumpForce, ForceMode2D.Impulse);
+        }
+        
+        if (playerControls.Player.Dash.WasPressedThisFrame() && !isDashing)
+        {
+            StartCoroutine(Dash());
+        }
+        
+        // DEBUG INPUTS
         if (playerControls.DEBUG.AdminGear.WasPressedThisFrame())
         {
             playerBoost.boostState = BoostStates.DEBUG;
@@ -91,29 +99,61 @@ public class PlayerController : MonoBehaviour
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
         }
-
-        if (playerControls.Player.Dash.WasPressedThisFrame() && !isDashing)
-        {
-            StartCoroutine(Dash());
-        }
         
-        movementLeftRight = playerControls.Player.Direction.ReadValue<float>();
-        
-        IsGrounded();
-        
-        if (playerControls.Player.Jump.WasPressedThisFrame() && isGrounded)
-        {
-            Debug.Log("JUMP !");
-            // isJumping = true;
-            rb.AddForce(Vector2.up * activePreset.jumpForce, ForceMode2D.Impulse);
-        }
+        if (playerControls.DEBUG.TimerReset.WasPressedThisFrame())
+            timerController.t = timerController.timer;
     }
 
     void FixedUpdate()
     {
         rb.linearVelocityX = movementLeftRight * effectiveSpeed;
+
+        if (!isGrounded && (movementUpDown < -0.2f || movementUpDown > 0.2f))
+        {
+            if (movementUpDown < 0f)
+            {
+                effectiveSpeed = 0f;
+                rb.gravityScale = downGravityFactor;
+            }
+                
+            if (movementUpDown > 0f && rb.linearVelocityY <= 0f)
+            {
+                effectiveSpeed = activePreset.airSpeed;
+                rb.gravityScale = upGravityFactor;
+            }
+        }
+        else
+        {
+            effectiveSpeed = activePreset.airSpeed;
+            rb.gravityScale = 1f;
+        }
     }
 
+    // INFORMATION TAKING
+    private void IsGrounded()
+    {
+        RaycastHit2D hit = Physics2D.CapsuleCast(transform.position, selfCollider.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.1f);
+                                                                                                                                            
+        Debug.DrawLine(transform.position, hit.point, Color.red);
+        if (hit && hit.collider.CompareTag("Ground"))
+        {
+            isGrounded = true;
+            effectiveSpeed = activePreset.groundSpeed;
+
+        }
+        
+        else if (isDashing)
+            effectiveSpeed = activePreset.dashSpeed;
+        
+        else
+        {
+            isGrounded = false;
+            if (movementUpDown > -0.2f && movementUpDown < 0.2f)
+                effectiveSpeed = activePreset.airSpeed;
+        }
+    }
+    
+    // MECHANICS
     private IEnumerator Dash()
     {
         isDashing = true;
@@ -124,25 +164,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(activePreset.dashDuration);
         rb.gravityScale = originalGravity;
         isDashing = false;
-    }
-    private void IsGrounded()
-    {
-        RaycastHit2D hit = Physics2D.CapsuleCast(transform.position, selfCollider.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.1f);
-                                                                                                                                            
-        Debug.DrawLine(transform.position, hit.point, Color.red);
-        if (hit && hit.collider.CompareTag("Ground"))
-        {
-            isGrounded = true;
-            // isJumping = false;
-            effectiveSpeed = activePreset.groundSpeed;
-        }
-        else if (isDashing)
-            effectiveSpeed = activePreset.dashSpeed;
-        else
-        {
-            isGrounded = false;
-            // if (isJumping)
-            effectiveSpeed = activePreset.airSpeed;
-        }
     }
 }

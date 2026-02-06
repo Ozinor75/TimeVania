@@ -1908,8 +1908,8 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &764508415
 CapsuleCollider2D:
@@ -1960,6 +1960,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0244fd80369de54aa8ddd7ff017e07e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upGravityFactor: 0.5
+  downGravityFactor: 16
   isGrounded: 0
   isDashing: 0
   vMax: 10
@@ -5303,7 +5305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2040874345
 Transform:
   m_ObjectHideFlags: 0
@@ -5382,7 +5384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2091084678
 Transform:
   m_ObjectHideFlags: 0

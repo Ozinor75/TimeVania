@@ -8,7 +8,6 @@ using Debug = UnityEngine.Debug;
 
 public enum BoostStates
 {
-    // Gear1,
     LowEnergy,
     BaseMode,
     Boost,
@@ -28,9 +27,8 @@ public class PlayerPresets
     public float gravityForce;
     public float timerMult;
 
-    public PlayerPresets(/*float vMax,*/float groundSpeed, float airSpeed, float dashSpeed, float dashDuration, float jumpForce, float gravityForce,float timerMult)
+    public PlayerPresets(float groundSpeed, float airSpeed, float dashSpeed, float dashDuration, float jumpForce, float gravityForce,float timerMult)
     {
-        // this.vMax = vMax;
         this.groundSpeed = groundSpeed;
         this.airSpeed = airSpeed;
         this.dashSpeed = dashSpeed;
@@ -40,11 +38,10 @@ public class PlayerPresets
         this.timerMult = timerMult;
     }
     
-    // public static PlayerPresets SuperSlow = new(3f,3f, 1.5f, 3.5f, 0.25f);  // Truc de base, chiant donc lent, mais écoulement du timer lent
-    public static PlayerPresets Slow = new(/*6f,*/6f, 3f, 20f, 0.2f,7f, 5f,0.5f);         // Ici un peu plus haut, jpense lent mais un minimum agréable, c'est lécoulement normal
-    public static PlayerPresets Mid = new(/*9f,*/9f, 5f, 20f, 0.2f,12f, 10f,1f);       // Mid, ptet ici l'écoulement de base
-    public static PlayerPresets Swift = new(/*14f,*/14f, 8f, 20f, 0.2f, 17f, 15f,2f);    // les chaussures qui courent vite
-    public static PlayerPresets SuperSwift = new(/*22f,*/22f, 10f, 20f, 0.2f, 22f, 20f,5f);   // Flash McQueen
+    public static PlayerPresets Slow = new(6f, 3f, 20f, 0.2f,7f, 5f,0.5f);
+    public static PlayerPresets Mid = new(9f, 5f, 20f, 0.2f,12f, 10f,1f);
+    public static PlayerPresets Swift = new(14f, 8f, 20f, 0.2f, 17f, 15f,2f);
+    public static PlayerPresets SuperSwift = new(22f, 10f, 20f, 0.2f, 22f, 20f,5f);
 }
 
 public class PlayerBoost : MonoBehaviour
@@ -55,7 +52,6 @@ public class PlayerBoost : MonoBehaviour
     public Material mat;
 
     [Header("Debug Values")]
-    // public float DEBUG_vMax;
     public float DEBUG_groundForce;
     public float DEBUG_airForce;
     public float DEBUG_dashForce;
@@ -79,11 +75,6 @@ public class PlayerBoost : MonoBehaviour
 
         switch (boostState)
         {
-            // case BoostStates.Gear1:
-            //     preset = PlayerPresets.SuperSlow;
-            //     mat.color = new Color(0f, 0f, 1f);
-            //     break;
-                
             case BoostStates.LowEnergy:
                 preset = PlayerPresets.Slow;
                 mat.color = new Color(0f, 0f, 1f);
