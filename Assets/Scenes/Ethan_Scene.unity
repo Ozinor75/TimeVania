@@ -1961,6 +1961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGrounded: 0
+  isDashing: 0
   vMax: 10
 --- !u!114 &764508417
 MonoBehaviour:
@@ -1994,6 +1995,8 @@ MonoBehaviour:
   mat: {fileID: 2100000, guid: 4fb3484ee457ee14bad929590b538729, type: 2}
   DEBUG_groundForce: 0
   DEBUG_airForce: 0
+  DEBUG_dashForce: 0
+  DEBUG_dashDuration: 0
   DEBUG_jumpForce: 0
   DEBUG_gravityForce: 0
   DEBUG_timerMult: 0

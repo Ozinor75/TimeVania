@@ -22,25 +22,29 @@ public class PlayerPresets
     public float vMax;
     public float groundSpeed;
     public float airSpeed;
+    public float dashSpeed;
+    public float dashDuration;
     public float jumpForce;
     public float gravityForce;
     public float timerMult;
 
-    public PlayerPresets(/*float vMax,*/float groundSpeed, float airSpeed, float jumpForce, float gravityForce,float timerMult)
+    public PlayerPresets(/*float vMax,*/float groundSpeed, float airSpeed, float dashSpeed, float dashDuration, float jumpForce, float gravityForce,float timerMult)
     {
         // this.vMax = vMax;
         this.groundSpeed = groundSpeed;
         this.airSpeed = airSpeed;
+        this.dashSpeed = dashSpeed;
+        this.dashDuration = dashDuration;
         this.jumpForce = jumpForce;
         this.gravityForce = gravityForce;
         this.timerMult = timerMult;
     }
     
     // public static PlayerPresets SuperSlow = new(3f,3f, 1.5f, 3.5f, 0.25f);  // Truc de base, chiant donc lent, mais écoulement du timer lent
-    public static PlayerPresets Slow = new(/*6f,*/6f, 3f, 7f, 5f,0.5f);         // Ici un peu plus haut, jpense lent mais un minimum agréable, c'est lécoulement normal
-    public static PlayerPresets Mid = new(/*9f,*/9f, 5f, 12f, 10f,1f);       // Mid, ptet ici l'écoulement de base
-    public static PlayerPresets Swift = new(/*14f,*/14f, 8f, 17f, 15f,2f);    // les chaussures qui courent vite
-    public static PlayerPresets SuperSwift = new(/*22f,*/22f, 10f, 22f, 20f,5f);   // Flash McQueen
+    public static PlayerPresets Slow = new(/*6f,*/6f, 3f, 20f, 0.2f,7f, 5f,0.5f);         // Ici un peu plus haut, jpense lent mais un minimum agréable, c'est lécoulement normal
+    public static PlayerPresets Mid = new(/*9f,*/9f, 5f, 20f, 0.2f,12f, 10f,1f);       // Mid, ptet ici l'écoulement de base
+    public static PlayerPresets Swift = new(/*14f,*/14f, 8f, 20f, 0.2f, 17f, 15f,2f);    // les chaussures qui courent vite
+    public static PlayerPresets SuperSwift = new(/*22f,*/22f, 10f, 20f, 0.2f, 22f, 20f,5f);   // Flash McQueen
 }
 
 public class PlayerBoost : MonoBehaviour
@@ -54,6 +58,8 @@ public class PlayerBoost : MonoBehaviour
     // public float DEBUG_vMax;
     public float DEBUG_groundForce;
     public float DEBUG_airForce;
+    public float DEBUG_dashForce;
+    public float DEBUG_dashDuration;
     public float DEBUG_jumpForce;
     public float DEBUG_gravityForce;
     public float DEBUG_timerMult;
@@ -99,7 +105,7 @@ public class PlayerBoost : MonoBehaviour
                 break;
             case BoostStates.DEBUG:
                 preset = new PlayerPresets(/*DEBUG_vMax,*/ DEBUG_groundForce,
-                                            DEBUG_airForce, DEBUG_jumpForce,
+                                            DEBUG_airForce, DEBUG_dashForce, DEBUG_dashDuration, DEBUG_jumpForce,
                                             DEBUG_gravityForce, DEBUG_timerMult);
                 mat.color = Color.white;
                 break;

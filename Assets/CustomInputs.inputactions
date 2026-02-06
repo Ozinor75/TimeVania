@@ -25,6 +25,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "94ef9489-1b9a-484b-ab58-811d9085ef9e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Upgrade",
                     "type": "Button",
                     "id": "ce12dca5-00ba-49e5-8cd5-eb00f2af463f",
@@ -107,6 +116,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Downgrade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f288aec-7498-4a2b-8ebb-155c4ba4606b",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

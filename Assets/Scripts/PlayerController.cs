@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.InputSystem;
@@ -27,12 +28,13 @@ public class PlayerController : MonoBehaviour
     
     [Header("Player Debug")]
     public bool isGrounded = true;
+
+    public bool isDashing = false;
     // public bool isJumping = false;
     private float dirInput;
     private float movementLeftRight;
     private Vector2 movement;
     public float vMax;
-
     private void OnEnable()
     {
         if (playerControls == null)
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         playerControls.Disable();
     }
-
+    
     void Start()
     {
         selfCollider = GetComponent<CapsuleCollider2D>();
@@ -89,6 +91,11 @@ public class PlayerController : MonoBehaviour
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
         }
+
+        if (playerControls.Player.Dash.WasPressedThisFrame() && !isDashing)
+        {
+            StartCoroutine(Dash());
+        }
         
         movementLeftRight = playerControls.Player.Direction.ReadValue<float>();
         
@@ -107,6 +114,17 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocityX = movementLeftRight * effectiveSpeed;
     }
 
+    private IEnumerator Dash()
+    {
+        isDashing = true;
+        var originalGravity = rb.gravityScale;
+        rb.gravityScale = 0;
+        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocityX = movementLeftRight * activePreset.dashSpeed;
+        yield return new WaitForSecondsRealtime(activePreset.dashDuration);
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+    }
     private void IsGrounded()
     {
         RaycastHit2D hit = Physics2D.CapsuleCast(transform.position, selfCollider.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.1f);
@@ -118,6 +136,8 @@ public class PlayerController : MonoBehaviour
             // isJumping = false;
             effectiveSpeed = activePreset.groundSpeed;
         }
+        else if (isDashing)
+            effectiveSpeed = activePreset.dashSpeed;
         else
         {
             isGrounded = false;
