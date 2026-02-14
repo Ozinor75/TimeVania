@@ -20211,6 +20211,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 890675599061eeb48bedc4a3b889fb58, type: 2}
+    - target: {fileID: 3381063358051016167, guid: a69dac89521a25546bb23a9bf3949e73, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 135c1f381187b8647b200346f15d2b33, type: 2}
     - target: {fileID: 3387508208373006724, guid: a69dac89521a25546bb23a9bf3949e73, type: 3}
       propertyPath: timer
       value: 0.2
@@ -20231,6 +20235,10 @@ PrefabInstance:
       propertyPath: downGravityFactor
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 5497807638317686215, guid: a69dac89521a25546bb23a9bf3949e73, type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 135c1f381187b8647b200346f15d2b33, type: 2}
     - target: {fileID: 5497807638317686215, guid: a69dac89521a25546bb23a9bf3949e73, type: 3}
       propertyPath: DEBUG_airForce
       value: 3

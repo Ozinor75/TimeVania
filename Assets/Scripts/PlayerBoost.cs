@@ -83,9 +83,8 @@ public class PlayerBoost : MonoBehaviour
                 preset = PlayerPresets.Swift;
                 mat.color = new Color(1f, 1f, 0f);
                 break;
-            
+
             case BoostStates.DEBUG:
-                preset = new PlayerPresets(DEBUG_groundSpeed, DEBUG_airSpeed, DEBUG_jumpForce, DEBUG_gravityForce, DEBUG_timerMult);
                 mat.color = Color.white;
                 break;
         }
