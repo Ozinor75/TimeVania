@@ -35,9 +35,9 @@ public class PlayerPresets
         this.timerMult = timerMult;
     }
     
-    public static PlayerPresets Slow = new(5f, 5f, 3.5f, 1.5f,0.5f);
-    public static PlayerPresets Mid = new(15f, 10f, 15f, 17f,1f);
-    public static PlayerPresets Swift = new(17f, 15f, 20f, 22f,1.5f);
+    public static PlayerPresets Slow = new(3f, 1f, 4f, 4.9f,0.5f);
+    public static PlayerPresets Mid = new(18f, 12f, 18f, 19.6f,2f);
+    public static PlayerPresets Swift = new(39f, 30f, 38f, 60f,5f);
 }
 
 public class PlayerBoost : MonoBehaviour
@@ -71,17 +71,17 @@ public class PlayerBoost : MonoBehaviour
         {
             case BoostStates.Gear1:
                 preset = PlayerPresets.Slow;
-                mat.color = new Color(0f, 0f, 1f);
+                mat.color = new Color(0f, 1f, 1f);
                 break;
                 
             case BoostStates.Gear2:
                 preset = PlayerPresets.Mid;
-                mat.color = new Color(0f, 1f, 1f);
+                mat.color = new Color(1f, 1f, 0f);
                 break;
                 
             case BoostStates.Gear3:
                 preset = PlayerPresets.Swift;
-                mat.color = new Color(1f, 1f, 0f);
+                mat.color = new Color(1f, 0f, 0f);
                 break;
 
             case BoostStates.DEBUG:

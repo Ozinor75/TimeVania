@@ -64,6 +64,9 @@ public class PlayerController : MonoBehaviour
         IsGrounded();
         movementLeftRight = playerControls.Player.Direction.ReadValue<Vector2>().x;
         movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
+        
+        if (timerController.t <= 0) Respawn();
+        
         if (cototE >= 0f)
         {
             cototE -= Time.deltaTime;
@@ -96,7 +99,7 @@ public class PlayerController : MonoBehaviour
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
         }
         
-        if (playerControls.Player.Dash.WasPressedThisFrame() && !isDashing)
+        if (playerControls.Player.Dash.WasPressedThisFrame() && timerController.t > dashCost)
         {
             Vector2 test = rb.linearVelocity.normalized;
             test *= activePreset.airSpeed;
@@ -141,6 +144,19 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             effectiveSpeed = activePreset.airSpeed;
         }
+    }
+    
+    void Respawn()
+    {
+        Debug.Log("OUTTA TIME !!!");
+        // Return
+        rb.position = new Vector2(0, 0);
+        timerController.t = timerController.timer;
+        // Reset
+        playerBoost.boostState = BoostStates.Gear2;
+        activePreset = playerBoost.ReturnGearSpeed();
+        timerController.tMult = activePreset.timerMult;
+        Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
     }
     
     // MECHANICS
