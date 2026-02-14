@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.InputSystem;
@@ -8,29 +9,29 @@ using UnityEngine.InputSystem.HID;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Stats")]
-    private float groundSpeed;
-    private float airSpeed;
-    private float jumpForce;
-    private float gravity;
-    private float effectiveSpeed;
-    public float upGravityFactor;
-    public float downGravityFactor;
+    public float effectiveSpeed;
+    public float dashCost;
+
+    [Header("CoyotEtime")]
+    public float coyotETimer;
+    public float cototE;
 
     [Header("Player refs")]
     public CustomInputs playerControls;
     private Rigidbody2D rb;
-    private CapsuleCollider2D selfCollider;
+    private BoxCollider2D selfCollider;
     private PlayerTimer timerController;
     private PlayerBoost playerBoost;
     public PlayerPresets activePreset;
     
     [Header("Player Debug")]
     public bool isGrounded = true;
-    public bool isDashing = false;
+    private bool isDashing = false;
     private float movementUpDown;
     private float movementLeftRight;
     private Vector2 movement;
-    public float vMax;
+    
+    
     private void OnEnable()
     {
         if (playerControls == null)
@@ -44,11 +45,11 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        selfCollider = GetComponent<CapsuleCollider2D>();
+        selfCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         
         playerBoost = GetComponent<PlayerBoost>();
-        playerBoost.boostState = BoostStates.BaseMode;
+        playerBoost.boostState = BoostStates.Gear2;
         activePreset = playerBoost.ReturnGearSpeed();
         
         timerController = GetComponent<PlayerTimer>();
@@ -64,8 +65,25 @@ public class PlayerController : MonoBehaviour
         movementLeftRight = playerControls.Player.Direction.ReadValue<Vector2>().x;
         movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
         
+        if (timerController.t <= 0) Respawn();
+        
+        if (cototE >= 0f)
+        {
+            cototE -= Time.deltaTime;
+        }
+        
+        movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
+        
+        if (playerControls.Player.Jump.WasPressedThisFrame())
+        {
+            if (isGrounded || cototE > 0f)
+            {
+                rb.AddForceY(activePreset.jumpForce, ForceMode2D.Impulse);
+            }
+        }
+        
         // CONTROL INPUTS
-        if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.SuperBoost))
+        if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.Gear3))
         {
             playerBoost.boostState ++;
             activePreset = playerBoost.ReturnGearSpeed();
@@ -73,7 +91,7 @@ public class PlayerController : MonoBehaviour
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
         }
         
-        if (playerControls.Player.Downgrade.WasPressedThisFrame() && (playerBoost.boostState > BoostStates.LowEnergy))
+        if (playerControls.Player.Downgrade.WasPressedThisFrame() && (playerBoost.boostState > BoostStates.Gear1))
         {
             playerBoost.boostState --;
             activePreset = playerBoost.ReturnGearSpeed();
@@ -81,14 +99,12 @@ public class PlayerController : MonoBehaviour
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
         }
         
-        if (playerControls.Player.Jump.WasPressedThisFrame() && isGrounded)
+        if (playerControls.Player.Dash.WasPressedThisFrame() && timerController.t > dashCost)
         {
-            rb.AddForce(Vector2.up * activePreset.jumpForce, ForceMode2D.Impulse);
-        }
-        
-        if (playerControls.Player.Dash.WasPressedThisFrame() && !isDashing)
-        {
-            StartCoroutine(Dash());
+            Vector2 test = rb.linearVelocity.normalized;
+            test *= activePreset.airSpeed;
+            rb.position = rb.position + test;
+            timerController.t -= dashCost;
         }
         
         // DEBUG INPUTS
@@ -105,64 +121,54 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
-        rb.linearVelocityX = movementLeftRight * effectiveSpeed;
-
-        if (!isGrounded && (movementUpDown < -0.2f || movementUpDown > 0.2f))
-        {
-            if (movementUpDown < 0f)
-            {
-                effectiveSpeed = 0f;
-                rb.gravityScale = downGravityFactor;
-            }
-                
-            if (movementUpDown > 0f && rb.linearVelocityY <= 0f)
-            {
-                effectiveSpeed = activePreset.airSpeed;
-                rb.gravityScale = upGravityFactor;
-            }
-        }
-        else
-        {
-            effectiveSpeed = activePreset.airSpeed;
-            rb.gravityScale = 1f;
-        }
+    { 
+        rb.linearVelocity = movement;
     }
 
     // INFORMATION TAKING
     private void IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.CapsuleCast(transform.position, selfCollider.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.1f);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, Vector2.down, 0.1f);
                                                                                                                                             
         Debug.DrawLine(transform.position, hit.point, Color.red);
         if (hit && hit.collider.CompareTag("Ground"))
         {
+            cototE = coyotETimer;
             isGrounded = true;
             effectiveSpeed = activePreset.groundSpeed;
-
         }
-        
-        else if (isDashing)
-            effectiveSpeed = activePreset.dashSpeed;
         
         else
         {
+            cototE -= Time.deltaTime;
             isGrounded = false;
-            if (movementUpDown > -0.2f && movementUpDown < 0.2f)
-                effectiveSpeed = activePreset.airSpeed;
+            effectiveSpeed = activePreset.airSpeed;
         }
     }
     
-    // MECHANICS
-    private IEnumerator Dash()
+    void Respawn()
     {
-        isDashing = true;
-        var originalGravity = rb.gravityScale;
-        rb.gravityScale = 0;
-        rb.linearVelocity = Vector2.zero;
-        rb.linearVelocityX = movementLeftRight * activePreset.dashSpeed;
-        yield return new WaitForSecondsRealtime(activePreset.dashDuration);
-        rb.gravityScale = originalGravity;
-        isDashing = false;
+        Debug.Log("OUTTA TIME !!!");
+        // Return
+        rb.position = new Vector2(0, 0);
+        timerController.t = timerController.timer;
+        // Reset
+        playerBoost.boostState = BoostStates.Gear2;
+        activePreset = playerBoost.ReturnGearSpeed();
+        timerController.tMult = activePreset.timerMult;
+        Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
     }
+    
+    // MECHANICS
+    // private IEnumerator Dash()
+    // {
+    //     isDashing = true;
+    //     var originalGravity = rb.gravityScale;
+    //     rb.gravityScale = 0;
+    //     rb.linearVelocity = Vector2.zero;
+    //     rb.linearVelocityX = movementLeftRight * activePreset.dashSpeed;
+    //     yield return new WaitForSecondsRealtime(activePreset.dashDuration);
+    //     rb.gravityScale = originalGravity;
+    //     isDashing = false;
+    // }
 }
