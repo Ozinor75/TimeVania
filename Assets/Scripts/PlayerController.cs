@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private float movementUpDown;
     private float movementLeftRight;
     private Vector2 movement;
+    private Vector2 StartPos; //pos de départ pour restart
     
     
     private void OnEnable()
@@ -57,6 +58,9 @@ public class PlayerController : MonoBehaviour
         
         Physics2D.queriesStartInColliders = false;
         Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+        
+        StartPos = rb.position;//sauvegarde position de départ
+        Debug.Log(StartPos);
     }
     
     private void Update()
@@ -150,7 +154,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("OUTTA TIME !!!");
         // Return
-        rb.position = new Vector2(0, 0);
+        rb.position = StartPos;
         timerController.t = timerController.timer;
         // Reset
         playerBoost.boostState = BoostStates.Gear2;
