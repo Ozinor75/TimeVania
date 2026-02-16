@@ -13,7 +13,7 @@ public class EnergyPlatform : MonoBehaviour
     void Start()
     {
         timeChanger = GetComponent<TimeChanger>();
-        meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
+        meshRenderer = transform.GetComponent<MeshRenderer>(); 
     }
 
     private void OnCollisionEnter2D(Collision2D other)
