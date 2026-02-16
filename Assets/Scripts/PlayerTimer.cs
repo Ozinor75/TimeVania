@@ -10,8 +10,10 @@ public class PlayerTimer : MonoBehaviour
     public float tMult;
     public TextMeshProUGUI text;
     
+    private Spawner[] spawner;
     void Start()
     {
+        spawner = FindObjectsOfType<Spawner>();
         t = timer;
     }
     
@@ -22,6 +24,14 @@ public class PlayerTimer : MonoBehaviour
             text.text = t.ToString("0");
         else
             text.text = t.ToString("0.00");
+
+        if (t <= 0)
+        {
+            foreach (Spawner sp in spawner)
+            {
+                sp.Spawn();
+            }
+        }
         // if (t <= 0f)
         // {
         //     tMult = 0;      // en vrai faudra pas faire ça, mais c'est juste que pr le moment on remonte pas le temps
