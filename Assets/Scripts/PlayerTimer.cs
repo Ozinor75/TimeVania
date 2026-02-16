@@ -11,9 +11,13 @@ public class PlayerTimer : MonoBehaviour
     public TextMeshProUGUI text;
     
     private Spawner[] spawner;
+    private EnergyPlatform[] energy;
+    
+    public Material energyMaterial;
     void Start()
     {
         spawner = FindObjectsOfType<Spawner>();
+        energy = FindObjectsOfType<EnergyPlatform>();
         t = timer;
     }
     
@@ -30,6 +34,12 @@ public class PlayerTimer : MonoBehaviour
             foreach (Spawner sp in spawner)
             {
                 sp.Spawn();
+            }
+
+            foreach (EnergyPlatform ep in energy)
+            {
+                ep.isUsed = false;
+                ep.isRespawned = true;
             }
         }
         // if (t <= 0f)

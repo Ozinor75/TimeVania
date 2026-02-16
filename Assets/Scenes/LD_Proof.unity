@@ -4374,6 +4374,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnergyPlatform
   platformMaterial: {fileID: 2100000, guid: 6b75790a364c5ab4a9b5131fac2c2989, type: 2}
+  energyMaterial: {fileID: 2100000, guid: aa6e14d47b15f5748ba472490b087018, type: 2}
+  isUsed: 0
+  isRespawned: 0
 --- !u!114 &1170373801
 MonoBehaviour:
   m_ObjectHideFlags: 0

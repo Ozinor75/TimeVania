@@ -4,11 +4,13 @@ using UnityEngine;
 public class EnergyPlatform : MonoBehaviour
 {
     public Material platformMaterial;
+    public Material energyMaterial;
     private MeshRenderer meshRenderer;
     
     private TimeChanger timeChanger;
 
-    private bool isUsed = false;
+    public bool isUsed = false;
+    public bool isRespawned = false;
     private Color platformColor;
     void Start()
     {
@@ -29,6 +31,10 @@ public class EnergyPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isRespawned)
+        {
+            meshRenderer.material = energyMaterial;
+            isRespawned = false;
+        }
     }
 }
