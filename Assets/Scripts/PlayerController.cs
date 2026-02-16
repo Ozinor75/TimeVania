@@ -106,8 +106,20 @@ public class PlayerController : MonoBehaviour
         if (playerControls.Player.Dash.WasPressedThisFrame() && timerController.t > dashCost)
         {
             Vector2 test = rb.linearVelocity.normalized;
-            test *= activePreset.airSpeed;
-            rb.position = rb.position + test;
+            RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, test, activePreset.airSpeed);
+            // RaycastHit2D checkDash = Physics2D.Raycast(transform.position, test, activePreset.airSpeed);
+            Debug.Log(checkDash.point);
+            if (checkDash)
+            {
+                test = checkDash.point;
+            }
+            else
+            {
+                test *= activePreset.airSpeed;
+                test += rb.position;
+            }
+            
+            rb.position = test;
             timerController.t -= dashCost;
         }
         

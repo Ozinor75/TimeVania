@@ -17,27 +17,26 @@ public enum BoostStates
 public class PlayerPresets
 {
     [Header("Stats")]
-    public float vMax;
     public float groundSpeed;
     public float airSpeed;
-    public float dashSpeed;
-    public float dashDuration;
     public float jumpForce;
+    public float dashDistance;
     public float gravityForce;
     public float timerMult;
 
-    public PlayerPresets(float groundSpeed, float airSpeed, float jumpForce, float gravityForce,float timerMult)
+    public PlayerPresets(float groundSpeed, float airSpeed, float jumpForce, float dashDistance,float gravityForce,float timerMult)
     {
         this.groundSpeed = groundSpeed;
         this.airSpeed = airSpeed;
         this.jumpForce = jumpForce;
+        this.dashDistance = dashDistance;
         this.gravityForce = gravityForce;
         this.timerMult = timerMult;
     }
     
-    public static PlayerPresets Slow = new(3f, 1f, 4f, 4.9f,0.5f);
-    public static PlayerPresets Mid = new(18f, 12f, 18f, 19.6f,2f);
-    public static PlayerPresets Swift = new(39f, 30f, 38f, 60f,5f);
+    public static PlayerPresets Slow = new(3f, 1f, 4f, 1f,4.9f,0.5f);
+    public static PlayerPresets Mid = new(18f, 12f, 18f, 12f,19.6f,2f);
+    public static PlayerPresets Swift = new(39f, 30f, 38f, 30f,60f,5f);
 }
 
 public class PlayerBoost : MonoBehaviour
@@ -51,6 +50,7 @@ public class PlayerBoost : MonoBehaviour
     public float DEBUG_groundSpeed;
     public float DEBUG_airSpeed;
     public float DEBUG_jumpForce;
+    public float DEBUG_dashDistance;
     public float DEBUG_gravityForce;
     public float DEBUG_timerMult;
     
