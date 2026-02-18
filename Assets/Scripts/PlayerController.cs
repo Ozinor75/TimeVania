@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private PlayerTimer timerController;
     private PlayerBoost playerBoost;
     public PlayerPresets activePreset;
+    public GlobalTime globalTime;
     
     [Header("Player Debug")]
     public bool isGrounded = true;
@@ -89,7 +90,8 @@ public class PlayerController : MonoBehaviour
         // CONTROL INPUTS
         if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.Gear3))
         {
-            playerBoost.boostState ++;
+            globalTime.worldTime++;
+            // playerBoost.boostState ++;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
@@ -97,7 +99,8 @@ public class PlayerController : MonoBehaviour
         
         if (playerControls.Player.Downgrade.WasPressedThisFrame() && (playerBoost.boostState > BoostStates.Gear1))
         {
-            playerBoost.boostState --;
+            globalTime.worldTime--;
+            // playerBoost.boostState --;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);

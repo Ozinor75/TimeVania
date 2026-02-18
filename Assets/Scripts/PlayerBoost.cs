@@ -23,8 +23,9 @@ public class PlayerPresets
     public float dashDistance;
     public float gravityForce;
     public float timerMult;
+    public float globalWorldTime;
 
-    public PlayerPresets(float groundSpeed, float airSpeed, float jumpForce, float dashDistance,float gravityForce,float timerMult)
+    public PlayerPresets(float groundSpeed, float airSpeed, float jumpForce, float dashDistance, float gravityForce, float timerMult, float globalWolrdTime)
     {
         this.groundSpeed = groundSpeed;
         this.airSpeed = airSpeed;
@@ -32,11 +33,12 @@ public class PlayerPresets
         this.dashDistance = dashDistance;
         this.gravityForce = gravityForce;
         this.timerMult = timerMult;
+        this.globalWorldTime = globalWolrdTime;
     }
     
-    public static PlayerPresets Slow = new(3f, 1f, 4f, 1f,4.9f,0.5f);
-    public static PlayerPresets Mid = new(18f, 12f, 18f, 12f,19.6f,2f);
-    public static PlayerPresets Swift = new(39f, 30f, 38f, 30f,60f,5f);
+    public static PlayerPresets Slow = new(3f, 1f, 4f, 1f,4.9f,0.5f,0.5f);
+    public static PlayerPresets Mid = new(18f, 12f, 18f, 12f,19.6f,2f,2f);
+    public static PlayerPresets Swift = new(39f, 30f, 38f, 30f,60f,5f,5f);
 }
 
 public class PlayerBoost : MonoBehaviour
@@ -53,6 +55,7 @@ public class PlayerBoost : MonoBehaviour
     public float DEBUG_dashDistance;
     public float DEBUG_gravityForce;
     public float DEBUG_timerMult;
+    public float DEBUG_globalWorldTime;
     
     public BoostStates boostState;
     private PlayerController playerController;
@@ -67,6 +70,7 @@ public class PlayerBoost : MonoBehaviour
     { 
         PlayerPresets preset = PlayerPresets.Slow;
 
+        
         switch (boostState)
         {
             case BoostStates.Gear1:
