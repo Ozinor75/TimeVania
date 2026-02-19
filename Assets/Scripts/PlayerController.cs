@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
         if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.Gear3))
         {
             globalTime.worldTime++;
-            // playerBoost.boostState ++;
+            playerBoost.boostState ++;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         if (playerControls.Player.Downgrade.WasPressedThisFrame() && (playerBoost.boostState > BoostStates.Gear1))
         {
             globalTime.worldTime--;
-            // playerBoost.boostState --;
+            playerBoost.boostState --;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
