@@ -32,8 +32,10 @@ public class PlayerController : MonoBehaviour
     private float movementLeftRight;
     private Vector2 movement;
     private Vector2 StartPos; //pos de départ pour restart
-    
-    
+
+    [Header("Prefabs")] 
+    public GameObject bubbleSlow;
+    public GameObject bubbleFast;
     private void OnEnable()
     {
         if (playerControls == null)
@@ -88,22 +90,46 @@ public class PlayerController : MonoBehaviour
         }
         
         // CONTROL INPUTS
-        if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.Gear3))
+        if (playerControls.Player.Upgrade.WasPressedThisFrame())
         {
             globalTime.worldTime++;
             playerBoost.boostState ++;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+            GameObject Bubble = Instantiate(bubbleSlow, transform.position, Quaternion.identity);
+            Bubble.transform.parent = transform;
         }
         
-        if (playerControls.Player.Downgrade.WasPressedThisFrame() && (playerBoost.boostState > BoostStates.Gear1))
+        if (playerControls.Player.Upgrade.WasReleasedThisFrame())
+        {
+            globalTime.worldTime--;
+            playerBoost.boostState--;
+            activePreset = playerBoost.ReturnGearSpeed();
+            timerController.tMult = activePreset.timerMult;
+            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+            Destroy(FindAnyObjectByType<TimeBubble>().gameObject);
+        }
+        
+        if (playerControls.Player.Downgrade.WasPressedThisFrame())
         {
             globalTime.worldTime--;
             playerBoost.boostState --;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+            GameObject Bubble = Instantiate(bubbleFast, transform.position, Quaternion.identity);
+            Bubble.transform.parent = transform;
+        }
+        
+        if (playerControls.Player.Downgrade.WasReleasedThisFrame())
+        {
+            globalTime.worldTime++;
+            playerBoost.boostState++;
+            activePreset = playerBoost.ReturnGearSpeed();
+            timerController.tMult = activePreset.timerMult;
+            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+            Destroy(FindAnyObjectByType<TimeBubble>().gameObject);
         }
         
         if (playerControls.Player.Dash.WasPressedThisFrame() && timerController.t > dashCost)
