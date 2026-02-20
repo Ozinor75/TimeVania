@@ -88,7 +88,11 @@ public class PlayerController : MonoBehaviour
         }
         
         // CONTROL INPUTS
+<<<<<<< Updated upstream
         if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.Gear3))
+=======
+        if (playerControls.Player.Upgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
+>>>>>>> Stashed changes
         {
             globalTime.worldTime++;
             // playerBoost.boostState ++;
@@ -99,11 +103,41 @@ public class PlayerController : MonoBehaviour
         
         if (playerControls.Player.Downgrade.WasPressedThisFrame() && (playerBoost.boostState > BoostStates.Gear1))
         {
+<<<<<<< Updated upstream
             globalTime.worldTime--;
             // playerBoost.boostState --;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+=======
+            globalTime.worldTime = WorldTime.TWO;
+            playerBoost.boostState = BoostStates.Gear2;
+            activePreset = playerBoost.ReturnGearSpeed();
+            timerController.tMult = activePreset.timerMult;
+            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+            Destroy(FindAnyObjectByType<TimeBubble>().gameObject);
+        }
+        
+        if (playerControls.Player.Downgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
+        {
+            globalTime.worldTime--;
+            playerBoost.boostState --;
+            activePreset = playerBoost.ReturnGearSpeed();
+            timerController.tMult = activePreset.timerMult;
+            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+            GameObject Bubble = Instantiate(bubbleFast, transform.position, Quaternion.identity);
+            Bubble.transform.parent = transform;
+        }
+        
+        if (playerControls.Player.Downgrade.WasReleasedThisFrame())
+        {
+            globalTime.worldTime = WorldTime.TWO;
+            playerBoost.boostState = BoostStates.Gear2;
+            activePreset = playerBoost.ReturnGearSpeed();
+            timerController.tMult = activePreset.timerMult;
+            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+            Destroy(FindAnyObjectByType<TimeBubble>().gameObject);
+>>>>>>> Stashed changes
         }
         
         if (playerControls.Player.Dash.WasPressedThisFrame() && timerController.t > dashCost)

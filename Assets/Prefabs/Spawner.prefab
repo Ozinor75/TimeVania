@@ -46,4 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   energyPlatformPrefab: {fileID: 5676833949881302459, guid: 70ca23dceb2807c46b7a2a2b8ad8bdf0, type: 3}
   powerUpPrefab: {fileID: 4169954261841433145, guid: b0cd8277c67aa2c4686cf0cfba663c63, type: 3}
+  baseEnemyPrefab: {fileID: 5848331806522960528, guid: c3cb35c51bf8a66408de22134560bc85, type: 3}
   objectType: 0
