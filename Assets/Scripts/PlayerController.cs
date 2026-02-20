@@ -90,7 +90,8 @@ public class PlayerController : MonoBehaviour
         }
         
         // CONTROL INPUTS
-        if (playerControls.Player.Upgrade.WasPressedThisFrame())
+
+        if (playerControls.Player.Upgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
         {
             globalTime.worldTime++;
             playerBoost.boostState ++;
@@ -103,15 +104,15 @@ public class PlayerController : MonoBehaviour
         
         if (playerControls.Player.Upgrade.WasReleasedThisFrame())
         {
-            globalTime.worldTime--;
-            playerBoost.boostState--;
+            globalTime.worldTime = WorldTime.TWO;
+            playerBoost.boostState = BoostStates.Gear2;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
             Destroy(FindAnyObjectByType<TimeBubble>().gameObject);
         }
         
-        if (playerControls.Player.Downgrade.WasPressedThisFrame())
+        if (playerControls.Player.Downgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
         {
             globalTime.worldTime--;
             playerBoost.boostState --;
@@ -121,11 +122,11 @@ public class PlayerController : MonoBehaviour
             GameObject Bubble = Instantiate(bubbleFast, transform.position, Quaternion.identity);
             Bubble.transform.parent = transform;
         }
-        
+
         if (playerControls.Player.Downgrade.WasReleasedThisFrame())
         {
-            globalTime.worldTime++;
-            playerBoost.boostState++;
+            globalTime.worldTime = WorldTime.TWO;
+            playerBoost.boostState = BoostStates.Gear2;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
