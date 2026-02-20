@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 StartPos; //pos de départ pour restart
     
     
+
+    [Header("Prefabs")] 
+    public GameObject bubbleSlow;
+    public GameObject bubbleFast;
     private void OnEnable()
     {
         if (playerControls == null)
@@ -88,27 +92,37 @@ public class PlayerController : MonoBehaviour
         }
         
         // CONTROL INPUTS
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         if (playerControls.Player.Upgrade.WasPressedThisFrame() && (playerBoost.boostState < BoostStates.Gear3))
 =======
         if (playerControls.Player.Upgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
 >>>>>>> Stashed changes
+=======
+        if (playerControls.Player.Upgrade.WasPressedThisFrame())
+>>>>>>> parent of 2301333 (LD - Angles)
         {
             globalTime.worldTime++;
             // playerBoost.boostState ++;
+            playerBoost.boostState ++;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+            GameObject Bubble = Instantiate(bubbleSlow, transform.position, Quaternion.identity);
+            Bubble.transform.parent = transform;
         }
         
         if (playerControls.Player.Downgrade.WasPressedThisFrame() && (playerBoost.boostState > BoostStates.Gear1))
+        if (playerControls.Player.Upgrade.WasReleasedThisFrame())
         {
 <<<<<<< Updated upstream
             globalTime.worldTime--;
             // playerBoost.boostState --;
+            playerBoost.boostState--;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+<<<<<<< HEAD
 =======
             globalTime.worldTime = WorldTime.TWO;
             playerBoost.boostState = BoostStates.Gear2;
@@ -119,6 +133,12 @@ public class PlayerController : MonoBehaviour
         }
         
         if (playerControls.Player.Downgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
+=======
+            Destroy(FindAnyObjectByType<TimeBubble>().gameObject);
+        }
+        
+        if (playerControls.Player.Downgrade.WasPressedThisFrame())
+>>>>>>> parent of 2301333 (LD - Angles)
         {
             globalTime.worldTime--;
             playerBoost.boostState --;
@@ -131,13 +151,21 @@ public class PlayerController : MonoBehaviour
         
         if (playerControls.Player.Downgrade.WasReleasedThisFrame())
         {
+<<<<<<< HEAD
             globalTime.worldTime = WorldTime.TWO;
             playerBoost.boostState = BoostStates.Gear2;
+=======
+            globalTime.worldTime++;
+            playerBoost.boostState++;
+>>>>>>> parent of 2301333 (LD - Angles)
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
             Destroy(FindAnyObjectByType<TimeBubble>().gameObject);
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 2301333 (LD - Angles)
         }
         
         if (playerControls.Player.Dash.WasPressedThisFrame() && timerController.t > dashCost)
