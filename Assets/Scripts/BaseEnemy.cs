@@ -50,6 +50,7 @@ public class BaseEnemy : MonoBehaviour
 
     private void Start()
     {
+        globalTime = FindAnyObjectByType<GlobalTime>();
         timeScale = normalTime;
     }
 }
