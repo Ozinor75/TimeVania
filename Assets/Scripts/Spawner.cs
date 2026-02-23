@@ -24,14 +24,9 @@ public class Spawner : MonoBehaviour
         Spawn();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Spawn()
     {
+        if (go != null) return;
         switch (objectType)
         {
             case ObjectType.powerUp:
