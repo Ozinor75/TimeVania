@@ -4,12 +4,14 @@ public enum ObjectType
 {
     powerUp,
     energyPlatform,
-    baseEnemy
+    baseEnemy,
+    movingPlatform
 }
 public class Spawner : MonoBehaviour
 {
     [Header("Objects Prefabs")]
     public GameObject energyPlatformPrefab;
+    public GameObject movingPlatformPrefab;
     public GameObject powerUpPrefab;
     public GameObject baseEnemyPrefab;
     
@@ -40,6 +42,9 @@ public class Spawner : MonoBehaviour
                 break;
             case ObjectType.baseEnemy:
                 go = Instantiate(baseEnemyPrefab, transform.position, Quaternion.identity);
+                break;            
+            case ObjectType.movingPlatform:
+                go = Instantiate(movingPlatformPrefab, transform.position, Quaternion.identity);
                 break;
         }
         go.transform.parent = transform;

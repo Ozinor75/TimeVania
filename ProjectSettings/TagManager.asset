@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Bubble
+  - PatternTrigger
+  - Moving
   layers:
   - Default
   - TransparentFX
