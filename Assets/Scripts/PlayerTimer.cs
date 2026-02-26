@@ -71,7 +71,7 @@ public class PlayerTimer : MonoBehaviour
             }
         }
 
-        if (tSec >= 1f)
+        if (tSec >= 0.2f)
         {
             batteryManager.ShowBattery(CheckCharge());
             tSec = 0f;
