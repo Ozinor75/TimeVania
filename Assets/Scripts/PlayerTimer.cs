@@ -1,21 +1,6 @@
 using TMPro;
 using UnityEngine;
 using TMPro;
-
-public enum TimeState
-{
-    ChargeOne,
-    ChargeTwo,
-    ChargeThree,
-    ChargeFour,
-    ChargeFive,
-    ChargeSix,
-    ChargeSeven,
-    ChargeEight,
-    ChargeNine,
-    ChargeTen
-}
-
 public class PlayerTimer : MonoBehaviour
 {
     public float timer;
@@ -24,7 +9,6 @@ public class PlayerTimer : MonoBehaviour
     public float t;
     public float tMult;
     public TextMeshProUGUI text;
-    public TimeState charge;
 
     private float tSec = 0f;
     private Spawner[] spawner;
@@ -45,7 +29,6 @@ public class PlayerTimer : MonoBehaviour
         energy = FindObjectsOfType<EnergyPlatform>();
         batteryManager = FindObjectOfType<BatteryManager>();
         t = timer;
-        charge = TimeState.ChargeTen;
     }
     
     void Update()
