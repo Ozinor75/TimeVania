@@ -15,22 +15,22 @@ public class BaseEnemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.name);
-        if (other.CompareTag("Bubble"))
-        {
-            switch (globalTime.worldTime)
-            {
-                case WorldTime.ONE:
-                    timeScale = acceleratedTime;
-                    break;
-                case WorldTime.TWO:
-                    timeScale = normalTime;
-                    break;
-                case WorldTime.THREE:
-                    timeScale = slowedTime;
-                    break;
-            }
-        }
-        else if (other.CompareTag("PatternTrigger"))
+        // if (other.CompareTag("Bubble"))
+        // {
+        //     switch (globalTime.worldTime)
+        //     {
+        //         case WorldTime.ONE:
+        //             timeScale = acceleratedTime;
+        //             break;
+        //         case WorldTime.TWO:
+        //             timeScale = normalTime;
+        //             break;
+        //         case WorldTime.THREE:
+        //             timeScale = slowedTime;
+        //             break;
+        //     }
+        // }
+        if (other.CompareTag("PatternTrigger"))
             positiveMove = !positiveMove;
     }
 
@@ -42,6 +42,18 @@ public class BaseEnemy : MonoBehaviour
 
     void Update()
     {
+        switch (globalTime.worldTime)
+        {
+            case WorldTime.ONE:
+                timeScale = acceleratedTime;
+                break;
+            case WorldTime.TWO:
+                timeScale = normalTime;
+                break;
+            case WorldTime.THREE:
+                timeScale = slowedTime;
+                break;
+        }
         if (positiveMove)
             transform.position += new Vector3(2 * timeScale * Time.deltaTime, 0, 0);
         else

@@ -1,12 +1,10 @@
+using System;
 using UnityEngine;
 
-public class Thwomp : MonoBehaviour
+public class MovingPlatform : MonoBehaviour
 {
     public GlobalTime globalTime;
     public float timeScale;
-
-    [Header("Speeds")] public float upSpeed;
-    public float downSpeed;
 
     public float acceleratedTime;
     public float normalTime;
@@ -16,6 +14,7 @@ public class Thwomp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.name);
         // if (other.CompareTag("Bubble"))
         // {
         //     switch (globalTime.worldTime)
@@ -35,12 +34,11 @@ public class Thwomp : MonoBehaviour
             positiveMove = !positiveMove;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Bubble"))
-            timeScale = normalTime;
-    }
-
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Bubble"))
+    //         timeScale = normalTime;
+    // }
     void Update()
     {
         switch (globalTime.worldTime)
@@ -56,12 +54,9 @@ public class Thwomp : MonoBehaviour
                 break;
         }
         if (positiveMove)
-            transform.position += new Vector3(0, upSpeed * timeScale * Time.deltaTime, 0);
+            transform.position += new Vector3(2 * timeScale * Time.deltaTime, 0, 0);
         else
-        {
-            Vector3 targetPosition = transform.position - new Vector3(0, 1, 0);
-            transform.position = Vector3.Lerp(transform.position, targetPosition, downSpeed * timeScale * Time.deltaTime);
-        }
+            transform.position -= new Vector3(2 * timeScale * Time.deltaTime, 0, 0);
     }
 
     private void Start()

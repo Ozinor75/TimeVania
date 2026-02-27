@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3907595937145327129}
   - component: {fileID: 2118318391951331452}
   - component: {fileID: 5456612762083699021}
-  - component: {fileID: 8319959635147962071}
+  - component: {fileID: -2410825805913656374}
   - component: {fileID: -5254218840517774531}
   - component: {fileID: -5245472184418070417}
   m_Layer: 0
@@ -93,7 +93,7 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8319959635147962071
+--- !u!114 &-2410825805913656374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 537808519935421024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aef658c3e978f6a4cb0b182de6545403, type: 3}
+  m_Script: {fileID: 11500000, guid: f52683ea9f6420d4580e280fcc5ae831, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseEnemy
+  m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   globalTime: {fileID: 0}
   timeScale: 0
   acceleratedTime: 5
