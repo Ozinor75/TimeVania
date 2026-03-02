@@ -11,6 +11,9 @@ public class BaseEnemy : MonoBehaviour
     public float slowedTime;
 
     public bool positiveMove = true;
+    
+    private PlayerController player;
+    private TimeChanger time;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,6 +43,15 @@ public class BaseEnemy : MonoBehaviour
             timeScale = normalTime;
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            time.ChangeTime();
+            player.Pushback(transform.position);
+        }
+    }
+
     void Update()
     {
         switch (globalTime.worldTime)
@@ -62,6 +74,8 @@ public class BaseEnemy : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        time = GetComponent<TimeChanger>();
         globalTime = FindAnyObjectByType<GlobalTime>();
         timeScale = normalTime;
     }
