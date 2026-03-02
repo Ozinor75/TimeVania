@@ -12,6 +12,15 @@ public class PlayerController : MonoBehaviour
     public float effectiveSpeed;
     public float dashCost;
     public float GravityNotJumping; // gravity qui maintient le joueur au sol
+    
+    [Header("Pushback")]
+    public float pushbackForceX = 10f;
+    public float pushbackForceY = 6f;
+    public float pushbackDuration = 0.15f;
+
+    private bool isPushedBack = false;
+    private float pushbackTimer = 0f;
+    private Vector2 pushbackVelocity;
 
     [Header("CoyotEtime")]
     public float coyotETimer;
@@ -75,9 +84,12 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
-        movementLeftRight = playerControls.Player.Direction.ReadValue<Vector2>().x;
-        movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
-        
+        if (!isPushedBack)
+        {
+            movementLeftRight = playerControls.Player.Direction.ReadValue<Vector2>().x;
+            movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
+        }
+
         if (timerController.t <= 0) Respawn();
         
         if (cototE >= 0f)
@@ -188,6 +200,17 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     { 
+        if (isPushedBack)
+        {
+            rb.linearVelocity = new Vector2(pushbackVelocity.x, rb.linearVelocityY);
+
+            pushbackTimer -= Time.fixedDeltaTime;
+            if (pushbackTimer <= 0f)
+            {
+                isPushedBack = false;
+            }
+            return;
+        }
         rb.linearVelocity = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
     }
 
@@ -224,6 +247,21 @@ public class PlayerController : MonoBehaviour
                 effectiveSpeed = activePreset.airSpeed;
             }
         }
+    }
+    
+    public void Pushback(Vector2 hitPosition)
+    {
+        Vector2 dir = ((Vector2)transform.position - hitPosition).normalized;
+        
+        float x = Mathf.Sign(dir.x) * pushbackForceX;
+        float y = pushbackForceY;
+
+        pushbackVelocity = new Vector2(x, y);
+        isPushedBack = true;
+        pushbackTimer = pushbackDuration;
+        notJumping = false;
+        t = 0f;
+        rb.linearVelocity = pushbackVelocity;
     }
     
     void Respawn()

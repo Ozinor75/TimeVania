@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7664202606282369833}
   - component: {fileID: 8084220283223027967}
   - component: {fileID: 8424600861931950158}
+  - component: {fileID: -8180729459645280215}
   - component: {fileID: 4790925664211770106}
   - component: {fileID: 4459835552149980700}
   - component: {fileID: 1628659390365602805}
@@ -62,6 +63,20 @@ MonoBehaviour:
   normalTime: 1
   slowedTime: 0.25
   positiveMove: 1
+--- !u!114 &-8180729459645280215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848331806522960528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d57b7c11454b2847973e4d0de1ac7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
+  isPositive: 0
+  time: 10
 --- !u!23 &4790925664211770106
 MeshRenderer:
   m_ObjectHideFlags: 0
