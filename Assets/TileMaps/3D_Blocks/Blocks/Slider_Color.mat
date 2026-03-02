@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Slider_Color
+  m_Shader: {fileID: -6465566751694194690, guid: beabdcfd54dc4b84695be56a7f253ac3, type: 3}
+  m_Parent: {fileID: 2100000, guid: 08b8d19a3382a4442b3d1f125d5be984, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _LightSize: 1.352
+    - _ShadowSize: 0.533
+    m_Colors:
+    - _BaseColor: {r: 1, g: 0.9880785, b: 0, a: 1}
+    - _LightColor: {r: 1, g: 0.9115998, b: 0.36470592, a: 1}
+    - _LightColor2: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0.7647059, g: 0.69197357, b: 0, a: 1}
+    - _ShadowColor2: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &5483027341500576502
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.ShaderGraph.Editor::UnityEditor.Rendering.BuiltIn.AssetVersion
+  version: 0

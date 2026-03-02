@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private PlayerBoost playerBoost;
     public PlayerPresets activePreset;
     public GlobalTime globalTime;
+    private LineRenderer line;
     
     [Header("Player Debug")]
     public bool isGrounded = true;
@@ -75,11 +76,10 @@ public class PlayerController : MonoBehaviour
         timerController.tMult = activePreset.timerMult;
         
         Physics2D.queriesStartInColliders = false;
-        // Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
         Physics2D.gravity = new Vector2(0, -GravityNotJumping);
         
-        StartPos = rb.position;//sauvegarde position de départ
-        Debug.Log(StartPos);
+        StartPos = rb.position;     //sauvegarde position de départ
+        line = GetComponent<LineRenderer>();
     }
     
     private void Update()
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
                 notJumping = false; //arrêter la détection du sol
                 GlisseTimer = 0f;
                 Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-                Debug.Log("Jump " + Physics2D.gravity);
+                // Debug.Log("Jump " + Physics2D.gravity);
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);            }
         }
         
@@ -167,21 +167,26 @@ public class PlayerController : MonoBehaviour
         
         if (playerControls.Player.Dash.WasPressedThisFrame() && timerController.t > dashCost)
         {
-            Vector2 test = rb.linearVelocity.normalized;
-            RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, test, activePreset.airSpeed);
-            // RaycastHit2D checkDash = Physics2D.Raycast(transform.position, test, activePreset.airSpeed);
-            Debug.Log(checkDash.point);
+            Vector3[] posArray = new Vector3[2];
+            Vector2 endPos = rb.linearVelocity.normalized;
+            RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, endPos, activePreset.airSpeed);
+            posArray[0] = transform.position;
+            
             if (checkDash)
             {
-                test = checkDash.point;
+                endPos = checkDash.point;
             }
             else
             {
-                test *= activePreset.airSpeed;
-                test += rb.position;
+                endPos *= activePreset.airSpeed;
+                endPos += rb.position;
             }
+            // get pos array (points)
+            posArray[1] = endPos;
+            line.SetPositions(posArray);
             
-            rb.position = test;
+            //apply positions
+            rb.position = endPos;
             timerController.t -= dashCost;
         }
         
