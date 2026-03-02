@@ -22,23 +22,25 @@ public class PlayerPresets
     public float jumpForce;
     public float dashDistance;
     public float gravityForce;
+    public float slideSpeed;
     public float timerMult;
     public float globalWorldTime;
 
-    public PlayerPresets(float groundSpeed, float airSpeed, float jumpForce, float dashDistance, float gravityForce, float timerMult, float globalWolrdTime)
+    public PlayerPresets(float groundSpeed, float airSpeed, float jumpForce, float dashDistance, float gravityForce, float slideSpeed, float timerMult, float globalWolrdTime)
     {
         this.groundSpeed = groundSpeed;
         this.airSpeed = airSpeed;
         this.jumpForce = jumpForce;
         this.dashDistance = dashDistance;
         this.gravityForce = gravityForce;
+        this.slideSpeed = slideSpeed;
         this.timerMult = timerMult;
         this.globalWorldTime = globalWolrdTime;
     }
     
-    public static PlayerPresets Slow = new(3f, 6f, 7.5f, 1f,4.9f,5f,0.5f);
-    public static PlayerPresets Mid = new(18f, 12f, 18f, 12f,19.6f,2f,2f);
-    public static PlayerPresets Swift = new(39f, 30f, 40f, 30f,60f,5f,5f);
+    public static PlayerPresets Slow = new(3f, 4f, 7.5f, 1f,4.9f, 100,3f,0.5f);
+    public static PlayerPresets Mid = new(18f, 12f, 22f, 12f,29.4f, 250f,1f,2f);
+    public static PlayerPresets Swift = new(39f, 30f, 40f, 30f,60f,400f,3f,5f);
 }
 
 public class PlayerBoost : MonoBehaviour
