@@ -61,10 +61,12 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4fb3484ee457ee14bad929590b538729, type: 2}
+  - {fileID: 2100000, guid: 135c1f381187b8647b200346f15d2b33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,9 +84,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &9098607933237232297
 GameObject:
@@ -100,6 +104,7 @@ GameObject:
   - component: {fileID: 3387508208373006724}
   - component: {fileID: 741904314006569057}
   - component: {fileID: 5497807638317686215}
+  - component: {fileID: 7288446675804314678}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -209,10 +214,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectiveSpeed: 0
-  dashCost: 0
-  timer: 0
-  t: 0
+  dashCost: 10
+  GravityNotJumping: 250
+  pushbackForceX: 10
+  pushbackForceY: 6
+  pushbackDuration: 0.4
+  coyotETimer: 0.2
+  cototE: 0
+  globalTime: {fileID: 0}
   isGrounded: 0
+  bubbleSlow: {fileID: 3137032449423336372, guid: 3d14d2bac3e5520458b4053158bd69d8, type: 3}
+  bubbleFast: {fileID: 3137032449423336372, guid: b863e3d6d6cffb64293ef20c726c9151, type: 3}
 --- !u!114 &741904314006569057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,11 +237,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeeacf6f15434248b8e00daa49c392d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 120
+  timer: 90
+  maxTimer: 0
   criticalTimer: 10
   t: 0
   tMult: 0
   text: {fileID: 0}
+  energyMaterial: {fileID: 0}
 --- !u!114 &5497807638317686215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,11 +256,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6680cdfb8d85d0498f559bb4de86e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 4fb3484ee457ee14bad929590b538729, type: 2}
+  mat: {fileID: 2100000, guid: 135c1f381187b8647b200346f15d2b33, type: 2}
   DEBUG_groundSpeed: 0
   DEBUG_airSpeed: 0
-  DEBUG_jumpForce: 40
-  DEBUG_gravityForce: 20
-  DEBUG_timerMult: 2
+  DEBUG_jumpForce: 7
+  DEBUG_dashDistance: 0
+  DEBUG_gravityForce: 1.5
+  DEBUG_timerMult: 0.5
+  DEBUG_globalWorldTime: 0
   boostState: 0
   totalTimerMult: 0
+--- !u!114 &7288446675804314678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9098607933237232297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a825b2f45eae041b9b4e9832101e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
