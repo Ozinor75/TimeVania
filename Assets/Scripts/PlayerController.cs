@@ -28,10 +28,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player refs")]
     public CustomInputs playerControls;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private BoxCollider2D selfCollider;
     private PlayerTimer timerController;
     private PlayerBoost playerBoost;
+    private PlayerSound playerSound;
     public PlayerPresets activePreset;
     public GlobalTime globalTime;
     private LineRenderer line;
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         
         playerBoost = GetComponent<PlayerBoost>();
+        playerSound = FindObjectOfType<PlayerSound>();
         playerBoost.boostState = BoostStates.Gear2;
         activePreset = playerBoost.ReturnGearSpeed();
         
@@ -103,6 +105,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isGrounded || cototE > 0f)
             {
+                playerSound.Jump();
                 notJumping = false; //arrêter la détection du sol
                 GlisseTimer = 0f;
                 Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
@@ -125,6 +128,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerControls.Player.Upgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
         {
+            playerSound.Swift();
             globalTime.worldTime++;
             playerBoost.boostState ++;
             activePreset = playerBoost.ReturnGearSpeed();
@@ -136,6 +140,7 @@ public class PlayerController : MonoBehaviour
         
         if (playerControls.Player.Upgrade.WasReleasedThisFrame())
         {
+            playerSound.Mid();
             globalTime.worldTime = WorldTime.TWO;
             playerBoost.boostState = BoostStates.Gear2;
             activePreset = playerBoost.ReturnGearSpeed();
@@ -146,6 +151,7 @@ public class PlayerController : MonoBehaviour
         
         if (playerControls.Player.Downgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
         {
+            playerSound.Slow();
             globalTime.worldTime--;
             playerBoost.boostState --;
             activePreset = playerBoost.ReturnGearSpeed();
@@ -157,6 +163,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerControls.Player.Downgrade.WasReleasedThisFrame())
         {
+            playerSound.Mid();
             globalTime.worldTime = WorldTime.TWO;
             playerBoost.boostState = BoostStates.Gear2;
             activePreset = playerBoost.ReturnGearSpeed();
@@ -186,6 +193,7 @@ public class PlayerController : MonoBehaviour
             line.SetPositions(posArray);
             
             //apply positions
+            playerSound.Dash();
             rb.position = endPos;
             timerController.t -= dashCost;
         }
@@ -222,7 +230,7 @@ public class PlayerController : MonoBehaviour
     // INFORMATION TAKING
     private void IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, Vector2.down, 0.1f);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, Vector2.down, 0.2f);
                                                                                                                                             
         Debug.DrawLine(transform.position, hit.point, Color.red);
         if (hit && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Moving")))
@@ -271,6 +279,7 @@ public class PlayerController : MonoBehaviour
     
     void Respawn()
     {
+        playerSound.StopSound();
         Debug.Log("OUTTA TIME !!!");
         // Return
         rb.position = StartPos;
