@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class BatteryManager : MonoBehaviour
 {
     private PlayerTimer playerTimer;
-    private BatterySound batterySound;
     private Color batteryColor;
     public void ShowBattery(int charge)
     {
@@ -24,18 +23,13 @@ public class BatteryManager : MonoBehaviour
             }
             else
             {
-                if (transform.GetChild(i).gameObject.activeSelf)
-                {
-                    batterySound.LoseCharge();
-                    transform.GetChild(i).gameObject.SetActive(false);
-                }
+                transform.GetChild(i).gameObject.SetActive(false);
             }
         }
     }
     void Start()
     {
         playerTimer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerTimer>();
-        batterySound = GetComponent<BatterySound>();
     }
 
     // Update is called once per frame
