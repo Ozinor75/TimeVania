@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private PlayerBoost playerBoost;
     public PlayerPresets activePreset;
     public GlobalTime globalTime;
+    private LineRenderer line;
     
     [Header("Player Debug")]
     public bool isGrounded = true;
@@ -75,11 +76,10 @@ public class PlayerController : MonoBehaviour
         timerController.tMult = activePreset.timerMult;
         
         Physics2D.queriesStartInColliders = false;
-        // Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-        Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed);
+        Physics2D.gravity = new Vector2(0, -GravityNotJumping);
         
-        StartPos = rb.position;//sauvegarde position de départ
-        Debug.Log(StartPos);
+        StartPos = rb.position;     //sauvegarde position de départ
+        line = GetComponent<LineRenderer>();
     }
     
     private void Update()
@@ -106,11 +106,12 @@ public class PlayerController : MonoBehaviour
                 notJumping = false; //arrêter la détection du sol
                 GlisseTimer = 0f;
                 Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-                Debug.Log("Jump " + Physics2D.gravity);
+                // Debug.Log("Jump " + Physics2D.gravity);
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);            }
         }
         
-        if (!notJumping)
+        if (notJumping) IsGrounded(); //Pour régler le problème de détection du sol, quand on saute il redétecte à la frame d'après le sol et sans réactive immédiatement GravityNotJumping
+        else
         {
             t += Time.deltaTime;
             if (t >= 0.2f)
@@ -150,12 +151,6 @@ public class PlayerController : MonoBehaviour
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-            
-            if (!isGrounded && rb.linearVelocityY < 0)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocityY * 0.2f);
-            }
-            
             // GameObject Bubble = Instantiate(bubbleFast, transform.position, Quaternion.identity);
             // Bubble.transform.parent = transform;
         }
@@ -172,21 +167,26 @@ public class PlayerController : MonoBehaviour
         
         if (playerControls.Player.Dash.WasPressedThisFrame() && timerController.t > dashCost)
         {
-            Vector2 test = rb.linearVelocity.normalized;
-            RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, test, activePreset.airSpeed);
-            // RaycastHit2D checkDash = Physics2D.Raycast(transform.position, test, activePreset.airSpeed);
-            Debug.Log(checkDash.point);
+            Vector3[] posArray = new Vector3[2];
+            Vector2 endPos = rb.linearVelocity.normalized;
+            RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, endPos, activePreset.airSpeed);
+            posArray[0] = transform.position;
+            
             if (checkDash)
             {
-                test = checkDash.point;
+                endPos = checkDash.point;
             }
             else
             {
-                test *= activePreset.airSpeed;
-                test += rb.position;
+                endPos *= activePreset.airSpeed;
+                endPos += rb.position;
             }
+            // get pos array (points)
+            posArray[1] = endPos;
+            line.SetPositions(posArray);
             
-            rb.position = test;
+            //apply positions
+            rb.position = endPos;
             timerController.t -= dashCost;
         }
         
@@ -205,8 +205,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     { 
-        if (notJumping) IsGrounded(); //Pour régler le problème de détection du sol, quand on saute il redétecte à la frame d'après le sol et sans réactive immédiatement GravityNotJumping
-
         if (isPushedBack)
         {
             rb.linearVelocity = new Vector2(pushbackVelocity.x, rb.linearVelocityY);
@@ -229,27 +227,30 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(transform.position, hit.point, Color.red);
         if (hit && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Moving")))
         {
-            Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol
+            Physics2D.gravity = new Vector2(0, -GravityNotJumping); //forcer une gravité pour maintenir le player au sol
             cototE = coyotETimer;
             isGrounded = true;
             effectiveSpeed = activePreset.groundSpeed;
             GlisseTimer = GlisseDuree;
         }
         
-        else if (GlisseTimer > 0f)
-        {
-            GlisseTimer -= Time.deltaTime;
-            
-            Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed);
-            isGrounded = true; 
-            effectiveSpeed = activePreset.groundSpeed;
-        }
         else
         {
-            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-            cototE -= Time.deltaTime;
-            isGrounded = false;
-            effectiveSpeed = activePreset.airSpeed;
+            if (GlisseTimer > 0f)
+            {
+                GlisseTimer -= Time.deltaTime;
+                
+                Physics2D.gravity = new Vector2(0, -GravityNotJumping);
+                isGrounded = true; 
+                effectiveSpeed = activePreset.groundSpeed;
+            }
+            else
+            {
+                Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+                cototE -= Time.deltaTime;
+                isGrounded = false;
+                effectiveSpeed = activePreset.airSpeed;
+            }
         }
     }
     
@@ -278,7 +279,7 @@ public class PlayerController : MonoBehaviour
         playerBoost.boostState = BoostStates.Gear2;
         activePreset = playerBoost.ReturnGearSpeed();
         timerController.tMult = activePreset.timerMult;
-        Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol
+        Physics2D.gravity = new Vector2(0, -GravityNotJumping); //forcer une gravité pour maintenir le player au sol
         // Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
     }
     
