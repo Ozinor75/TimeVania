@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8614554792051596572}
   - component: {fileID: 6904193854646692601}
   - component: {fileID: 678910359312298579}
+  - component: {fileID: 3874806513861814070}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -301,6 +302,18 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &3874806513861814070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120417498359201754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0eb4c0eeaefa7b40ac2a5ce7ec1aafa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterMeshControler
 --- !u!1 &1681619343937044881
 GameObject:
   m_ObjectHideFlags: 0
