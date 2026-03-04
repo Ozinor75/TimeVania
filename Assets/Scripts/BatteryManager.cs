@@ -31,6 +31,15 @@ public class BatteryManager : MonoBehaviour
                 }
             }
         }
+
+        if (playerTimer.t <= playerTimer.criticalTimer)
+        {
+            batterySound.TickingTimer(true);
+        }
+        else
+        {
+            batterySound.TickingTimer(false);
+        }
     }
     void Start()
     {
