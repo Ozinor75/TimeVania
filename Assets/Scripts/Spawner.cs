@@ -2,7 +2,9 @@ using UnityEngine;
 
 public enum ObjectType
 {
-    powerUp,
+    powerUp6,
+    powerUp12,
+    powerUp24,
     energyPlatform,
     baseEnemy,
     movingPlatform
@@ -12,7 +14,9 @@ public class Spawner : MonoBehaviour
     [Header("Objects Prefabs")]
     public GameObject energyPlatformPrefab;
     public GameObject movingPlatformPrefab;
-    public GameObject powerUpPrefab;
+    public GameObject powerUpPrefab6;
+    public GameObject powerUpPrefab12;
+    public GameObject powerUpPrefab24;
     public GameObject baseEnemyPrefab;
     
     [Header("Object Type")]
@@ -29,8 +33,14 @@ public class Spawner : MonoBehaviour
         if (go != null) return;
         switch (objectType)
         {
-            case ObjectType.powerUp:
-                go = Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
+            case ObjectType.powerUp6:
+                go = Instantiate(powerUpPrefab6, transform.position, Quaternion.identity);
+                break;            
+            case ObjectType.powerUp12:
+                go = Instantiate(powerUpPrefab12, transform.position, Quaternion.identity);
+                break;            
+            case ObjectType.powerUp24:
+                go = Instantiate(powerUpPrefab24, transform.position, Quaternion.identity);
                 break;
             case ObjectType.energyPlatform:
                 go = Instantiate(energyPlatformPrefab, transform.position, Quaternion.identity);

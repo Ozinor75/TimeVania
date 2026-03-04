@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6746340453868093988}
   - component: {fileID: 4281595859216515116}
   m_Layer: 0
-  m_Name: PowerUp (2) Variant
+  m_Name: PowerUp (2) Variant (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4169954261841433145}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -176.25, y: -91.25, z: 0}
+  m_LocalPosition: {x: -26.25, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ae14a186c6807a34480307511029aa33, type: 2}
+  - {fileID: 2100000, guid: aa6e14d47b15f5748ba472490b087018, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPositive: 1
-  time: 24
+  time: 12
 --- !u!114 &6746340453868093988
 MonoBehaviour:
   m_ObjectHideFlags: 0

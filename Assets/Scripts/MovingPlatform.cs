@@ -9,6 +9,7 @@ public class MovingPlatform : MonoBehaviour
     public float acceleratedTime;
     public float normalTime;
     public float slowedTime;
+    public bool UpOrNot = false;
 
     public bool positiveMove = true;
 
@@ -53,10 +54,20 @@ public class MovingPlatform : MonoBehaviour
                 timeScale = slowedTime;
                 break;
         }
-        if (positiveMove)
-            transform.position += new Vector3(2 * timeScale * Time.deltaTime, 0, 0);
+        if (!UpOrNot)
+        {
+            if (positiveMove)
+                transform.position += new Vector3(2 * timeScale * Time.deltaTime, 0, 0);
+            else
+                transform.position -= new Vector3(2 * timeScale * Time.deltaTime, 0, 0);
+        }
         else
-            transform.position -= new Vector3(2 * timeScale * Time.deltaTime, 0, 0);
+        {
+            if (positiveMove)
+                transform.position += new Vector3(0, 2 * timeScale * Time.deltaTime, 0);
+            else
+                transform.position -= new Vector3(0, 2 * timeScale * Time.deltaTime, 0);
+        }
     }
 
     private void Start()
