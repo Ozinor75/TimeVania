@@ -26,7 +26,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _LightSize: 1.352
-    - _ShadowSize: 0.533
+    - _ShadowSize: 0.575
     m_Colors:
     - _BaseColor: {r: 1, g: 0.5934769, b: 0, a: 1}
     - _LightColor: {r: 1, g: 0.6812362, b: 0.36470592, a: 1}

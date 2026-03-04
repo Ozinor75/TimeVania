@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
         
         if (playerControls.Player.Jump.WasPressedThisFrame())
         {
+            Debug.Log("CACAAAA");
             if (isGrounded || cototE > 0f)
             {
                 playerSound.Jump();

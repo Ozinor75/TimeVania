@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5497807638317686215}
   - component: {fileID: 5760044186682672194}
   - component: {fileID: 6457991181568904501}
+  - component: {fileID: 7052713956943949398}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -125,13 +126,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectiveSpeed: 0
-  dashCost: 10
+  dashCost: 6
   GravityNotJumping: 250
   pushbackForceX: 10
   pushbackForceY: 15
   pushbackDuration: 0.3
   coyotETimer: 0.2
   cototE: 0
+  rb: {fileID: 0}
   globalTime: {fileID: 0}
   isGrounded: 0
   bubbleSlow: {fileID: 3137032449423336372, guid: 3d14d2bac3e5520458b4053158bd69d8, type: 3}
@@ -148,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeeacf6f15434248b8e00daa49c392d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 100
+  timer: 60
   maxTimer: 0
   criticalTimer: 10
   t: 0
@@ -299,6 +301,19 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &7052713956943949398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9098607933237232297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0eb4c0eeaefa7b40ac2a5ce7ec1aafa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterMeshControler
+  mesh: {fileID: 5050870308118707258}
 --- !u!1001 &4725105821074512849
 PrefabInstance:
   m_ObjectHideFlags: 0
