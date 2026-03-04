@@ -58,8 +58,28 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1099117648392014676}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1777767070319103340}
   m_SourcePrefab: {fileID: 100100000, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}
+--- !u!1 &6143728149537669622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}
+  m_PrefabInstance: {fileID: 6450141901567818919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1777767070319103340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6143728149537669622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &6776009373789625164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}

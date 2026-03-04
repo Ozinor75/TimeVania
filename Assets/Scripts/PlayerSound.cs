@@ -14,10 +14,15 @@ public class PlayerSound : MonoBehaviour
     public AudioSource start;
     public AudioSource stop;
     public AudioSource reload;
+    public AudioSource[] hurt;
     
     private PlayerController player;
     private float t = 0f;
-    
+
+    public void HurtSound()
+    {
+        hurt[Random.Range(0, hurt.Length)].Play();
+    }
     public void Reload()
     {
         reload.Play();

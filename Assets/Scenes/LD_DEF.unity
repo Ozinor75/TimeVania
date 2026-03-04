@@ -792,6 +792,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 979790862}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 979790866}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &83062041 stripped
 GameObject:
@@ -883,6 +886,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 101799113}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 101799117}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &101799112 stripped
 GameObject:
@@ -903,6 +909,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &101799117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101799112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &109985332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1046,6 +1064,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1965835620}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1965835624}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &110867929 stripped
 GameObject:
@@ -1405,6 +1426,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1952663326}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1952663330}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &141911550 stripped
 GameObject:
@@ -1510,6 +1534,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 941406915}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 941406919}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &147015840 stripped
 GameObject:
@@ -1784,6 +1811,200 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 4661c461253aeeb43946363b61af66a2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &173695420
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173695388}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 073aca4e0582cbf47b660a93cfedc7ea, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &173695421
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173695388}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 0e758b47e2daef44c8d868f8a7b5b87b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2167,6 +2388,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1626858378}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1626858382}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &193733251 stripped
 GameObject:
@@ -2248,6 +2472,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 194388020}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 194388024}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!4 &194388018 stripped
 Transform:
@@ -2273,6 +2500,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &194388024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194388019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &198315027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2693,6 +2932,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1268399130}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1268399134}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &244710261 stripped
 GameObject:
@@ -43341,6 +43583,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 425294897}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 425294901}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &252999487 stripped
 GameObject:
@@ -50634,6 +50879,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 608247966}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 608247970}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &313279606 stripped
 GameObject:
@@ -51110,6 +51358,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 891276361}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 891276365}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &342272501 stripped
 GameObject:
@@ -51274,6 +51525,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1202901567}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1202901571}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &360125363 stripped
 GameObject:
@@ -51977,6 +52231,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 413676951}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 413676955}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &413676950 stripped
 GameObject:
@@ -51997,6 +52254,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &413676955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413676950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &414339462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7817943310629340641, guid: fda74206f2441694b862dee33d9c6e6f, type: 3}
@@ -52181,6 +52450,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &425294901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252999487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &431193013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3907595937145327129, guid: bed868b90815ab946bceaf38a82b762a, type: 3}
@@ -52728,6 +53009,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1330578667}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1330578671}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &499342572 stripped
 GameObject:
@@ -53181,6 +53465,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1038145638}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1038145642}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &537517209 stripped
 GameObject:
@@ -53467,6 +53754,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 557148265}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 557148269}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &557148264 stripped
 GameObject:
@@ -53487,6 +53777,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &557148269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557148264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &560852373
 GameObject:
   m_ObjectHideFlags: 0
@@ -53977,6 +54279,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 623521866}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 623521870}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &577119379 stripped
 GameObject:
@@ -54063,6 +54368,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1237298394}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1237298398}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &584545882 stripped
 GameObject:
@@ -54366,6 +54674,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 931341370}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 931341374}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &597642028 stripped
 GameObject:
@@ -54472,6 +54783,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &608247970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313279606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &609501865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4238215137559799493, guid: 5ea63359bbc27aa4abe2aabf37b463fc, type: 3}
@@ -54679,6 +55002,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &623521870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577119379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &625935365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8962181614333157053, guid: 12c18be1fa67a7343a901a3877fdb644, type: 3}
@@ -55395,6 +55730,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1950962875}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1950962879}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &655316386 stripped
 GameObject:
@@ -55476,6 +55814,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2096373187}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2096373191}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &656270610 stripped
 GameObject:
@@ -55715,6 +56056,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1839956241}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1839956245}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &687540991 stripped
 GameObject:
@@ -56620,6 +56964,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1513593270}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1513593274}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &759487916 stripped
 GameObject:
@@ -56769,6 +57116,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 769826537}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 769826541}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &769826536 stripped
 GameObject:
@@ -56789,6 +57139,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &769826541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769826536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &772630348
 GameObject:
   m_ObjectHideFlags: 0
@@ -57077,6 +57439,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 779710997}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 779711001}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &779710996 stripped
 GameObject:
@@ -57097,6 +57462,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &779711001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779710996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &787697522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57260,6 +57637,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 948324572}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 948324576}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &797361133 stripped
 GameObject:
@@ -57977,6 +58357,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 974457818}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 974457822}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &849190576 stripped
 GameObject:
@@ -58063,6 +58446,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 870358623}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 870358627}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &870358622 stripped
 GameObject:
@@ -58083,6 +58469,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &870358627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870358622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &871600752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6033869803237203322, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
@@ -58207,6 +58605,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &891276365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342272501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &891411324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58709,6 +59119,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &931341374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597642028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &938766334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58784,6 +59206,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1906899387}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1906899391}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &938766335 stripped
 GameObject:
@@ -58833,6 +59258,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &941406919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147015840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &942230463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58908,6 +59345,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1322339868}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1322339872}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &942230464 stripped
 GameObject:
@@ -59006,6 +59446,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &948324576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797361133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &962496769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}
@@ -59243,6 +59695,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &974457822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849190576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &975999247
 GameObject:
   m_ObjectHideFlags: 0
@@ -59411,6 +59875,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &979790866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83062041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &988022385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59781,6 +60257,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1956863637}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1956863641}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &995063713 stripped
 GameObject:
@@ -59867,6 +60346,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1033697291}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1033697295}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &996147748 stripped
 GameObject:
@@ -59948,6 +60430,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 997011199}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 997011203}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &997011198 stripped
 GameObject:
@@ -59968,6 +60453,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &997011203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997011198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1002020347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60378,6 +60875,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1033697295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996147748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1038145637 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6033869803237203322, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
@@ -60397,6 +60906,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1038145642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537517209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1039909512
 GameObject:
   m_ObjectHideFlags: 0
@@ -61203,6 +61724,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1089568933}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1089568937}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1089568932 stripped
 GameObject:
@@ -61223,6 +61747,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1089568937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089568932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1090999172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61882,6 +62418,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1849003632}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1849003636}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1122189160 stripped
 GameObject:
@@ -62808,6 +63347,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1168103363}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1168103367}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1168103362 stripped
 GameObject:
@@ -62828,6 +63370,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1168103367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168103362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1169235093
 GameObject:
   m_ObjectHideFlags: 0
@@ -63398,6 +63952,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1198158164}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1198158168}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1198158163 stripped
 GameObject:
@@ -63418,6 +63975,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1198158168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198158163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1202376580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63502,6 +64071,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1202901571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360125363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1208459635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63638,6 +64219,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1212071512}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1212071516}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1212071511 stripped
 GameObject:
@@ -63658,6 +64242,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1212071516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212071511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1214902473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7817943310629340641, guid: fda74206f2441694b862dee33d9c6e6f, type: 3}
@@ -64001,6 +64597,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1237298398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584545882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1237627819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64187,6 +64795,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1238405020}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1238405024}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1238405019 stripped
 GameObject:
@@ -64207,6 +64818,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1238405024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238405019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1239305629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64282,6 +64905,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2015647329}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2015647333}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1239305630 stripped
 GameObject:
@@ -64409,6 +65035,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1268399134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244710261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1268943489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64794,6 +65432,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1320573479}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1320573483}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1320573478 stripped
 GameObject:
@@ -64814,6 +65455,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1320573483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320573478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1322339867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6033869803237203322, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
@@ -64833,6 +65486,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1322339872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942230464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1322862732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64939,6 +65604,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1330578671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499342572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1332415812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8962181614333157053, guid: 12c18be1fa67a7343a901a3877fdb644, type: 3}
@@ -65166,6 +65843,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1355081776}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1355081780}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1355081775 stripped
 GameObject:
@@ -65186,6 +65866,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1355081780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355081775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1358122896
 GameObject:
   m_ObjectHideFlags: 0
@@ -65461,6 +66153,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1369112468}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1369112472}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1369112467 stripped
 GameObject:
@@ -65481,6 +66176,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1369112472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369112467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1371028750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66618,6 +67325,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2047969274}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2047969278}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1421781656 stripped
 GameObject:
@@ -66770,6 +67480,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1434233646}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1434233650}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1434233645 stripped
 GameObject:
@@ -66790,6 +67503,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1434233650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434233645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1448984816
 GameObject:
   m_ObjectHideFlags: 0
@@ -67272,6 +67997,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1478332514}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1478332518}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1478332513 stripped
 GameObject:
@@ -67292,6 +68020,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1478332518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478332513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1479229334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67367,6 +68107,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1479229336}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1479229340}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1479229335 stripped
 GameObject:
@@ -67387,6 +68130,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1479229340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479229335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1484616804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7817943310629340641, guid: fda74206f2441694b862dee33d9c6e6f, type: 3}
@@ -67515,6 +68270,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1513593274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759487916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1514724271
 GameObject:
   m_ObjectHideFlags: 0
@@ -68002,6 +68769,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1525874269}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1525874273}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1525874268 stripped
 GameObject:
@@ -68022,6 +68792,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1525874273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525874268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1526979770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68097,6 +68879,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2049733260}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2049733264}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1526979771 stripped
 GameObject:
@@ -68178,6 +68963,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1545489316}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1545489320}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1545489315 stripped
 GameObject:
@@ -68198,6 +68986,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1545489320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545489315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1546452434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68273,6 +69073,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1546452436}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1546452440}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1546452435 stripped
 GameObject:
@@ -68293,6 +69096,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1546452440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546452435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1548132326
 GameObject:
   m_ObjectHideFlags: 0
@@ -68467,6 +69282,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1848539791}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1848539795}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1560298438 stripped
 GameObject:
@@ -69475,6 +70293,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1626858382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193733251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1629974431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8110030677585615675, guid: fda74206f2441694b862dee33d9c6e6f, type: 3}
@@ -69555,6 +70385,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1630245689}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1630245693}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1630245688 stripped
 GameObject:
@@ -69575,6 +70408,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1630245693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630245688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1633404136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69650,6 +70495,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2131466543}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2131466547}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1633404137 stripped
 GameObject:
@@ -70341,6 +71189,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1669389480}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1669389484}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1661084428 stripped
 GameObject:
@@ -70502,6 +71353,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1669389484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661084428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1670216250 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4238215137559799493, guid: 5ea63359bbc27aa4abe2aabf37b463fc, type: 3}
@@ -70809,6 +71672,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1687072583}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1687072587}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!4 &1687072581 stripped
 Transform:
@@ -70834,6 +71700,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1687072587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687072582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1687588419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71436,6 +72314,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1710537812}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1710537816}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1710537811 stripped
 GameObject:
@@ -71456,6 +72337,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1710537816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710537811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1720149237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71677,6 +72570,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2068195507}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2068195511}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1725048724 stripped
 GameObject:
@@ -72685,6 +73581,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1808483973}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1808483977}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1774569454 stripped
 GameObject:
@@ -72881,6 +73780,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1792506411}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1792506415}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1792506410 stripped
 GameObject:
@@ -72901,6 +73803,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1792506415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792506410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1794596528
 GameObject:
   m_ObjectHideFlags: 0
@@ -73202,6 +74116,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1808483977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774569454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1811298495 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}
@@ -73254,6 +74180,18 @@ PrefabInstance:
       propertyPath: reload
       value: 
       objectReference: {fileID: 173695404}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: hurt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: 'hurt.Array.data[0]'
+      value: 
+      objectReference: {fileID: 173695421}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: 'hurt.Array.data[1]'
+      value: 
+      objectReference: {fileID: 173695420}
     - target: {fileID: 2172650544462054247, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: dashCost
       value: 6
@@ -73328,6 +74266,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1681619343937044881, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 173695404}
+    - targetCorrespondingSourceObject: {fileID: 1681619343937044881, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 173695421}
+    - targetCorrespondingSourceObject: {fileID: 1681619343937044881, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 173695420}
   m_SourcePrefab: {fileID: 100100000, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
 --- !u!114 &1813071848 stripped
 MonoBehaviour:
@@ -73734,6 +74678,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1872753325}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1872753329}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1835319302 stripped
 GameObject:
@@ -73759,6 +74706,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1839956245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687540991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1840659920
 GameObject:
   m_ObjectHideFlags: 0
@@ -73982,6 +74941,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1848539795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560298438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1849003631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6033869803237203322, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
@@ -74001,6 +74972,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1849003636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122189160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1850370102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74076,6 +75059,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1850370104}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1850370108}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1850370103 stripped
 GameObject:
@@ -74096,6 +75082,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1850370108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850370103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1852542355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74481,6 +75479,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1872753329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835319302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1875490904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74637,6 +75647,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1878567779}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1878567783}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1878567778 stripped
 GameObject:
@@ -74657,6 +75670,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1878567783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878567778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1881501119
 GameObject:
   m_ObjectHideFlags: 0
@@ -75087,6 +76112,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1898292624}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1898292628}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!4 &1898292622 stripped
 Transform:
@@ -75112,6 +76140,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1898292628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898292623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1900404602
 GameObject:
   m_ObjectHideFlags: 0
@@ -75206,6 +76246,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1906899391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938766335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1908411794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4238215137559799493, guid: 5ea63359bbc27aa4abe2aabf37b463fc, type: 3}
@@ -75754,6 +76806,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1927246122}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1927246126}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1927246121 stripped
 GameObject:
@@ -75774,6 +76829,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1927246126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927246121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1934080974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8962181614333157053, guid: 12c18be1fa67a7343a901a3877fdb644, type: 3}
@@ -75997,6 +77064,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1950962879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655316386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &1952130865 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}
@@ -76040,6 +77119,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1952663330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141911550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1956007757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76124,6 +77215,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1956863641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995063713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &1956952570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3907595937145327129, guid: bed868b90815ab946bceaf38a82b762a, type: 3}
@@ -76148,6 +77251,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1965835624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110867929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1966808073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76438,6 +77553,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1977331795}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1977331799}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1977331794 stripped
 GameObject:
@@ -76458,6 +77576,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1977331799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977331794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1980724063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76533,6 +77663,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1980724066}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1980724070}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!4 &1980724064 stripped
 Transform:
@@ -76558,6 +77691,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1980724070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980724065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1991906625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76633,6 +77778,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1991906627}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1991906631}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &1991906626 stripped
 GameObject:
@@ -76653,6 +77801,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1991906631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991906626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &1992421248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76861,6 +78021,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2015647333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239305630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &2016204643 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}
@@ -76960,6 +78132,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2016579007}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2016579011}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &2016579006 stripped
 GameObject:
@@ -76980,6 +78155,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2016579011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016579006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &2020260353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77112,6 +78299,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2036527931}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2036527935}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &2036527930 stripped
 GameObject:
@@ -77132,6 +78322,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2036527935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036527930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &2037277802 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}
@@ -77365,6 +78567,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2046732785}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2046732789}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &2046732784 stripped
 GameObject:
@@ -77385,6 +78590,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2046732789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046732784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &2047969273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6033869803237203322, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
@@ -77404,6 +78621,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2047969278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421781656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &2049733259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6033869803237203322, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
@@ -77423,6 +78652,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2049733264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526979771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &2057538834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77672,6 +78913,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2068195511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725048724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &2069339685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77828,6 +79081,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2071508488}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2071508492}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &2071508487 stripped
 GameObject:
@@ -77848,6 +79104,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2071508492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071508487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!4 &2075261264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4238215137559799493, guid: 5ea63359bbc27aa4abe2aabf37b463fc, type: 3}
@@ -78190,6 +79458,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2096373191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656270610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &2101227041
 GameObject:
   m_ObjectHideFlags: 0
@@ -78299,6 +79579,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2111155191}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2111155195}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &2111155190 stripped
 GameObject:
@@ -78319,6 +79602,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2111155195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111155190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &2113431844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78688,6 +79983,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2123823627}
+    - targetCorrespondingSourceObject: {fileID: 4665880187488323899, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2123823631}
   m_SourcePrefab: {fileID: 100100000, guid: f0761dc6ebf82b249ac919763dc9b599, type: 3}
 --- !u!1 &2123823626 stripped
 GameObject:
@@ -78708,6 +80006,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2123823631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123823626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &2128349534
 GameObject:
   m_ObjectHideFlags: 0
@@ -78935,6 +80245,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &2131466547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633404137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1 &2139336276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa4e862c61cd4614baec72eaed12b1dd, type: 3}
@@ -79106,6 +80428,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6361687941466658898, guid: 121d76c3c670c9946b640d4fbfb56ef2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1856293992098634238}
+    - targetCorrespondingSourceObject: {fileID: 6361687941466658898, guid: 121d76c3c670c9946b640d4fbfb56ef2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856293992098634243}
   m_SourcePrefab: {fileID: 100100000, guid: 121d76c3c670c9946b640d4fbfb56ef2, type: 3}
 --- !u!1 &1856293992098634237 stripped
 GameObject:
@@ -79126,6 +80451,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeChanger
   isPositive: 0
   time: 6
+--- !u!114 &1856293992098634243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856293992098634237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba12a8569e7b0e24c9fb85679dec2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spike
 --- !u!1001 &3970438590731607069
 PrefabInstance:
   m_ObjectHideFlags: 0
