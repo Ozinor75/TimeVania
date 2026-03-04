@@ -13,9 +13,15 @@ public class PlayerSound : MonoBehaviour
     public AudioSource swift;
     public AudioSource start;
     public AudioSource stop;
+    public AudioSource reload;
     
     private PlayerController player;
     private float t = 0f;
+    
+    public void Reload()
+    {
+        reload.Play();
+    }
     
     public void StartSound()
     {
