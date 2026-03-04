@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         timerController.tMult = activePreset.timerMult;
         
         Physics2D.queriesStartInColliders = false;
-        Physics2D.gravity = new Vector2(0, -GravityNotJumping);
+        Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed);
         
         StartPos = rb.position;     //sauvegarde position de départ
         line = GetComponent<LineRenderer>();
@@ -157,6 +157,12 @@ public class PlayerController : MonoBehaviour
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
             Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+            
+            if (!isGrounded && rb.linearVelocityY < 0)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocityY * 0.2f);
+            }
+            
             // GameObject Bubble = Instantiate(bubbleFast, transform.position, Quaternion.identity);
             // Bubble.transform.parent = transform;
         }
@@ -235,7 +241,7 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(transform.position, hit.point, Color.red);
         if (hit && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Moving")))
         {
-            Physics2D.gravity = new Vector2(0, -GravityNotJumping); //forcer une gravité pour maintenir le player au sol
+            Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol
             cototE = coyotETimer;
             isGrounded = true;
             effectiveSpeed = activePreset.groundSpeed;
@@ -248,7 +254,7 @@ public class PlayerController : MonoBehaviour
             {
                 GlisseTimer -= Time.deltaTime;
                 
-                Physics2D.gravity = new Vector2(0, -GravityNotJumping);
+                Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed);
                 isGrounded = true; 
                 effectiveSpeed = activePreset.groundSpeed;
             }
@@ -288,7 +294,7 @@ public class PlayerController : MonoBehaviour
         playerBoost.boostState = BoostStates.Gear2;
         activePreset = playerBoost.ReturnGearSpeed();
         timerController.tMult = activePreset.timerMult;
-        Physics2D.gravity = new Vector2(0, -GravityNotJumping); //forcer une gravité pour maintenir le player au sol
+        Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol
         // Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
     }
     
