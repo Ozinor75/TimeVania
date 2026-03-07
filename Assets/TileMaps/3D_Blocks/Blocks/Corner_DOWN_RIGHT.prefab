@@ -152,7 +152,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: cecbfb859cd505540b1aaf17c8d44883, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: e8a9dc703ed927048bba2c77dbbc7768, type: 2}
+      objectReference: {fileID: 2100000, guid: 91f7f7197f0cc4e40ac4ca751a70903f, type: 2}
     - target: {fileID: 919132149155446097, guid: cecbfb859cd505540b1aaf17c8d44883, type: 3}
       propertyPath: m_Name
       value: Corner

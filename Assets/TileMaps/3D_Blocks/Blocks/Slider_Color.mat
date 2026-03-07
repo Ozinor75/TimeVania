@@ -22,13 +22,20 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _ShadowShape:
+        m_Texture: {fileID: 2800000, guid: 35771b421f3f9d04d90d84d884a19abe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _LightSize: 1.352
+    - _LightStrength: 0.23
     - _ShadowSize: 0.533
+    - _ShadowStrength: 0.255
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.9880785, b: 0, a: 1}
+    - _BaseColor: {r: 0.25552502, g: 0.84276724, b: 0, a: 1}
+    - _LED_Color: {r: 170.89003, g: 0, b: 0, a: 1}
     - _LightColor: {r: 1, g: 0.9115998, b: 0.36470592, a: 1}
     - _LightColor2: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0.7647059, g: 0.69197357, b: 0, a: 1}
