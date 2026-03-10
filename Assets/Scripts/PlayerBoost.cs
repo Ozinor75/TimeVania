@@ -38,9 +38,9 @@ public class PlayerPresets
         this.globalWorldTime = globalWolrdTime;
     }
     
-    public static PlayerPresets Slow = new(3f, 4f, 7.5f, 1f,4.9f, 100,3f,0.5f);
-    public static PlayerPresets Mid = new(18f, 12f, 22f, 12f,29.4f, 250f,1f,2f);
-    public static PlayerPresets Swift = new(39f, 30f, 40f, 30f,60f,400f,3f,5f);
+    public static PlayerPresets Slow = new(10f, 5f, 18f, 12f,29.4f, 250f,3f,2f);
+    public static PlayerPresets Mid = new(10f, 5f, 18f, 12f,29.4f, 250f,1f,2f);
+    public static PlayerPresets Swift = new(10f, 5f, 18f, 12f,29.4f, 250f,3f,2f);
 }
 
 public class PlayerBoost : MonoBehaviour

@@ -74730,7 +74730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toFollow: {fileID: 1789177003}
   followTime: 7.5
-  depthOffset: 15
+  depthOffset: 6
   heightOffset: 0
 --- !u!81 &1703924131
 AudioListener:
@@ -74800,7 +74800,7 @@ Transform:
   m_GameObject: {fileID: 1703924129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -116, y: -21, z: -15}
+  m_LocalPosition: {x: -45.806236, y: -9.196489, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -77336,11 +77336,11 @@ PrefabInstance:
       objectReference: {fileID: 1599428728}
     - target: {fileID: 2452293245864450624, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -46.33
+      value: -46.5
       objectReference: {fileID: 0}
     - target: {fileID: 2452293245864450624, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.31
+      value: -7.004
       objectReference: {fileID: 0}
     - target: {fileID: 2452293245864450624, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -77389,6 +77389,22 @@ PrefabInstance:
     - target: {fileID: 6996445895813662685, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: m_Volume
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790792713647149284, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790792713647149284, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790792713647149284, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790792713647149284, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

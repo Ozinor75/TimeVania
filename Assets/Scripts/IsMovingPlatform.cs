@@ -17,13 +17,17 @@ public class IsMovingPlatform : MonoBehaviour
     }
     private void IsMoving()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, Vector2.down, 0.1f);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, Vector2.down, 0.5f);
         if (hit && hit.collider.CompareTag("Moving"))
         {
-                transform.SetParent(hit.transform); // Le joueur devient enfant de la plateforme
+            transform.SetParent(hit.transform); // Le joueur devient enfant de la plateforme
         }
         else
         {
+            if (transform.parent != null && transform.parent.CompareTag("Missile"))
+            {
+                return;
+            }
             transform.SetParent(null);
         } 
     }

@@ -8,6 +8,7 @@ TagManager:
   - Bubble
   - PatternTrigger
   - Moving
+  - Missile
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - Ground
   - SpeedOverlay
-  - 
-  - 
+  - MissileBody
+  - MissileSpike
   - 
   - 
   - 
