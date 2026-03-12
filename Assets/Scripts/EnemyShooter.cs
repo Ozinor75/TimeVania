@@ -20,6 +20,9 @@ public class EnemyShooter : MonoBehaviour
     public float normalTime;
     public float slowedTime;
     
+    [Header("Vitesse de rotation")]
+    public float vitesseRotation = 200f;
+    
     private Transform player;
     private bool joueurDansZone = false;
     private bool estEnTrainDAttaquer = false;
@@ -50,6 +53,7 @@ public class EnemyShooter : MonoBehaviour
             FaireFaceAuJoueur();
         }
     }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -63,6 +67,7 @@ public class EnemyShooter : MonoBehaviour
             }
         }
     } 
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -89,9 +94,7 @@ public class EnemyShooter : MonoBehaviour
                 yield return new WaitForSeconds(delaiEntreTirs*timeScale);
             }
         }
-
         estEnTrainDAttaquer = false;
-
         if (joueurDansZone)
         {
             attaqueCoroutine = StartCoroutine(BoucleAttaque());
@@ -109,7 +112,8 @@ public class EnemyShooter : MonoBehaviour
     void FaireFaceAuJoueur()
     {
         Vector3 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        float angleCible = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotationCible = Quaternion.Euler(0, 0, angleCible);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotationCible, vitesseRotation * timeScale * Time.deltaTime);
     }
 }

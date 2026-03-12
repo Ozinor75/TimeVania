@@ -245,6 +245,7 @@ MonoBehaviour:
   acceleratedTime: 2
   normalTime: 1
   slowedTime: 0.5
+  vitesseRotation: 25
 --- !u!58 &1925944605018149761
 CircleCollider2D:
   m_ObjectHideFlags: 0
