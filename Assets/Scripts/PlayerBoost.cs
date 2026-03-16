@@ -68,6 +68,20 @@ public class PlayerBoost : MonoBehaviour
         timerController = GetComponent<PlayerTimer>();
     }
 
+    public void MidBoostState()
+    {
+        boostState = BoostStates.Gear2;
+    }
+    
+    public void IncreaseBoostState()
+    {
+        boostState++;
+    }
+
+    public void DecreaseBoostState()
+    {
+        boostState--;
+    }
     public PlayerPresets ReturnGearSpeed()
     { 
         PlayerPresets preset = PlayerPresets.Slow;

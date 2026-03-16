@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public CustomInputs playerControls;
     public Rigidbody2D rb;
     private BoxCollider2D selfCollider;
-    private PlayerTimer timerController;
+    public PlayerTimer timerController;
     private PlayerBoost playerBoost;
     private PlayerSound playerSound;
     public PlayerPresets activePreset;
@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bubbleSlow;
     public GameObject bubbleFast;
 
+    public int gearChange = 0;
     private float t = 0f;//timer pour isgrounded
     private float GlisseDuree = 0.1f; // Durée pour glisser
     private float GlisseTimer = 0f; // timer pour réactiver la gravité des boosts en l'air
@@ -83,7 +84,60 @@ public class PlayerController : MonoBehaviour
         StartPos = rb.position;     //sauvegarde position de départ
         line = GetComponent<LineRenderer>();
     }
+
+    public void MakeJump()
+    {
+        notJumping = false; //arrêter la détection du sol
+        GlisseTimer = 0f;
+        Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);
+    }
+
+    public void MakeDash()
+    {
+        Vector3[] posArray = new Vector3[2];
+        Vector2 endPos = rb.linearVelocity.normalized;
+        RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, endPos, activePreset.airSpeed);
+        posArray[0] = transform.position;
+            
+        if (checkDash)
+        {
+            endPos = checkDash.point;
+        }
+        else
+        {
+            endPos *= activePreset.airSpeed;
+            endPos += rb.position;
+        }
+        // get pos array (points)
+        posArray[1] = endPos;
+        line.SetPositions(posArray);
+            
+        //apply positions
+        rb.position = endPos;
+        timerController.t -= dashCost;
+    }
     
+    public void ChangeGear()
+    {
+        Debug.Log("Gear Changed");
+        if (gearChange == 0)
+        {            
+            playerBoost.boostState = BoostStates.Gear1;
+
+            if (!isGrounded && rb.linearVelocityY < 0)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocityY * 0.2f);
+            }
+        }
+        else if (gearChange == 1)
+            playerBoost.boostState = BoostStates.Gear2;
+        else if (gearChange == 2)
+            playerBoost.boostState = BoostStates.Gear3;
+        activePreset = playerBoost.ReturnGearSpeed();
+        timerController.tMult = activePreset.timerMult;
+        Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+    }
     private void Update()
     {
         if (!isPushedBack)
@@ -101,19 +155,6 @@ public class PlayerController : MonoBehaviour
         
         movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
         
-        if (playerControls.Player.Jump.WasPressedThisFrame())
-        {
-            Debug.Log("CACAAAA");
-            if (isGrounded || cototE > 0f)
-            {
-                playerSound.Jump();
-                notJumping = false; //arrêter la détection du sol
-                GlisseTimer = 0f;
-                Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-                // Debug.Log("Jump " + Physics2D.gravity);
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);            }
-        }
-        
         if (notJumping) IsGrounded(); //Pour régler le problème de détection du sol, quand on saute il redétecte à la frame d'après le sol et sans réactive immédiatement GravityNotJumping
         else
         {
@@ -123,86 +164,6 @@ public class PlayerController : MonoBehaviour
                 notJumping = true;
                 t = 0f;
             }
-        }
-        
-        // CONTROL INPUTS
-
-        if (playerControls.Player.Upgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
-        {
-            playerSound.Swift();
-            globalTime.worldTime++;
-            playerBoost.boostState ++;
-            activePreset = playerBoost.ReturnGearSpeed();
-            timerController.tMult = activePreset.timerMult;
-            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-            // GameObject Bubble = Instantiate(bubbleSlow, transform.position, Quaternion.identity);
-            // Bubble.transform.parent = transform;
-        }
-        
-        if (playerControls.Player.Upgrade.WasReleasedThisFrame())
-        {
-            playerSound.Mid();
-            globalTime.worldTime = WorldTime.TWO;
-            playerBoost.boostState = BoostStates.Gear2;
-            activePreset = playerBoost.ReturnGearSpeed();
-            timerController.tMult = activePreset.timerMult;
-            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-            // Destroy(FindAnyObjectByType<TimeBubble>().gameObject);
-        }
-        
-        if (playerControls.Player.Downgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
-        {
-            playerSound.Slow();
-            globalTime.worldTime--;
-            playerBoost.boostState --;
-            activePreset = playerBoost.ReturnGearSpeed();
-            timerController.tMult = activePreset.timerMult;
-            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-            
-            if (!isGrounded && rb.linearVelocityY < 0)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocityY * 0.2f);
-            }
-            
-            // GameObject Bubble = Instantiate(bubbleFast, transform.position, Quaternion.identity);
-            // Bubble.transform.parent = transform;
-        }
-
-        if (playerControls.Player.Downgrade.WasReleasedThisFrame())
-        {
-            playerSound.Mid();
-            globalTime.worldTime = WorldTime.TWO;
-            playerBoost.boostState = BoostStates.Gear2;
-            activePreset = playerBoost.ReturnGearSpeed();
-            timerController.tMult = activePreset.timerMult;
-            Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-            // Destroy(FindAnyObjectByType<TimeBubble>().gameObject);
-        }
-        
-        if (playerControls.Player.Dash.WasPressedThisFrame() && timerController.t > dashCost)
-        {
-            Vector3[] posArray = new Vector3[2];
-            Vector2 endPos = rb.linearVelocity.normalized;
-            RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, endPos, activePreset.airSpeed);
-            posArray[0] = transform.position;
-            
-            if (checkDash)
-            {
-                endPos = checkDash.point;
-            }
-            else
-            {
-                endPos *= activePreset.airSpeed;
-                endPos += rb.position;
-            }
-            // get pos array (points)
-            posArray[1] = endPos;
-            line.SetPositions(posArray);
-            
-            //apply positions
-            playerSound.Dash();
-            rb.position = endPos;
-            timerController.t -= dashCost;
         }
         
         // DEBUG INPUTS
