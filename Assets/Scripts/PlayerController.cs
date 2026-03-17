@@ -51,9 +51,11 @@ public class PlayerController : MonoBehaviour
     public GameObject bubbleSlow;
     public GameObject bubbleFast;
 
+    public bool CanMove = true;
     private float t = 0f;//timer pour isgrounded
     public float GlisseDuree = 0.1f; // Durée pour glisser
     private float GlisseTimer = 0f; // timer pour réactiver la gravité des boosts en l'air
+    [HideInInspector] public Vector2 platformVelocity = Vector2.zero;
     private void OnEnable()
     {
         if (playerControls == null)
@@ -117,7 +119,7 @@ public class PlayerController : MonoBehaviour
         
         // CONTROL INPUTS
 
-        if (playerControls.Player.Upgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
+        if (playerControls.Player.Downgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
         {
             playerSound.Swift();
             globalTime.worldTime++;
@@ -129,7 +131,7 @@ public class PlayerController : MonoBehaviour
             // Bubble.transform.parent = transform;
         }
         
-        if (playerControls.Player.Upgrade.WasReleasedThisFrame())
+        if (playerControls.Player.Downgrade.WasReleasedThisFrame())
         {
             playerSound.Mid();
             globalTime.worldTime = WorldTime.TWO;
@@ -140,7 +142,7 @@ public class PlayerController : MonoBehaviour
             // Destroy(FindAnyObjectByType<TimeBubble>().gameObject);
         }
         
-        if (playerControls.Player.Downgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
+        if (playerControls.Player.Upgrade.WasPressedThisFrame() && activePreset == PlayerPresets.Mid)
         {
             playerSound.Slow();
             globalTime.worldTime--;
@@ -158,7 +160,7 @@ public class PlayerController : MonoBehaviour
             // Bubble.transform.parent = transform;
         }
 
-        if (playerControls.Player.Downgrade.WasReleasedThisFrame())
+        if (playerControls.Player.Upgrade.WasReleasedThisFrame())
         {
             playerSound.Mid();
             globalTime.worldTime = WorldTime.TWO;
@@ -232,7 +234,13 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-        rb.linearVelocity = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
+        if (CanMove) 
+            rb.linearVelocity = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
+        else
+        {
+            rb.linearVelocity = new Vector2(platformVelocity.x, rb.linearVelocityY);
+            Debug.Log(rb.linearVelocity);
+        }
     }
 
     // INFORMATION TAKING
@@ -241,7 +249,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, Vector2.down, 0.2f);
                                                                                                                                             
         Debug.DrawLine(transform.position, hit.point, Color.red);
-        if (hit && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Moving")/*|| hit.collider.CompareTag("Missile")*/))
+        if (hit && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Moving")|| hit.collider.CompareTag("Missile")))
         {
             Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol
             cototE = coyotETimer;

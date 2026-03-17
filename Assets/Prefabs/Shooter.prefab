@@ -239,9 +239,9 @@ MonoBehaviour:
   timeScale: 0
   projectilePrefab: {fileID: 8484332120410141338, guid: 84d4632da888be54685688ffe17db216, type: 3}
   firePoint: {fileID: 2831953696821096309}
-  tempsObservation: 3
+  tempsObservation: 2
   nombreDeTirs: 3
-  delaiEntreTirs: 1
+  delaiEntreTirs: 0.5
   acceleratedTime: 2
   normalTime: 1
   slowedTime: 0.5

@@ -84,15 +84,12 @@ public class EnemyShooter : MonoBehaviour
     IEnumerator BoucleAttaque()
     {
         estEnTrainDAttaquer = true;
-        yield return new WaitForSeconds(tempsObservation*timeScale);
-        if (joueurDansZone)
+        yield return new WaitForSeconds(tempsObservation/timeScale);
+        for (int i = 0; i < nombreDeTirs; i++)
         {
-            for (int i = 0; i < nombreDeTirs; i++)
-            {
-                if (!joueurDansZone) break; 
-                Tirer();
-                yield return new WaitForSeconds(delaiEntreTirs*timeScale);
-            }
+            if (!joueurDansZone) break; 
+            Tirer();
+            yield return new WaitForSeconds(delaiEntreTirs/timeScale);
         }
         estEnTrainDAttaquer = false;
         if (joueurDansZone)
@@ -105,7 +102,7 @@ public class EnemyShooter : MonoBehaviour
     {
         if (projectilePrefab != null && firePoint != null)
         {
-            Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         }
     }
 

@@ -95,7 +95,7 @@ public class PlayerBoost : MonoBehaviour
                 break;
         }
         
-        Debug.Log(preset.groundSpeed);
+        // Debug.Log(preset.groundSpeed);
         return preset;
     }
 }

@@ -48,10 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Missile
   globalTime: {fileID: 0}
   timeScale: 0
-  tempsDeVie: 4
-  acceleratedTime: 1
+  tempsDeVie: 5
+  acceleratedTime: 8
   normalTime: 5
-  slowedTime: 10
+  slowedTime: 2
 --- !u!50 &5837183142795074729
 Rigidbody2D:
   serializedVersion: 5

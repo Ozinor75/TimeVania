@@ -6,7 +6,7 @@ public class Missile : MonoBehaviour
     public float timeScale;
     
     [Header("Paramètres du Projectile")]
-    public float tempsDeVie = 4f; 
+    public float tempsDeVie; 
 
     [Header("Vitesses")]
     public float acceleratedTime;
@@ -15,26 +15,18 @@ public class Missile : MonoBehaviour
     
     private bool destroying = false;
     private Vector3 directionDeTir;
-    private float t = 0.5f;
+    private float t;
+    private PlayerController PlayerController;
+    
     void Start()
     {
-        Destroy(gameObject, tempsDeVie);
-        GameObject joueur = GameObject.FindGameObjectWithTag("Player");
         globalTime = FindAnyObjectByType<GlobalTime>();
         timeScale = normalTime;
-        if (joueur != null)
-        {
-            directionDeTir = (joueur.transform.position - transform.position).normalized;
-            float angle = Mathf.Atan2(directionDeTir.y, directionDeTir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
-        else
-        {
-            directionDeTir = Vector3.right;
-        }
+        directionDeTir = transform.right;
+        t =tempsDeVie;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         switch (globalTime.worldTime)
         {
@@ -48,10 +40,17 @@ public class Missile : MonoBehaviour
                 timeScale = slowedTime;
                 break;
         }
+        
         transform.position += directionDeTir * timeScale * Time.deltaTime;
+        if (PlayerController != null && !PlayerController.CanMove)
+        {
+            PlayerController.platformVelocity = directionDeTir * timeScale;
+        }
+        
         if (destroying)
         {
             t -= Time.deltaTime*timeScale;
+            // Debug.Log(t);
             if (t <= 0)
             {
                 Destroy(gameObject);
@@ -60,7 +59,32 @@ public class Missile : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
+        // Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerController = collision.gameObject.GetComponent<PlayerController>();
+            PlayerController.CanMove =  false;
+            PlayerController.platformVelocity = directionDeTir * timeScale;
+        }
         destroying =  true;
+    }
+    
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && PlayerController == null)
+        {
+            PlayerController = collision.gameObject.GetComponent<PlayerController>();
+            PlayerController.CanMove = false;
+        }
+    }
+    
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerController.CanMove = true;
+            PlayerController.platformVelocity = Vector2.zero;
+            PlayerController = null;
+        }
     }
 }
