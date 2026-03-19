@@ -49,11 +49,13 @@ public class PlayerController : MonoBehaviour
     [Header("Prefabs")] 
     public GameObject bubbleSlow;
     public GameObject bubbleFast;
-
+    
+    public bool CanMove = true;
     public int gearChange = 0;
     private float t = 0f;//timer pour isgrounded
     private float GlisseDuree = 0.1f; // Durée pour glisser
     private float GlisseTimer = 0f; // timer pour réactiver la gravité des boosts en l'air
+    [HideInInspector] public Vector2 platformVelocity = Vector2.zero;
     private void OnEnable()
     {
         if (playerControls == null)
@@ -192,7 +194,13 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-        rb.linearVelocity = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
+        if (CanMove) 
+            rb.linearVelocity = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
+        else
+        {
+            rb.linearVelocity = new Vector2(platformVelocity.x, rb.linearVelocityY);
+            Debug.Log(rb.linearVelocity);
+        }
     }
 
     // INFORMATION TAKING
