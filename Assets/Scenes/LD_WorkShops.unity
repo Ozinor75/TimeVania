@@ -79705,6 +79705,10 @@ PrefabInstance:
       value: Jump
       objectReference: {fileID: 0}
     - target: {fileID: 5770255427751500494, guid: 785b590ca74a1e84f8689dc237bfc88f, type: 3}
+      propertyPath: Downgrade.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1599428728}
+    - target: {fileID: 5770255427751500494, guid: 785b590ca74a1e84f8689dc237bfc88f, type: 3}
       propertyPath: Downgrade.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1813071849}
@@ -79740,6 +79744,10 @@ PrefabInstance:
       propertyPath: GearReleased.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1813071850}
+    - target: {fileID: 5770255427751500494, guid: 785b590ca74a1e84f8689dc237bfc88f, type: 3}
+      propertyPath: Downgrade.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DecreaseWorldTime
+      objectReference: {fileID: 0}
     - target: {fileID: 5770255427751500494, guid: 785b590ca74a1e84f8689dc237bfc88f, type: 3}
       propertyPath: Downgrade.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ChangeGear
