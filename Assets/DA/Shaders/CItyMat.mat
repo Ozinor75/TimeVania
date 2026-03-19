@@ -90,30 +90,30 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _BumpScale: 1
     - _ColorFade: 0
-    - _ColorFadeDistance: 70
-    - _ColorFadeHardness: 0.759
+    - _ColorFadeDistance: 72
+    - _ColorFadeHardness: 0.481
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LightFadeStrenght: 0.471
-    - _LightSize: 0.186
+    - _LightFadeStrenght: 0.826
+    - _LightSize: 0.139
     - _LightStrenght: 0.05
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ShadowSize: 0.537
-    - _ShadowStrenght: 0.181
+    - _ShadowSize: 0.834
+    - _ShadowStrenght: 0.155
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.58431375, g: 0.56607264, b: 0.4545961, a: 1}
+    - _BaseColor: {r: 0, g: 0.5228256, b: 0.8301887, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LightStrength: {r: 0, g: 0, b: 0, a: 1}

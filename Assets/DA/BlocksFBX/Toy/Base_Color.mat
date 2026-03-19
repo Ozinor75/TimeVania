@@ -8,13 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Base_Color
-  m_Shader: {fileID: -6465566751694194690, guid: beabdcfd54dc4b84695be56a7f253ac3, type: 3}
+  m_Shader: {fileID: 4800000, guid: 27a4feffd83dabd43ae86a6a27bf61d0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -45,6 +45,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _LED_Shape:
         m_Texture: {fileID: 2800000, guid: 35d13201fe22b254a9f23500199a21b5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LEDsShape:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -83,8 +87,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ShadowDetailShape:
+        m_Texture: {fileID: 2800000, guid: d00d1b2aafe502141bea5ca9a9b145dd, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 0, y: 0}
     - _ShadowShape:
         m_Texture: {fileID: 2800000, guid: d00d1b2aafe502141bea5ca9a9b145dd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -98,24 +110,30 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LightSize: 0.469
+    - _LightSize: 0.698
+    - _LightSize1: 0.752
     - _LightStrength: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ShadowSize: 0.554
+    - _ShadowBias: 0.075
+    - _ShadowDetailStrenght: 0.378
+    - _ShadowSize: 0.973
+    - _ShadowStrenght: 0.627
     - _ShadowStrength: 0.578
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - __dirty: 0
     m_Colors:
-    - _BaseColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
+    - _BaseColor: {r: 0.12406549, g: 0.6415094, b: 0.62257856, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LED_Color: {r: 127.99999, g: 127.99999, b: 0, a: 1}
+    - _LEDsColor: {r: 1, g: 1, b: 0, a: 0}
     - _LightColor: {r: 0.44025147, g: 0.44025147, b: 0.44025147, a: 1}
     - _LightColor2: {r: 0.61635214, g: 0.61635214, b: 0.61635214, a: 1}
     - _ShadowColor: {r: 1, g: 0, b: 0, a: 1}
