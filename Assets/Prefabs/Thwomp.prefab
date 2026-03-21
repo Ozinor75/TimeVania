@@ -182,7 +182,7 @@ MonoBehaviour:
   timeScale: 0
   upSpeed: 3
   downSpeed: 20
-  acceleratedTime: 5
+  acceleratedTime: 3
   normalTime: 1
   slowedTime: 0.5
   positiveMove: 1
