@@ -71,8 +71,9 @@ public class PlayerSound : MonoBehaviour
     }
     void Update()
     {
-        if (player.rb.linearVelocityX != 0f && player.isGrounded)
-            t += Time.deltaTime;
+        if (player.isGrounded)
+            if (player.rb.linearVelocityX > 0.05f || player.rb.linearVelocityX < -0.05f)
+                t += Time.deltaTime;
         if (t >= footStepCooldown)
         {
             FootSteps();

@@ -94,11 +94,28 @@ public class PlayerController : MonoBehaviour
         Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);
     }
+    
+    //private IEnumerator Dash()
+    //{
+        //isDashing = true;
+        //var originalGravity = rb.gravityScale;
+        //rb.gravityScale = 0;
+        //rb.linearVelocity = Vector2.zero;
+        //rb.linearVelocity = playerControls.Player.Direction.ReadValue<Vector2>() * activePreset.dashSpeed;
+        //yield return new WaitForSecondsRealtime(activePreset.dashDuration);
+        //rb.gravityScale = originalGravity;
+        //timerController.t -= dashCost;
+        //isDashing = false;
+    //}
 
+    public void StartDash()
+    {
+        //StartCoroutine(Dash());
+    }
     public void MakeDash()
     {
         Vector3[] posArray = new Vector3[2];
-        Vector2 endPos = rb.linearVelocity.normalized;
+        Vector2 endPos = playerControls.Player.Direction.ReadValue<Vector2>().normalized;
         RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, endPos, activePreset.airSpeed);
         posArray[0] = transform.position;
             
@@ -236,6 +253,8 @@ public class PlayerController : MonoBehaviour
                 effectiveSpeed = activePreset.airSpeed;
             }
         }
+        //if (isDashing)
+            //effectiveSpeed = activePreset.dashSpeed;
     }
     
     public void Pushback(Vector2 hitPosition)
