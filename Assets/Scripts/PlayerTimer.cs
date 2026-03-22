@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using TMPro;
@@ -11,6 +13,7 @@ public class PlayerTimer : MonoBehaviour
     public TextMeshProUGUI text;
 
     private float tSec = 0f;
+    public bool isCharging = false;
     private Spawner[] spawner;
     private EnergyPlatform[] energy;
     private BatteryManager batteryManager;
@@ -23,6 +26,30 @@ public class PlayerTimer : MonoBehaviour
         int charge = Mathf.CeilToInt(timeCheck);
         return charge;
     }
+
+    private IEnumerator Charging()
+    {
+        while (t < timer)
+        {
+            t++;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        if (t > timer)
+            t = timer;
+        yield return null;
+    }
+
+    public void StartCharging()
+    {
+        isCharging = true;
+        StartCoroutine(Charging());
+    }
+
+    public void StopCharging()
+    {
+        isCharging = false;
+    }
     void Start()
     {
         spawner = FindObjectsOfType<Spawner>();
@@ -33,7 +60,8 @@ public class PlayerTimer : MonoBehaviour
     
     void Update()
     {
-        t -= Time.deltaTime * tMult;
+        if (!isCharging)
+            t -= Time.deltaTime * tMult;
         tSec += Time.deltaTime;
         if (t > criticalTimer)
             text.text = t.ToString("0");

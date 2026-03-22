@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     
     [Header("Player Debug")]
     public bool isGrounded = true;
+
+    public bool onStation = false;
+    public bool isCharging = false;
     private bool isDashing = false;
     private bool notJumping = true; //check si on doit détecter le sol ou pas
     private float movementUpDown;
@@ -134,7 +137,8 @@ public class PlayerController : MonoBehaviour
             
         //apply positions
         rb.position = endPos;
-        timerController.t -= dashCost;
+        if (!timerController.isCharging)
+            timerController.t -= dashCost;
     }
     
     public void ChangeGear()
@@ -285,6 +289,12 @@ public class PlayerController : MonoBehaviour
         timerController.tMult = activePreset.timerMult;
         Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol
         // Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+    }
+
+    public void ExitStation()
+    {
+        onStation =  false;
+        isCharging = false;
     }
     
     // MECHANICS
