@@ -41,7 +41,7 @@ public class Thwomp : MonoBehaviour
             timeScale = normalTime;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         switch (globalTime.worldTime)
         {
