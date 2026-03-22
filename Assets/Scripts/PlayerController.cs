@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     private float movementUpDown;
     private float movementLeftRight;
     private Vector2 movement;
-    private Vector2 StartPos; //pos de départ pour restart
+    public Vector2 StartPos; //pos de départ pour restart
 
     [Header("Prefabs")] 
     public GameObject bubbleSlow;
