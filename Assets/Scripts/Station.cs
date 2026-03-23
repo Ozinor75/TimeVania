@@ -5,7 +5,8 @@ using UnityEngine.Events;
 public class Station : MonoBehaviour
 {
     public float cameraDepth = 12f;
-    
+
+    public GameObject roomTrigger;
     private PlayerController player;
     private LineRenderer line;
     private CameraFollow cameraFollow;
@@ -39,7 +40,7 @@ public class Station : MonoBehaviour
             isCharging = true;
             line.enabled = true;
             player.StartPos = new Vector2(transform.position.x, transform.position.y);
-            cameraFollow.ChangeMode(gameObject, cameraDepth);
+            cameraFollow.ChangeMode(roomTrigger, cameraDepth);
         }
     }
 

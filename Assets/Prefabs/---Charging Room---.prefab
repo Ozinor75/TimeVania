@@ -476,6 +476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced61aca6b9db124da82c551bc3c690b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargingRoom
+  cameraDepth: 12
+  roomTrigger: {fileID: 5891023959030491015}
 --- !u!120 &759891135453365901
 LineRenderer:
   serializedVersion: 3
