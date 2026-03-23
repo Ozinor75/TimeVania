@@ -119318,6 +119318,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ---Charging Room---
       objectReference: {fileID: 0}
+    - target: {fileID: 6877220972109638245, guid: 80a3c1561e5e072488507235851e6177, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877220972109638245, guid: 80a3c1561e5e072488507235851e6177, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.39
+      objectReference: {fileID: 0}
     - target: {fileID: 8640304251309819900, guid: 80a3c1561e5e072488507235851e6177, type: 3}
       propertyPath: cameraFov
       value: 120

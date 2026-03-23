@@ -31,7 +31,8 @@ public class PlayerSound : MonoBehaviour
     
     public void StartSound()
     {
-        start.Play();
+        if (start != null)
+            start.Play();
     }
     public void StopSound(AudioSource sound)
     {
@@ -40,12 +41,13 @@ public class PlayerSound : MonoBehaviour
 
     public void Death()
     {
-        death.Play();
+        if (death != null)
+            death.Play();
     }
     public void Mid()
     {
-        slow.Stop();
-        swift.Stop();
+        StopSound(slow);
+        StopSound(swift);
     }
     public void Slow()
     {
