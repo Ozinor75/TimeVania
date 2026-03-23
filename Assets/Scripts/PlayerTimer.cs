@@ -60,7 +60,9 @@ public class PlayerTimer : MonoBehaviour
     
     void Update()
     {
-        if (!isCharging)
+        if (t < 0f)
+            t = 0f;
+        if (!isCharging && t > 0f)
             t -= Time.deltaTime * tMult;
         tSec += Time.deltaTime;
         if (t > criticalTimer)

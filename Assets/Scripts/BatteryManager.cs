@@ -32,7 +32,7 @@ public class BatteryManager : MonoBehaviour
             }
         }
 
-        if (playerTimer.t <= playerTimer.criticalTimer)
+        if (playerTimer.t <= playerTimer.criticalTimer && playerTimer.t > 0f)
         {
             batterySound.TickingTimer(true);
         }

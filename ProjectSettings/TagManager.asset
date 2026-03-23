@@ -11,6 +11,7 @@ TagManager:
   - Missile
   - ChargingRoom
   - ChargingStation
+  - BlackScreen
   layers:
   - Default
   - TransparentFX

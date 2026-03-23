@@ -12,7 +12,7 @@ public class PlayerSound : MonoBehaviour
     public AudioSource slow;
     public AudioSource swift;
     public AudioSource start;
-    public AudioSource stop;
+    public AudioSource death;
     public AudioSource reload;
     public AudioSource[] hurt;
     public AudioSource activateStation;
@@ -33,9 +33,14 @@ public class PlayerSound : MonoBehaviour
     {
         start.Play();
     }
-    public void StopSound()
+    public void StopSound(AudioSource sound)
     {
-        stop.Play();
+        sound.Stop();
+    }
+
+    public void Death()
+    {
+        death.Play();
     }
     public void Mid()
     {

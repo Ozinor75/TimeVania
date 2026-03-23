@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.HID;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class PlayerController : MonoBehaviour
     public PlayerPresets activePreset;
     public GlobalTime globalTime;
     private LineRenderer line;
+    private Image blackScreen;
+    private Color blackScreenColor;
     
     [Header("Player Debug")]
     public bool isGrounded = true;
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public bool onStation = false;
     public bool isCharging = false;
     private bool isDashing = false;
+    private bool isRespawning = false;
     private bool notJumping = true; //check si on doit détecter le sol ou pas
     private float movementUpDown;
     private float movementLeftRight;
@@ -74,6 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         selfCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
         
         playerBoost = GetComponent<PlayerBoost>();
         playerSound = FindObjectOfType<PlayerSound>();
@@ -88,6 +93,8 @@ public class PlayerController : MonoBehaviour
         
         StartPos = rb.position;     //sauvegarde position de départ
         line = GetComponent<LineRenderer>();
+        blackScreenColor = Color.black;
+        blackScreenColor.a = 0f;
     }
 
     public void MakeJump()
@@ -163,13 +170,13 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (!isPushedBack)
+        if (!isPushedBack && !isRespawning)
         {
             movementLeftRight = playerControls.Player.Direction.ReadValue<Vector2>().x;
             movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
         }
 
-        if (timerController.t <= 0) Respawn();
+        if (timerController.t <= 0 && !isRespawning) StartCoroutine(MakeRespawn());
         
         if (cototE >= 0f)
         {
@@ -278,19 +285,43 @@ public class PlayerController : MonoBehaviour
     
     void Respawn()
     {
-        playerSound.StopSound();
+        playerSound.StartSound();
         Debug.Log("OUTTA TIME !!!");
         // Return
-        rb.position = StartPos;
         timerController.t = timerController.timer;
         // Reset
         playerBoost.boostState = BoostStates.Gear2;
         activePreset = playerBoost.ReturnGearSpeed();
         timerController.tMult = activePreset.timerMult;
         Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol
+        CanMove = true;
+        isRespawning = false;
         // Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
     }
 
+    public IEnumerator MakeRespawn()
+    {
+        Debug.Log("Respawn");
+        isRespawning = true;
+        CanMove = false;
+        playerSound.Death();
+        while (blackScreenColor.a < 1f)
+        {
+            blackScreenColor.a += Time.deltaTime;
+            blackScreen.color = blackScreenColor;
+            yield return null;
+        }
+        rb.position = StartPos;
+        yield return new WaitForSeconds(1f);
+        while (blackScreenColor.a > 0f)
+        {
+            blackScreenColor.a -= Time.deltaTime;
+            blackScreen.color = blackScreenColor;
+            yield return null;
+        }
+        Respawn();
+
+    }
     public void ExitStation()
     {
         onStation =  false;
