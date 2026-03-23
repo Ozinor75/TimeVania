@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float effectiveSpeed;
     public float dashCost;
     public float GravityNotJumping; // gravity qui maintient le joueur au sol
+    public Vector2 dashBoxSize;
     
     [Header("Pushback")]
     public float pushbackForceX = 10f;
@@ -116,7 +117,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3[] posArray = new Vector3[2];
         Vector2 endPos = playerControls.Player.Direction.ReadValue<Vector2>().normalized;
-        RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, endPos, activePreset.airSpeed);
+        RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, dashBoxSize, 0f, endPos, activePreset.airSpeed);
         posArray[0] = transform.position;
             
         if (checkDash)

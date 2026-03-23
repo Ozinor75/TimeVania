@@ -40,7 +40,7 @@ public class PlayerPresets
     
     public static PlayerPresets Slow = new(10f, 5f, 18f, 12f,29.4f, 250f,3f,2f);
     public static PlayerPresets Mid = new(10f, 5f, 18f, 12f,29.4f, 250f,1f,2f);
-    public static PlayerPresets Swift = new(10f, 5f, 18f, 12f,29.4f, 250f,3f,2f);
+    public static PlayerPresets Swift = new(15f, 7f, 22f, 12f,29.4f, 250f,3f,2f);
 }
 
 public class PlayerBoost : MonoBehaviour
