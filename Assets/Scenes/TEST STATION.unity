@@ -106224,9 +106224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d6b23c884b5094982b64aebf201dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toFollow: {fileID: 1789177003}
+  toFollow: {fileID: 0}
   followTime: 7.5
   depthOffset: 6
+  currentDepthOffset: 0
   heightOffset: 0
 --- !u!81 &1703924131
 AudioListener:
@@ -108190,11 +108191,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784193777}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!50 &1789177003 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 4461844850174242983, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
-  m_PrefabInstance: {fileID: 1813071847}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1789278242
 GameObject:
   m_ObjectHideFlags: 0
@@ -119056,9 +119052,33 @@ PrefabInstance:
       propertyPath: ExitStation.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1813071855}
+    - target: {fileID: 1710471860037156524, guid: 80a3c1561e5e072488507235851e6177, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 29.92835
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710471860037156524, guid: 80a3c1561e5e072488507235851e6177, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15.969047
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710471860037156524, guid: 80a3c1561e5e072488507235851e6177, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.5271
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710471860037156524, guid: 80a3c1561e5e072488507235851e6177, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4077
+      objectReference: {fileID: 0}
     - target: {fileID: 3848376346268058900, guid: 80a3c1561e5e072488507235851e6177, type: 3}
       propertyPath: m_Name
       value: ---Charging Room---
+      objectReference: {fileID: 0}
+    - target: {fileID: 8640304251309819900, guid: 80a3c1561e5e072488507235851e6177, type: 3}
+      propertyPath: cameraFov
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 8640304251309819900, guid: 80a3c1561e5e072488507235851e6177, type: 3}
+      propertyPath: cameraDepth
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

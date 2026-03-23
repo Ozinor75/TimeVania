@@ -4,8 +4,11 @@ using UnityEngine.Events;
 
 public class Station : MonoBehaviour
 {
+    public float cameraDepth = 12f;
+    
     private PlayerController player;
     private LineRenderer line;
+    private CameraFollow cameraFollow;
     
     private bool onTrigger = false;
     private bool isCharging = false;
@@ -36,6 +39,7 @@ public class Station : MonoBehaviour
             isCharging = true;
             line.enabled = true;
             player.StartPos = new Vector2(transform.position.x, transform.position.y);
+            cameraFollow.ChangeMode(gameObject, cameraDepth);
         }
     }
 
@@ -43,11 +47,13 @@ public class Station : MonoBehaviour
     {
         isCharging = false;
         line.enabled = false;
+        cameraFollow.ChangeMode(player.gameObject, cameraFollow.depthOffset);
     }
     void Start()
     {
         player = FindAnyObjectByType<PlayerController>();
         line = GetComponent<LineRenderer>();
+        cameraFollow = FindAnyObjectByType<CameraFollow>();
         
         line.SetPosition(0, transform.position);
         line.enabled = false;
