@@ -136,6 +136,15 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Station"",
+                    ""type"": ""Button"",
+                    ""id"": ""673bd457-e362-4447-a887-4c8acc673ed5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -186,7 +195,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""2D Vector"",
                     ""id"": ""3452d07b-61b2-4070-b559-febd97296d8c"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -237,6 +246,17 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Direction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bce51fe-0c28-457f-a7e5-8b29e88a7472"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Station"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -298,6 +318,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Upgrade = m_Player.FindAction("Upgrade", throwIfNotFound: true);
         m_Player_Downgrade = m_Player.FindAction("Downgrade", throwIfNotFound: true);
+        m_Player_Station = m_Player.FindAction("Station", throwIfNotFound: true);
         // DEBUG
         m_DEBUG = asset.FindActionMap("DEBUG", throwIfNotFound: true);
         m_DEBUG_TimerReset = m_DEBUG.FindAction("TimerReset", throwIfNotFound: true);
@@ -388,6 +409,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Upgrade;
     private readonly InputAction m_Player_Downgrade;
+    private readonly InputAction m_Player_Station;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -419,6 +441,10 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Downgrade".
         /// </summary>
         public InputAction @Downgrade => m_Wrapper.m_Player_Downgrade;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Station".
+        /// </summary>
+        public InputAction @Station => m_Wrapper.m_Player_Station;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -460,6 +486,9 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Downgrade.started += instance.OnDowngrade;
             @Downgrade.performed += instance.OnDowngrade;
             @Downgrade.canceled += instance.OnDowngrade;
+            @Station.started += instance.OnStation;
+            @Station.performed += instance.OnStation;
+            @Station.canceled += instance.OnStation;
         }
 
         /// <summary>
@@ -486,6 +515,9 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Downgrade.started -= instance.OnDowngrade;
             @Downgrade.performed -= instance.OnDowngrade;
             @Downgrade.canceled -= instance.OnDowngrade;
+            @Station.started -= instance.OnStation;
+            @Station.performed -= instance.OnStation;
+            @Station.canceled -= instance.OnStation;
         }
 
         /// <summary>
@@ -668,6 +700,13 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDowngrade(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Station" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStation(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DEBUG" which allows adding and removing callbacks.

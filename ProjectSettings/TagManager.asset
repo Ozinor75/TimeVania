@@ -9,6 +9,9 @@ TagManager:
   - PatternTrigger
   - Moving
   - Missile
+  - ChargingRoom
+  - ChargingStation
+  - BlackScreen
   layers:
   - Default
   - TransparentFX

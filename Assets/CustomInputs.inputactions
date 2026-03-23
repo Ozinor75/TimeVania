@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Station",
+                    "type": "Button",
+                    "id": "673bd457-e362-4447-a887-4c8acc673ed5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -100,7 +109,7 @@
                 {
                     "name": "2D Vector",
                     "id": "3452d07b-61b2-4070-b559-febd97296d8c",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -151,6 +160,17 @@
                     "action": "Direction",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "6bce51fe-0c28-457f-a7e5-8b29e88a7472",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Station",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

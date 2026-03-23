@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent Upgrade;
     public UnityEvent Downgrade;
     public UnityEvent GearReleased;
+    public UnityEvent ActivateStation;
 
     public CustomInputs playerControls;
     private PlayerController playerController;
@@ -64,6 +65,13 @@ public class InputManager : MonoBehaviour
             Debug.Log("Gear Released");
             playerController.gearChange = 1;
             GearReleased.Invoke();
+        }
+
+        if (playerControls.Player.Station.WasPressedThisFrame() && playerController.onStation && !playerController.isCharging)
+        {
+            Debug.Log("Station Pressed");
+            playerController.isCharging = true;
+            ActivateStation.Invoke();
         }
     }
 }

@@ -12,9 +12,10 @@ public class PlayerSound : MonoBehaviour
     public AudioSource slow;
     public AudioSource swift;
     public AudioSource start;
-    public AudioSource stop;
+    public AudioSource death;
     public AudioSource reload;
     public AudioSource[] hurt;
+    public AudioSource activateStation;
     
     private PlayerController player;
     private float t = 0f;
@@ -30,16 +31,23 @@ public class PlayerSound : MonoBehaviour
     
     public void StartSound()
     {
-        start.Play();
+        if (start != null)
+            start.Play();
     }
-    public void StopSound()
+    public void StopSound(AudioSource sound)
     {
-        stop.Play();
+        sound.Stop();
+    }
+
+    public void Death()
+    {
+        if (death != null)
+            death.Play();
     }
     public void Mid()
     {
-        slow.Stop();
-        swift.Stop();
+        StopSound(slow);
+        StopSound(swift);
     }
     public void Slow()
     {
@@ -64,6 +72,11 @@ public class PlayerSound : MonoBehaviour
     {
         int i = Random.Range(0, footSteps.Length);
         footSteps[i].Play();
+    }
+    
+    public void ActivateStation()
+    {
+        activateStation.Play();
     }
     void Start()
     {
