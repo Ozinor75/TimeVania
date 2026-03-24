@@ -110,18 +110,11 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);
     }
     
-    //private IEnumerator Dash()
-    //{
-        //isDashing = true;
-        //var originalGravity = rb.gravityScale;
-        //rb.gravityScale = 0;
-        //rb.linearVelocity = Vector2.zero;
-        //rb.linearVelocity = playerControls.Player.Direction.ReadValue<Vector2>() * activePreset.dashSpeed;
-        //yield return new WaitForSecondsRealtime(activePreset.dashDuration);
-        //rb.gravityScale = originalGravity;
-        //timerController.t -= dashCost;
-        //isDashing = false;
-    //}
+    private IEnumerator DashLine()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        line.enabled = false;
+    }
 
     public void StartDash()
     {
@@ -146,11 +139,12 @@ public class PlayerController : MonoBehaviour
         // get pos array (points)
         posArray[1] = endPos;
         line.SetPositions(posArray);
-            
+        line.enabled = true;    
         //apply positions
         rb.position = endPos;
         if (!timerController.isCharging)
             timerController.t -= dashCost;
+        StartCoroutine(DashLine());
     }
     
     public void ChangeGear()
