@@ -3,9 +3,11 @@ using UnityEngine;
 public class MareeScale : MonoBehaviour
 {
     [Header("Paramètres de la marée")]
+    public float vitesseMaree = 1f;
     public float acceleratedTime;
     public float normalTime;
-    public float slowedTime;    
+    public float slowedTime;
+    public float timerToStart = 0f;
     
     [Header("Objet Flottant (Le Holder)")]
     public Transform holder;
@@ -19,6 +21,7 @@ public class MareeScale : MonoBehaviour
     public GlobalTime globalTime;
     public float timeScale;
     private float tempsAccumule = 0f;
+    private float timer;
     
     void Start()
     {
@@ -32,6 +35,7 @@ public class MareeScale : MonoBehaviour
             float sommetInitialY = transform.position.y + (transform.lossyScale.y / 2f);
             offsetHolderY = holder.position.y - sommetInitialY;
         }
+        timer =  timerToStart;
     }
 
     void Update()
@@ -48,26 +52,31 @@ public class MareeScale : MonoBehaviour
                 timeScale = slowedTime;
                 break;
         }
-        tempsAccumule += Time.deltaTime * timeScale;
-        float vague = (Mathf.Sin(tempsAccumule) + 1f) / 2f;
-        float nouveauScaleY = Mathf.Lerp(scaleMinimumY, scaleMaximumY, vague);
-        
-        Vector3 nouveauScale = scaleInitial;
-        nouveauScale.y = nouveauScaleY;
-        transform.localScale = nouveauScale;
-        
-        Vector3 nouvellePosition = positionInitiale;
-        float differenceDeTaille = nouveauScaleY - scaleInitial.y;
-        nouvellePosition.y = positionInitiale.y + (differenceDeTaille / 2f);
-        
-        transform.localPosition = nouvellePosition;
-        
-        if (holder != null)
+        if (timer > 0f)
+            timer -= Time.deltaTime*timeScale;
+        if (timer <= 0f)
         {
-            float sommetActuelY = transform.position.y + (transform.lossyScale.y / 2f);
-            Vector3 positionHolder = holder.position;
-            positionHolder.y = sommetActuelY + offsetHolderY;
-            holder.position = positionHolder;
+            tempsAccumule += Time.deltaTime * timeScale;
+            float vague = (-Mathf.Cos(tempsAccumule * vitesseMaree) + 1f) / 2f; 
+            float nouveauScaleY = Mathf.Lerp(scaleMinimumY, scaleMaximumY, vague);
+            
+            Vector3 nouveauScale = scaleInitial;
+            nouveauScale.y = nouveauScaleY;
+            transform.localScale = nouveauScale;
+            
+            Vector3 nouvellePosition = positionInitiale;
+            float differenceDeTaille = nouveauScaleY - scaleInitial.y;
+            nouvellePosition.y = positionInitiale.y + (differenceDeTaille / 2f);
+            
+            transform.localPosition = nouvellePosition;
+            
+            if (holder != null)
+            {
+                float sommetActuelY = transform.position.y + (transform.lossyScale.y / 2f);
+                Vector3 positionHolder = holder.position;
+                positionHolder.y = sommetActuelY + offsetHolderY;
+                holder.position = positionHolder;
+            }
         }
     }
 }

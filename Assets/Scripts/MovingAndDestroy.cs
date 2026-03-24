@@ -9,13 +9,24 @@ public class MovingAndDestroy : MonoBehaviour
     public float normalTime;
     public float slowedTime;
     public bool Up;
-
-    public bool positiveMove = true;
-
+    public bool Down;
+    public bool Left;
+    public bool Right;
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PatternTrigger"))
-            positiveMove = !positiveMove;
+        if (other.CompareTag("DestroyTrigger"))
+        {
+            foreach (Transform child in transform)
+            { 
+                if (child.CompareTag("Player"))
+                {
+                    child.SetParent(null);
+                    break; 
+                }
+            }
+            Destroy(gameObject);
+        }
     }
 
     void Update()
@@ -32,20 +43,23 @@ public class MovingAndDestroy : MonoBehaviour
                 timeScale = slowedTime;
                 break;
         }
-        if (!Up)
-        {
-            if (positiveMove)
-                transform.position += new Vector3(2 * timeScale * Time.deltaTime, 0, 0);
-            else
-                transform.position -= new Vector3(2 * timeScale * Time.deltaTime, 0, 0);
+        if (Right)
+        { 
+            transform.position += new Vector3(2 * timeScale * Time.deltaTime, 0, 0);
         }
-        else
+        else if (Left)
         {
-            if (positiveMove)
-                transform.position += new Vector3(0, 2 * timeScale * Time.deltaTime, 0);
-            else
-                transform.position -= new Vector3(0, 2 * timeScale * Time.deltaTime, 0);
+            transform.position += new Vector3(-2 * timeScale * Time.deltaTime, 0, 0);
         }
+        else if (Up)
+        {
+            transform.position += new Vector3(0, 2 * timeScale * Time.deltaTime, 0);
+        }
+        else if (Down)
+        {
+            transform.position += new Vector3(0, -2 * timeScale * Time.deltaTime, 0);
+        }
+            
     }
 
     private void Start()

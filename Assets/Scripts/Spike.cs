@@ -10,7 +10,7 @@ public class Spike : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            timeChanger.ChangeTime();
+            // timeChanger.ChangeTime();
             playerSound.HurtSound();
             playerController.Pushback(transform.position);
         }

@@ -58,7 +58,6 @@ public class SpawingPlatform : MonoBehaviour
 
     private void Spawn()
     {
-        if (go != null) return;
         switch (objectType)
         {
             case ObjectType.UpPlatform:
