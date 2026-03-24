@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     public bool onStation = false;
     public bool isCharging = false;
     private bool isDashing = false;
-    private bool isRespawning = false;
+    public bool isRespawning = false;
     private bool notJumping = true; //check si on doit détecter le sol ou pas
     private float movementUpDown;
     private float movementLeftRight;
@@ -305,12 +305,19 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Respawn");
         isRespawning = true;
         CanMove = false;
+        if (transform.parent != null)
+            transform.SetParent(null);
         playerSound.Death();
         while (blackScreenColor.a < 1f)
         {
             blackScreenColor.a += Time.deltaTime;
             blackScreen.color = blackScreenColor;
             yield return null;
+        }
+
+        if (transform.parent != null)
+        {
+            transform.SetParent(null);
         }
         rb.position = StartPos;
         yield return new WaitForSeconds(1f);
