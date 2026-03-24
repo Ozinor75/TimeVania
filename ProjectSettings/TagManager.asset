@@ -12,6 +12,7 @@ TagManager:
   - ChargingRoom
   - ChargingStation
   - BlackScreen
+  - DestroyTrigger
   layers:
   - Default
   - TransparentFX
