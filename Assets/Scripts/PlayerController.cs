@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public float cototE;
 
     [Header("Player refs")]
+    public InputManager inputManager;
     public CustomInputs playerControls;
     public Rigidbody2D rb;
     private BoxCollider2D selfCollider;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private LineRenderer line;
     private Image blackScreen;
     private Color blackScreenColor;
+    public Transform respawnPoint;
     
     [Header("Player Debug")]
     public bool isGrounded = true;
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bubbleSlow;
     public GameObject bubbleFast;
     
-    public bool CanMove = true;
+    public bool CanMove = false;
     public int gearChange = 0;
     private float t = 0f;//timer pour isgrounded
     private float GlisseDuree = 0.1f; // Durée pour glisser
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        inputManager = FindAnyObjectByType<InputManager>();
         selfCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
@@ -92,10 +95,11 @@ public class PlayerController : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
         Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed);
         
-        StartPos = rb.position;     //sauvegarde position de départ
+        StartPos = rb.position; //sauvegarde position de départ
         line = GetComponent<LineRenderer>();
         blackScreenColor = Color.black;
-        blackScreenColor.a = 0f;
+
+        StartCoroutine(StartGame());
     }
 
     public void MakeJump()
@@ -293,6 +297,7 @@ public class PlayerController : MonoBehaviour
         // Reset
         playerBoost.boostState = BoostStates.Gear2;
         activePreset = playerBoost.ReturnGearSpeed();
+        inputManager.ActivateStation.Invoke();
         timerController.tMult = activePreset.timerMult;
         Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol
         CanMove = true;
@@ -319,7 +324,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.SetParent(null);
         }
-        rb.position = StartPos;
+        rb.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
         yield return new WaitForSeconds(1f);
         while (blackScreenColor.a > 0f)
         {
@@ -329,6 +334,19 @@ public class PlayerController : MonoBehaviour
         }
         Respawn();
 
+    }
+
+    public IEnumerator StartGame()
+    {
+        while (blackScreenColor.a > 0f)
+        {
+            blackScreenColor.a -= Time.deltaTime;
+            blackScreen.color = blackScreenColor;
+            yield return null;
+        }
+        rb.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
+        Respawn();
+        CanMove = true;
     }
     public void ExitStation()
     {

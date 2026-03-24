@@ -39,7 +39,7 @@ public class Station : MonoBehaviour
         {
             isCharging = true;
             line.enabled = true;
-            player.StartPos = new Vector2(transform.position.x, transform.position.y);
+            player.respawnPoint = transform;
             cameraFollow.ChangeMode(roomTrigger, cameraDepth);
         }
     }
