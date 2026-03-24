@@ -198,6 +198,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 103695124799381688}
     m_Modifications:
+    - target: {fileID: -8180729459645280215, guid: c3cb35c51bf8a66408de22134560bc85, type: 3}
+      propertyPath: time
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5848331806522960528, guid: c3cb35c51bf8a66408de22134560bc85, type: 3}
       propertyPath: m_Name
       value: BaseEnemy (1)
