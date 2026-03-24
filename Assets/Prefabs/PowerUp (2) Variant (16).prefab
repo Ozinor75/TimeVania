@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPositive: 1
-  time: 12
+  time: 18
 --- !u!114 &6746340453868093988
 MonoBehaviour:
   m_ObjectHideFlags: 0

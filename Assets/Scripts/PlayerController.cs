@@ -242,7 +242,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, Vector2.down, 0.2f);
                                                                                                                                             
         Debug.DrawLine(transform.position, hit.point, Color.red);
-        if (hit && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Moving")))
+        if (hit && (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Moving") || hit.collider.CompareTag("Wall")))
         {
             Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol
             cototE = coyotETimer;

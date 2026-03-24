@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3681163104460724009}
   m_Layer: 0
   m_Name: "Mar\xE9e"
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,11 +104,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2a6bfe6ea8d2e49925b4f0095010be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  vitesseMaree: 1
   acceleratedTime: 2
   normalTime: 0.5
   slowedTime: 0.25
-  scaleMinimumY: 0.9
+  timerToStart: 0
   holder: {fileID: 0}
+  scaleMinimumY: 0.9
   scaleMaximumY: 9.4
   globalTime: {fileID: 0}
   timeScale: 0
