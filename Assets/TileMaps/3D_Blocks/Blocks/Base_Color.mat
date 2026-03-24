@@ -88,8 +88,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadowDetailShape:
-        m_Texture: {fileID: 2800000, guid: d00d1b2aafe502141bea5ca9a9b145dd, type: 3}
-        m_Scale: {x: 3, y: 3}
+        m_Texture: {fileID: 2800000, guid: 43bf0e56d6e2d584abe8814d6b608a62, type: 3}
+        m_Scale: {x: 4, y: 4}
         m_Offset: {x: 0, y: 0}
     - _ShadowShape:
         m_Texture: {fileID: 2800000, guid: d00d1b2aafe502141bea5ca9a9b145dd, type: 3}
@@ -110,17 +110,17 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LightSize: 0.698
+    - _LightSize: 0.831
     - _LightSize1: 0.752
     - _LightStrength: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ShadowBias: 0.075
+    - _ShadowBias: 0.39
     - _ShadowDetailStrenght: 0.378
-    - _ShadowSize: 0.973
-    - _ShadowStrenght: 0.627
+    - _ShadowSize: 0.5
+    - _ShadowStrenght: 0.447
     - _ShadowStrength: 0.578
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -129,7 +129,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _BaseColor: {r: 0.12406549, g: 0.6415094, b: 0.62257856, a: 1}
+    - _BaseColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LED_Color: {r: 127.99999, g: 127.99999, b: 0, a: 1}
