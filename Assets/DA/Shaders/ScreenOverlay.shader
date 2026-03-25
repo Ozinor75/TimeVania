@@ -4,6 +4,8 @@ Shader "DashTrail"
 {
 	Properties
 	{
+		_BaseColor("BaseColor", Color) = (0,1,1,0)
+		_Speed("Speed", Float) = 1
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
@@ -20,12 +22,17 @@ Shader "DashTrail"
 		struct Input
 		{
 			float2 uv_texcoord;
+			float3 worldPos;
+			float3 worldNormal;
 		};
+
+		uniform float4 _BaseColor;
+		uniform float _Speed;
 
 
 		float2 voronoihash1( float2 p )
 		{
-			
+			p = p - 1 * floor( p / 1 );
 			p = float2( dot( p, float2( 127.1, 311.7 ) ), dot( p, float2( 269.5, 183.3 ) ) );
 			return frac( sin( p ) *43758.5453);
 		}
@@ -44,7 +51,7 @@ Shader "DashTrail"
 			 		float2 g = float2( i, j );
 			 		float2 o = voronoihash1( n + g );
 					o = ( sin( time + o * 6.2831 ) * 0.5 + 0.5 ); float2 r = f - g - o;
-					float d = 0.500 * pow( ( pow( abs( r.x ), 1 ) + pow( abs( r.y ), 1 ) ), 1.000 );
+					float d = max(abs(r.x), abs(r.y));
 			 		if( d<F1 ) {
 			 			F2 = F1;
 			 			F1 = d; mg = g; mr = r; id = o;
@@ -65,8 +72,7 @@ Shader "DashTrail"
 
 		void surf( Input i , inout SurfaceOutput o )
 		{
-			float4 color7 = IsGammaSpace() ? float4(0,1,1,0) : float4(0,1,1,0);
-			float mulTime3 = _Time.y * 25.0;
+			float mulTime3 = _Time.y * _Speed;
 			float time1 = mulTime3;
 			float2 voronoiSmoothId1 = 0;
 			float2 uv_TexCoord2 = i.uv_texcoord * float2( 12,12 );
@@ -76,18 +82,22 @@ Shader "DashTrail"
 			float fade1 = 0.5;
 			float voroi1 = 0;
 			float rest1 = 0;
-			for( int it1 = 0; it1 <2; it1++ ){
+			for( int it1 = 0; it1 <3; it1++ ){
 			voroi1 += fade1 * voronoi1( coords1, time1, id1, uv1, 0,voronoiSmoothId1 );
 			rest1 += fade1;
 			coords1 *= 2;
 			fade1 *= 0.5;
 			}//Voronoi1
 			voroi1 /= rest1;
-			float blendOpSrc14 = step( voroi1 , 0.2 );
-			float blendOpDest14 = ( 1.0 - step( voroi1 , 0.3 ) );
-			float temp_output_14_0 = ( saturate( ( blendOpDest14 - blendOpSrc14 ) ));
-			o.Emission = ( color7 * temp_output_14_0 ).rgb;
-			o.Alpha = temp_output_14_0;
+			float temp_output_4_0 = step( voroi1 , 0.4 );
+			o.Emission = ( _BaseColor * temp_output_4_0 ).rgb;
+			float3 ase_worldPos = i.worldPos;
+			float3 ase_worldViewDir = normalize( UnityWorldSpaceViewDir( ase_worldPos ) );
+			float3 ase_worldNormal = i.worldNormal;
+			float fresnelNdotV14 = dot( ase_worldNormal, ase_worldViewDir );
+			float fresnelNode14 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV14, 5.0 ) );
+			float clampResult16 = clamp( ( temp_output_4_0 * fresnelNode14 ) , 0.0 , 0.3 );
+			o.Alpha = clampResult16;
 		}
 
 		ENDCG
@@ -120,6 +130,7 @@ Shader "DashTrail"
 				V2F_SHADOW_CASTER;
 				float2 customPack1 : TEXCOORD1;
 				float3 worldPos : TEXCOORD2;
+				float3 worldNormal : TEXCOORD3;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -133,6 +144,7 @@ Shader "DashTrail"
 				Input customInputData;
 				float3 worldPos = mul( unity_ObjectToWorld, v.vertex ).xyz;
 				half3 worldNormal = UnityObjectToWorldNormal( v.normal );
+				o.worldNormal = worldNormal;
 				o.customPack1.xy = customInputData.uv_texcoord;
 				o.customPack1.xy = v.texcoord;
 				o.worldPos = worldPos;
@@ -151,6 +163,8 @@ Shader "DashTrail"
 				surfIN.uv_texcoord = IN.customPack1.xy;
 				float3 worldPos = IN.worldPos;
 				half3 worldViewDir = normalize( UnityWorldSpaceViewDir( worldPos ) );
+				surfIN.worldPos = worldPos;
+				surfIN.worldNormal = IN.worldNormal;
 				SurfaceOutput o;
 				UNITY_INITIALIZE_OUTPUT( SurfaceOutput, o )
 				surf( surfIN, o );
@@ -169,26 +183,27 @@ Shader "DashTrail"
 }
 /*ASEBEGIN
 Version=19200
-Node;AmplifyShaderEditor.OneMinusNode;6;-747.6851,121.6539;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.StepOpNode;5;-887.6851,99.6539;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0.3;False;1;FLOAT;0
-Node;AmplifyShaderEditor.VoronoiNode;1;-1095.37,-101.1913;Inherit;True;0;4;1;0;2;False;1;False;False;False;4;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;3;FLOAT;0;FLOAT2;1;FLOAT2;2
-Node;AmplifyShaderEditor.StepOpNode;4;-755.6851,-201.3461;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0.2;False;1;FLOAT;0
-Node;AmplifyShaderEditor.BlendOpsNode;14;-197.6851,-47.3461;Inherit;False;Subtract;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;880.3998,-43.19999;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;DashTrail;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Back;0;False;;0;False;;False;0;False;;0;False;;False;0;Transparent;0.5;True;True;0;False;Transparent;;Transparent;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;2;5;False;;10;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
-Node;AmplifyShaderEditor.SimpleTimeNode;3;-1463.685,28.6539;Inherit;False;1;0;FLOAT;25;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;12;347.5149,-217.9461;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.ColorNode;7;-309.6851,-277.3461;Inherit;False;Constant;_Color0;Color 0;0;0;Create;True;0;0;0;False;0;False;0,1,1,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TextureCoordinatesNode;2;-1398.006,-124.3496;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;12,12;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-WireConnection;6;0;5;0
-WireConnection;5;0;1;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;12;466.1816,-191.9461;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.StepOpNode;4;7.254203,46.71977;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0.4;False;1;FLOAT;0
+Node;AmplifyShaderEditor.TextureCoordinatesNode;2;-592.6899,-62.34225;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;12,12;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.VoronoiNode;1;-290.0541,-39.18396;Inherit;True;0;3;1;0;3;True;1;False;False;False;4;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;3;FLOAT;0;FLOAT2;1;FLOAT2;2
+Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;1202.8,72.93334;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;DashTrail;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Back;0;False;;0;False;;False;0;False;;0;False;;False;0;Transparent;0.5;True;True;0;False;Transparent;;Transparent;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;2;5;False;;10;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;15;500.9192,324.3756;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.ClampOpNode;16;802.4474,409.3232;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.3;False;1;FLOAT;0
+Node;AmplifyShaderEditor.FresnelNode;14;13.85299,307.9088;Inherit;True;Standard;WorldNormal;ViewDir;False;False;5;0;FLOAT3;0,0,1;False;4;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;5;False;1;FLOAT;0
+Node;AmplifyShaderEditor.ColorNode;7;27.64828,-352.6794;Inherit;False;Property;_BaseColor;BaseColor;0;0;Create;True;0;0;0;False;0;False;0,1,1,0;0,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleTimeNode;3;-572.3689,81.99458;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;17;-879.9377,-17.82724;Inherit;False;Property;_Speed;Speed;1;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
+WireConnection;12;0;7;0
+WireConnection;12;1;4;0
+WireConnection;4;0;1;0
 WireConnection;1;0;2;0
 WireConnection;1;1;3;0
-WireConnection;4;0;1;0
-WireConnection;14;0;4;0
-WireConnection;14;1;6;0
 WireConnection;0;2;12;0
-WireConnection;0;9;14;0
-WireConnection;12;0;7;0
-WireConnection;12;1;14;0
+WireConnection;0;9;16;0
+WireConnection;15;0;4;0
+WireConnection;15;1;14;0
+WireConnection;16;0;15;0
+WireConnection;3;0;17;0
 ASEEND*/
-//CHKSM=2FFEC4DD0E0EF3F0EA94E810A364B7971FB220BC
+//CHKSM=2DC9F30C5909C309BA45E94D5A4F3A55D895D25D
