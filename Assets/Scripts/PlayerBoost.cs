@@ -49,6 +49,9 @@ public class PlayerBoost : MonoBehaviour
     private CustomInputs playerControls;
     private PlayerTimer timerController;
     public Material mat;
+    public Color SlowColor;
+    public Color MidColor;
+    public Color SwiftColor;
 
     [Header("Debug Values")]
     public float DEBUG_groundSpeed;
@@ -91,17 +94,17 @@ public class PlayerBoost : MonoBehaviour
         {
             case BoostStates.Gear1:
                 preset = PlayerPresets.Slow;
-                mat.color = new Color(0f, 1f, 1f);
+                mat.SetColor("_LEDsColor", SlowColor);
                 break;
                 
             case BoostStates.Gear2:
                 preset = PlayerPresets.Mid;
-                mat.color = new Color(1f, 1f, 0f);
+                mat.SetColor("_LEDsColor", MidColor);
                 break;
                 
             case BoostStates.Gear3:
                 preset = PlayerPresets.Swift;
-                mat.color = new Color(1f, 0f, 0f);
+                mat.SetColor("_LEDsColor", SwiftColor);
                 break;
 
             case BoostStates.DEBUG:

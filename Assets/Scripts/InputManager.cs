@@ -10,6 +10,10 @@ public class InputManager : MonoBehaviour
     public UnityEvent GearReleased;
     public UnityEvent ActivateStation;
 
+    private bool isMoving;
+    public UnityEvent Movement;
+    public UnityEvent StopMovement;
+
     public CustomInputs playerControls;
     private PlayerController playerController;
     private void OnEnable()
@@ -31,6 +35,23 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerControls.Player.Direction.ReadValue<Vector2>() != Vector2.zero && !isMoving)
+        {
+            if (playerController.isGrounded)
+            {
+                Movement.Invoke();
+                isMoving = true;
+            }
+        }
+
+        if (!(playerControls.Player.Direction.ReadValue<Vector2>() != Vector2.zero) && isMoving)
+        {
+            {
+                isMoving = false;
+                StopMovement.Invoke();
+            }
+        }
+        
         if (playerControls.Player.Jump.WasPressedThisFrame())
         {
             if (playerController.isGrounded || playerController.cototE > 0f)
