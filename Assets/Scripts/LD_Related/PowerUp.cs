@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    private TimeChanger timeChanger;
+    private BatteryAffector _batteryAffector;
     private PlayerSound playerSound;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            timeChanger.ChangeTime();
+            _batteryAffector.ChangeTime();
             playerSound.Reload();
             Destroy(gameObject);
         }
@@ -17,7 +17,7 @@ public class PowerUp : MonoBehaviour
 
     void Start()
     {
-        timeChanger = GetComponent<TimeChanger>();
+        _batteryAffector = GetComponent<BatteryAffector>();
         playerSound = FindObjectOfType<PlayerSound>();
     }
 

@@ -54,7 +54,7 @@ public class InputManager : MonoBehaviour
         
         if (playerControls.Player.Jump.WasPressedThisFrame())
         {
-            if (playerController.isGrounded || playerController.cototE > 0f)
+            if (playerController.isGrounded || playerController.coyotE > 0f)
             {
                 Debug.Log("Jumping");
                 Jump.Invoke();

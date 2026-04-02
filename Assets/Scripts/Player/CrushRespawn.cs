@@ -1,23 +1,20 @@
 using UnityEngine;
 
-
-[RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
 public class CrushRespawn : MonoBehaviour
 {
-[Header("Paramètres d'Écrasement")]
+    [Header("Paramètres d'Écrasement")]
     public float crushTolerance = 0.05f;
     
     [Header("Système de Respawn")]
     public Vector3 currentRespawnPosition;
 
-    private BoxCollider2D col;
+    private CapsuleCollider2D col;
     private Rigidbody2D rb;
     private PlayerController playerController;
 
     void Start()
     {
-        col = GetComponent<BoxCollider2D>();
+        col = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
         currentRespawnPosition = transform.position;

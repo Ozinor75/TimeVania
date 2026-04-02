@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TimeChanger : MonoBehaviour
+public class BatteryAffector : MonoBehaviour
 {
     private PlayerTimer playerTimer; 
     
@@ -15,16 +15,6 @@ public class TimeChanger : MonoBehaviour
     {
         time = isPositive ? time : -time;
         playerTimer.t += time;
-        
-        // switch (isPositive)
-        // {
-        //     case true:
-        //         playerTimer.t += time;
-        //         break;
-        //     case false:
-        //         playerTimer.t -= time;
-        //         break;
-        // }
     }
 }
 

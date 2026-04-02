@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [Header("Player Stats")]
     public float effectiveSpeed;
     public float dashCost;
-    public float GravityNotJumping; // gravity qui maintient le joueur au sol
     public Vector2 dashBoxSize;
     
     [Header("Pushback")]
@@ -26,13 +25,13 @@ public class PlayerController : MonoBehaviour
 
     [Header("CoyotEtime")]
     public float coyotETimer;
-    public float cototE;
+    public float coyotE;
 
     [Header("Player refs")]
     public InputManager inputManager;
     public CustomInputs playerControls;
     public Rigidbody2D rb;
-    private BoxCollider2D selfCollider;
+    private CapsuleCollider2D selfCollider;
     public PlayerTimer timerController;
     private PlayerBoost playerBoost;
     private PlayerSound playerSound;
@@ -50,7 +49,7 @@ public class PlayerController : MonoBehaviour
     public bool isCharging = false;
     private bool isDashing = false;
     public bool isRespawning = false;
-    private bool notJumping = true; //check si on doit détecter le sol ou pas
+    private bool isJumping = true; //check si on doit détecter le sol ou pas
     private float movementUpDown;
     private float movementLeftRight;
     private Vector2 movement;
@@ -66,6 +65,7 @@ public class PlayerController : MonoBehaviour
     private float GlisseDuree = 0.1f; // Durée pour glisser
     private float GlisseTimer = 0f; // timer pour réactiver la gravité des boosts en l'air
     [HideInInspector] public Vector2 platformVelocity = Vector2.zero;
+    
     private void OnEnable()
     {
         if (playerControls == null)
@@ -73,14 +73,19 @@ public class PlayerController : MonoBehaviour
         
         playerControls.Enable();
     }
+    
     private void OnDisable()
     {
         playerControls.Disable();
     }
+    
     void Start()
     {
+        Physics2D.queriesStartInColliders = false;
+        Physics2D.gravity = new Vector2(0, -35);
+        
         inputManager = FindAnyObjectByType<InputManager>();
-        selfCollider = GetComponent<BoxCollider2D>();
+        selfCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
         
@@ -92,10 +97,7 @@ public class PlayerController : MonoBehaviour
         timerController = GetComponent<PlayerTimer>();
         timerController.tMult = activePreset.timerMult;
         
-        Physics2D.queriesStartInColliders = false;
-        Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed);
-        
-        StartPos = rb.position; //sauvegarde position de départ
+        StartPos = transform.position; //sauvegarde position de départ
         line = GetComponent<LineRenderer>();
         blackScreenColor = Color.black;
 
@@ -104,10 +106,9 @@ public class PlayerController : MonoBehaviour
 
     public void MakeJump()
     {
-        notJumping = false; //arrêter la détection du sol
-        GlisseTimer = 0f;
-        Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+        isGrounded = false;
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);
+        isJumping = true;
     }
     
     private IEnumerator DashLine()
@@ -115,39 +116,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.2f);
         line.enabled = false;
     }
-
-    public void StartDash()
-    {
-        //StartCoroutine(Dash());
-    }
-    
-    public void MakeDash()
-    {
-        Vector3[] posArray = new Vector3[2];
-        Vector2 endPos = playerControls.Player.Direction.ReadValue<Vector2>().normalized;
-        RaycastHit2D checkDash = Physics2D.BoxCast(transform.position, dashBoxSize, 0f, endPos, activePreset.airSpeed);
-        posArray[0] = transform.position;
-            
-        if (checkDash)
-        {
-            endPos = checkDash.point;
-        }
-        else
-        {
-            endPos *= activePreset.airSpeed;
-            endPos += rb.position;
-        }
-        // get pos array (points)
-        posArray[1] = endPos;
-        line.SetPositions(posArray);
-        line.enabled = true;    
-        //apply positions
-        rb.position = endPos;
-        if (!timerController.isCharging)
-            timerController.t -= dashCost;
-        StartCoroutine(DashLine());
-    }
-    
     public void ChangeGear()
     {
         Debug.Log("Gear Changed");
@@ -166,7 +134,7 @@ public class PlayerController : MonoBehaviour
             playerBoost.boostState = BoostStates.Gear3;
         activePreset = playerBoost.ReturnGearSpeed();
         timerController.tMult = activePreset.timerMult;
-        Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
+        // Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
     }
     
     private void Update()
@@ -176,34 +144,21 @@ public class PlayerController : MonoBehaviour
             movementLeftRight = playerControls.Player.Direction.ReadValue<Vector2>().x;
             movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
         }
+        
+        movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
 
         if (timerController.t <= 0 && !isRespawning) StartCoroutine(MakeRespawn());
         
-        if (cototE >= 0f)
+        if (coyotE >= 0f)
         {
-            cototE -= Time.deltaTime;
+            coyotE -= Time.deltaTime;
         }
         
-        movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
-        
-        if (notJumping) IsGrounded(); //Pour régler le problème de détection du sol, quand on saute il redétecte à la frame d'après le sol et sans réactive immédiatement GravityNotJumping
-        else
-        {
-            t += Time.deltaTime;
-            if (t >= 0.2f)
-            {
-                notJumping = true;
-                t = 0f;
-            }
-        }
-        
-        // DEBUG INPUTS
         if (playerControls.DEBUG.AdminGear.WasPressedThisFrame())
         {
             playerBoost.boostState = BoostStates.DEBUG;
             activePreset = playerBoost.ReturnGearSpeed();
             timerController.tMult = activePreset.timerMult;
-            // Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
         }
         
         if (playerControls.DEBUG.TimerReset.WasPressedThisFrame())
@@ -231,44 +186,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log(rb.linearVelocity);
         }
     }
-
-    // INFORMATION TAKING
-    private void IsGrounded()
-    {
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, selfCollider.size, 0f, Vector2.down, 0.2f);
-                                                                                                                                            
-        Debug.DrawLine(transform.position, hit.point, Color.red);
-        if (hit && (hit.collider.CompareTag("Ground") ||        // Changer ici, trouver un autre moyen (layer ?)
-                    hit.collider.CompareTag("Moving") ||
-                    hit.collider.CompareTag("Wall") ||
-                    hit.collider.CompareTag("Missile")))
-        {
-            Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol CHANGER CA PTET
-            cototE = coyotETimer;
-            isGrounded = true;
-            effectiveSpeed = activePreset.groundSpeed;
-            GlisseTimer = GlisseDuree;
-        }
-        
-        else
-        {
-            if (GlisseTimer > 0f)
-            {
-                GlisseTimer -= Time.deltaTime;
-                
-                Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed);
-                isGrounded = true; 
-                effectiveSpeed = activePreset.groundSpeed;
-            }
-            else
-            {
-                Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
-                cototE -= Time.deltaTime;
-                isGrounded = false;
-                effectiveSpeed = activePreset.airSpeed;
-            }
-        }
-    }
     
     public void Pushback(Vector2 hitPosition)
     {
@@ -280,28 +197,26 @@ public class PlayerController : MonoBehaviour
         pushbackVelocity = new Vector2(x, y);
         isPushedBack = true;
         pushbackTimer = pushbackDuration;
-        notJumping = false;
+        isJumping = false;
         t = 0f;
         rb.linearVelocity = pushbackVelocity;
     }
-    
     void Respawn()
     {
         playerSound.StartSound();
-        Debug.Log("OUTTA TIME !!!");
+        
         // Return
         timerController.t = timerController.timer;
+        
         // Reset
         playerBoost.boostState = BoostStates.Gear2;
         activePreset = playerBoost.ReturnGearSpeed();
         inputManager.ActivateStation.Invoke();
         timerController.tMult = activePreset.timerMult;
-        Physics2D.gravity = new Vector2(0, -activePreset.slideSpeed); //forcer une gravité pour maintenir le player au sol
         CanMove = true;
         isRespawning = false;
-        // Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
     }
-
+    
     public IEnumerator MakeRespawn()
     {
         Debug.Log("Respawn");
@@ -332,7 +247,6 @@ public class PlayerController : MonoBehaviour
         Respawn();
 
     }
-
     public IEnumerator StartGame()
     {
         while (blackScreenColor.a > 0f)
@@ -341,24 +255,51 @@ public class PlayerController : MonoBehaviour
             blackScreen.color = blackScreenColor;
             yield return null;
         }
-        rb.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
         Respawn();
         CanMove = true;
     }
-    
     public void ExitStation()
     {
         onStation =  false;
         isCharging = false;
     }
     
-    private void OnCollisionEnter2D(Collision2D other)
+    public void GroundPlayer()
     {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            playerSound.HurtSound();
-            Pushback(other.transform.position);
-        }
+        coyotE = coyotETimer;
+        isGrounded = true;
+        isJumping = false;
+        effectiveSpeed = activePreset.groundSpeed;
+        // GlisseTimer = GlisseDuree;
     }
-
+    
+    public void MakeDash()
+    {
+        Vector3[] posArray = new Vector3[2];
+        Vector2 endPos = playerControls.Player.Direction.ReadValue<Vector2>().normalized;
+        Vector2 test = new Vector2(transform.position.x, transform.position.y + 0.5f);
+        RaycastHit2D checkDash = Physics2D.CircleCast(test, selfCollider.size.x / 20, endPos * 2, activePreset.airSpeed);
+        posArray[0] = transform.position;
+            
+        if (checkDash)
+        {
+            endPos = checkDash.point;
+        }
+        else
+        {
+            endPos *= activePreset.airSpeed;
+            endPos += rb.position;
+        }
+        
+        // get pos array (points)
+        posArray[1] = endPos;
+        line.SetPositions(posArray);
+        line.enabled = true;
+        
+        //apply positions
+        rb.position = endPos;
+        if (!timerController.isCharging)
+            timerController.t -= dashCost;
+        StartCoroutine(DashLine());
+    }
 }

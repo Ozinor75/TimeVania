@@ -15,7 +15,6 @@ public class PlayerTimer : MonoBehaviour
     private float tSec = 0f;
     public bool isCharging = false;
     private Spawner[] spawner;
-    // private EnergyPlatform[] energy;
     private BatteryManager batteryManager;
     
     public Material energyMaterial;
@@ -53,7 +52,6 @@ public class PlayerTimer : MonoBehaviour
     void Start()
     {
         spawner = FindObjectsOfType<Spawner>();
-        // energy = FindObjectsOfType<EnergyPlatform>();
         batteryManager = FindObjectOfType<BatteryManager>();
         t = timer;
     }
@@ -76,12 +74,6 @@ public class PlayerTimer : MonoBehaviour
             {
                 sp.Spawn();
             }
-
-            // foreach (EnergyPlatform ep in energy)
-            // {
-            //     ep.isUsed = false;
-            //     ep.isRespawned = true;
-            // }
         }
 
         if (tSec >= 0.2f)
@@ -90,6 +82,4 @@ public class PlayerTimer : MonoBehaviour
             tSec = 0f;
         }
     }
-
-    
 }

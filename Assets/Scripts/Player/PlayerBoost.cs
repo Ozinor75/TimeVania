@@ -111,8 +111,6 @@ public class PlayerBoost : MonoBehaviour
                 mat.color = Color.white;
                 break;
         }
-        
-        // Debug.Log(preset.groundSpeed);
         return preset;
     }
 }
