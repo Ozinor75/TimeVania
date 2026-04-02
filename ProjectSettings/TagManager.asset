@@ -15,6 +15,7 @@ TagManager:
   - DestroyTrigger
   - Wall
   - Checkpoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
