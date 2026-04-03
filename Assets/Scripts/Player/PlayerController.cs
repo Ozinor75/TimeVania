@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
             movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
         }
 
-        if ((Mathf.Abs(movementLeftRight) >= 0.1f) || (Mathf.Abs(movementUpDown) >= 0.1f))
+        if ((Mathf.Abs(movementLeftRight) >= 0.1f) /*|| (Mathf.Abs(movementUpDown) >= 0.1f)*/)
             movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
         else movement = Vector2.zero;
 
