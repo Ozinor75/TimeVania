@@ -10,13 +10,15 @@ public class EnemyShooter : MonoBehaviour
     public Transform firePoint; 
 
     [Header("Firing Parameters")]
-    public float cooldown = 3f; 
-    public int shotCount = 3; 
-    public float fireRate = 0.5f; 
+    public float cooldown = 3f;
+    private float cooldownT = 0f;
+    public float fireRate = 0.5f;
+    private float fireRateT = 0f;
+    public int shotCount = 3;
+    private int shotCountC = 0;
     
     [Header("Rotation Speed")]
     public Transform player;
-    private Coroutine attackCouroutine;
     public float rotationSpeed;
     private bool playerInZone = false;
     private bool isAttacking = false;
@@ -31,6 +33,35 @@ public class EnemyShooter : MonoBehaviour
         if (playerInZone && player != null)
         {
             FacePlayer();
+
+            if (isAttacking)
+            {
+                cooldownT = 0f;
+                fireRateT += Time.deltaTime * globalTime.active;
+            }
+            
+            else cooldownT += Time.deltaTime * globalTime.active;
+            
+            if (fireRateT >= fireRate )
+            {
+                if (shotCountC < shotCount)
+                {
+                    Shoot();
+                    shotCountC++;
+                }
+
+                else
+                {
+                    isAttacking = false;
+                    shotCountC = 0;
+                }
+                
+                fireRateT = 0f;
+            }
+            
+
+            if (cooldownT >= cooldown)
+                isAttacking = true;
         }
     }
     
@@ -42,45 +73,22 @@ public class EnemyShooter : MonoBehaviour
             {
                 player = collision.transform;
             }
-            
+
+            cooldownT = 0f;
+            fireRateT = 0f;
+            shotCountC = 0;
             playerInZone = true;
-            
-            if (!isAttacking)
-            {
-                attackCouroutine = StartCoroutine(AttackCourountine());
-            }
         }
     } 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            cooldownT = 0f;
+            fireRateT = 0f;
+            shotCountC = 0;
             playerInZone = false;
-            if (attackCouroutine != null)
-            {
-                StopCoroutine(attackCouroutine);
-                isAttacking = false;
-            }
-        }
-    }
-
-    IEnumerator AttackCourountine()
-    {
-        isAttacking = true;
-        
-        yield return new WaitForSeconds(cooldown / globalTime.active);  // CHANGER WAITFORSECONDS
-        
-        for (int i = 0; i < shotCount; i++)
-        {
-            if (!playerInZone) break; 
-            Shoot();
-            yield return new WaitForSeconds(fireRate / globalTime.active);
-        }
-        isAttacking = false;
-        
-        if (playerInZone)
-        {
-            attackCouroutine = StartCoroutine(AttackCourountine());
+            isAttacking = false;
         }
     }
 

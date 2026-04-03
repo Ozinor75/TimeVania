@@ -290,7 +290,6 @@ public class PlayerController : MonoBehaviour
         Vector2 test = new Vector2(transform.position.x, transform.position.y + 0.3f);
         RaycastHit2D checkDash = Physics2D.CircleCast(test, 0.1f, endPos, activePreset.airSpeed);
         
-        // posArray[0] = transform.position;
         posArray[0] = test;
             
         if (checkDash)
@@ -303,12 +302,10 @@ public class PlayerController : MonoBehaviour
         
         Debug.DrawLine(test, endPos, Color.green);
         
-        // get pos array (points)
         posArray[1] = endPos;
         line.SetPositions(posArray);
         line.enabled = true;
         
-        //apply positions
         rb.position = endPos;
         if (!timerController.isCharging)
             timerController.t -= dashCost;
