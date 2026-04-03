@@ -90,7 +90,7 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _BumpScale: 1
     - _ColorFade: 0
-    - _ColorFadeDistance: 100
+    - _ColorFadeDistance: 70
     - _ColorFadeHardness: 0.66
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
