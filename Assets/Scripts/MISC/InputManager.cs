@@ -1,15 +1,18 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class InputManager : MonoBehaviour
 {
+    [Header("Active Actions")]
     public UnityEvent Jump;
     public UnityEvent Dash;
     public UnityEvent Upgrade;
     public UnityEvent Downgrade;
     public UnityEvent GearReleased;
     public UnityEvent ActivateStation;
-
+    
+    [Header("Passive Actions")]
     private bool isMoving;
     public UnityEvent Movement;
     public UnityEvent StopMovement;
@@ -57,6 +60,7 @@ public class InputManager : MonoBehaviour
             if (playerController.isGrounded || playerController.coyotE > 0f)
             {
                 Debug.Log("Jumping");
+                // EditorApplication.isPaused = true;
                 Jump.Invoke();
             }
         }

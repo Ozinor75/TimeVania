@@ -49,10 +49,10 @@ public class PlayerController : MonoBehaviour
     public bool isCharging = false;
     private bool isDashing = false;
     public bool isRespawning = false;
-    private bool isJumping = true; //check si on doit détecter le sol ou pas
-    private float movementUpDown;
-    private float movementLeftRight;
-    private Vector2 movement;
+    public bool isJumping = false;
+    public float movementUpDown;
+    public float movementLeftRight;
+    public Vector2 movement;
     public Vector2 StartPos; //pos de départ pour restart
 
     [Header("Prefabs")] 
@@ -106,9 +106,12 @@ public class PlayerController : MonoBehaviour
 
     public void MakeJump()
     {
-        isGrounded = false;
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);
-        isJumping = true;
+        if (isGrounded)
+        {
+            isJumping = true;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);
+            isGrounded = false;
+        }
     }
     
     private IEnumerator DashLine()
@@ -134,7 +137,6 @@ public class PlayerController : MonoBehaviour
             playerBoost.boostState = BoostStates.Gear3;
         activePreset = playerBoost.ReturnGearSpeed();
         timerController.tMult = activePreset.timerMult;
-        // Physics2D.gravity = new Vector2(0, -activePreset.gravityForce);
     }
     
     private void Update()
@@ -144,12 +146,14 @@ public class PlayerController : MonoBehaviour
             movementLeftRight = playerControls.Player.Direction.ReadValue<Vector2>().x;
             movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
         }
-        
-        movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
+
+        if ((Mathf.Abs(movementLeftRight) >= 0.1f) || (Mathf.Abs(movementUpDown) >= 0.1f))
+            movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
+        else movement = Vector2.zero;
 
         if (timerController.t <= 0 && !isRespawning) StartCoroutine(MakeRespawn());
         
-        if (coyotE >= 0f)
+        if (coyotE >= 0f && !isGrounded)
         {
             coyotE -= Time.deltaTime;
         }
@@ -266,18 +270,23 @@ public class PlayerController : MonoBehaviour
     
     public void GroundPlayer()
     {
-        coyotE = coyotETimer;
         isGrounded = true;
+        coyotE = coyotETimer;
         isJumping = false;
         effectiveSpeed = activePreset.groundSpeed;
-        // GlisseTimer = GlisseDuree;
+    }
+    
+    public void UngroundPlayer()
+    {
+        isGrounded = false;
+        coyotE = 0f;
     }
     
     public void MakeDash()
     {
         Vector3[] posArray = new Vector3[2];
         Vector2 endPos = playerControls.Player.Direction.ReadValue<Vector2>().normalized;
-        Vector2 test = new Vector2(transform.position.x, transform.position.y + 0.5f);
+        Vector2 test = new Vector2(transform.position.x, transform.position.y + 1f);
         RaycastHit2D checkDash = Physics2D.CircleCast(test, selfCollider.size.x / 20, endPos * 2, activePreset.airSpeed);
         posArray[0] = transform.position;
             

@@ -6,6 +6,7 @@ public class MovingAndDestroy : MonoBehaviour
     public Transform movable;
     private float t;
     private float r;
+    private WorldEvents worldEvents;
 
     [Header("Heritage")]
     public AnimationCurve curve;
@@ -17,6 +18,7 @@ public class MovingAndDestroy : MonoBehaviour
     private void Start()
     {
         manager = FindFirstObjectByType<GlobalTime>();
+        worldEvents = FindFirstObjectByType<WorldEvents>();
     }
     
     void Update()
@@ -28,6 +30,7 @@ public class MovingAndDestroy : MonoBehaviour
 
         if (t > duration)
         {
+            worldEvents.platformDestroyed.Invoke();
             Destroy(gameObject);
         }
     }

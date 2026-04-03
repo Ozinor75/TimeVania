@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Missile : MonoBehaviour
 {
-    public GlobalTime globalTime;
+    private GlobalTime globalTime;
+    private WorldEvents worldEvents;
     
     [Header("Projectile Parameters")]
     public float timeBeforeExplode;
@@ -14,6 +16,7 @@ public class Missile : MonoBehaviour
     void Start()
     {
         globalTime = FindFirstObjectByType<GlobalTime>();
+        worldEvents = FindFirstObjectByType<WorldEvents>();
         t = timeBeforeExplode;
     }
 
@@ -26,12 +29,14 @@ public class Missile : MonoBehaviour
             t -= Time.deltaTime * globalTime.active;
             if (t <= 0)
             {
+                //ICI
                 Destroy(gameObject);
             }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        worldEvents.missileDestroyed.Invoke();
         hasBeenTouched = true;
     }
 
