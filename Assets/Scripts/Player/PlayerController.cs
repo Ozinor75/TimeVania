@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using NUnit.Framework.Internal;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.InputSystem;
@@ -286,19 +287,21 @@ public class PlayerController : MonoBehaviour
     {
         Vector3[] posArray = new Vector3[2];
         Vector2 endPos = playerControls.Player.Direction.ReadValue<Vector2>().normalized;
-        Vector2 test = new Vector2(transform.position.x, transform.position.y + 1f);
-        RaycastHit2D checkDash = Physics2D.CircleCast(test, selfCollider.size.x / 20, endPos * 2, activePreset.airSpeed);
-        posArray[0] = transform.position;
+        Vector2 test = new Vector2(transform.position.x, transform.position.y + 0.3f);
+        RaycastHit2D checkDash = Physics2D.CircleCast(test, 0.1f, endPos, activePreset.airSpeed);
+        
+        // posArray[0] = transform.position;
+        posArray[0] = test;
             
         if (checkDash)
-        {
             endPos = checkDash.point;
-        }
         else
         {
             endPos *= activePreset.airSpeed;
             endPos += rb.position;
         }
+        
+        Debug.DrawLine(test, endPos, Color.green);
         
         // get pos array (points)
         posArray[1] = endPos;
