@@ -1,9 +1,13 @@
+// Upgrade NOTE: upgraded instancing buffer 'ForceField' to new syntax.
+
 // Made with Amplify Shader Editor v1.9.2
 // Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "ForceField"
 {
 	Properties
 	{
+		_Opacity("Opacity", Float) = 0.3
+		_Color("Color", Color) = (0.3529412,0.3529412,1,0)
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
 
@@ -15,10 +19,18 @@ Shader "ForceField"
 		#include "UnityPBSLighting.cginc"
 		#include "Lighting.cginc"
 		#pragma target 3.0
+		#pragma multi_compile_instancing
 		struct Input
 		{
 			half filler;
 		};
+
+		UNITY_INSTANCING_BUFFER_START(ForceField)
+			UNITY_DEFINE_INSTANCED_PROP(float4, _Color)
+#define _Color_arr ForceField
+			UNITY_DEFINE_INSTANCED_PROP(float, _Opacity)
+#define _Opacity_arr ForceField
+		UNITY_INSTANCING_BUFFER_END(ForceField)
 
 		inline half4 LightingUnlit( SurfaceOutput s, half3 lightDir, half atten )
 		{
@@ -27,9 +39,10 @@ Shader "ForceField"
 
 		void surf( Input i , inout SurfaceOutput o )
 		{
-			float4 color3 = IsGammaSpace() ? float4(0.3529412,0.3529412,1,0) : float4(0.1022417,0.1022417,1,0);
-			o.Emission = color3.rgb;
-			o.Alpha = 0.3;
+			float4 _Color_Instance = UNITY_ACCESS_INSTANCED_PROP(_Color_arr, _Color);
+			o.Emission = _Color_Instance.rgb;
+			float _Opacity_Instance = UNITY_ACCESS_INSTANCED_PROP(_Opacity_arr, _Opacity);
+			o.Alpha = _Opacity_Instance;
 		}
 
 		ENDCG
@@ -106,10 +119,10 @@ Shader "ForceField"
 }
 /*ASEBEGIN
 Version=19200
+Node;AmplifyShaderEditor.ColorNode;3;-455.3334,-48.33334;Inherit;False;InstancedProperty;_Color;Color;1;0;Create;True;0;0;0;False;0;False;0.3529412,0.3529412,1,0;0.3529412,0.3529412,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;1;-234.6667,190.6666;Inherit;False;InstancedProperty;_Opacity;Opacity;0;0;Create;True;0;0;0;False;0;False;0.3;0.3;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;0,0;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;ForceField;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Back;0;False;;0;False;;False;0;False;;0;False;;False;0;Transparent;0.5;True;True;0;False;Transparent;;Transparent;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;2;5;False;;10;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
-Node;AmplifyShaderEditor.RangedFloatNode;1;-234.6667,187.6666;Inherit;False;Constant;_Float0;Float 0;0;0;Create;True;0;0;0;False;0;False;0.3;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;3;-455.3334,-48.33334;Inherit;False;Constant;_Color0;Color 0;0;0;Create;True;0;0;0;False;0;False;0.3529412,0.3529412,1,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 WireConnection;0;2;3;0
 WireConnection;0;9;1;0
 ASEEND*/
-//CHKSM=9136621893EBA8EA692A0AA57633329561EB6C62
+//CHKSM=68F22CA71467A9B3B50038E49C55E5ED9175754A

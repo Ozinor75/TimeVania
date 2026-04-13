@@ -15,10 +15,11 @@ public class PlayerController : MonoBehaviour
     public float dashCost;
     public Vector2 dashBoxSize;
     
-    [Header("Pushback")]
+    [Header("Pushback & Crush")]
     public float pushbackForceX = 10f;
     public float pushbackForceY = 6f;
     public float pushbackDuration = 0.15f;
+    public float crushTolerence;
 
     private bool isPushedBack = false;
     private float pushbackTimer = 0f;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private Image blackScreen;
     private Color blackScreenColor;
     public Transform respawnPoint;
+    public Transform tempRespawn;
     
     [Header("Player Debug")]
     public bool isGrounded = true;
@@ -122,7 +124,7 @@ public class PlayerController : MonoBehaviour
     }
     public void ChangeGear()
     {
-        Debug.Log("Gear Changed");
+        // Debug.Log("Gear Changed");
         if (gearChange == 0)
         {            
             playerBoost.boostState = BoostStates.Gear1;
@@ -188,7 +190,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.linearVelocity = new Vector2(platformVelocity.x, rb.linearVelocityY);
-            Debug.Log(rb.linearVelocity);
+            // Debug.Log(rb.linearVelocity);
         }
     }
     
@@ -206,20 +208,17 @@ public class PlayerController : MonoBehaviour
         t = 0f;
         rb.linearVelocity = pushbackVelocity;
     }
-    void Respawn()
+    
+    public IEnumerator StartGame()
     {
-        playerSound.StartSound();
-        
-        // Return
-        timerController.t = timerController.timer;
-        
-        // Reset
-        playerBoost.boostState = BoostStates.Gear2;
-        activePreset = playerBoost.ReturnGearSpeed();
-        inputManager.ActivateStation.Invoke();
-        timerController.tMult = activePreset.timerMult;
-        CanMove = true;
-        isRespawning = false;
+        while (blackScreenColor.a > 0f)
+        {
+            blackScreenColor.a -= Time.deltaTime;
+            blackScreen.color = blackScreenColor;
+            yield return null;
+        }
+        Respawn();
+        // CanMove = true;
     }
     
     public IEnumerator MakeRespawn()
@@ -250,19 +249,35 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         Respawn();
-
     }
-    public IEnumerator StartGame()
+    
+    public void Respawn()
     {
-        while (blackScreenColor.a > 0f)
-        {
-            blackScreenColor.a -= Time.deltaTime;
-            blackScreen.color = blackScreenColor;
-            yield return null;
-        }
-        Respawn();
+        // playerSound.StartSound();    Nullreference, empêche la fonction de continer, fix avec Fmod
+        
+        // Return
+        timerController.t = timerController.timer;
+        
+        // Reset
+        playerBoost.boostState = BoostStates.Gear2;
+        activePreset = playerBoost.ReturnGearSpeed();
+        inputManager.ActivateStation.Invoke();
+        timerController.tMult = activePreset.timerMult;
+        isRespawning = false;
         CanMove = true;
     }
+    
+    public void CrushRespawn()
+    {
+        rb.simulated = false;
+        transform.position = tempRespawn.position;
+        transform.SetParent(null);
+        rb.simulated = true;
+    }
+    
+    
+    
+    
     public void ExitStation()
     {
         onStation =  false;

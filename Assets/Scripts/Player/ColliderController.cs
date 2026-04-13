@@ -32,6 +32,18 @@ public class ColliderController : MonoBehaviour
             playerSound.HurtSound();
         }
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Checkpoint"))
+            playerController.tempRespawn = other.transform.GetChild(0);
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Checkpoint"))
+            playerController.tempRespawn = playerController.respawnPoint;
+        
+    }
 
     public void CheckGrounded()
     {

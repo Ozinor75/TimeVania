@@ -9,6 +9,7 @@ public class PlatformMovement : MonoBehaviour
     public Transform end;
     public AnimationCurve curve;
     public float duration;
+    public float startOffset;
     private float t;
     private float r;
 
@@ -18,6 +19,9 @@ public class PlatformMovement : MonoBehaviour
     private void Start()
     {
         manager = FindFirstObjectByType<GlobalTime>();
+        
+        curve.postWrapMode = WrapMode.PingPong;
+        t = startOffset;
     }
 
     void Update()
