@@ -117,11 +117,13 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Preset: 0.75
     - _ShadowBias: 0.32
     - _ShadowDetailStrenght: 0.378
     - _ShadowSize: 0.5
     - _ShadowStrenght: 0.586
     - _ShadowStrength: 0.578
+    - _ShadowTilling: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

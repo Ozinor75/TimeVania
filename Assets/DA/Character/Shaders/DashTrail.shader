@@ -8,7 +8,7 @@ Shader "DashTrail"
 	{
 		_Speed("Speed", Float) = 1
 		_BaseSpeed("BaseSpeed", Float) = 1
-		_Color0("Color 0", Color) = (0,1,1,0)
+		[HDR]_Color0("Color 0", Color) = (0,4,4,0)
 		_Tilling("Tilling", Vector) = (0,0,0,0)
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
@@ -198,11 +198,11 @@ Node;AmplifyShaderEditor.SimpleMultiplyOpNode;12;347.5149,-217.9461;Inherit;True
 Node;AmplifyShaderEditor.SimpleTimeNode;3;-1384.685,24.6539;Inherit;False;1;0;FLOAT;25;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;16;-1575.859,4.922119;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;15;False;1;FLOAT;0
 Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;660.3998,-123.2;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;DashTrail;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Back;0;False;;0;False;;False;0;False;;0;False;;False;0;Transparent;0.5;True;True;0;False;Transparent;;Transparent;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;2;5;False;;10;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
-Node;AmplifyShaderEditor.ColorNode;7;-185.4438,-313.2095;Inherit;False;InstancedProperty;_Color0;Color 0;2;0;Create;True;0;0;0;False;0;False;0,1,1,0;0,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TextureCoordinatesNode;2;-1398.006,-124.3496;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;12,12;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.Vector2Node;18;-1666.859,-273.0779;Inherit;False;InstancedProperty;_Tilling;Tilling;3;0;Create;True;0;0;0;False;0;False;0,0;12,12;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.RangedFloatNode;19;-1838.859,55.92212;Inherit;False;InstancedProperty;_BaseSpeed;BaseSpeed;1;0;Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;15;-1757.859,-55.07788;Inherit;False;Property;_Speed;Speed;0;0;Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.ColorNode;7;-185.4438,-313.2095;Inherit;False;InstancedProperty;_Color0;Color 0;2;1;[HDR];Create;True;0;0;0;False;0;False;0,4,4,0;0,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 WireConnection;6;0;5;0
 WireConnection;5;0;1;0
 WireConnection;1;0;2;0
@@ -219,4 +219,4 @@ WireConnection;0;2;12;0
 WireConnection;0;9;14;0
 WireConnection;2;0;18;0
 ASEEND*/
-//CHKSM=59333F94D73678976F8A5B565CE1569838BAE4A2
+//CHKSM=1F84AEDBFE262E4802454555B232BBC46E69D1B0

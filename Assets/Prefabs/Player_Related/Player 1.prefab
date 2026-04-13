@@ -53,7 +53,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 890675599061eeb48bedc4a3b889fb58, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -78,7 +78,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1.9}
   m_Direction: 0
 --- !u!120 &678910359312298579
 LineRenderer:
@@ -183,7 +183,7 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
@@ -246,6 +246,10 @@ MonoBehaviour:
   onStation: 0
   isCharging: 0
   isRespawning: 0
+  isJumping: 0
+  movementUpDown: 0
+  movementLeftRight: 0
+  movement: {x: 0, y: 0}
   StartPos: {x: 0, y: 0}
   bubbleSlow: {fileID: 3137032449423336372, guid: 3d14d2bac3e5520458b4053158bd69d8, type: 3}
   bubbleFast: {fileID: 3137032449423336372, guid: b863e3d6d6cffb64293ef20c726c9151, type: 3}
@@ -284,10 +288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6680cdfb8d85d0498f559bb4de86e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 135c1f381187b8647b200346f15d2b33, type: 2}
-  SlowColor: {r: 0, g: 0, b: 0, a: 0}
-  MidColor: {r: 0, g: 0, b: 0, a: 0}
-  SwiftColor: {r: 0, g: 0, b: 0, a: 0}
+  mat: {fileID: 2100000, guid: 1eab083d945c44f40a1e78f483eb655d, type: 2}
+  SlowColor: {r: 0, g: 1, b: 1, a: 0}
+  MidColor: {r: 1, g: 1, b: 0, a: 0}
+  SwiftColor: {r: 1, g: 0, b: 1, a: 0}
   DEBUG_groundSpeed: 0
   DEBUG_airSpeed: 0
   DEBUG_jumpForce: 7
@@ -354,7 +358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8501219342494475196
 Transform:
   m_ObjectHideFlags: 0
@@ -428,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8395420265841840774
 Transform:
   m_ObjectHideFlags: 0
@@ -2152,7 +2156,7 @@ Transform:
   m_GameObject: {fileID: 4830774834834140760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.93, z: 0}
   m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2189,7 +2193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2225,7 +2229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7029912641282899928, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2236,6 +2240,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 1eab083d945c44f40a1e78f483eb655d, type: 2}
     - target: {fileID: -6298499748641123808, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1eab083d945c44f40a1e78f483eb655d, type: 2}
+    - target: {fileID: -6199179904480714897, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1eab083d945c44f40a1e78f483eb655d, type: 2}
@@ -2256,6 +2264,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 1eab083d945c44f40a1e78f483eb655d, type: 2}
     - target: {fileID: -4130296687782291268, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1eab083d945c44f40a1e78f483eb655d, type: 2}
+    - target: {fileID: -3775136851495557213, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1eab083d945c44f40a1e78f483eb655d, type: 2}
@@ -2294,6 +2306,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7446838097064805428}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2578966412776327839}
   m_SourcePrefab: {fileID: 100100000, guid: 225f70c0bd14f9446b89b2e41032a3e8, type: 3}
 --- !u!4 &7288062579592377380 stripped
 Transform:
@@ -2327,3 +2342,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2578966412776327839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7957780148363456158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c415ad296dca234c8772c36203ad7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimatorScript
