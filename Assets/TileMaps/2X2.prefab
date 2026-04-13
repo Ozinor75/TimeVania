@@ -436,6 +436,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3026417174654166177, guid: b02595ba614582e4081c3af6288e0178, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4169954261841433145, guid: b02595ba614582e4081c3af6288e0178, type: 3}
       propertyPath: m_Name
       value: PowerUp_Low
@@ -516,7 +520,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2788915217322001837, guid: c94a4cd27fb6e2647a4f5573a888000e, type: 3}
   m_PrefabInstance: {fileID: 6544176963497281789}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7519090057062693349
+--- !u!114 &2385721991563806152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

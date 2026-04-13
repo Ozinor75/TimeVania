@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8614554792051596572}
   - component: {fileID: 3874806513861814070}
   - component: {fileID: 9187246286537576538}
+  - component: {fileID: 1657122687099652793}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -234,7 +235,6 @@ MonoBehaviour:
   pushbackForceX: 10
   pushbackForceY: 15
   pushbackDuration: 0.3
-  crushTolerence: -0.1
   coyotETimer: 0.2
   coyotE: 0
   inputManager: {fileID: 0}
@@ -329,6 +329,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ColliderController
   collider: {fileID: 0}
   isOnPlatform: 0
+--- !u!114 &1657122687099652793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120417498359201754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6bdd521d3d66b42b81054d9f35cc9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrushRespawn
+  crushTolerence: 0.1
 --- !u!1 &1681619343937044881
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,7 +2123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &299251757805966802
 Transform:
   m_ObjectHideFlags: 0
@@ -2170,11 +2183,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7964361385644432699}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f6bdd521d3d66b42b81054d9f35cc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrushRespawn
+  crushTolerence: 0
 --- !u!1001 &7110866259383079887
 PrefabInstance:
   m_ObjectHideFlags: 0

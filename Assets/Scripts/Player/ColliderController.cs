@@ -60,7 +60,7 @@ public class ColliderController : MonoBehaviour
                     ClearPlatformParent();
             }
             
-            else if (groundHit.collider.CompareTag("Moving") || groundHit.collider.CompareTag("Missile") && !playerController.isRespawning)
+            else if ((groundHit.collider.CompareTag("Moving") || groundHit.collider.CompareTag("Missile")) && !playerController.isRespawning)
             {
                 if (!playerController.isGrounded)
                     playerController.GroundPlayer();

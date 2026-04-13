@@ -59,42 +59,41 @@ public class InputManager : MonoBehaviour
         {
             if (playerController.isGrounded || playerController.coyotE > 0f)
             {
-                Debug.Log("Jumping");
-                // EditorApplication.isPaused = true;
+                // Debug.Log("Jumping");
                 Jump.Invoke();
             }
         }
 
         if (playerControls.Player.Dash.WasPressedThisFrame() && playerController.timerController.t > playerController.dashCost)
         {
-            Debug.Log("Dashing");
+            // Debug.Log("Dashing");
             Dash.Invoke();
         }
 
         if (playerControls.Player.Upgrade.WasPressedThisFrame() && playerController.activePreset == PlayerPresets.Mid)
         {
-            Debug.Log("Upgrading");
+            // Debug.Log("Upgrading");
             playerController.gearChange = 2;
             Upgrade.Invoke();
         }
         
         if (playerControls.Player.Downgrade.WasPressedThisFrame() && playerController.activePreset == PlayerPresets.Mid)
         {
-            Debug.Log("Downgrading");
+            // Debug.Log("Downgrading");
             playerController.gearChange = 0;
             Downgrade.Invoke();
         }
         
         if (playerControls.Player.Upgrade.WasReleasedThisFrame() || playerControls.Player.Downgrade.WasReleasedThisFrame())
         {
-            Debug.Log("Gear Released");
+            // Debug.Log("Gear Released");
             playerController.gearChange = 1;
             GearReleased.Invoke();
         }
 
         if (playerControls.Player.Station.WasPressedThisFrame() && playerController.onStation && !playerController.isCharging)
         {
-            Debug.Log("Station Pressed");
+            // Debug.Log("Station Pressed");
             playerController.isCharging = true;
             ActivateStation.Invoke();
         }

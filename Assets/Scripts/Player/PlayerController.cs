@@ -15,11 +15,10 @@ public class PlayerController : MonoBehaviour
     public float dashCost;
     public Vector2 dashBoxSize;
     
-    [Header("Pushback & Crush")]
+    [Header("Pushback")]
     public float pushbackForceX = 10f;
     public float pushbackForceY = 6f;
     public float pushbackDuration = 0.15f;
-    public float crushTolerence;
 
     private bool isPushedBack = false;
     private float pushbackTimer = 0f;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3468957011097066075}
   - component: {fileID: 390473608209696504}
   - component: {fileID: 1586564576067687626}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Tide
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -52, y: -121, z: 1.50001}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1157082931668063172}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 6717255024596241672}
   - component: {fileID: 6315355298889580903}
   - component: {fileID: 4200038214833090252}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: 'EndRef '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 1157082931668063172}
   - component: {fileID: 1923120706739988306}
   - component: {fileID: 2252257368667365435}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 6548775670157910745}
   - component: {fileID: 253830631544112268}
   - component: {fileID: 513012193512620687}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: StartRef
   m_TagString: Untagged
   m_Icon: {fileID: 0}
