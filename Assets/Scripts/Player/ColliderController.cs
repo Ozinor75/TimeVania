@@ -86,7 +86,10 @@ public class ColliderController : MonoBehaviour
 
     public void ClearPlatformParent()
     {
-        transform.SetParent(null);
-        isOnPlatform = false;
+        if (transform.parent != null)
+        {
+            transform.SetParent(null);
+            isOnPlatform = false;
+        }
     }
 }
