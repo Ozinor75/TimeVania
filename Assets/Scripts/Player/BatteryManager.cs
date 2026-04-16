@@ -3,6 +3,11 @@ using UnityEngine.UI;
 
 public class BatteryManager : MonoBehaviour
 {
+    // globaltime #send to shader
+    // size x = lerp remaintime/totaltime #shader
+    // color = lerp red -> green remaintime/totaltime #shader
+    // si barres, int bars # send to shader
+    
     private PlayerTimer playerTimer;
     private BatterySound batterySound;
     private Color batteryColor;

@@ -43,7 +43,8 @@ public class PlayerController : MonoBehaviour
     private Color blackScreenColor;
     public Transform respawnPoint;
     public Transform tempRespawn;
-    
+
+   
     [Header("Player Debug")]
     public bool isGrounded = true;
 
@@ -89,10 +90,11 @@ public class PlayerController : MonoBehaviour
         inputManager = FindAnyObjectByType<InputManager>();
         selfCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
+        
         
         playerBoost = GetComponent<PlayerBoost>();
-        playerSound = FindObjectOfType<PlayerSound>();
+        playerSound = FindFirstObjectByType<PlayerSound>();
+        line = GetComponent<LineRenderer>();
         playerBoost.boostState = BoostStates.Gear2;
         activePreset = playerBoost.ReturnGearSpeed();
         
@@ -100,13 +102,87 @@ public class PlayerController : MonoBehaviour
         timerController.tMult = activePreset.timerMult;
         
         StartPos = transform.position; //sauvegarde position de départ
-        line = GetComponent<LineRenderer>();
+        
+        // start
+        blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
         blackScreenColor = Color.black;
-
-        StartCoroutine(StartGame());
+        
+        StartCoroutine(BlackFade());
+        Respawn();
+        // end
     }
 
-    public void MakeJump()
+    public IEnumerator BlackFade()
+    {
+        // Fade Screen Shader
+        // overlayMat.SetFloat("_FadeTime", 0);
+        
+        while (blackScreenColor.a > 0f) //tej
+        {
+            blackScreenColor.a -= Time.deltaTime;
+            blackScreen.color = blackScreenColor;
+            yield return null;
+        }
+        Respawn();
+        // CanMove = true;
+    }
+    
+    public IEnumerator MakeRespawn()
+    {
+        Debug.Log("Respawn");
+        isRespawning = true;
+        CanMove = false;
+        if (transform.parent != null)
+            transform.SetParent(null);
+        playerSound.Death();
+        while (blackScreenColor.a < 1f)
+        {
+            blackScreenColor.a += Time.deltaTime;
+            blackScreen.color = blackScreenColor;
+            yield return null;
+        }
+
+        if (transform.parent != null)
+        {
+            transform.SetParent(null);
+        }
+        rb.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
+        yield return new WaitForSeconds(1f);
+        while (blackScreenColor.a > 0f)
+        {
+            blackScreenColor.a -= Time.deltaTime;
+            blackScreen.color = blackScreenColor;
+            yield return null;
+        }
+        Respawn();
+    }
+    
+    public void Respawn()
+    {
+        // playerSound.StartSound();    Nullreference, empêche la fonction de continer, fix avec Fmod
+        
+        // Return
+        timerController.t = timerController.timer;
+        
+        // Reset
+        playerBoost.boostState = BoostStates.Gear2;
+        activePreset = playerBoost.ReturnGearSpeed();
+        inputManager.ActivateStation.Invoke();
+        timerController.tMult = activePreset.timerMult;
+        isRespawning = false;
+        CanMove = true;
+    }
+    
+    public void CrushRespawn()
+    {
+        rb.simulated = false;
+        transform.position = tempRespawn.position;
+        transform.SetParent(null);
+        rb.simulated = true;
+    }
+    
+    
+        public void MakeJump()
     {
         if (isGrounded)
         {
@@ -207,74 +283,6 @@ public class PlayerController : MonoBehaviour
         t = 0f;
         rb.linearVelocity = pushbackVelocity;
     }
-    
-    public IEnumerator StartGame()
-    {
-        while (blackScreenColor.a > 0f)
-        {
-            blackScreenColor.a -= Time.deltaTime;
-            blackScreen.color = blackScreenColor;
-            yield return null;
-        }
-        Respawn();
-        // CanMove = true;
-    }
-    
-    public IEnumerator MakeRespawn()
-    {
-        Debug.Log("Respawn");
-        isRespawning = true;
-        CanMove = false;
-        if (transform.parent != null)
-            transform.SetParent(null);
-        playerSound.Death();
-        while (blackScreenColor.a < 1f)
-        {
-            blackScreenColor.a += Time.deltaTime;
-            blackScreen.color = blackScreenColor;
-            yield return null;
-        }
-
-        if (transform.parent != null)
-        {
-            transform.SetParent(null);
-        }
-        rb.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
-        yield return new WaitForSeconds(1f);
-        while (blackScreenColor.a > 0f)
-        {
-            blackScreenColor.a -= Time.deltaTime;
-            blackScreen.color = blackScreenColor;
-            yield return null;
-        }
-        Respawn();
-    }
-    
-    public void Respawn()
-    {
-        // playerSound.StartSound();    Nullreference, empêche la fonction de continer, fix avec Fmod
-        
-        // Return
-        timerController.t = timerController.timer;
-        
-        // Reset
-        playerBoost.boostState = BoostStates.Gear2;
-        activePreset = playerBoost.ReturnGearSpeed();
-        inputManager.ActivateStation.Invoke();
-        timerController.tMult = activePreset.timerMult;
-        isRespawning = false;
-        CanMove = true;
-    }
-    
-    public void CrushRespawn()
-    {
-        rb.simulated = false;
-        transform.position = tempRespawn.position;
-        transform.SetParent(null);
-        rb.simulated = true;
-    }
-    
-    
     
     
     public void ExitStation()
