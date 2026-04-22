@@ -184,7 +184,7 @@ public class PlayerController : MonoBehaviour
     
         public void MakeJump()
     {
-        if (isGrounded)
+        if (isGrounded || coyotE > 0f)  // si double jump, déplacer cette condition eu filtrage Jump or DoubleJump
         {
             isJumping = true;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);
@@ -262,11 +262,11 @@ public class PlayerController : MonoBehaviour
         }
         if (CanMove) 
             rb.linearVelocity = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
-        else
-        {
-            rb.linearVelocity = new Vector2(platformVelocity.x, rb.linearVelocityY);
+        // else
+        // {
+            // rb.linearVelocity = new Vector2(platformVelocity.x, rb.linearVelocityY);
             // Debug.Log(rb.linearVelocity);
-        }
+        // }
     }
     
     public void Pushback(Vector2 hitPosition)

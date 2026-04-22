@@ -57,11 +57,8 @@ public class InputManager : MonoBehaviour
         
         if (playerControls.Player.Jump.WasPressedThisFrame())
         {
-            if (playerController.isGrounded || playerController.coyotE > 0f)
-            {
-                // Debug.Log("Jumping");
-                Jump.Invoke();
-            }
+            // Debug.Log("Jumping");
+            Jump.Invoke();
         }
 
         if (playerControls.Player.Dash.WasPressedThisFrame() && playerController.timerController.t > playerController.dashCost)
