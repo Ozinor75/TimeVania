@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent Downgrade;
     public UnityEvent GearReleased;
     public UnityEvent ActivateStation;
+    public UnityEvent UseHook;
     
     [Header("Passive Actions")]
     private bool isMoving;
@@ -93,6 +94,11 @@ public class InputManager : MonoBehaviour
             // Debug.Log("Station Pressed");
             playerController.isCharging = true;
             ActivateStation.Invoke();
+        }
+        
+        if (playerControls.Player.Hook.WasPressedThisFrame())
+        {
+            UseHook.Invoke();
         }
     }
 }

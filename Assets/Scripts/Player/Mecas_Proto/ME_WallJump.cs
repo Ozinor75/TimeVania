@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ME_WallJump : MonoBehaviour
 {
+    public float WallJumpCost;
+    
     public PlayerController controls;
     public bool isWallSliding;
     public int lookSide;
@@ -51,6 +53,9 @@ public class ME_WallJump : MonoBehaviour
             controls.rb.linearVelocity = new Vector2(controls.activePreset.jumpForce / 2 * Mathf.Sign(lookSide), controls.activePreset.jumpForce / 2);
             isWallSliding = false;
             Debug.Log("Wall Jump !");
+
+            if (!controls.timerController.isCharging)
+                controls.timerController.t -= WallJumpCost;
         }
     }
 }

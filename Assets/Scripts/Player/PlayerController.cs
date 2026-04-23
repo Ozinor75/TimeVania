@@ -114,17 +114,48 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator BlackFade()
     {
-        // Fade Screen Shader
-        // overlayMat.SetFloat("_FadeTime", 0);
-        
-        while (blackScreenColor.a > 0f) //tej
+        while (blackScreenColor.a > 0f)
         {
             blackScreenColor.a -= Time.deltaTime;
             blackScreen.color = blackScreenColor;
             yield return null;
         }
         Respawn();
-        // CanMove = true;
+    }
+    
+    void FixedUpdate()
+    { 
+        if (isPushedBack)
+        {
+            rb.linearVelocity = new Vector2(pushbackVelocity.x, rb.linearVelocityY);
+
+            pushbackTimer -= Time.fixedDeltaTime;
+            if (pushbackTimer <= 0f)
+            {
+                isPushedBack = false;
+            }
+            return;
+        }
+
+        if (CanMove && !isJumping)
+            rb.linearVelocity = movement;
+        else if (CanMove && isJumping)
+            rb.linearVelocityX = movement.x;
+
+        if (rb.linearVelocityY < 0f && isJumping)
+            isJumping = false;
+        // else rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY);
+
+    }
+    
+    public void MakeJump()
+    {
+        if (isGrounded || coyotE >= 0f)  // si double jump, déplacer cette condition eu filtrage Jump or DoubleJump
+        {
+            rb.linearVelocityY = activePreset.jumpForce;
+            isJumping = true;
+            isGrounded = false;
+        }
     }
     
     public IEnumerator MakeRespawn()
@@ -182,15 +213,7 @@ public class PlayerController : MonoBehaviour
     }
     
     
-        public void MakeJump()
-    {
-        if (isGrounded || coyotE > 0f)  // si double jump, déplacer cette condition eu filtrage Jump or DoubleJump
-        {
-            isJumping = true;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, activePreset.jumpForce);
-            isGrounded = false;
-        }
-    }
+    
     
     private IEnumerator DashLine()
     {
@@ -203,16 +226,13 @@ public class PlayerController : MonoBehaviour
         if (gearChange == 0)
         {            
             playerBoost.boostState = BoostStates.Gear1;
-
-            if (!isGrounded && rb.linearVelocityY < 0)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocityY * 0.2f);
-            }
         }
         else if (gearChange == 1)
             playerBoost.boostState = BoostStates.Gear2;
+        
         else if (gearChange == 2)
             playerBoost.boostState = BoostStates.Gear3;
+        
         activePreset = playerBoost.ReturnGearSpeed();
         timerController.tMult = activePreset.timerMult;
     }
@@ -225,9 +245,10 @@ public class PlayerController : MonoBehaviour
             movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
         }
 
-        if ((Mathf.Abs(movementLeftRight) >= 0.1f) /*|| (Mathf.Abs(movementUpDown) >= 0.1f)*/)
-            movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
-        else movement = Vector2.zero;
+        // if ((Mathf.Abs(movementLeftRight) >= 0.1f) /*|| (Mathf.Abs(movementUpDown) >= 0.1f)*/)
+        movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
+        
+        // else movement = new Vector2(0f, rb.linearVelocityY);
 
         if (timerController.t <= 0 && !isRespawning) StartCoroutine(MakeRespawn());
         
@@ -236,38 +257,18 @@ public class PlayerController : MonoBehaviour
             coyotE -= Time.deltaTime;
         }
         
-        if (playerControls.DEBUG.AdminGear.WasPressedThisFrame())
-        {
-            playerBoost.boostState = BoostStates.DEBUG;
-            activePreset = playerBoost.ReturnGearSpeed();
-            timerController.tMult = activePreset.timerMult;
-        }
-        
-        if (playerControls.DEBUG.TimerReset.WasPressedThisFrame())
-            timerController.t = timerController.timer;
-    }
-
-    void FixedUpdate()
-    { 
-        if (isPushedBack)
-        {
-            rb.linearVelocity = new Vector2(pushbackVelocity.x, rb.linearVelocityY);
-
-            pushbackTimer -= Time.fixedDeltaTime;
-            if (pushbackTimer <= 0f)
-            {
-                isPushedBack = false;
-            }
-            return;
-        }
-        if (CanMove) 
-            rb.linearVelocity = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
-        // else
+        // if (playerControls.DEBUG.AdminGear.WasPressedThisFrame())
         // {
-            // rb.linearVelocity = new Vector2(platformVelocity.x, rb.linearVelocityY);
-            // Debug.Log(rb.linearVelocity);
+        //     playerBoost.boostState = BoostStates.DEBUG;
+        //     activePreset = playerBoost.ReturnGearSpeed();
+        //     timerController.tMult = activePreset.timerMult;
         // }
+        
+        // if (playerControls.DEBUG.TimerReset.WasPressedThisFrame())
+        //     timerController.t = timerController.timer;
     }
+
+    
     
     public void Pushback(Vector2 hitPosition)
     {

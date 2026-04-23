@@ -145,6 +145,15 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hook"",
+                    ""type"": ""Button"",
+                    ""id"": ""61b1754c-b4c9-486c-b18c-9b8c84c9e37e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -367,6 +376,17 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Station"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a8844ce-134b-40fa-90a1-6373aff32101"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -429,6 +449,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         m_Player_Upgrade = m_Player.FindAction("Upgrade", throwIfNotFound: true);
         m_Player_Downgrade = m_Player.FindAction("Downgrade", throwIfNotFound: true);
         m_Player_Station = m_Player.FindAction("Station", throwIfNotFound: true);
+        m_Player_Hook = m_Player.FindAction("Hook", throwIfNotFound: true);
         // DEBUG
         m_DEBUG = asset.FindActionMap("DEBUG", throwIfNotFound: true);
         m_DEBUG_TimerReset = m_DEBUG.FindAction("TimerReset", throwIfNotFound: true);
@@ -520,6 +541,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Upgrade;
     private readonly InputAction m_Player_Downgrade;
     private readonly InputAction m_Player_Station;
+    private readonly InputAction m_Player_Hook;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -555,6 +577,10 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Station".
         /// </summary>
         public InputAction @Station => m_Wrapper.m_Player_Station;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Hook".
+        /// </summary>
+        public InputAction @Hook => m_Wrapper.m_Player_Hook;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -599,6 +625,9 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Station.started += instance.OnStation;
             @Station.performed += instance.OnStation;
             @Station.canceled += instance.OnStation;
+            @Hook.started += instance.OnHook;
+            @Hook.performed += instance.OnHook;
+            @Hook.canceled += instance.OnHook;
         }
 
         /// <summary>
@@ -628,6 +657,9 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Station.started -= instance.OnStation;
             @Station.performed -= instance.OnStation;
             @Station.canceled -= instance.OnStation;
+            @Hook.started -= instance.OnHook;
+            @Hook.performed -= instance.OnHook;
+            @Hook.canceled -= instance.OnHook;
         }
 
         /// <summary>
@@ -817,6 +849,13 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnStation(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Hook" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHook(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DEBUG" which allows adding and removing callbacks.
