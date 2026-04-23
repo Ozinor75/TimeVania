@@ -154,6 +154,15 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HookDirection"",
+                    ""type"": ""Value"",
+                    ""id"": ""6668cf42-8d58-47a3-9490-025ab9924b77"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -379,7 +388,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3a8844ce-134b-40fa-90a1-6373aff32101"",
+                    ""id"": ""27f1835b-d481-47bf-af3b-b6f9fa1b605b"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -387,6 +396,72 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Hook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47862581-e1ee-4b47-91e4-40c502980afb"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""fe6509ad-0374-4245-b490-1d40eacf0b0b"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookDirection"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""affc4e47-59c1-4829-80f2-0242a409f454"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""0659cc60-6ed7-4734-97fe-176ce477b985"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""fd589e12-9ddf-4de8-87f2-7e30ef8827f4"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""fecb929e-0eec-4a6e-acfd-1f9728ed54c6"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HookDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -450,6 +525,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         m_Player_Downgrade = m_Player.FindAction("Downgrade", throwIfNotFound: true);
         m_Player_Station = m_Player.FindAction("Station", throwIfNotFound: true);
         m_Player_Hook = m_Player.FindAction("Hook", throwIfNotFound: true);
+        m_Player_HookDirection = m_Player.FindAction("HookDirection", throwIfNotFound: true);
         // DEBUG
         m_DEBUG = asset.FindActionMap("DEBUG", throwIfNotFound: true);
         m_DEBUG_TimerReset = m_DEBUG.FindAction("TimerReset", throwIfNotFound: true);
@@ -542,6 +618,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Downgrade;
     private readonly InputAction m_Player_Station;
     private readonly InputAction m_Player_Hook;
+    private readonly InputAction m_Player_HookDirection;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -581,6 +658,10 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Hook".
         /// </summary>
         public InputAction @Hook => m_Wrapper.m_Player_Hook;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/HookDirection".
+        /// </summary>
+        public InputAction @HookDirection => m_Wrapper.m_Player_HookDirection;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -628,6 +709,9 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Hook.started += instance.OnHook;
             @Hook.performed += instance.OnHook;
             @Hook.canceled += instance.OnHook;
+            @HookDirection.started += instance.OnHookDirection;
+            @HookDirection.performed += instance.OnHookDirection;
+            @HookDirection.canceled += instance.OnHookDirection;
         }
 
         /// <summary>
@@ -660,6 +744,9 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Hook.started -= instance.OnHook;
             @Hook.performed -= instance.OnHook;
             @Hook.canceled -= instance.OnHook;
+            @HookDirection.started -= instance.OnHookDirection;
+            @HookDirection.performed -= instance.OnHookDirection;
+            @HookDirection.canceled -= instance.OnHookDirection;
         }
 
         /// <summary>
@@ -856,6 +943,13 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHook(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "HookDirection" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHookDirection(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DEBUG" which allows adding and removing callbacks.

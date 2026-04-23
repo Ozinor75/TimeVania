@@ -9,6 +9,7 @@ public class ME_Hook : MonoBehaviour
     public PlayerController player;
     public Transform hook;
     public LineRenderer hookLine;
+    private Rigidbody2D rb;
     
     public float projectionSpeed;
     public float retractionSpeed;
@@ -18,22 +19,28 @@ public class ME_Hook : MonoBehaviour
     
     public float delta;
     public float t;
+
+    public bool UseRightStick;
     
     Vector3[] trailPos = new Vector3[2];
 
-
-    public void Update()
+    private void Start()
     {
-        // delta = Vector2.Distance(transform.position, hook.position);
+        rb = GetComponent<Rigidbody2D>();
+    }
 
+    public void FixedUpdate()
+    {
         if (isHooked)
         {
             hookLine.enabled = true;
             DrawTrail();
-            player.CanMove = false;
         }
-            
-        else hookLine.enabled = false;
+
+        // float delta2 = Vector2.Distance(transform.position, hook.position);
+        float delta2 = Vector2.Distance(rb.position, hook.position);
+        if (delta2 > maxDist)
+            BreakHook();
     }
 
     public void chooseProjectOrRetract()
@@ -46,15 +53,29 @@ public class ME_Hook : MonoBehaviour
     
     public void ProjectHook()
     {
-        Vector2 test = new Vector2(player.movementLeftRight, player.movementUpDown);
-        hook.position = player.transform.position;
-        if (player.movement != Vector2.zero)
+        // Vector2 stickDirection = new Vector2(player.movementLeftRight, player.movementUpDown);
+        Vector2 stickDirection;
+        if (UseRightStick)
+            stickDirection = player.hookStickDirection;
+
+        else
+            stickDirection = new Vector2(player.movementLeftRight, player.movementUpDown);
+        
+        hook.position = rb.position;
+        
+        if (stickDirection != Vector2.zero)
         {
-            RaycastHit2D hit = Physics2D.Raycast(player.transform.position, test.normalized, maxDist);
+            RaycastHit2D hit = Physics2D.Raycast(rb.position, stickDirection.normalized, maxDist);
             if (hit && hit.collider.CompareTag("Ground"))
             {
                 StopAllCoroutines();
-                StartCoroutine(HookProjection(hit.point));
+                StartCoroutine(HookProjection(hit.point, false));
+            }
+
+            else
+            {
+                StopAllCoroutines();
+                StartCoroutine(HookProjection(rb.position + stickDirection.normalized * maxDist, true));
             }
         }
     }
@@ -69,22 +90,22 @@ public class ME_Hook : MonoBehaviour
 
         else
         {
-            Debug.Log("TOO FAR");
+            BreakHook();
         }
     }
 
     public void DrawTrail()
     {
-        trailPos[0] = transform.position;
+        trailPos[0] = rb.position;
         trailPos[1] = hook.position;
         hookLine.SetPositions(trailPos);
     }
 
-    public IEnumerator HookProjection(Vector2 hitPos)
+    public IEnumerator HookProjection(Vector2 hitPos, bool isFake)
     {
         t = 0f;
         delta = Vector2.Distance(hook.position, hitPos);
-        player.CanMove = false;
+        hookLine.enabled = true;
         
         Debug.Log("Starting Projection");
         while (delta >= 0.05f)
@@ -100,8 +121,40 @@ public class ME_Hook : MonoBehaviour
         
         if (delta <= 0.05f)
         {
-            isHooked = true;
-            Debug.Log("Hook Hooked");
+            if (!isFake)
+            {
+                isHooked = true;
+                Debug.Log("Hook Hooked");
+            }
+            
+            else StartCoroutine(FailedRetraction());
+            
+            yield break;
+        }
+    }
+
+    public IEnumerator FailedRetraction()
+    {
+        t = 0f;
+        delta = Vector2.Distance(hook.position, rb.position);
+        hookLine.enabled = true;
+        
+        Debug.Log("Starting Failed Retraction");
+        while (delta >= 0.05f)
+        {
+            t = (Time.deltaTime * manager.active) * retractionSpeed;
+            delta = Vector2.Distance(hook.position, rb.position);
+            
+            hook.position = Vector2.MoveTowards(hook.position, rb.position, t);
+            DrawTrail();
+            
+            yield return null;
+        }
+        
+        if (delta <= 0.05f)
+        {
+            isHooked = false;
+            Debug.Log("Hook Failed");
             yield break;
         }
     }
@@ -109,16 +162,22 @@ public class ME_Hook : MonoBehaviour
     public IEnumerator HookRetraction()
     {
         t = 0f;
-        delta = Vector2.Distance(transform.position, hook.position);
+        delta = Vector2.Distance(rb.position, hook.position);
+        rb.gravityScale = 0f;
+
         player.CanMove = false;
+        player.isJumping = true;
         
         Debug.Log("Starting Retraction");
-        while (delta >= 0.05f)
+        
+        while (delta >= 0.1f)
         {
             t = (Time.deltaTime * manager.active) * retractionSpeed;
-            delta = Vector2.Distance(transform.position, hook.position);
+            delta = Vector2.Distance(rb.position, hook.position);
             
-            transform.position = Vector2.MoveTowards(transform.position, hook.position, t);
+            rb.position = Vector2.MoveTowards(rb.position, hook.position, t);
+            // rb.linearVelocity = Vector2.MoveTowards(rb.position, hook.position, t);
+            
             DrawTrail();
             yield return null;
         }
@@ -126,9 +185,21 @@ public class ME_Hook : MonoBehaviour
         if (delta <= 0.05f)
         {
             isHooked = false;
-            player.CanMove = true;
+            BreakHook();
             Debug.Log("Hook Retracted");
             yield break;
         }
+    }
+
+    public void BreakHook()
+    {
+        StopAllCoroutines();
+        rb.gravityScale = 1f;
+        isHooked = false;
+        
+        trailPos[0] = Vector3.zero;
+        trailPos[1] = Vector3.zero;
+        hookLine.SetPositions(trailPos);
+        hookLine.enabled = false;
     }
 }

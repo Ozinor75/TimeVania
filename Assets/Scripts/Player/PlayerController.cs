@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
    
     [Header("Player Debug")]
     public bool isGrounded = true;
+    public Vector2 hookStickDirection;
 
     public bool onStation = false;
     public bool isCharging = false;
@@ -136,7 +137,8 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-
+        
+        
         if (CanMove && !isJumping)
             rb.linearVelocity = movement;
         else if (CanMove && isJumping)
@@ -144,6 +146,8 @@ public class PlayerController : MonoBehaviour
 
         if (rb.linearVelocityY < 0f && isJumping)
             isJumping = false;
+
+        
         // else rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY);
 
     }
@@ -213,8 +217,6 @@ public class PlayerController : MonoBehaviour
     }
     
     
-    
-    
     private IEnumerator DashLine()
     {
         yield return new WaitForSecondsRealtime(0.2f);
@@ -243,6 +245,8 @@ public class PlayerController : MonoBehaviour
         {
             movementLeftRight = playerControls.Player.Direction.ReadValue<Vector2>().x;
             movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
+
+            hookStickDirection = playerControls.Player.HookDirection.ReadValue<Vector2>();
         }
 
         // if ((Mathf.Abs(movementLeftRight) >= 0.1f) /*|| (Mathf.Abs(movementUpDown) >= 0.1f)*/)
