@@ -18,6 +18,7 @@ public class ME_DoubleJump : MonoBehaviour
             hasDoubleJumped = false;
             canDoubleJump = false; 
         }
+        
 
         if (controls.rb.linearVelocityY < 0f && !controls.isGrounded)   // si tu tombes et pas grounded
             canDoubleJump = true;

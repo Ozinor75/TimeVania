@@ -69,6 +69,15 @@ public class PlayerController : MonoBehaviour
     private float GlisseDuree = 0.1f; // Durée pour glisser
     private float GlisseTimer = 0f; // timer pour réactiver la gravité des boosts en l'air
     [HideInInspector] public Vector2 platformVelocity = Vector2.zero;
+
+    [Header("DoubleJump")]
+    public bool hasDoubleJumped;
+    public bool canDoubleJump;
+    private float doubleJumpCost;
+    public bool isWallSliding;
+    public bool hasWallJumped;
+    public float wallJumpDir;
+    private float wallJumpCost;
     
     private void OnEnable()
     {
@@ -145,20 +154,47 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocityX = movement.x;
 
         if (rb.linearVelocityY < 0f && isJumping)
+        {
             isJumping = false;
-
+            canDoubleJump = true;
+        }
+            
         
-        // else rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY);
-
     }
     
     public void MakeJump()
     {
-        if (isGrounded || coyotE >= 0f)  // si double jump, déplacer cette condition eu filtrage Jump or DoubleJump
+        if (isGrounded || coyotE >= 0f)
         {
             rb.linearVelocityY = activePreset.jumpForce;
             isJumping = true;
             isGrounded = false;
+            canDoubleJump = true;
+            Debug.Log("Jump");
+        }
+        
+        else if (isWallSliding)
+        {
+            rb.linearVelocity = new Vector2(activePreset.jumpForce / 2 * Mathf.Sign(wallJumpDir), activePreset.jumpForce / 2);
+            isJumping = true;
+            isWallSliding = false;
+            canDoubleJump = true;
+            Debug.Log("W Jump");
+            
+            if (!timerController.isCharging)
+                timerController.t -= wallJumpCost;
+        }
+        
+        else if (canDoubleJump && !hasDoubleJumped)
+        {
+            rb.linearVelocityY = activePreset.jumpForce;
+            isJumping = true;
+            canDoubleJump = false;
+            hasDoubleJumped = true;
+            Debug.Log("D Jump");
+            
+            if (!timerController.isCharging)
+                timerController.t -= doubleJumpCost;
         }
     }
     
@@ -194,8 +230,6 @@ public class PlayerController : MonoBehaviour
     
     public void Respawn()
     {
-        // playerSound.StartSound();    Nullreference, empêche la fonction de continer, fix avec Fmod
-        
         // Return
         timerController.t = timerController.timer;
         
@@ -224,7 +258,6 @@ public class PlayerController : MonoBehaviour
     }
     public void ChangeGear()
     {
-        // Debug.Log("Gear Changed");
         if (gearChange == 0)
         {            
             playerBoost.boostState = BoostStates.Gear1;
@@ -248,28 +281,15 @@ public class PlayerController : MonoBehaviour
 
             hookStickDirection = playerControls.Player.HookDirection.ReadValue<Vector2>();
         }
-
-        // if ((Mathf.Abs(movementLeftRight) >= 0.1f) /*|| (Mathf.Abs(movementUpDown) >= 0.1f)*/)
+        
         movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
         
-        // else movement = new Vector2(0f, rb.linearVelocityY);
-
         if (timerController.t <= 0 && !isRespawning) StartCoroutine(MakeRespawn());
         
         if (coyotE >= 0f && !isGrounded)
         {
             coyotE -= Time.deltaTime;
         }
-        
-        // if (playerControls.DEBUG.AdminGear.WasPressedThisFrame())
-        // {
-        //     playerBoost.boostState = BoostStates.DEBUG;
-        //     activePreset = playerBoost.ReturnGearSpeed();
-        //     timerController.tMult = activePreset.timerMult;
-        // }
-        
-        // if (playerControls.DEBUG.TimerReset.WasPressedThisFrame())
-        //     timerController.t = timerController.timer;
     }
 
     
@@ -301,13 +321,17 @@ public class PlayerController : MonoBehaviour
         isGrounded = true;
         coyotE = coyotETimer;
         isJumping = false;
+        canDoubleJump = false;
+        hasDoubleJumped = false;
         effectiveSpeed = activePreset.groundSpeed;
     }
     
     public void UngroundPlayer()
     {
+        canDoubleJump = true;
         isGrounded = false;
         coyotE = 0f;
+        effectiveSpeed = activePreset.airSpeed;
     }
     
     public void MakeDash()

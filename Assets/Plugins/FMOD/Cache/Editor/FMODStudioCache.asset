@@ -194,12 +194,28 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4487972440278976500}
   cacheVersion: 131859
-  cacheTime: 639129183122122603
+  cacheTime: 639129194449997263
   SerializableEventsDict:
   - key: event:/Jump
     index: 0
   - key: event:/Swift
     index: 1
+  - key: event:/Footsteps
+    index: 2
+  - key: event:/Slow
+    index: 3
+  - key: event:/Dash
+    index: 4
+  - key: event:/ActivateStation
+    index: 5
+  - key: event:/Death
+    index: 6
+  - key: event:/Hurt
+    index: 7
+  - key: event:/Reload
+    index: 8
+  - key: event:/Start
+    index: 9
 --- !u!114 &3562923699231892040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +285,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639129183122122603
+  lastModified: 639129194449997263
   FileSizes:
   - Name: 
     Value: 1134
@@ -343,6 +359,6 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639129183122111998
+  lastModified: 639129194449987198
   FileSizes: []
   Exists: 1
