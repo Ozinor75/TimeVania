@@ -36,8 +36,7 @@ public class ME_Hook : MonoBehaviour
             hookLine.enabled = true;
             DrawTrail();
         }
-
-        // float delta2 = Vector2.Distance(transform.position, hook.position);
+        
         float delta2 = Vector2.Distance(rb.position, hook.position);
         if (delta2 > maxDist)
             BreakHook();
@@ -124,6 +123,7 @@ public class ME_Hook : MonoBehaviour
             if (!isFake)
             {
                 isHooked = true;
+                StartCoroutine(HookRetraction());
                 Debug.Log("Hook Hooked");
             }
             
