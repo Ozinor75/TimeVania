@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
     public bool isWallSliding;
     public bool hasWallJumped;
     public float wallJumpDir;
-    private float wallJumpCost;
+    private float jumpCost;
     
     private void OnEnable()
     {
@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = movement;
         else if (CanMove && isJumping)
             rb.linearVelocityX = movement.x;
-
+        
         if (rb.linearVelocityY < 0f && isJumping)
         {
             isJumping = false;
@@ -171,18 +171,21 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             canDoubleJump = true;
             Debug.Log("Jump");
+            
+            if (!timerController.isCharging)
+                timerController.t -= jumpCost;
         }
         
-        else if (isWallSliding)
+        else if (isWallSliding && Mathf.Sign(movementLeftRight) == Mathf.Sign(wallJumpDir))
         {
-            rb.linearVelocity = new Vector2(activePreset.jumpForce / 2 * Mathf.Sign(wallJumpDir), activePreset.jumpForce / 2);
+            rb.linearVelocity = new Vector2(activePreset.jumpForce * Mathf.Sign(wallJumpDir), activePreset.jumpForce / 2);
             isJumping = true;
             isWallSliding = false;
             canDoubleJump = true;
             Debug.Log("W Jump");
             
             if (!timerController.isCharging)
-                timerController.t -= wallJumpCost;
+                timerController.t -= jumpCost;
         }
         
         else if (canDoubleJump && !hasDoubleJumped)
@@ -345,6 +348,7 @@ public class PlayerController : MonoBehaviour
             
         if (checkDash)
             endPos = checkDash.point;
+        
         else
         {
             endPos *= activePreset.airSpeed;

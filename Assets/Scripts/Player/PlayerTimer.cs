@@ -31,12 +31,14 @@ public class PlayerTimer : MonoBehaviour
         while (t < timer)
         {
             t++;
-            yield return new WaitForSeconds(0.1f);
+            // yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
 
         if (t > timer)
             t = timer;
-        yield return null;
+        
+        yield break;
     }
 
     public void StartCharging()
@@ -60,11 +62,15 @@ public class PlayerTimer : MonoBehaviour
     {
         if (t < 0f)
             t = 0f;
+        
         if (!isCharging && t > 0f)
             t -= Time.deltaTime * tMult;
+        
         tSec += Time.deltaTime;
+        
         if (t > criticalTimer)
-            text.text = t.ToString("0");
+            text.text = t.ToString(" ");
+        
         else
             text.text = t.ToString("0.00");
 
@@ -76,10 +82,10 @@ public class PlayerTimer : MonoBehaviour
             }
         }
 
-        if (tSec >= 0.2f)
-        {
-            batteryManager.ShowBattery(CheckCharge());
-            tSec = 0f;
-        }
+        // if (tSec >= 0.2f)
+        // {
+        //     batteryManager.ShowBattery(CheckCharge());
+        //     tSec = 0f;
+        // }
     }
 }

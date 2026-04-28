@@ -52,11 +52,10 @@ public class ME_Hook : MonoBehaviour
     
     public void ProjectHook()
     {
-        // Vector2 stickDirection = new Vector2(player.movementLeftRight, player.movementUpDown);
         Vector2 stickDirection;
+        
         if (UseRightStick)
             stickDirection = player.hookStickDirection;
-
         else
             stickDirection = new Vector2(player.movementLeftRight, player.movementUpDown);
         
@@ -125,6 +124,8 @@ public class ME_Hook : MonoBehaviour
                 isHooked = true;
                 StartCoroutine(HookRetraction());
                 Debug.Log("Hook Hooked");
+                
+                yield break;
             }
             
             else StartCoroutine(FailedRetraction());
@@ -163,14 +164,15 @@ public class ME_Hook : MonoBehaviour
     {
         t = 0f;
         delta = Vector2.Distance(rb.position, hook.position);
+        rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 0f;
 
         player.CanMove = false;
-        player.isJumping = true;
+        // player.isJumping = true;
         
         Debug.Log("Starting Retraction");
         
-        while (delta >= 0.1f)
+        while (delta > 1f)
         {
             t = (Time.deltaTime * manager.active) * retractionSpeed;
             delta = Vector2.Distance(rb.position, hook.position);
@@ -182,7 +184,7 @@ public class ME_Hook : MonoBehaviour
             yield return null;
         }
         
-        if (delta <= 0.05f)
+        if (delta <= 1f)
         {
             isHooked = false;
             BreakHook();
@@ -196,6 +198,9 @@ public class ME_Hook : MonoBehaviour
         StopAllCoroutines();
         rb.gravityScale = 1f;
         isHooked = false;
+
+        // player.CanMove = true;
+        // player.isJumping = false;
         
         trailPos[0] = Vector3.zero;
         trailPos[1] = Vector3.zero;

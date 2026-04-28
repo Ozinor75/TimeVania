@@ -62,7 +62,7 @@ public class InputManager : MonoBehaviour
             Jump.Invoke();
         }
 
-        if (playerControls.Player.Dash.WasPressedThisFrame() && playerController.timerController.t > playerController.dashCost)
+        if (playerControls.Player.Dash.WasPressedThisFrame() && playerController.timerController.t > playerController.dashCost && playerControls.Player.Direction.ReadValue<Vector2>() != Vector2.zero)
         {
             // Debug.Log("Dashing");
             Dash.Invoke();

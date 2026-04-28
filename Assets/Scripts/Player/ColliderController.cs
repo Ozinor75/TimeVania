@@ -61,7 +61,7 @@ public class ColliderController : MonoBehaviour
             if (rightSlideHit && rightSlideHit.collider.CompareTag("Ground"))
             { 
                 playerController.isWallSliding = true;
-                playerController.CanMove = false; 
+                // playerController.CanMove = false; 
                 playerController.canDoubleJump = false;
                 playerController.wallJumpDir = -1;
 
@@ -71,7 +71,7 @@ public class ColliderController : MonoBehaviour
             else if (leftSlideHit && leftSlideHit.collider.CompareTag("Ground"))
             {
                 playerController.isWallSliding = true;
-                playerController.CanMove = false;
+                // playerController.CanMove = false;
                 playerController.canDoubleJump = false;
                 playerController.wallJumpDir = 1;
             
