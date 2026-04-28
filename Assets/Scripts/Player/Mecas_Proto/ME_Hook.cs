@@ -37,17 +37,9 @@ public class ME_Hook : MonoBehaviour
             DrawTrail();
         }
         
-        float delta2 = Vector2.Distance(rb.position, hook.position);
-        if (delta2 > maxDist)
-            BreakHook();
-    }
-
-    public void chooseProjectOrRetract()
-    {
-        if (!isHooked)
-            ProjectHook();
-        else
-            RetractHook();
+        // float delta2 = Vector2.Distance(rb.position, hook.position);
+        // if (delta2 > maxDist)
+            // BreakHook();
     }
     
     public void ProjectHook()
@@ -165,6 +157,7 @@ public class ME_Hook : MonoBehaviour
         t = 0f;
         delta = Vector2.Distance(rb.position, hook.position);
         rb.linearVelocity = Vector2.zero;
+        // player.canDoubleJump = true;
         rb.gravityScale = 0f;
 
         player.CanMove = false;

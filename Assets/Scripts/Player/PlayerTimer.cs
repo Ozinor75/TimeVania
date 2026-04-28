@@ -31,12 +31,13 @@ public class PlayerTimer : MonoBehaviour
         while (t < timer)
         {
             t++;
-            // yield return new WaitForSeconds(0.1f);
             yield return null;
         }
 
         if (t > timer)
             t = timer;
+        
+        StopCharging();
         
         yield break;
     }

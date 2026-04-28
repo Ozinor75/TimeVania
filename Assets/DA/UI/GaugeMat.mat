@@ -43,12 +43,14 @@ Material:
     - __dirty: 0
     - _gaugeSpeed: 1
     - _gaugeState: 1
-    - _gaugeValue: 1
+    - _gaugeValue: 0.3975584
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _InitialSize: {r: 1, g: 0.22, b: 0, a: 0}
-    - _MainColor: {r: 0, g: 1, b: 0.10835743, a: 0}
+    - _InitialSize: {r: 1, g: 0.2, b: 0, a: 0}
+    - _InitialSize1: {r: 0.05, g: 0.25, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _MainColor1: {r: 0.57939434, g: 0, b: 1, a: 1}
     - _SECONDARY: {r: 0.57939434, g: 0, b: 1, a: 1}
+    - _SecondaryColor: {r: 0.40094337, g: 1, b: 0.93420583, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

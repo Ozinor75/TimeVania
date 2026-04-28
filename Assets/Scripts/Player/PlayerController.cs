@@ -70,14 +70,17 @@ public class PlayerController : MonoBehaviour
     private float GlisseTimer = 0f; // timer pour réactiver la gravité des boosts en l'air
     [HideInInspector] public Vector2 platformVelocity = Vector2.zero;
 
-    [Header("DoubleJump")]
+    [Header("DoubleJump & WallJump")]
+    public bool DoubleJumpCapacity = true;
     public bool hasDoubleJumped;
     public bool canDoubleJump;
-    private float doubleJumpCost;
+    public float doubleJumpCost;
+
+    public bool WallJumpCapacity = true;
     public bool isWallSliding;
     public bool hasWallJumped;
     public float wallJumpDir;
-    private float jumpCost;
+    public float jumpCost;
     
     private void OnEnable()
     {
@@ -176,7 +179,7 @@ public class PlayerController : MonoBehaviour
                 timerController.t -= jumpCost;
         }
         
-        else if (isWallSliding && Mathf.Sign(movementLeftRight) == Mathf.Sign(wallJumpDir))
+        else if (isWallSliding && Mathf.Sign(movementLeftRight) == Mathf.Sign(wallJumpDir) && WallJumpCapacity)
         {
             rb.linearVelocity = new Vector2(activePreset.jumpForce * Mathf.Sign(wallJumpDir), activePreset.jumpForce / 2);
             isJumping = true;
@@ -188,7 +191,7 @@ public class PlayerController : MonoBehaviour
                 timerController.t -= jumpCost;
         }
         
-        else if (canDoubleJump && !hasDoubleJumped)
+        else if (canDoubleJump && !hasDoubleJumped && DoubleJumpCapacity)
         {
             rb.linearVelocityY = activePreset.jumpForce;
             isJumping = true;

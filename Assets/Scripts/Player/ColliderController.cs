@@ -27,7 +27,8 @@ public class ColliderController : MonoBehaviour
     private void FixedUpdate()
     {
         CheckGrounded();
-        CheckSliding();
+        if (playerController.WallJumpCapacity)
+            CheckSliding();
     }
 
     private void OnCollisionEnter2D(Collision2D other)      // ICI RAYCAST
@@ -61,7 +62,6 @@ public class ColliderController : MonoBehaviour
             if (rightSlideHit && rightSlideHit.collider.CompareTag("Ground"))
             { 
                 playerController.isWallSliding = true;
-                // playerController.CanMove = false; 
                 playerController.canDoubleJump = false;
                 playerController.wallJumpDir = -1;
 
@@ -71,7 +71,6 @@ public class ColliderController : MonoBehaviour
             else if (leftSlideHit && leftSlideHit.collider.CompareTag("Ground"))
             {
                 playerController.isWallSliding = true;
-                // playerController.CanMove = false;
                 playerController.canDoubleJump = false;
                 playerController.wallJumpDir = 1;
             
@@ -81,7 +80,6 @@ public class ColliderController : MonoBehaviour
             else
             {
                 playerController.isWallSliding = false;
-                playerController.wallJumpDir = 0;
             
                 Debug.Log("Falling");
             }
@@ -91,14 +89,13 @@ public class ColliderController : MonoBehaviour
         {
             playerController.isWallSliding = false;
             playerController.CanMove = true;
-            playerController.wallJumpDir = 0;
         }
     }
     
     public void CheckGrounded()
     {
         groundHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.2f);
-        Debug.DrawLine(transform.position, groundHit.point, Color.red);
+        // Debug.DrawLine(transform.position, groundHit.point, Color.red);
 
         if (groundHit)
         {
