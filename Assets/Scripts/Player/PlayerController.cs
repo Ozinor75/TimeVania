@@ -179,9 +179,9 @@ public class PlayerController : MonoBehaviour
                 timerController.t -= jumpCost;
         }
         
-        else if (isWallSliding && Mathf.Sign(movementLeftRight) == Mathf.Sign(wallJumpDir) && WallJumpCapacity)
+        else if (isWallSliding && Mathf.Sign(movementLeftRight) != Mathf.Sign(wallJumpDir) && WallJumpCapacity)
         {
-            rb.linearVelocity = new Vector2(activePreset.jumpForce * Mathf.Sign(wallJumpDir), activePreset.jumpForce / 2);
+            rb.linearVelocity = new Vector2(activePreset.jumpForce * Mathf.Sign(wallJumpDir) / 2, activePreset.jumpForce / 2);
             isJumping = true;
             isWallSliding = false;
             canDoubleJump = true;

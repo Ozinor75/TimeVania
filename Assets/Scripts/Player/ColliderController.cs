@@ -63,6 +63,7 @@ public class ColliderController : MonoBehaviour
             { 
                 playerController.isWallSliding = true;
                 playerController.canDoubleJump = false;
+                playerController.CanMove = false;
                 playerController.wallJumpDir = -1;
 
                 Debug.Log("Wall at Right");
@@ -72,6 +73,7 @@ public class ColliderController : MonoBehaviour
             {
                 playerController.isWallSliding = true;
                 playerController.canDoubleJump = false;
+                playerController.CanMove = false;
                 playerController.wallJumpDir = 1;
             
                 Debug.Log("Wall at Left");
@@ -80,7 +82,7 @@ public class ColliderController : MonoBehaviour
             else
             {
                 playerController.isWallSliding = false;
-            
+                // playerController.CanMove = true;
                 Debug.Log("Falling");
             }
         }
