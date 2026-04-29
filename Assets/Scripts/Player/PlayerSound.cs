@@ -1,38 +1,48 @@
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class PlayerSound : MonoBehaviour
 {
     [Header("Cooldowns")] 
     public float footStepCooldown;
-    
+
     [Header("Prefabs")] 
-    public AudioSource[] footSteps;
-    public AudioSource[] jump;
-    public AudioSource[] dash;
-    public AudioSource slow;
-    public AudioSource swift;
-    public AudioSource start;
-    public AudioSource death;
-    public AudioSource reload;
-    public AudioSource[] hurt;
-    public AudioSource activateStation;
+    public EventReference footsteps;
+    public EventReference jump;
+    public EventReference swift;
+    public EventReference slow;
+    public EventReference dash;
+    public EventReference activateStation;
+    public EventReference death;
+    public EventReference hurt;
+    public EventReference reload;
+    public EventReference start;
     
     private PlayerController player;
     private float t = 0f;
-
+    
+    public void PlayOneShot(EventReference eventReference, Vector3 position, float volume = 1f)
+    {
+        EventInstance instance = FMODUnity.RuntimeManager.CreateInstance(eventReference);
+        instance.set3DAttributes(RuntimeUtils.To3DAttributes(position));
+        instance.setVolume(volume);
+        instance.start();
+        instance.release();
+    }
     public void HurtSound()
     {
-        hurt[Random.Range(0, hurt.Length)].Play();
+        PlayOneShot(hurt, transform.position, 1f);
     }
     public void Reload()
     {
-        reload.Play();
+        PlayOneShot(reload, transform.position, 1f);
     }
     
     public void StartSound()
     {
-        if (start != null)
-            start.Play();
+        if (!start.IsNull)
+            PlayOneShot(start, transform.position, 1f);
     }
     public void StopSound(AudioSource sound)
     {
@@ -41,42 +51,40 @@ public class PlayerSound : MonoBehaviour
 
     public void Death()
     {
-        if (death != null)
-            death.Play();
+        if (!death.IsNull)
+            PlayOneShot(death, transform.position, 1f);
     }
     public void Mid()
     {
-        StopSound(slow);
-        StopSound(swift);
+        
     }
     public void Slow()
     {
-        slow.Play();
+        PlayOneShot(slow, transform.position, 1f);
     }
     
     public void Swift()
     {
-        swift.Play();
+        PlayOneShot(swift, transform.position, 1f);
     }
     
     public void Dash()
     {
-        dash[Random.Range(0, dash.Length)].Play();
+        PlayOneShot(dash, transform.position, 1f);
     }
     
     public void Jump()
     {
-        jump[Random.Range(0, jump.Length)].Play();
+        PlayOneShot(jump, transform.position, 1f);
     }
     public void FootSteps()
     {
-        int i = Random.Range(0, footSteps.Length);
-        footSteps[i].Play();
+        PlayOneShot(footsteps, transform.position, 1f);
     }
     
     public void ActivateStation()
     {
-        activateStation.Play();
+        PlayOneShot(activateStation, transform.position, 1f);
     }
     void Start()
     {

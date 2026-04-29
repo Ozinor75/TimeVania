@@ -23,20 +23,20 @@ public class GlobalTime : MonoBehaviour
     
     public void MidWorldTime()
     {
-        Debug.Log("WorldTime mid");
+        // Debug.Log("WorldTime mid");
         active = basic;
         worldTime =  WorldTime.TWO;
     }
     public void IncreaseWorldTime()
     {
-        Debug.Log("WorldTime Increase");
+        // Debug.Log("WorldTime Increase");
         active = speed;
         worldTime =  WorldTime.THREE;
     }
     
     public void DecreaseWorldTime()
     {
-        Debug.Log("WorldTime Decrease");
+        // Debug.Log("WorldTime Decrease");
         active = slow;
         worldTime =  WorldTime.ONE;
     }

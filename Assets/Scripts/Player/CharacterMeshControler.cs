@@ -16,7 +16,7 @@ public class CharacterMeshControler : MonoBehaviour
             mesh.rotation = Quaternion.Euler(0f, -90f, 0f);
         else if (rb.linearVelocityX < -0.1f )
             mesh.rotation = Quaternion.Euler(0f, 90f, 0f);
-        else
-            mesh.rotation = Quaternion.Euler(0f, 0f, 0f);
+        // else
+        //     mesh.rotation = Quaternion.Euler(0f, 0f, 0f);
     }
 }

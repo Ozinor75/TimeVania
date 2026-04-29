@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -6,6 +7,8 @@ public class ColliderController : MonoBehaviour
 {
     public CapsuleCollider2D collider;
     public RaycastHit2D groundHit;
+    public RaycastHit2D rightSlideHit;
+    public RaycastHit2D leftSlideHit;
     public bool isOnPlatform;
     
     private PlayerController playerController;
@@ -17,11 +20,15 @@ public class ColliderController : MonoBehaviour
         collider = GetComponent<CapsuleCollider2D>();
         playerController = GetComponent<PlayerController>();
         playerSound = FindFirstObjectByType<PlayerSound>();
+        
+        playerController.wallJumpDir = 0;
     }
 
     private void FixedUpdate()
     {
         CheckGrounded();
+        if (playerController.WallJumpCapacity)
+            CheckSliding();
     }
 
     private void OnCollisionEnter2D(Collision2D other)      // ICI RAYCAST
@@ -45,10 +52,52 @@ public class ColliderController : MonoBehaviour
         
     }
 
+    public void CheckSliding()
+    {
+        rightSlideHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.right, 0.5f);
+        leftSlideHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, -Vector2.right, 0.5f);
+
+        if (!playerController.isGrounded)
+        {
+            if (rightSlideHit && rightSlideHit.collider.CompareTag("Ground"))
+            { 
+                playerController.isWallSliding = true;
+                playerController.canDoubleJump = false;
+                playerController.CanMove = false;
+                playerController.wallJumpDir = -1;
+
+                Debug.Log("Wall at Right");
+            }
+
+            else if (leftSlideHit && leftSlideHit.collider.CompareTag("Ground"))
+            {
+                playerController.isWallSliding = true;
+                playerController.canDoubleJump = false;
+                playerController.CanMove = false;
+                playerController.wallJumpDir = 1;
+            
+                Debug.Log("Wall at Left");
+            }
+
+            else
+            {
+                playerController.isWallSliding = false;
+                // playerController.CanMove = true;
+                Debug.Log("Falling");
+            }
+        }
+        
+        else
+        {
+            playerController.isWallSliding = false;
+            playerController.CanMove = true;
+        }
+    }
+    
     public void CheckGrounded()
     {
         groundHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.2f);
-        Debug.DrawLine(transform.position, groundHit.point, Color.red);
+        // Debug.DrawLine(transform.position, groundHit.point, Color.red);
 
         if (groundHit)
         {

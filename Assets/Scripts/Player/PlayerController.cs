@@ -69,6 +69,18 @@ public class PlayerController : MonoBehaviour
     private float GlisseDuree = 0.1f; // Durée pour glisser
     private float GlisseTimer = 0f; // timer pour réactiver la gravité des boosts en l'air
     [HideInInspector] public Vector2 platformVelocity = Vector2.zero;
+
+    [Header("DoubleJump & WallJump")]
+    public bool DoubleJumpCapacity = true;
+    public bool hasDoubleJumped;
+    public bool canDoubleJump;
+    public float doubleJumpCost;
+
+    public bool WallJumpCapacity = true;
+    public bool isWallSliding;
+    public bool hasWallJumped;
+    public float wallJumpDir;
+    public float jumpCost;
     
     private void OnEnable()
     {
@@ -143,22 +155,52 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = movement;
         else if (CanMove && isJumping)
             rb.linearVelocityX = movement.x;
-
-        if (rb.linearVelocityY < 0f && isJumping)
-            isJumping = false;
-
         
-        // else rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY);
-
+        if (rb.linearVelocityY < 0f && isJumping)
+        {
+            isJumping = false;
+            canDoubleJump = true;
+        }
+            
+        
     }
     
     public void MakeJump()
     {
-        if (isGrounded || coyotE >= 0f)  // si double jump, déplacer cette condition eu filtrage Jump or DoubleJump
+        if (isGrounded || coyotE >= 0f)
         {
             rb.linearVelocityY = activePreset.jumpForce;
             isJumping = true;
             isGrounded = false;
+            canDoubleJump = true;
+            Debug.Log("Jump");
+            
+            if (!timerController.isCharging)
+                timerController.t -= jumpCost;
+        }
+        
+        else if (isWallSliding && Mathf.Sign(movementLeftRight) != Mathf.Sign(wallJumpDir) && WallJumpCapacity)
+        {
+            rb.linearVelocity = new Vector2(activePreset.jumpForce * Mathf.Sign(wallJumpDir) / 2, activePreset.jumpForce / 2);
+            isJumping = true;
+            isWallSliding = false;
+            canDoubleJump = true;
+            Debug.Log("W Jump");
+            
+            if (!timerController.isCharging)
+                timerController.t -= jumpCost;
+        }
+        
+        else if (canDoubleJump && !hasDoubleJumped && DoubleJumpCapacity)
+        {
+            rb.linearVelocityY = activePreset.jumpForce;
+            isJumping = true;
+            canDoubleJump = false;
+            hasDoubleJumped = true;
+            Debug.Log("D Jump");
+            
+            if (!timerController.isCharging)
+                timerController.t -= doubleJumpCost;
         }
     }
     
@@ -190,12 +232,11 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         Respawn();
+        playerSound.StartSound();
     }
     
     public void Respawn()
     {
-        // playerSound.StartSound();    Nullreference, empêche la fonction de continer, fix avec Fmod
-        
         // Return
         timerController.t = timerController.timer;
         
@@ -224,7 +265,6 @@ public class PlayerController : MonoBehaviour
     }
     public void ChangeGear()
     {
-        // Debug.Log("Gear Changed");
         if (gearChange == 0)
         {            
             playerBoost.boostState = BoostStates.Gear1;
@@ -248,28 +288,15 @@ public class PlayerController : MonoBehaviour
 
             hookStickDirection = playerControls.Player.HookDirection.ReadValue<Vector2>();
         }
-
-        // if ((Mathf.Abs(movementLeftRight) >= 0.1f) /*|| (Mathf.Abs(movementUpDown) >= 0.1f)*/)
+        
         movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
         
-        // else movement = new Vector2(0f, rb.linearVelocityY);
-
         if (timerController.t <= 0 && !isRespawning) StartCoroutine(MakeRespawn());
         
         if (coyotE >= 0f && !isGrounded)
         {
             coyotE -= Time.deltaTime;
         }
-        
-        // if (playerControls.DEBUG.AdminGear.WasPressedThisFrame())
-        // {
-        //     playerBoost.boostState = BoostStates.DEBUG;
-        //     activePreset = playerBoost.ReturnGearSpeed();
-        //     timerController.tMult = activePreset.timerMult;
-        // }
-        
-        // if (playerControls.DEBUG.TimerReset.WasPressedThisFrame())
-        //     timerController.t = timerController.timer;
     }
 
     
@@ -301,13 +328,17 @@ public class PlayerController : MonoBehaviour
         isGrounded = true;
         coyotE = coyotETimer;
         isJumping = false;
+        canDoubleJump = false;
+        hasDoubleJumped = false;
         effectiveSpeed = activePreset.groundSpeed;
     }
     
     public void UngroundPlayer()
     {
+        canDoubleJump = true;
         isGrounded = false;
         coyotE = 0f;
+        effectiveSpeed = activePreset.airSpeed;
     }
     
     public void MakeDash()
@@ -321,6 +352,7 @@ public class PlayerController : MonoBehaviour
             
         if (checkDash)
             endPos = checkDash.point;
+        
         else
         {
             endPos *= activePreset.airSpeed;
