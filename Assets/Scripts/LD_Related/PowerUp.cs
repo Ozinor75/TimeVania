@@ -15,6 +15,7 @@ public class PowerUp : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            playerSound.Reload();
             _batteryAffector.ChangeTime();
             Destroy(gameObject);
         }

@@ -232,6 +232,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         Respawn();
+        playerSound.StartSound();
     }
     
     public void Respawn()
