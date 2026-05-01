@@ -40,9 +40,9 @@ Material:
     - _gaugeValue: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _InitialSize: {r: 1, g: 0.3, b: 0, a: 0}
-    - _InitialSize1: {r: 0.05, g: 0.5, b: 0, a: 0}
-    - _MainColor: {r: 0, g: 1, b: 0.4785251, a: 1}
+    - _InitialSize: {r: 1, g: 0.2, b: 0, a: 0}
+    - _InitialSize1: {r: 0.05, g: 0.3, b: 0, a: 0}
+    - _MainColor: {r: 0, g: 1, b: 0.47852504, a: 1}
     - _SecondaryColor: {r: 0.79716986, g: 1, b: 0.99463946, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
