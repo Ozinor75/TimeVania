@@ -549,9 +549,9 @@ MonoBehaviour:
   albumSize: 7
   photoMaterial: {fileID: 2100000, guid: 85ce5c0b21d32804996a7e8aa33ff65b, type: 2}
   colors:
-  - {r: 0, g: 1, b: 1, a: 0.3137255}
-  - {r: 1, g: 0, b: 1, a: 0.3137255}
-  - {r: 1, g: 1, b: 0, a: 0.3137255}
+  - {r: 0, g: 1, b: 1, a: 0.15686275}
+  - {r: 1, g: 0, b: 1, a: 0.15686275}
+  - {r: 1, g: 1, b: 0, a: 0.15686275}
   subjects:
   - {fileID: 3655385553792155061}
   - {fileID: 7367837285061650636}
