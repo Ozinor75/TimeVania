@@ -43,7 +43,7 @@ Material:
     - __dirty: 0
     - _gaugeSpeed: 1
     - _gaugeState: 1
-    - _gaugeValue: 0.3975584
+    - _gaugeValue: 0.8646332
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _InitialSize: {r: 1, g: 0.2, b: 0, a: 0}

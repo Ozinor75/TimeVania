@@ -346,7 +346,9 @@ public class PlayerController : MonoBehaviour
         Vector2 endPos = playerControls.Player.Direction.ReadValue<Vector2>().normalized;
         Vector2 test = new Vector2(transform.position.x, transform.position.y + 0.3f);
         RaycastHit2D checkDash = Physics2D.CircleCast(test, 0.1f, endPos, activePreset.airSpeed);
-        
+
+        rb.gravityScale = 0f;
+        rb.linearVelocity = Vector2.zero;
         posArray[0] = test;
             
         if (checkDash)
@@ -365,6 +367,7 @@ public class PlayerController : MonoBehaviour
         line.enabled = true;
         
         rb.position = endPos;
+        rb.gravityScale = 1f;
         if (!timerController.isCharging)
             timerController.t -= dashCost;
         StartCoroutine(DashLine());
