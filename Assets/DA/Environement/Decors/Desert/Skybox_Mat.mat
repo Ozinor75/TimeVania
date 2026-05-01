@@ -69,7 +69,7 @@ Material:
     - _BumpScale: 1
     - _CloudLiveSpeed: 0.1
     - _CloudScrollSpeed: 0.01
-    - _CloudsDensity: 0.33
+    - _CloudsDensity: 0.25
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -99,7 +99,9 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlobalCloudShape: {r: 0.5, g: 1, b: 0, a: 0}
-    - _SkyColor: {r: 0.03706836, g: 0.03706836, b: 0.16037726, a: 0}
+    - _SkyColor: {r: 0.3728919, g: 0.3728919, b: 0.567, a: 1}
+    - _SkyColor2: {r: 1, g: 0.49561077, b: 0.14622638, a: 1}
+    - _SkyColor3: {r: 0.19099995, g: 0, b: 0.098683335, a: 1}
     - _Tint: {r: 0.09136956, g: 0.079763375, b: 0.23270428, a: 0.5}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
