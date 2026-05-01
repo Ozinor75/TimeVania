@@ -30,11 +30,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _AnimationSpeed: 8
-    - _CellGradient: 0.619
-    - _CellSize: 0.139
+    - _CellGradient: 0.722
+    - _CellSize: 0.031
     - _Cutoff: 0.5
     - _Sacle: 6
-    - _Scale: 6
+    - _Scale: 16
     - _TimeScale: 1
     - __dirty: 0
     m_Colors:

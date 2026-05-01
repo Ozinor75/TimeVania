@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Scale: 4
+    - _Scale: 6
     - _TimeScale: 1
     - __dirty: 0
     m_Colors:
