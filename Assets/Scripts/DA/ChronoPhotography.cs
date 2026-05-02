@@ -36,13 +36,13 @@ public class ChronoPhotography : MonoBehaviour
 
         if (t >= catchRate)
         {
-            t = 0f;
-            
             colorIndex++;
             colorIndex %= (int)albumSize;
             
             if (manager.active != 1)
             {
+                t = 0f;
+                
                 for (int i = 0; i < listOfShoots.Count; i++)
                 {
                     Transform parent = subjects[i].transform.parent;
@@ -62,11 +62,12 @@ public class ChronoPhotography : MonoBehaviour
             
             else
             {
+                t = catchRate / 4 * 3;
+                
                 for (int i = 0; i < listOfShoots.Count; i++)
                 {
                     if (listOfShoots[i].Count > 0)
                     {
-                        t += listOfShoots[i].Count / albumSize;
                         Destroy(listOfShoots[i][0]);
                         listOfShoots[i].Remove(listOfShoots[i][0]);
                     }

@@ -13,7 +13,7 @@ public class BatteryManager : MonoBehaviour
     public Material gaugeMat;
 
     private float r;
-    private float s;
+    // private float s;
 
     public Color normalBaseColor;
     public Color normalPulseColor;
@@ -66,8 +66,6 @@ public class BatteryManager : MonoBehaviour
             
         }
         
-        s = globalTime.active;
-        gaugeMat.SetFloat("_gaugeSpeed", s);
         gaugeMat.SetFloat("_gaugeValue", r);
     }
     
