@@ -121,17 +121,18 @@ Material:
     - _ShadowBias: 0.424
     - _ShadowDetailStrenght: 0.378
     - _ShadowSize: 0.5
-    - _ShadowStrenght: 0.31
+    - _ShadowStrenght: 0.25
     - _ShadowStrength: 0.578
     - _ShadowTilling: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _UseCustomColor: 0
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _BaseColor: {r: 0.54165184, g: 0.6415094, b: 0.54165184, a: 1}
+    - _BaseColor: {r: 0.45490196, g: 0.5058824, b: 0.45490196, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LED_Color: {r: 127.99999, g: 127.99999, b: 0, a: 1}
