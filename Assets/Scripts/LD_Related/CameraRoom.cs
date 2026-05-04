@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CameraRoom : MonoBehaviour
 {
-    private Collider2D trigger;
+    public Collider2D trigger;
     private CameraFollow cameraFollow;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,7 +17,6 @@ public class CameraRoom : MonoBehaviour
     void Start()
     {
         cameraFollow = FindFirstObjectByType<CameraFollow>();
-        trigger = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
