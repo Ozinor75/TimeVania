@@ -172,10 +172,8 @@ public class PlayerController : MonoBehaviour
         if (isGrounded || coyotE >= 0f)
         {
             rb.linearVelocityY = activePreset.jumpForce;
+            UngroundPlayer();
             isJumping = true;
-            isGrounded = false;
-            canDoubleJump = true;
-            lockGroundCheck = true;
             Debug.Log("Jump");
             
             if (!timerController.isCharging)
@@ -187,8 +185,7 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector2(activePreset.jumpForce * Mathf.Sign(wallJumpDir) / 2, activePreset.jumpForce / 2);
             isJumping = true;
             isWallSliding = false;
-            canDoubleJump = true;
-            lockGroundCheck = true;
+            UngroundPlayer();
             Debug.Log("W Jump");
             
             if (!timerController.isCharging)
@@ -327,7 +324,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(iFrameDuration);
         isTouchable = true;
     }
-    
     public void Pushback(Vector2 hitPosition)
     {
         if (isTouchable)
@@ -350,7 +346,6 @@ public class PlayerController : MonoBehaviour
         onStation =  false;
         isCharging = false;
     }
-    
     public void GroundPlayer()
     {
         isGrounded = true;
@@ -360,16 +355,14 @@ public class PlayerController : MonoBehaviour
         hasDoubleJumped = false;
         effectiveSpeed = activePreset.groundSpeed;
     }
-    
     public void UngroundPlayer()
     {
         canDoubleJump = true;
         isGrounded = false;
+        lockGroundCheck = true;
         coyotE = 0f;
         effectiveSpeed = activePreset.airSpeed;
-        lockGroundCheck = true;
     }
-    
     public void MakeDash()
     {
         Vector3[] posArray = new Vector3[2];
