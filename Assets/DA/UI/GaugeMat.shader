@@ -19,7 +19,7 @@ Shader "GaugeMat"
 
         [Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("Use Alpha Clip", Float) = 0
 
-        _gaugeSpeed("gaugeSpeed", Float) = 2
+        _TimeScale("TimeScale", Float) = 1
         _PulseColor("PulseColor", Color) = (0,1,1,0)
         _BaseColor("BaseColor", Color) = (0.6704478,0,1,0)
         _gaugeValue("gaugeValue", Float) = 1
@@ -110,8 +110,8 @@ Shader "GaugeMat"
 #define _InitialSize_arr GaugeMat
             	UNITY_DEFINE_INSTANCED_PROP(float2, _InitialSize1)
 #define _InitialSize1_arr GaugeMat
-            	UNITY_DEFINE_INSTANCED_PROP(float, _gaugeSpeed)
-#define _gaugeSpeed_arr GaugeMat
+            	UNITY_DEFINE_INSTANCED_PROP(float, _TimeScale)
+#define _TimeScale_arr GaugeMat
             	UNITY_DEFINE_INSTANCED_PROP(float, _gaugeValue)
 #define _gaugeValue_arr GaugeMat
             UNITY_INSTANCING_BUFFER_END(GaugeMat)
@@ -232,10 +232,10 @@ Shader "GaugeMat"
                 IN.color.a = round(IN.color.a * alphaPrecision)*invAlphaPrecision;
 
                 float4 _BaseColor_Instance = UNITY_ACCESS_INSTANCED_PROP(_BaseColor_arr, _BaseColor);
-                float _gaugeSpeed_Instance = UNITY_ACCESS_INSTANCED_PROP(_gaugeSpeed_arr, _gaugeSpeed);
-                float temp_output_18_0 = ( _gaugeSpeed_Instance == 1.0 ? 1.0 : 4.0 );
+                float _TimeScale_Instance = UNITY_ACCESS_INSTANCED_PROP(_TimeScale_arr, _TimeScale);
+                float temp_output_18_0 = ( _TimeScale_Instance == 1.0 ? 1.0 : 4.0 );
                 float mulTime63 = _Time.y * ( temp_output_18_0 * 2.0 );
-                float time58 = ( mulTime63 * _gaugeSpeed_Instance );
+                float time58 = ( mulTime63 * temp_output_18_0 );
                 float2 voronoiSmoothId58 = 0;
                 float2 temp_cast_0 = (_Scale).xx;
                 float2 temp_cast_1 = (_Scale).xx;
@@ -262,12 +262,6 @@ Shader "GaugeMat"
                 float2 appendResult10_g3 = (float2(_InitialSize_Instance.x , _InitialSize_Instance.y));
                 float2 temp_output_11_0_g3 = ( abs( (texCoord14*2.0 + -1.0) ) - appendResult10_g3 );
                 float2 break16_g3 = ( 1.0 - ( temp_output_11_0_g3 / fwidth( temp_output_11_0_g3 ) ) );
-                float2 appendResult30 = (float2(( 0.5 - _gaugeValue_Instance ) , 0.0));
-                float2 texCoord29 = IN.texcoord.xy * float2( 1,1 ) + appendResult30;
-                float2 _InitialSize1_Instance = UNITY_ACCESS_INSTANCED_PROP(_InitialSize1_arr, _InitialSize1);
-                float2 appendResult10_g2 = (float2(_InitialSize1_Instance.x , _InitialSize1_Instance.y));
-                float2 temp_output_11_0_g2 = ( abs( (texCoord29*2.0 + -1.0) ) - appendResult10_g2 );
-                float2 break16_g2 = ( 1.0 - ( temp_output_11_0_g2 / fwidth( temp_output_11_0_g2 ) ) );
                 float mulTime25 = _Time.y * ( temp_output_18_0 * 12.0 );
                 float time19 = mulTime25;
                 float2 voronoiSmoothId19 = 0;
@@ -285,9 +279,15 @@ Shader "GaugeMat"
                 }//Voronoi19
                 voroi19 /= rest19;
                 float smoothstepResult50 = smoothstep( 0.41 , -0.36 , voroi19);
+                float2 appendResult30 = (float2(( 0.5 - _gaugeValue_Instance ) , 0.0));
+                float2 texCoord29 = IN.texcoord.xy * float2( 1,1 ) + appendResult30;
+                float2 _InitialSize1_Instance = UNITY_ACCESS_INSTANCED_PROP(_InitialSize1_arr, _InitialSize1);
+                float2 appendResult10_g2 = (float2(_InitialSize1_Instance.x , _InitialSize1_Instance.y));
+                float2 temp_output_11_0_g2 = ( abs( (texCoord29*2.0 + -1.0) ) - appendResult10_g2 );
+                float2 break16_g2 = ( 1.0 - ( temp_output_11_0_g2 / fwidth( temp_output_11_0_g2 ) ) );
                 
 
-                half4 color = ( ( ( _BaseColor_Instance * smoothstepResult57 ) + ( _PulseColor_Instance * ( 1.0 - smoothstepResult57 ) ) ) * ( saturate( min( break16_g3.x , break16_g3.y ) ) + ( ( temp_output_18_0 - 1.0 ) * saturate( min( break16_g2.x , break16_g2.y ) ) * step( voroi19 , smoothstepResult50 ) ) ) );
+                half4 color = ( ( ( _BaseColor_Instance * smoothstepResult57 ) + ( _PulseColor_Instance * ( 1.0 - smoothstepResult57 ) ) ) * ( saturate( min( break16_g3.x , break16_g3.y ) ) + ( ( temp_output_18_0 - 1.0 ) * step( voroi19 , smoothstepResult50 ) * saturate( min( break16_g2.x , break16_g2.y ) ) ) ) );
 
                 #ifdef UNITY_UI_CLIP_RECT
                 half2 m = saturate((_ClipRect.zw - _ClipRect.xy - abs(IN.mask.xy)) * IN.mask.zw);
@@ -312,10 +312,6 @@ Shader "GaugeMat"
 /*ASEBEGIN
 Version=19200
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;21;1534.932,15.10447;Float;False;True;-1;2;ASEMaterialInspector;0;3;GaugeMat;5056123faa0c79b47ab6ad7e8bf059a4;True;Default;0;0;Default;2;False;True;3;1;False;;10;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;True;True;True;True;True;0;True;_ColorMask;False;False;False;False;False;False;False;True;True;0;True;_Stencil;255;True;_StencilReadMask;255;True;_StencilWriteMask;0;True;_StencilComp;0;True;_StencilOp;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;0;True;unity_GUIZTestMode;False;True;5;Queue=Transparent=Queue=0;IgnoreProjector=True;RenderType=Transparent=RenderType;PreviewType=Plane;CanUseSpriteAtlas=True;False;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;0;;0;0;Standard;0;0;1;True;False;;False;0
-Node;AmplifyShaderEditor.StepOpNode;35;322.6312,1052.1;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0.09;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SmoothstepOpNode;50;-59.67996,1188.104;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0.41;False;2;FLOAT;-0.36;False;1;FLOAT;0
-Node;AmplifyShaderEditor.VoronoiNode;19;-402.671,1059.504;Inherit;True;2;4;5;4;8;False;1;False;False;False;4;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT;8;False;3;FLOAT;0;False;3;FLOAT;0;FLOAT2;1;FLOAT2;2
-Node;AmplifyShaderEditor.SimpleSubtractOpNode;43;-34.59068,538.1049;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;25;-760.5935,515.0975;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;31;-740.5205,754.137;Inherit;False;2;0;FLOAT;0.5;False;1;FLOAT;-1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.DynamicAppendNode;30;-578.4117,761.7056;Inherit;False;FLOAT2;4;0;FLOAT;-0.5;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
@@ -340,19 +336,18 @@ Node;AmplifyShaderEditor.FunctionNode;9;66.6412,-258.1537;Inherit;True;Rectangle
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;3;1258.808,45.97734;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SmoothstepOpNode;57;-342.5992,-574.5905;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0.1;False;2;FLOAT;0.2;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;62;-1121.449,-697.7202;Inherit;False;Property;_Scale;Scale;4;0;Create;True;0;0;0;False;0;False;4;4;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;5;-2131.259,112.9666;Inherit;False;InstancedProperty;_gaugeSpeed;gaugeSpeed;0;0;Create;True;0;0;0;False;0;False;2;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;8;-2110.644,-80.88218;Inherit;False;InstancedProperty;_gaugeValue;gaugeValue;3;0;Create;True;0;0;0;False;0;False;1;0.9748378;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;7;-1516.608,-340.0069;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;2;False;1;FLOAT;0
 Node;AmplifyShaderEditor.Compare;18;-1737.177,197.9292;Inherit;False;0;4;0;FLOAT;0;False;1;FLOAT;1;False;2;FLOAT;1;False;3;FLOAT;4;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;24;-969.352,442.8728;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;12;False;1;FLOAT;0
 Node;AmplifyShaderEditor.ColorNode;55;-223.8059,-776.3452;Inherit;False;InstancedProperty;_PulseColor;PulseColor;1;0;Create;True;0;0;0;False;0;False;0,1,1,0;1,0,0.1519026,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;56;-222.7943,-968.9316;Inherit;False;InstancedProperty;_BaseColor;BaseColor;2;0;Create;True;0;0;0;False;0;False;0.6704478,0,1,0;0.6704478,0,1,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;5;-2094.259,176.9666;Inherit;False;InstancedProperty;_TimeScale;TimeScale;0;0;Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleSubtractOpNode;43;-113.2456,29.59185;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.VoronoiNode;19;-422.7921,358.9268;Inherit;True;2;4;5;4;8;False;1;False;False;False;4;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT;8;False;3;FLOAT;0;False;3;FLOAT;0;FLOAT2;1;FLOAT2;2
+Node;AmplifyShaderEditor.StepOpNode;35;46.42453,214.3341;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0.09;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SmoothstepOpNode;50;-211.5022,425.3344;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0.41;False;2;FLOAT;-0.36;False;1;FLOAT;0
 WireConnection;21;0;3;0
-WireConnection;35;0;19;0
-WireConnection;35;1;50;0
-WireConnection;50;0;19;0
-WireConnection;19;1;25;0
-WireConnection;43;0;18;0
 WireConnection;25;0;24;0
 WireConnection;31;1;8;0
 WireConnection;30;0;31;0
@@ -370,7 +365,7 @@ WireConnection;54;1;52;0
 WireConnection;58;0;61;0
 WireConnection;58;1;60;0
 WireConnection;60;0;63;0
-WireConnection;60;1;5;0
+WireConnection;60;1;18;0
 WireConnection;63;0;7;0
 WireConnection;16;1;8;0
 WireConnection;15;0;16;0
@@ -378,8 +373,8 @@ WireConnection;14;1;15;0
 WireConnection;42;0;9;0
 WireConnection;42;1;28;0
 WireConnection;28;0;43;0
-WireConnection;28;1;26;0
-WireConnection;28;2;35;0
+WireConnection;28;1;35;0
+WireConnection;28;2;26;0
 WireConnection;61;0;62;0
 WireConnection;61;1;62;0
 WireConnection;9;1;14;0
@@ -391,5 +386,10 @@ WireConnection;57;0;58;0
 WireConnection;7;0;18;0
 WireConnection;18;0;5;0
 WireConnection;24;0;18;0
+WireConnection;43;0;18;0
+WireConnection;19;1;25;0
+WireConnection;35;0;19;0
+WireConnection;35;1;50;0
+WireConnection;50;0;19;0
 ASEEND*/
-//CHKSM=48C0ECE16F213DE84FD01C56A578CAFF9176E89D
+//CHKSM=576BC0E7AD375EBA91BD54605F753C82872688F3
