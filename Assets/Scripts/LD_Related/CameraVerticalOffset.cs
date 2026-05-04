@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class CameraVerticalOffset : MonoBehaviour
 {
-    public float VerticalOffset = -2.8f;
-        
-    private CinemachinePositionComposer cinemachineCamera;
+    private CameraFollow cameraFollow;
     void Start()
     {
-        cinemachineCamera = FindFirstObjectByType<CinemachinePositionComposer>();
+        cameraFollow = FindFirstObjectByType<CameraFollow>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            cinemachineCamera.TargetOffset.y = VerticalOffset;
+            cameraFollow.ChangeVerticalOffset(cameraFollow.VerticalOffset);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        cinemachineCamera.TargetOffset.y = 0f;
+        cameraFollow.ChangeVerticalOffset(0f);
     }
 
     // Update is called once per frame
