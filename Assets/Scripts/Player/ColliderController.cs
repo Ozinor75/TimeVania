@@ -33,9 +33,10 @@ public class ColliderController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)      // ICI RAYCAST
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && playerController.isTouchable)
         {
             playerController.Pushback(other.transform.position);
+            playerController.MakeIFrame();
             playerSound.HurtSound();
         }
     }
