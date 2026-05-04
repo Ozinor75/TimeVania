@@ -44,7 +44,7 @@ Material:
     - _UseUIAlphaClip: 0
     - __dirty: 0
     - _gaugeSpeed: 1
-    - _gaugeValue: 0.943821
+    - _gaugeValue: 0.824481
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -54,7 +54,6 @@ Material:
     - _InitialSize1: {r: 0.05, g: 0.3, b: 0, a: 0}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _MainColor1: {r: 0.6704478, g: 0, b: 1, a: 1}
-    - _OverflowSize: {r: 0.05, g: 0.3, b: 0, a: 0}
     - _PulseColor: {r: 0, g: 1, b: 1, a: 1}
     - _PusleColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
