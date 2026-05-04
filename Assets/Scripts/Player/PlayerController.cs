@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float pushbackForceX = 10f;
     public float pushbackForceY = 6f;
     public float pushbackDuration = 0.15f;
+    public float iFrameDuration = 0.15f;
 
     private bool isPushedBack = false;
     private float pushbackTimer = 0f;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
     public bool onStation = false;
     public bool isCharging = false;
     private bool isDashing = false;
+    public bool isTouchable = true;
     public bool isRespawning = false;
     public bool isJumping = false;
     public float movementUpDown;
@@ -299,21 +301,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    public void MakeIFrame()
+    {
+        if (isTouchable)
+            StartCoroutine(IFrame());
+    }
+    public IEnumerator IFrame()
+    {
+        isTouchable = false;
+        yield return new WaitForSecondsRealtime(iFrameDuration);
+        isTouchable = true;
+    }
     
     public void Pushback(Vector2 hitPosition)
     {
-        Vector2 dir = ((Vector2)transform.position - hitPosition).normalized;
+        if (isTouchable)
+        {
+            Vector2 dir = ((Vector2)transform.position - hitPosition).normalized;
         
-        float x = Mathf.Sign(dir.x) * pushbackForceX;
-        float y = pushbackForceY;
+            float x = Mathf.Sign(dir.x) * pushbackForceX;
+            float y = pushbackForceY;
 
-        pushbackVelocity = new Vector2(x, y);
-        isPushedBack = true;
-        pushbackTimer = pushbackDuration;
-        isJumping = false;
-        t = 0f;
-        rb.linearVelocity = pushbackVelocity;
+            pushbackVelocity = new Vector2(x, y);
+            isPushedBack = true;
+            pushbackTimer = pushbackDuration;
+            isJumping = false;
+            t = 0f;
+            rb.linearVelocity = pushbackVelocity;
+        }
     }
     
     

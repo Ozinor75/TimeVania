@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,17 +8,21 @@ public class CameraFollow : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Transform toFollow;
     private Camera cam;
+    private CinemachinePositionComposer cinemachineCamera;
     
     public float followTime;
     public float depthOffset;
     public float currentDepthOffset;
     public float heightOffset;
-    
+    public float HorizontalOffset;
+    public float VerticalOffset;
     private void Start()
     {
         toFollow = GameObject.FindGameObjectWithTag("Player").transform;
         currentDepthOffset = depthOffset;
         cam = GetComponent<Camera>();
+        cinemachineCamera = FindFirstObjectByType<CinemachinePositionComposer>();
+        cinemachineCamera.TargetOffset.x = HorizontalOffset;
     }
     
     void FixedUpdate()
@@ -28,6 +33,15 @@ public class CameraFollow : MonoBehaviour
             other2Dpos, followTime * Time.fixedDeltaTime);
     }
 
+    public void ChangeVerticalOffset(float offset)
+    {
+        cinemachineCamera.TargetOffset.y = offset;
+    }
+    
+    public void ChangeHorizontalOffset(float offset)
+    {
+        cinemachineCamera.TargetOffset.x = offset;
+    }
     public void ChangeMode(Transform go, float depth)
     {
         toFollow = go;

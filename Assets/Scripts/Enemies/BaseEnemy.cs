@@ -37,7 +37,8 @@ public class BaseEnemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // time.ChangeTime();
-            other.gameObject.GetComponent<PlayerController>().Pushback(transform.position);
+            other.gameObject.GetComponent<PlayerController>().Pushback(transform.position); StartCoroutine(other.gameObject.GetComponent<PlayerController>().IFrame());
+            other.gameObject.GetComponent<PlayerController>().MakeIFrame();
             // player.Pushback(transform.position);
         }
     }
