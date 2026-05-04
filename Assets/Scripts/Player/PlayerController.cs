@@ -84,6 +84,9 @@ public class PlayerController : MonoBehaviour
     public float wallJumpDir;
     public float jumpCost;
     
+    public bool lockGroundCheck;
+    private float lockGroundCheckDuration = 0.1f;
+    
     private void OnEnable()
     {
         if (playerControls == null)
@@ -139,7 +142,7 @@ public class PlayerController : MonoBehaviour
     }
     
     void FixedUpdate()
-    { 
+    {
         if (isPushedBack)
         {
             rb.linearVelocity = new Vector2(pushbackVelocity.x, rb.linearVelocityY);
@@ -152,7 +155,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
-        
         if (CanMove && !isJumping)
             rb.linearVelocity = movement;
         else if (CanMove && isJumping)
@@ -163,8 +165,6 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
             canDoubleJump = true;
         }
-            
-        
     }
     
     public void MakeJump()
@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
             isGrounded = false;
             canDoubleJump = true;
+            lockGroundCheck = true;
             Debug.Log("Jump");
             
             if (!timerController.isCharging)
@@ -187,6 +188,7 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
             isWallSliding = false;
             canDoubleJump = true;
+            lockGroundCheck = true;
             Debug.Log("W Jump");
             
             if (!timerController.isCharging)
@@ -199,6 +201,7 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
             canDoubleJump = false;
             hasDoubleJumped = true;
+            lockGroundCheck = true;
             Debug.Log("D Jump");
             
             if (!timerController.isCharging)
@@ -294,6 +297,18 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
         
         if (timerController.t <= 0 && !isRespawning) StartCoroutine(MakeRespawn());
+
+        if (lockGroundCheck)
+        {
+            lockGroundCheckDuration -= Time.deltaTime;
+
+            if (lockGroundCheckDuration <= 0)
+            {
+                lockGroundCheckDuration = 0.1f;
+                lockGroundCheck = false;
+            }
+        }
+            
         
         if (coyotE >= 0f && !isGrounded)
         {
@@ -330,8 +345,6 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = pushbackVelocity;
         }
     }
-    
-    
     public void ExitStation()
     {
         onStation =  false;
@@ -354,6 +367,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
         coyotE = 0f;
         effectiveSpeed = activePreset.airSpeed;
+        lockGroundCheck = true;
     }
     
     public void MakeDash()

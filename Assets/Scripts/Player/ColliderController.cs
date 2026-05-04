@@ -26,9 +26,12 @@ public class ColliderController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckGrounded();
-        if (playerController.WallJumpCapacity)
-            CheckSliding();
+        if (!playerController.lockGroundCheck)
+        {
+            CheckGrounded();
+            if (playerController.WallJumpCapacity)
+                CheckSliding();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)      // ICI RAYCAST
