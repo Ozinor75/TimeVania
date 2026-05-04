@@ -343,6 +343,7 @@ public class PlayerController : MonoBehaviour
     }
     public void GroundPlayer()
     {
+        Debug.Log("GroundPlayer");
         isGrounded = true;
         coyotE = coyotETimer;
         isJumping = false;
@@ -352,6 +353,7 @@ public class PlayerController : MonoBehaviour
     }
     public void UngroundPlayer()
     {
+        Debug.Log("UnGroundPlayer");
         canDoubleJump = true;
         isGrounded = false;
         lockGroundCheck = true;

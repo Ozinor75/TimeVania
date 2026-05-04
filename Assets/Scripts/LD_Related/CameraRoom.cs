@@ -10,6 +10,7 @@ public class CameraRoom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player");
             cameraFollow.ChangeCameraRoom(trigger);
         }
     }
