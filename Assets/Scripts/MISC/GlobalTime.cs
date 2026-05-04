@@ -18,7 +18,7 @@ public class GlobalTime : MonoBehaviour
     void Start()
     {
         active = basic;
-        worldTime = WorldTime.TWO;
+        // worldTime = WorldTime.TWO;
     }
     
     public void MidWorldTime()

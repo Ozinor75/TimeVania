@@ -16,6 +16,7 @@ TagManager:
   - Wall
   - Checkpoint
   - Enemy
+  - Photo
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - MissileBody
   - MissileSpike
   - Crush
-  - 
+  - PostProcessGame
   - 
   - 
   - 

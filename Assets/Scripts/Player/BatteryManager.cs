@@ -1,14 +1,10 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class BatteryManager : MonoBehaviour
 {
-    // globaltime #send to shader
-    // size x = lerp remaintime/totaltime #shader
-    // color = lerp red -> green remaintime/totaltime #shader
-    // si barres, int bars # send to shader
-    
     private PlayerTimer playerTimer;
     private GlobalTime globalTime;
     private BatterySound batterySound;
@@ -17,10 +13,12 @@ public class BatteryManager : MonoBehaviour
     public Material gaugeMat;
 
     private float r;
-    private float s;
+    // private float s;
 
-    public Color baseColor;
-    public Color superchargedColor;
+    public Color normalBaseColor;
+    public Color normalPulseColor;
+    public Color superchargedBaseColor;
+    public Color superchargedPulseColor;
     private bool overclock;
     
     void Start()
@@ -30,7 +28,8 @@ public class BatteryManager : MonoBehaviour
         batterySound = GetComponent<BatterySound>();
 
         r = 1;
-        gaugeMat.SetColor("_MainColor", baseColor);
+        gaugeMat.SetColor("_BaseColor", normalBaseColor);
+        gaugeMat.SetColor("_PulseColor", normalPulseColor);
         overclock = false;
     }
 
@@ -47,7 +46,8 @@ public class BatteryManager : MonoBehaviour
             
             if (overclock)
             {
-                gaugeMat.SetColor("_MainColor", baseColor);
+                gaugeMat.SetColor("_BaseColor", normalBaseColor);
+                gaugeMat.SetColor("_PulseColor", normalPulseColor);
                 overclock = false;
             }
                 
@@ -59,14 +59,13 @@ public class BatteryManager : MonoBehaviour
 
             if (!overclock)
             {
-                gaugeMat.SetColor("_MainColor", superchargedColor);
+                gaugeMat.SetColor("_BaseColor", superchargedBaseColor);
+                gaugeMat.SetColor("_PulseColor", superchargedPulseColor);
                 overclock = true;
             }
             
         }
         
-        s = globalTime.active;
-        gaugeMat.SetFloat("_gaugeSpeed", s);
         gaugeMat.SetFloat("_gaugeValue", r);
     }
     

@@ -14,7 +14,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -34,23 +34,27 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
+    - _Scale: 6
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
+    - _TimeScale: 1
     - _UseUIAlphaClip: 0
     - __dirty: 0
     - _gaugeSpeed: 1
-    - _gaugeState: 1
-    - _gaugeValue: 0.7469671
+    - _gaugeValue: 0.824481
     m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorBack: {r: 0.5298319, g: 0, b: 1, a: 0}
+    - _Gradient: {r: 0.1, g: 0.2, b: 0, a: 0}
     - _InitialSize: {r: 1, g: 0.2, b: 0, a: 0}
-    - _InitialSize1: {r: 0.05, g: 0.25, b: 0, a: 0}
+    - _InitialSize1: {r: 0.05, g: 0.3, b: 0, a: 0}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor1: {r: 0.57939434, g: 0, b: 1, a: 1}
-    - _SECONDARY: {r: 0.57939434, g: 0, b: 1, a: 1}
-    - _SecondaryColor: {r: 0.40094337, g: 1, b: 0.93420583, a: 1}
+    - _MainColor1: {r: 0.6704478, g: 0, b: 1, a: 1}
+    - _PulseColor: {r: 0, g: 1, b: 1, a: 1}
+    - _PusleColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
