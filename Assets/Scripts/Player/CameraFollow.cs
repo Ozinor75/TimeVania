@@ -9,6 +9,7 @@ public class CameraFollow : MonoBehaviour
     public Transform toFollow;
     private Camera cam;
     private CinemachinePositionComposer cinemachineCamera;
+    private CinemachineConfiner2D confiner;
     
     public float followTime;
     public float depthOffset;
@@ -22,6 +23,7 @@ public class CameraFollow : MonoBehaviour
         currentDepthOffset = depthOffset;
         cam = GetComponent<Camera>();
         cinemachineCamera = FindFirstObjectByType<CinemachinePositionComposer>();
+        confiner = FindFirstObjectByType<CinemachineConfiner2D>();
         cinemachineCamera.TargetOffset.x = HorizontalOffset;
     }
     
@@ -46,6 +48,11 @@ public class CameraFollow : MonoBehaviour
     {
         toFollow = go;
         currentDepthOffset = depth;
+    }
+
+    public void ChangeCameraRoom(Collider2D trigger)
+    {
+        confiner.BoundingShape2D = trigger;
     }
     
 }
