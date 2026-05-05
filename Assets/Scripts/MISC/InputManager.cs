@@ -71,21 +71,18 @@ public class InputManager : MonoBehaviour
         if (playerControls.Player.Upgrade.WasPressedThisFrame()/* && playerController.activePreset == PlayerPresets.*/)
         {
             // Debug.Log("Upgrading");
-            playerController.gearChange = 2;
             Upgrade.Invoke();
         }
         
         if (playerControls.Player.Downgrade.WasPressedThisFrame()/* && playerController.activePreset == PlayerPresets.Mid*/)
         {
             // Debug.Log("Downgrading");
-            playerController.gearChange = 0;
             Downgrade.Invoke();
         }
         
         if (playerControls.Player.Upgrade.WasReleasedThisFrame() || playerControls.Player.Downgrade.WasReleasedThisFrame())
         {
             // Debug.Log("Gear Released");
-            playerController.gearChange = 1;
             GearReleased.Invoke();
         }
 

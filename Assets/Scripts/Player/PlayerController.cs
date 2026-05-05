@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     public PlayerTimer timerController;
     private PlayerBoost playerBoost;
     private PlayerSound playerSound;
-    // public PlayerPresets activePreset;
     public GlobalTime globalTime;
     private LineRenderer line;
     private Image blackScreen;
@@ -48,8 +47,7 @@ public class PlayerController : MonoBehaviour
    
     [Header("Player Debug")]
     public bool isGrounded = true;
-    public Vector2 hookStickDirection;
-
+    [HideInInspector] public Vector2 hookStickDirection;
     public bool onStation = false;
     public bool isCharging = false;
     private bool isDashing = false;
@@ -58,33 +56,27 @@ public class PlayerController : MonoBehaviour
     public bool isJumping = false;
     public float movementUpDown;
     public float movementLeftRight;
-    public Vector2 movement;
+    [HideInInspector] public Vector2 movement;
     public Vector2 StartPos; //pos de départ pour restart
-
-    [Header("Prefabs")] 
-    public GameObject bubbleSlow;
-    public GameObject bubbleFast;
-    
     public bool CanMove = false;
-    public int gearChange = 0;
     private float t = 0f;
-    private float GlisseDuree = 0.1f;
-    private float GlisseTimer = 0f;
+    
     [HideInInspector] public Vector2 platformVelocity = Vector2.zero;
 
     [Header("DoubleJump & WallJump")]
+    
     public bool DoubleJumpCapacity = true;
-    public bool hasDoubleJumped;
-    public bool canDoubleJump;
+    [HideInInspector] public bool hasDoubleJumped;
+    [HideInInspector] public bool canDoubleJump;
     public float doubleJumpCost;
 
     public bool WallJumpCapacity = true;
     public bool isWallSliding;
-    public bool hasWallJumped;
-    public float wallJumpDir;
+    [HideInInspector] public bool hasWallJumped;
+    [HideInInspector] public float wallJumpDir;
     public float jumpCost;
     
-    public bool lockGroundCheck;
+    [HideInInspector] public bool lockGroundCheck;
     private float lockGroundCheckDuration = 0.1f;
     
     private void OnEnable()
@@ -94,7 +86,6 @@ public class PlayerController : MonoBehaviour
         
         playerControls.Enable();
     }
-    
     private void OnDisable()
     {
         playerControls.Disable();
@@ -109,25 +100,20 @@ public class PlayerController : MonoBehaviour
         selfCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         
-        
         playerBoost = GetComponent<PlayerBoost>();
         playerSound = FindFirstObjectByType<PlayerSound>();
         line = GetComponent<LineRenderer>();
-        // playerBoost.boostState = BoostStates.Gear2;
-        // activePreset = playerBoost.RGD_Player;
         
         timerController = GetComponent<PlayerTimer>();
         timerController.tMult = playerBoost.baseConsumptionMult;
         
         StartPos = transform.position; //sauvegarde position de départ
         
-        // start
         blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
         blackScreenColor = Color.black;
         
         StartCoroutine(BlackFade());
         Respawn();
-        // end
     }
 
     public IEnumerator BlackFade()
@@ -172,20 +158,24 @@ public class PlayerController : MonoBehaviour
         if (isGrounded || coyotE >= 0f)
         {
             rb.linearVelocityY = playerBoost.jumpForce;
-            UngroundPlayer();
             isJumping = true;
+            UngroundPlayer();
+            coyotE = 0f;
             Debug.Log("Jump");
-            
             if (!timerController.isCharging)
                 timerController.t -= jumpCost;
         }
         
-        else if (isWallSliding && Mathf.Sign(movementLeftRight) != Mathf.Sign(wallJumpDir) && WallJumpCapacity)
+        else if (isWallSliding && !hasWallJumped && WallJumpCapacity)
         {
-            rb.linearVelocity = new Vector2(playerBoost.jumpForce * Mathf.Sign(wallJumpDir) / 2, playerBoost.jumpForce / 2);
+            // rb.linearVelocity = new Vector2(playerBoost.jumpForce * Mathf.Sign(wallJumpDir) / 2, playerBoost.jumpForce / 2);
+            rb.linearVelocityX = playerBoost.jumpForce * Mathf.Sign(wallJumpDir) / 2;
+            rb.linearVelocityY= playerBoost.jumpForce / 2;
             isJumping = true;
             isWallSliding = false;
+            hasWallJumped = true;
             UngroundPlayer();
+            coyotE = 0f;
             Debug.Log("W Jump");
             
             if (!timerController.isCharging)
@@ -236,21 +226,14 @@ public class PlayerController : MonoBehaviour
         Respawn();
         playerSound.StartSound();
     }
-    
     public void Respawn()
     {
-        // Return
-        timerController.t = timerController.timer;
-        
-        // Reset
-        // playerBoost.boostState = BoostStates.Gear2;
-        // activePreset = playerBoost.ReturnGearSpeed();
         inputManager.ActivateStation.Invoke();
         timerController.tMult = playerBoost.baseConsumptionMult;
+        timerController.t = timerController.timer;
         isRespawning = false;
         CanMove = true;
     }
-    
     public void CrushRespawn()
     {
         rb.simulated = false;
@@ -258,19 +241,15 @@ public class PlayerController : MonoBehaviour
         transform.SetParent(null);
         rb.simulated = true;
     }
-    
-    
     private IEnumerator DashLine()
     {
         yield return new WaitForSecondsRealtime(0.2f);
         line.enabled = false;
     }
-    
     public void ChangeGear()
     {
         timerController.tMult = playerBoost.boostedConsumptionMult;
     }
-
     public void ResetGear()
     {
         timerController.tMult = playerBoost.baseConsumptionMult;
@@ -300,7 +279,6 @@ public class PlayerController : MonoBehaviour
                 lockGroundCheck = false;
             }
         }
-            
         
         if (coyotE >= 0f && !isGrounded)
         {
@@ -349,6 +327,7 @@ public class PlayerController : MonoBehaviour
         isJumping = false;
         canDoubleJump = false;
         hasDoubleJumped = false;
+        hasWallJumped = false;
         effectiveSpeed = playerBoost.groundSpeed;
     }
     public void UngroundPlayer()
@@ -357,7 +336,7 @@ public class PlayerController : MonoBehaviour
         canDoubleJump = true;
         isGrounded = false;
         lockGroundCheck = true;
-        coyotE = 0f;
+        // coyotE = 0f;
         effectiveSpeed = playerBoost.airSpeed;
     }
     public void MakeDash()

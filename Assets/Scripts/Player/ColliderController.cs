@@ -58,8 +58,8 @@ public class ColliderController : MonoBehaviour
 
     public void CheckSliding()
     {
-        rightSlideHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.right, 0.5f);
-        leftSlideHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, -Vector2.right, 0.5f);
+        rightSlideHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.right, 0.2f);
+        leftSlideHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, -Vector2.right, 0.2f);
 
         if (!playerController.isGrounded)
         {
@@ -67,27 +67,24 @@ public class ColliderController : MonoBehaviour
             { 
                 playerController.isWallSliding = true;
                 playerController.canDoubleJump = false;
-                playerController.CanMove = false;
                 playerController.wallJumpDir = -1;
-
-                Debug.Log("Wall at Right");
+                playerController.CanMove = false;
+                // Debug.Log("Wall at Right");
             }
 
             else if (leftSlideHit && leftSlideHit.collider.CompareTag("Ground"))
             {
                 playerController.isWallSliding = true;
                 playerController.canDoubleJump = false;
-                playerController.CanMove = false;
                 playerController.wallJumpDir = 1;
-            
-                Debug.Log("Wall at Left");
+                playerController.CanMove = false;
+                // Debug.Log("Wall at Left");
             }
 
             else
             {
                 playerController.isWallSliding = false;
-                // playerController.CanMove = true;
-                Debug.Log("Falling");
+                playerController.CanMove = true;
             }
         }
         
@@ -100,7 +97,7 @@ public class ColliderController : MonoBehaviour
     
     public void CheckGrounded()
     {
-        groundHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.2f);
+        groundHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.3f);
         // Debug.DrawLine(transform.position, groundHit.point, Color.red);
 
         if (groundHit)
