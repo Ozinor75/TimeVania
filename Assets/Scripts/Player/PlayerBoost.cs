@@ -9,21 +9,25 @@ using Debug = UnityEngine.Debug;
 public class PlayerBoost : MonoBehaviour
 {
     [Header("References")]
-    // private CustomInputs playerControls;
-    // private PlayerTimer timerController;
+    private CustomInputs playerControls;
+    private PlayerTimer timerController;
 
     [Header("RGD Values")]
     public float groundSpeed;
     public float airSpeed;
     public float jumpForce;
     public float dashDistance;
+    // public float gravityForce;
+    // public float globalWorldTime;
+
     public float boostedConsumptionMult;
     public float baseConsumptionMult;
     
-    // private PlayerController playerController;
+    private PlayerController playerController;
+    // public float totalTimerMult;
     
-    // void Start()
-    // {
-    //     // timerController = GetComponent<PlayerTimer>();
-    // }
+    void Start()
+    {
+        timerController = GetComponent<PlayerTimer>();
+    }
 }
