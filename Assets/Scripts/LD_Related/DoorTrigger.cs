@@ -55,7 +55,7 @@ public class DoorTrigger : MonoBehaviour
         if (isOpening)
         {
             t += Time.deltaTime  * manager.active;
-            r = t / duration;
+            r = (t / (duration * ratio));
         
             movable.position = Vector3.Lerp(current, end.position, curve.Evaluate(r));
         }
@@ -63,9 +63,9 @@ public class DoorTrigger : MonoBehaviour
         {
             if (current != start.position)
             {
-                Debug.Log("CACA PROUT");
+                Debug.Log("RATIO = " + ratio);
                 t += Time.deltaTime  * manager.active;
-                r = (t / duration) * ratio;
+                r = (t / (duration * ratio));
                 movable.position = Vector3.Lerp(current, start.position, curve.Evaluate(r));
             }
                 
