@@ -163,6 +163,24 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Save"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b3051f7-b14e-4155-b70b-bf80af9d669b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Load"",
+                    ""type"": ""Button"",
+                    ""id"": ""9710f6b9-b587-4fbf-a9dc-0c84649fbf28"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -462,6 +480,28 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""action"": ""HookDirection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24c8b363-ff46-4d03-86e5-db896296d80d"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Save"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0fa08ffe-8d02-4a5f-8260-2cda1e321e9f"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Load"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -526,6 +566,8 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         m_Player_Station = m_Player.FindAction("Station", throwIfNotFound: true);
         m_Player_Hook = m_Player.FindAction("Hook", throwIfNotFound: true);
         m_Player_HookDirection = m_Player.FindAction("HookDirection", throwIfNotFound: true);
+        m_Player_Save = m_Player.FindAction("Save", throwIfNotFound: true);
+        m_Player_Load = m_Player.FindAction("Load", throwIfNotFound: true);
         // DEBUG
         m_DEBUG = asset.FindActionMap("DEBUG", throwIfNotFound: true);
         m_DEBUG_TimerReset = m_DEBUG.FindAction("TimerReset", throwIfNotFound: true);
@@ -619,6 +661,8 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Station;
     private readonly InputAction m_Player_Hook;
     private readonly InputAction m_Player_HookDirection;
+    private readonly InputAction m_Player_Save;
+    private readonly InputAction m_Player_Load;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -662,6 +706,14 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/HookDirection".
         /// </summary>
         public InputAction @HookDirection => m_Wrapper.m_Player_HookDirection;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Save".
+        /// </summary>
+        public InputAction @Save => m_Wrapper.m_Player_Save;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Load".
+        /// </summary>
+        public InputAction @Load => m_Wrapper.m_Player_Load;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -712,6 +764,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @HookDirection.started += instance.OnHookDirection;
             @HookDirection.performed += instance.OnHookDirection;
             @HookDirection.canceled += instance.OnHookDirection;
+            @Save.started += instance.OnSave;
+            @Save.performed += instance.OnSave;
+            @Save.canceled += instance.OnSave;
+            @Load.started += instance.OnLoad;
+            @Load.performed += instance.OnLoad;
+            @Load.canceled += instance.OnLoad;
         }
 
         /// <summary>
@@ -747,6 +805,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @HookDirection.started -= instance.OnHookDirection;
             @HookDirection.performed -= instance.OnHookDirection;
             @HookDirection.canceled -= instance.OnHookDirection;
+            @Save.started -= instance.OnSave;
+            @Save.performed -= instance.OnSave;
+            @Save.canceled -= instance.OnSave;
+            @Load.started -= instance.OnLoad;
+            @Load.performed -= instance.OnLoad;
+            @Load.canceled -= instance.OnLoad;
         }
 
         /// <summary>
@@ -950,6 +1014,20 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHookDirection(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Save" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSave(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Load" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLoad(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DEBUG" which allows adding and removing callbacks.
