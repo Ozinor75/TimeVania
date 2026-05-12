@@ -416,6 +416,7 @@ MonoBehaviour:
   pushbackForceX: 10
   pushbackForceY: 15
   pushbackDuration: 0.3
+  iFrameDuration: 0.15
   coyotETimer: 0.2
   coyotE: 0
   inputManager: {fileID: 0}
@@ -428,16 +429,14 @@ MonoBehaviour:
   hookStickDirection: {x: 0, y: 0}
   onStation: 0
   isCharging: 0
+  isTouchable: 1
   isRespawning: 0
   isJumping: 0
   movementUpDown: 0
   movementLeftRight: 0
   movement: {x: 0, y: 0}
   StartPos: {x: 0, y: 0}
-  bubbleSlow: {fileID: 3137032449423336372, guid: 3d14d2bac3e5520458b4053158bd69d8, type: 3}
-  bubbleFast: {fileID: 3137032449423336372, guid: b863e3d6d6cffb64293ef20c726c9151, type: 3}
   CanMove: 0
-  gearChange: 0
   platformVelocity: {x: 0, y: 0}
   DoubleJumpCapacity: 1
   hasDoubleJumped: 0
@@ -448,6 +447,7 @@ MonoBehaviour:
   hasWallJumped: 0
   wallJumpDir: 0
   jumpCost: 0
+  lockGroundCheck: 0
 --- !u!114 &6012680405393787321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +463,8 @@ MonoBehaviour:
   timer: 900
   maxTimer: 0
   criticalTimer: 10
+  batterySizeBoost: 0
+  powerUpAbsorptionBoost: 0
   t: 0
   tMult: 0
   text: {fileID: 0}
@@ -480,19 +482,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6680cdfb8d85d0498f559bb4de86e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 1eab083d945c44f40a1e78f483eb655d, type: 2}
-  SlowColor: {r: 0, g: 1, b: 1, a: 0}
-  MidColor: {r: 1, g: 1, b: 0, a: 0}
-  SwiftColor: {r: 1, g: 0, b: 1, a: 0}
-  DEBUG_groundSpeed: 0
-  DEBUG_airSpeed: 0
-  DEBUG_jumpForce: 7
-  DEBUG_dashDistance: 0
-  DEBUG_gravityForce: 1.5
-  DEBUG_timerMult: 0.5
-  DEBUG_globalWorldTime: 0
-  boostState: 0
-  totalTimerMult: 0
+  groundSpeed: 0
+  airSpeed: 0
+  jumpForce: 0
+  dashDistance: 0
+  boostedConsumptionMult: 0
+  baseConsumptionMult: 0
 --- !u!114 &3874806513861814070
 MonoBehaviour:
   m_ObjectHideFlags: 0
