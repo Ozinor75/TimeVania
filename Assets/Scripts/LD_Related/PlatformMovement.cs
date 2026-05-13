@@ -10,8 +10,9 @@ public class PlatformMovement : MonoBehaviour
     public AnimationCurve curve;
     public float duration;
     public float startOffset;
-    private float t;
+    [HideInInspector]public float t;
     private float r;
+    public bool canMove = false;
 
     [Header("Time")]
     public GlobalTime manager;
@@ -21,15 +22,26 @@ public class PlatformMovement : MonoBehaviour
         manager = FindFirstObjectByType<GlobalTime>();
         
         curve.postWrapMode = WrapMode.PingPong;
+        ResetPos();
+    }
+
+    public void ResetPos()
+    {
+        canMove = false;
         t = startOffset;
+        r = t / duration;
+        movable.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
     }
 
     void Update()
     {
-        t += Time.deltaTime  * manager.active;
-        t %= duration * 2;
-        r = t / duration;
+        if (canMove)
+        {
+            t += Time.deltaTime  * manager.active;
+            t %= duration * 2;
+            r = t / duration;
         
-        movable.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
+            movable.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
+        }
     }
 }

@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 9187246286537576538}
   - component: {fileID: 1657122687099652793}
   - component: {fileID: 4639681108543911620}
-  - component: {fileID: 5867653190582690770}
+  - component: {fileID: 9153145552031445892}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -438,15 +438,15 @@ MonoBehaviour:
   StartPos: {x: 0, y: 0}
   CanMove: 0
   platformVelocity: {x: 0, y: 0}
-  DoubleJumpCapacity: 1
+  DoubleJumpCapacity: 0
   hasDoubleJumped: 0
   canDoubleJump: 0
-  doubleJumpCost: 0
-  WallJumpCapacity: 1
+  doubleJumpCost: 2
+  WallJumpCapacity: 0
   isWallSliding: 0
   hasWallJumped: 0
   wallJumpDir: 0
-  jumpCost: 0
+  jumpCost: 1
   lockGroundCheck: 0
 --- !u!114 &6012680405393787321
 MonoBehaviour:
@@ -460,16 +460,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeeacf6f15434248b8e00daa49c392d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 900
+  timer: 90
   maxTimer: 0
   criticalTimer: 10
-  batterySizeBoost: 0
-  powerUpAbsorptionBoost: 0
+  batteryBoostValue: 0
+  powerUpAbsorptionBoostValue: 0
   t: 0
   tMult: 0
   text: {fileID: 0}
   isCharging: 0
   energyMaterial: {fileID: 0}
+  batterySizeBoost: 0
+  powerUpAbsorptionBoost: 0
 --- !u!114 &8614554792051596572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,12 +484,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6680cdfb8d85d0498f559bb4de86e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundSpeed: 0
-  airSpeed: 0
-  jumpForce: 0
-  dashDistance: 0
-  boostedConsumptionMult: 0
-  baseConsumptionMult: 0
+  groundSpeed: 14
+  airSpeed: 7
+  jumpForce: 15
+  dashDistance: 12
+  boostedConsumptionMult: 2
+  baseConsumptionMult: 1
 --- !u!114 &3874806513861814070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,7 +562,7 @@ MonoBehaviour:
   - {fileID: 9000474306733302121}
   - {fileID: 1844341617527646774}
   - {fileID: 313801103656450536}
---- !u!114 &5867653190582690770
+--- !u!114 &9153145552031445892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -569,20 +571,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1120417498359201754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a84eac0e000feba44b4029ceb48500dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 854f8a38b206bee448a2bbe4fd4d34f3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ME_Hook
-  manager: {fileID: 0}
-  player: {fileID: 2172650544462054247}
-  hook: {fileID: 0}
-  hookLine: {fileID: 0}
-  projectionSpeed: 20
-  retractionSpeed: 10
-  maxDist: 10
-  isHooked: 0
-  delta: 0
-  t: 0
-  UseRightStick: 0
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSave
 --- !u!1 &1423131936869618407
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,7 +681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8395420265841840774
 Transform:
   m_ObjectHideFlags: 0
