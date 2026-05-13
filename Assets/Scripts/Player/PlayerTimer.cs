@@ -8,8 +8,10 @@ public class PlayerTimer : MonoBehaviour
     public float timer;
     public float maxTimer;
     public float criticalTimer;
-    public int batterySizeBoost;
-    public int powerUpAbsorptionBoost;
+
+    public int batteryBoostValue;
+    public int powerUpAbsorptionBoostValue;
+  
     public float t;
     public float tMult;
     public TextMeshProUGUI text;
@@ -20,6 +22,10 @@ public class PlayerTimer : MonoBehaviour
     private BatteryManager batteryManager;
     
     public Material energyMaterial;
+    
+    [Header("Debug")]
+    public int batterySizeBoost;
+    public int powerUpAbsorptionBoost;
 
     public int CheckCharge()
     {
