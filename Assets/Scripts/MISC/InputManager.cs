@@ -20,6 +20,7 @@ public class InputManager : MonoBehaviour
 
     public CustomInputs playerControls;
     private PlayerController playerController;
+    private RLDtimer rldtimer;
     private void OnEnable()
     {
         if (playerControls == null)
@@ -34,6 +35,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         playerController = FindAnyObjectByType<PlayerController>();
+        rldtimer = FindAnyObjectByType<RLDtimer>();
     }
 
     // Update is called once per frame
