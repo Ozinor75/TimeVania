@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
         
         StartCoroutine(BlackFade());
         Respawn();
+        playerSound.MusicDefault();
     }
 
     public IEnumerator BlackFade()

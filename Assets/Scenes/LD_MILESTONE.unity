@@ -405215,6 +405215,46 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: start.Path
+      value: event:/Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: start.Guid.Data1
+      value: -784266774
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: start.Guid.Data2
+      value: 1282526180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: start.Guid.Data3
+      value: 1946342529
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: start.Guid.Data4
+      value: -2004626210
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: musicDefault.Path
+      value: event:/music
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: musicDefault.Guid.Data1
+      value: 177344540
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: musicDefault.Guid.Data2
+      value: 1337115455
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: musicDefault.Guid.Data3
+      value: -1658523516
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: musicDefault.Guid.Data4
+      value: 147084934
+      objectReference: {fileID: 0}
     - target: {fileID: 2172650544462054247, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: jumpCost
       value: 1

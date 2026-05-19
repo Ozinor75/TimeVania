@@ -18,6 +18,7 @@ public class PlayerSound : MonoBehaviour
     public EventReference hurt;
     public EventReference reload;
     public EventReference start;
+    public EventReference musicDefault;
     
     private PlayerController player;
     private float t = 0f;
@@ -30,6 +31,14 @@ public class PlayerSound : MonoBehaviour
         instance.start();
         instance.release();
     }
+    
+    public void PlayLoop(EventReference eventReference, Vector3 position, float volume = 1f)
+    {
+        EventInstance instance = FMODUnity.RuntimeManager.CreateInstance(eventReference);
+        instance.set3DAttributes(RuntimeUtils.To3DAttributes(position));
+        instance.setVolume(volume);
+        instance.start();
+    }
     public void HurtSound()
     {
         PlayOneShot(hurt, transform.position, 1f);
@@ -41,9 +50,14 @@ public class PlayerSound : MonoBehaviour
     
     public void StartSound()
     {
-        if (!start.IsNull)
-            PlayOneShot(start, transform.position, 1f);
+        PlayLoop(start, transform.position, 1f);
     }
+    
+    public void MusicDefault()
+    {
+        PlayOneShot(musicDefault, transform.position, 1f);
+    }
+    
     public void StopSound(AudioSource sound)
     {
         sound.Stop();
