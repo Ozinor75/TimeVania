@@ -94,14 +94,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Physics2D.queriesStartInColliders = false;
-        // Physics2D.gravity = new Vector2(0, -35); //remplacer playerBoost par la valeur en publique
+        Physics2D.gravity = new Vector2(0, -35);
         
         inputManager = FindAnyObjectByType<InputManager>();
         selfCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         
         playerBoost = GetComponent<PlayerBoost>();
-        Physics2D.gravity = new Vector2(0, -playerBoost.gravity); //supprimer cette ligne
         playerSound = FindFirstObjectByType<PlayerSound>();
         line = GetComponent<LineRenderer>();
         
@@ -130,7 +129,6 @@ public class PlayerController : MonoBehaviour
     
     void FixedUpdate()
     {
-        Physics2D.gravity = new Vector2(0, -playerBoost.gravity); //Enlever cette ligne
         if (isPushedBack)
         {
             rb.linearVelocity = new Vector2(pushbackVelocity.x, rb.linearVelocityY);
@@ -161,7 +159,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocityY = playerBoost.jumpForce;
             isJumping = true;
-            UngroundJumpPlayer();
+            UngroundPlayer();
             coyotE = 0f;
             Debug.Log("Jump");
             if (!timerController.isCharging)
@@ -339,15 +337,6 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
         lockGroundCheck = true;
         // coyotE = 0f;
-        effectiveSpeed = playerBoost.airSpeed;
-    }    
-    public void UngroundJumpPlayer()
-    {
-        Debug.Log("UnGroundPlayer");
-        canDoubleJump = true;
-        isGrounded = false;
-        lockGroundCheck = true;
-        coyotE = 0f;
         effectiveSpeed = playerBoost.airSpeed;
     }
     public void MakeDash()

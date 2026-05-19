@@ -17,7 +17,6 @@ public class PlayerBoost : MonoBehaviour
     public float airSpeed;
     public float jumpForce;
     public float dashDistance;
-    public float gravity;
     // public float gravityForce;
     // public float globalWorldTime;
 
