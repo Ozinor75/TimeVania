@@ -199,7 +199,8 @@ GameObject:
   - component: {fileID: 9187246286537576538}
   - component: {fileID: 1657122687099652793}
   - component: {fileID: 4639681108543911620}
-  - component: {fileID: 9153145552031445892}
+  - component: {fileID: 5867653190582690770}
+  - component: {fileID: 2035565636082677126}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -463,15 +464,11 @@ MonoBehaviour:
   timer: 90
   maxTimer: 0
   criticalTimer: 10
-  batteryBoostValue: 0
-  powerUpAbsorptionBoostValue: 0
   t: 0
   tMult: 0
   text: {fileID: 0}
   isCharging: 0
   energyMaterial: {fileID: 0}
-  batterySizeBoost: 0
-  powerUpAbsorptionBoost: 0
 --- !u!114 &8614554792051596572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,18 +559,52 @@ MonoBehaviour:
   - {fileID: 9000474306733302121}
   - {fileID: 1844341617527646774}
   - {fileID: 313801103656450536}
---- !u!114 &9153145552031445892
+--- !u!114 &5867653190582690770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120417498359201754}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 854f8a38b206bee448a2bbe4fd4d34f3, type: 3}
+  m_Script: {fileID: 11500000, guid: a84eac0e000feba44b4029ceb48500dc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSave
+  m_EditorClassIdentifier: Assembly-CSharp::ME_Hook
+  manager: {fileID: 0}
+  player: {fileID: 2172650544462054247}
+  hook: {fileID: 0}
+  hookLine: {fileID: 0}
+  projectionSpeed: 20
+  retractionSpeed: 10
+  maxDist: 10
+  isHooked: 0
+  delta: 0
+  t: 0
+  UseRightStick: 0
+--- !u!114 &2035565636082677126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120417498359201754}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84eac0e000feba44b4029ceb48500dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ME_Hook
+  manager: {fileID: 0}
+  player: {fileID: 2172650544462054247}
+  hook: {fileID: 0}
+  hookLine: {fileID: 0}
+  projectionSpeed: 20
+  retractionSpeed: 10
+  maxDist: 10
+  isHooked: 0
+  delta: 0
+  t: 0
+  UseRightStick: 0
 --- !u!1 &1423131936869618407
 GameObject:
   m_ObjectHideFlags: 0
