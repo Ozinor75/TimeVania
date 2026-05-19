@@ -97,7 +97,7 @@ public class ColliderController : MonoBehaviour
     
     public void CheckGrounded()
     {
-        groundHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.3f);
+        groundHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.5f);
         // Debug.DrawLine(transform.position, groundHit.point, Color.red);
 
         if (groundHit)
