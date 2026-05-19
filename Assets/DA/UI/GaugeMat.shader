@@ -26,7 +26,6 @@ Shader "GaugeMat"
         _Scale("Scale", Float) = 4
         _TotalLevel("TotalLevel", Float) = 5
         _ActiveLevel("ActiveLevel", Float) = 2
-        _FX_Debug("FX_Debug", 2D) = "white" {}
 
     }
 
@@ -104,7 +103,6 @@ Shader "GaugeMat"
             uniform float4 _SuperChargedColor;
             uniform float4 _BaseColor;
             uniform float _Scale;
-            uniform sampler2D _FX_Debug;
             UNITY_INSTANCING_BUFFER_START(GaugeMat)
             	UNITY_DEFINE_INSTANCED_PROP(float, _ActiveLevel)
 #define _ActiveLevel_arr GaugeMat
@@ -275,12 +273,9 @@ Shader "GaugeMat"
                 float2 temp_output_11_0_g6 = ( abs( (texCoord65*2.0 + -1.0) ) - appendResult10_g6 );
                 float2 break16_g6 = ( 1.0 - ( temp_output_11_0_g6 / fwidth( temp_output_11_0_g6 ) ) );
                 Gradient gradient99 = NewGradient( 2, 3, 2, float4( 0, 0, 0, 0 ), float4( 0.4386792, 1, 0.9235554, 0.07940795 ), float4( 1, 1, 1, 0.1205921 ), 0, 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 0.06764325 ), 0, 0, 0, 0, 0, 0 );
-                float mulTime25 = _Time.y * ( temp_output_18_0 * 12.0 );
-                float2 appendResult94 = (float2(1.0 , mulTime25));
-                float2 texCoord95 = IN.texcoord.xy * float2( 1,-0.2 ) + appendResult94;
                 
 
-                half4 color = ( ( ( ( ( _ActiveLevel_Instance == _TotalLevel_Instance ? _SuperChargedColor : _BaseColor ) * smoothstepResult57 ) + float4( 0,0,0,1 ) ) * saturate( min( break16_g6.x , break16_g6.y ) ) ) + SampleGradient( gradient99, ( ( temp_output_18_0 - 1.0 ) * tex2D( _FX_Debug, texCoord95 ).r ) ) );
+                half4 color = ( ( ( ( ( _ActiveLevel_Instance == _TotalLevel_Instance ? _SuperChargedColor : _BaseColor ) * smoothstepResult57 ) + float4( 0,0,0,1 ) ) * saturate( min( break16_g6.x , break16_g6.y ) ) ) + SampleGradient( gradient99, ( ( temp_output_18_0 - 1.0 ) * 0.0 ) ) );
 
                 #ifdef UNITY_UI_CLIP_RECT
                 half2 m = saturate((_ClipRect.zw - _ClipRect.xy - abs(IN.mask.xy)) * IN.mask.zw);
@@ -323,7 +318,7 @@ Node;AmplifyShaderEditor.FunctionNode;64;78.01001,79.09178;Inherit;True;Rectangl
 Node;AmplifyShaderEditor.NegateNode;75;-1695.989,273.697;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleDivideOpNode;67;-1854.419,275.4184;Inherit;False;2;0;FLOAT;1;False;1;FLOAT;5;False;1;FLOAT;0
 Node;AmplifyShaderEditor.OneMinusNode;84;-1437.831,8.624634;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;8;-1445.377,-208.7364;Inherit;False;InstancedProperty;_gaugeValue;gaugeValue;3;0;Create;True;0;0;0;False;0;False;0.5;0.9959444;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;8;-1445.377,-208.7364;Inherit;False;InstancedProperty;_gaugeValue;gaugeValue;3;0;Create;True;0;0;0;False;0;False;0.5;0.1062503;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;16;-937.7499,-270.5343;Inherit;False;2;0;FLOAT;1;False;1;FLOAT;-1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;65;-433.705,140.067;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.DynamicAppendNode;66;-634.0591,335.5909;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
@@ -335,7 +330,7 @@ Node;AmplifyShaderEditor.RangedFloatNode;90;-2366.013,260.3929;Inherit;False;Ins
 Node;AmplifyShaderEditor.SimpleAddOpNode;54;356.4574,-704.6684;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,1;False;1;COLOR;0
 Node;AmplifyShaderEditor.Compare;92;-43.79187,-1051.241;Inherit;False;0;4;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.ColorNode;56;-485.3511,-1076.635;Inherit;False;Property;_BaseColor;BaseColor;1;0;Create;True;0;0;0;False;0;False;1,1,1,1;1,1,1,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;91;-480.46,-1270.683;Inherit;False;Property;_SuperChargedColor;SuperChargedColor;2;0;Create;True;0;0;0;False;0;False;1,0.0916364,0,1;1,0.09163629,0,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;91;-480.46,-1270.683;Inherit;False;Property;_SuperChargedColor;SuperChargedColor;2;0;Create;True;0;0;0;False;0;False;1,0.0916364,0,1;1,0.09163626,0,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleTimeNode;25;-996.3278,900.619;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.DynamicAppendNode;94;-755.4395,821.8198;Inherit;False;FLOAT2;4;0;FLOAT;1;False;1;FLOAT;1;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SamplerNode;93;-77.38959,868.0226;Inherit;True;Property;_FX_Debug;FX_Debug;8;0;Create;True;0;0;0;False;0;False;-1;65314d01c6abc4d409e34df25f9882f4;65314d01c6abc4d409e34df25f9882f4;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -360,7 +355,6 @@ WireConnection;63;0;7;0
 WireConnection;57;0;58;0
 WireConnection;7;0;18;0
 WireConnection;28;0;43;0
-WireConnection;28;1;93;1
 WireConnection;21;0;42;0
 WireConnection;9;1;14;0
 WireConnection;9;2;10;1
@@ -405,4 +399,4 @@ WireConnection;3;1;64;0
 WireConnection;42;0;3;0
 WireConnection;42;1;100;0
 ASEEND*/
-//CHKSM=26D43475DE4CBCBF2B4BA546269A22DB3CA72AD4
+//CHKSM=C6803A5291ED753AD25CB7F643C3B5F71CF7220E

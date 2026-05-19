@@ -50,7 +50,7 @@ Material:
     - _UseUIAlphaClip: 0
     - __dirty: 0
     - _gaugeSpeed: 1
-    - _gaugeValue: 0.9959444
+    - _gaugeValue: 0.48635834
     m_Colors:
     - _ActiveOnTotalLevels: {r: 1, g: 5, b: 0, a: 0}
     - _BZZSize: {r: 0.1, g: 0.6, b: 0, a: 0}
@@ -64,6 +64,6 @@ Material:
     - _MainColor1: {r: 0.6704478, g: 0, b: 1, a: 1}
     - _PulseColor: {r: 0, g: 1, b: 1, a: 1}
     - _PusleColor: {r: 0, g: 0, b: 0, a: 0}
-    - _SuperChargedColor: {r: 1, g: 0.09163629, b: 0, a: 1}
+    - _SuperChargedColor: {r: 1, g: 0.09163626, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
