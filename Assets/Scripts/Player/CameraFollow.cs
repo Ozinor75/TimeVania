@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Transform toFollow;
     private Camera cam;
-    // private CinemachinePositionComposer cinemachineCamera;
+    private CinemachinePositionComposer cinemachineCamera;
     private CinemachineConfiner2D confiner;
     
     public float followTime;
@@ -19,12 +19,12 @@ public class CameraFollow : MonoBehaviour
     public float VerticalOffset;
     private void Start()
     {
-        // toFollow = GameObject.FindGameObjectWithTag("Player").transform;
+        toFollow = GameObject.FindGameObjectWithTag("Player").transform;
         currentDepthOffset = depthOffset;
         cam = GetComponent<Camera>();
-        // cinemachineCamera = FindFirstObjectByType<CinemachinePositionComposer>();
+        cinemachineCamera = FindFirstObjectByType<CinemachinePositionComposer>();
         confiner = FindFirstObjectByType<CinemachineConfiner2D>();
-        // cinemachineCamera.TargetOffset.x = HorizontalOffset;
+        cinemachineCamera.TargetOffset.x = HorizontalOffset;
     }
     
     void FixedUpdate()
@@ -37,12 +37,12 @@ public class CameraFollow : MonoBehaviour
 
     public void ChangeVerticalOffset(float offset)
     {
-        // cinemachineCamera.TargetOffset.y = offset;
+        cinemachineCamera.TargetOffset.y = offset;
     }
     
     public void ChangeHorizontalOffset(float offset)
     {
-        // cinemachineCamera.TargetOffset.x = offset;
+        cinemachineCamera.TargetOffset.x = offset;
     }
     public void ChangeMode(Transform go, float depth)
     {

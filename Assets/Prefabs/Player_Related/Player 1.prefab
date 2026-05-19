@@ -200,7 +200,6 @@ GameObject:
   - component: {fileID: 1657122687099652793}
   - component: {fileID: 4639681108543911620}
   - component: {fileID: 5867653190582690770}
-  - component: {fileID: 2035565636082677126}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -417,7 +416,6 @@ MonoBehaviour:
   pushbackForceX: 10
   pushbackForceY: 15
   pushbackDuration: 0.3
-  iFrameDuration: 0.15
   coyotETimer: 0.2
   coyotE: 0
   inputManager: {fileID: 0}
@@ -430,25 +428,26 @@ MonoBehaviour:
   hookStickDirection: {x: 0, y: 0}
   onStation: 0
   isCharging: 0
-  isTouchable: 1
   isRespawning: 0
   isJumping: 0
   movementUpDown: 0
   movementLeftRight: 0
   movement: {x: 0, y: 0}
   StartPos: {x: 0, y: 0}
+  bubbleSlow: {fileID: 3137032449423336372, guid: 3d14d2bac3e5520458b4053158bd69d8, type: 3}
+  bubbleFast: {fileID: 3137032449423336372, guid: b863e3d6d6cffb64293ef20c726c9151, type: 3}
   CanMove: 0
+  gearChange: 0
   platformVelocity: {x: 0, y: 0}
-  DoubleJumpCapacity: 0
+  DoubleJumpCapacity: 1
   hasDoubleJumped: 0
   canDoubleJump: 0
-  doubleJumpCost: 2
-  WallJumpCapacity: 0
+  doubleJumpCost: 0
+  WallJumpCapacity: 1
   isWallSliding: 0
   hasWallJumped: 0
   wallJumpDir: 0
-  jumpCost: 1
-  lockGroundCheck: 0
+  jumpCost: 0
 --- !u!114 &6012680405393787321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeeacf6f15434248b8e00daa49c392d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 90
+  timer: 900
   maxTimer: 0
   criticalTimer: 10
   t: 0
@@ -481,12 +480,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6680cdfb8d85d0498f559bb4de86e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundSpeed: 14
-  airSpeed: 7
-  jumpForce: 15
-  dashDistance: 12
-  boostedConsumptionMult: 2
-  baseConsumptionMult: 1
+  mat: {fileID: 2100000, guid: 1eab083d945c44f40a1e78f483eb655d, type: 2}
+  SlowColor: {r: 0, g: 1, b: 1, a: 0}
+  MidColor: {r: 1, g: 1, b: 0, a: 0}
+  SwiftColor: {r: 1, g: 0, b: 1, a: 0}
+  DEBUG_groundSpeed: 0
+  DEBUG_airSpeed: 0
+  DEBUG_jumpForce: 7
+  DEBUG_dashDistance: 0
+  DEBUG_gravityForce: 1.5
+  DEBUG_timerMult: 0.5
+  DEBUG_globalWorldTime: 0
+  boostState: 0
+  totalTimerMult: 0
 --- !u!114 &3874806513861814070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,30 +572,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120417498359201754}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a84eac0e000feba44b4029ceb48500dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ME_Hook
-  manager: {fileID: 0}
-  player: {fileID: 2172650544462054247}
-  hook: {fileID: 0}
-  hookLine: {fileID: 0}
-  projectionSpeed: 20
-  retractionSpeed: 10
-  maxDist: 10
-  isHooked: 0
-  delta: 0
-  t: 0
-  UseRightStick: 0
---- !u!114 &2035565636082677126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120417498359201754}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a84eac0e000feba44b4029ceb48500dc, type: 3}
   m_Name: 
@@ -712,7 +695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8395420265841840774
 Transform:
   m_ObjectHideFlags: 0
