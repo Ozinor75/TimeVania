@@ -99,18 +99,5 @@ public class InputManager : MonoBehaviour
         {
             UseHook.Invoke();
         }
-        
-        if (playerControls.Player.Save.WasPressedThisFrame())
-        {
-            SaveSystem.Save();
-            Debug.Log("Save");
-        }
-        
-        if (playerControls.Player.Load.WasPressedThisFrame())
-        {
-            SaveSystem.Load();
-            Debug.Log("Load");
-        }
-
     }
 }
