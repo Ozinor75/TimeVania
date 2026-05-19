@@ -10,7 +10,7 @@ Shader "BaseShader"
 		[HDR]_LEDsColor("LEDs Color", Color) = (0.9707701,1,0,0)
 		_BaseColor("Base Color", Color) = (1,0.2399642,0,0)
 		_ShadowSize("ShadowSize", Range( 0.5 , 1)) = 1
-		_LightSize("LightSize", Range( 0.5 , 1)) = 0.7448979
+		_LightSize("LightSize", Range( 0.5 , 1)) = 0.656297
 		_LEDsShape("LEDsShape", 2D) = "black" {}
 		_Preset("Preset", Range( 0 , 1)) = 0
 		_UseCustomColor("Use Custom Color", Int) = 0
@@ -97,7 +97,7 @@ Shader "BaseShader"
 			float _ShadowSize_Instance = UNITY_ACCESS_INSTANCED_PROP(_ShadowSize_arr, _ShadowSize);
 			float fresnelNdotV135 = dot( ase_worldNormal, ase_worldlightDir );
 			float fresnelNode135 = ( 0.0 + _ShadowSize_Instance * pow( 1.0 - fresnelNdotV135, 1.0 ) );
-			float ShadowSize142 = step( ( 1.0 - fresnelNode135 ) , 0.0 );
+			float ShadowSize142 = step( 0.0 , ( 1.0 - fresnelNode135 ) );
 			float clampResult297 = clamp( ShadowSize142 , 0.0 , _ShadowStrenght_Instance );
 			float Lighting118 = ( ( step( ( ( 0.0 + ( fresnelNode65 * 0.5 ) ) + 0.5 ) , 2.0 ) - clampResult296 ) - clampResult297 );
 			float4 _BaseColor_Instance = UNITY_ACCESS_INSTANCED_PROP(_BaseColor_arr, _BaseColor);
@@ -208,7 +208,7 @@ Node;AmplifyShaderEditor.OneMinusNode;132;3398.176,232.6472;Inherit;False;1;0;FL
 Node;AmplifyShaderEditor.StepOpNode;325;3550.489,241.4348;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RegisterLocalVarNode;231;3696.45,247.8241;Inherit;True;NormalSize;-1;True;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.FresnelNode;135;3107.911,585.8651;Inherit;False;Standard;WorldNormal;LightDir;False;False;5;0;FLOAT3;0,0,1;False;4;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;1.79;False;3;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;25;2483.003,255.5651;Inherit;False;InstancedProperty;_LightSize;LightSize;4;0;Create;True;0;0;0;False;0;False;0.7448979;0.671;0.5;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;25;2483.003,255.5651;Inherit;False;InstancedProperty;_LightSize;LightSize;4;0;Create;True;0;0;0;False;0;False;0.656297;0.671;0.5;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;23;2488.197,347.3731;Inherit;False;InstancedProperty;_ShadowSize;ShadowSize;3;0;Create;True;0;0;0;False;0;False;1;0.698;0.5;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;319;4749.402,248.9429;Inherit;False;InstancedProperty;_Preset;Preset;6;0;Create;True;0;0;0;False;0;False;0;0.648;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RGBToHSVNode;307;4755.068,369.2725;Inherit;True;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
@@ -251,7 +251,7 @@ WireConnection;357;0;345;1
 WireConnection;358;0;345;2
 WireConnection;359;0;345;3
 WireConnection;328;0;135;0
-WireConnection;326;0;328;0
+WireConnection;326;1;328;0
 WireConnection;142;0;326;0
 WireConnection;323;4;345;0
 WireConnection;323;2;25;0
@@ -297,4 +297,4 @@ WireConnection;0;3;368;0
 WireConnection;0;4;372;0
 WireConnection;372;0;373;0
 ASEEND*/
-//CHKSM=A71CBCF6CB3DF86406D4B53B1B7EF97B1A3CE0BD
+//CHKSM=41568ECF8938B1AC38142905D7515C8030AF5834
