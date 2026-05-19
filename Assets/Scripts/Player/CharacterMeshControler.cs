@@ -17,12 +17,12 @@ public class CharacterMeshControler : MonoBehaviour
         if (rb.linearVelocityX > 0.1f)
         {
             mesh.rotation = Quaternion.Euler(0f, -90f, 0f);
-            // cameraFollow.ChangeHorizontalOffset(cameraFollow.HorizontalOffset); à enlever
+            cameraFollow.ChangeHorizontalOffset(cameraFollow.HorizontalOffset);
         }
         else if (rb.linearVelocityX < -0.1f)
         {
             mesh.rotation = Quaternion.Euler(0f, 90f, 0f);
-            // cameraFollow.ChangeHorizontalOffset(-cameraFollow.HorizontalOffset); à enlever
+            cameraFollow.ChangeHorizontalOffset(-cameraFollow.HorizontalOffset);
         }
         // else
         //     mesh.rotation = Quaternion.Euler(0f, 0f, 0f);

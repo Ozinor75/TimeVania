@@ -11,7 +11,7 @@ public class PlatformMovement : MonoBehaviour
     public float duration;
     public float startOffset;
     private float t;
-    public float r { get; private set; }                // private float r; à remettre
+    private float r;
 
     [Header("Time")]
     public GlobalTime manager;
