@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LEDsShape:
-        m_Texture: {fileID: 2800000, guid: ace3fde22b8b0ce409ea785cf7cc2de7, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -113,6 +113,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Preset: 0.75
+    - _Roughness: 0
     - _ShadowBias: 0
     - _ShadowSize: 1.086
     - _ShadowStrenght: 0.536

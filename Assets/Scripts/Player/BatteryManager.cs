@@ -8,18 +8,12 @@ public class BatteryManager : MonoBehaviour
     private PlayerTimer playerTimer;
     private GlobalTime globalTime;
     private BatterySound batterySound;
-    private Color batteryColor;
     
     public Material gaugeMat;
+    public int activeLevel;
+    public int totalLevels;
 
     private float r;
-    // private float s;
-
-    public Color normalBaseColor;
-    public Color normalPulseColor;
-    public Color superchargedBaseColor;
-    public Color superchargedPulseColor;
-    private bool overclock;
     
     void Start()
     {
@@ -28,9 +22,7 @@ public class BatteryManager : MonoBehaviour
         batterySound = GetComponent<BatterySound>();
 
         r = 1;
-        gaugeMat.SetColor("_BaseColor", normalBaseColor);
-        gaugeMat.SetColor("_PulseColor", normalPulseColor);
-        overclock = false;
+        UpdateBattery();
     }
 
     private void Update()
@@ -40,33 +32,13 @@ public class BatteryManager : MonoBehaviour
 
     public void EmptyBattery()
     {
-        if (playerTimer.t <= playerTimer.timer + 0.5)
-        {
-            r = playerTimer.t / playerTimer.timer;
-            
-            if (overclock)
-            {
-                gaugeMat.SetColor("_BaseColor", normalBaseColor);
-                gaugeMat.SetColor("_PulseColor", normalPulseColor);
-                overclock = false;
-            }
-                
-        }
-
-        else
-        {
-            r = playerTimer.t / playerTimer.t;
-
-            if (!overclock)
-            {
-                gaugeMat.SetColor("_BaseColor", superchargedBaseColor);
-                gaugeMat.SetColor("_PulseColor", superchargedPulseColor);
-                overclock = true;
-            }
-            
-        }
-        
+        r = playerTimer.t / playerTimer.timer;
         gaugeMat.SetFloat("_gaugeValue", r);
     }
-    
+
+    public void UpdateBattery()
+    {
+        gaugeMat.SetFloat("_TotalLevel", totalLevels);
+        gaugeMat.SetFloat("_ActiveLevel", activeLevel);
+    }
 }
