@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player refs")]
     public InputManager inputManager;
     public CustomInputs playerControls;
+    private PlayerFeedback playerFeedback;
     public Rigidbody2D rb;
     private CapsuleCollider2D selfCollider;
     public PlayerTimer timerController;
@@ -102,6 +103,7 @@ public class PlayerController : MonoBehaviour
         
         playerBoost = GetComponent<PlayerBoost>();
         playerSound = FindFirstObjectByType<PlayerSound>();
+        playerFeedback = FindFirstObjectByType<PlayerFeedback>();
         line = GetComponent<LineRenderer>();
         
         timerController = GetComponent<PlayerTimer>();
@@ -313,6 +315,8 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
             t = 0f;
             rb.linearVelocity = pushbackVelocity;
+            playerFeedback.InvokeEvent(playerFeedback.pushback);
+            playerSound.HurtSound();
         }
     }
     public void ExitStation()
@@ -330,6 +334,7 @@ public class PlayerController : MonoBehaviour
         hasDoubleJumped = false;
         hasWallJumped = false;
         effectiveSpeed = playerBoost.groundSpeed;
+        playerFeedback.InvokeEvent(playerFeedback.landing);
     }
     public void UngroundPlayer()
     {

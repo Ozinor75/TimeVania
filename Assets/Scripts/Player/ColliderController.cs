@@ -40,7 +40,6 @@ public class ColliderController : MonoBehaviour
         {
             playerController.Pushback(other.transform.position);
             playerController.MakeIFrame();
-            playerSound.HurtSound();
         }
     }
     
