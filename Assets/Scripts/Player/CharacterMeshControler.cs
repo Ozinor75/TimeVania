@@ -5,6 +5,7 @@ public class CharacterMeshControler : MonoBehaviour
     public Transform mesh;
     private Rigidbody2D rb;
     private CameraFollow cameraFollow;
+    public Animator playerAnimator;
     
     void Start()
     {
@@ -24,7 +25,17 @@ public class CharacterMeshControler : MonoBehaviour
             mesh.rotation = Quaternion.Euler(0f, 90f, 0f);
             // cameraFollow.ChangeHorizontalOffset(-cameraFollow.HorizontalOffset); à enlever
         }
-        // else
-        //     mesh.rotation = Quaternion.Euler(0f, 0f, 0f);
+    }
+
+    public void SetMoving()
+    {
+        playerAnimator.SetBool("IsMoving", true);
+        Debug.Log("SETTING SPRINT ANIM");
+    }
+    
+    public void SetNotMoving()
+    {
+        playerAnimator.SetBool("IsMoving", false);
+        Debug.Log("RESETING SPRINT ANIM");
     }
 }

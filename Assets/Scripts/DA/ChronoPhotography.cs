@@ -47,7 +47,7 @@ public class ChronoPhotography : MonoBehaviour
                 {
                     Transform parent = subjects[i].transform.parent;
                     listOfShoots[i].Add(Instantiate(subjects[i], parent.position, parent.rotation));
-                    listOfShoots[i][listOfShoots[i].Count - 1].transform.localScale *= 18;
+                    listOfShoots[i][listOfShoots[i].Count - 1].transform.localScale *= 50;
                     listOfShoots[i][listOfShoots[i].Count - 1].GetComponent<MeshRenderer>().enabled = true;
                     
                     listOfShoots[i][listOfShoots[i].Count - 1].GetComponent<MeshRenderer>().material.SetColor("_MainColor", CalculateColor(colorIndex));
