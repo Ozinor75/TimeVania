@@ -50,22 +50,22 @@ public class FollowPlayerHolder : MonoBehaviour
 
         // float distanceY = PlayerPos.position.y - transform.position.y;
 
-        if (!PlayerController.isGrounded) 
-        {
-            timer -= Time.deltaTime;
-            if (timer < 0f)
-            {
-                Debug.Log("timer");
-                LerpTimeY = 1f;
-                realOffsetY = -offsetY;
-            }
-        }
-        else
-        {
+        // if (!PlayerController.isGrounded) 
+        // {
+        //     timer -= Time.deltaTime;
+        //     if (timer < 0f)
+        //     {
+        //         Debug.Log("timer");
+        //         LerpTimeY = 1f;
+        //         realOffsetY = -offsetY;
+        //     }
+        // }
+        // else
+        // {
             timer = timeUp;
             LerpTimeY = SpeedLerpY * Time.deltaTime; 
             realOffsetY = 0f;
-        }
+        // }
         
         targetPos = new Vector3(PlayerPos.position.x + realOffset, PlayerPos.position.y + realOffsetY, PlayerPos.position.z);
         

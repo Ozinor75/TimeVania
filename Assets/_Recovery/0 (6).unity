@@ -30602,10 +30602,10 @@ MonoBehaviour:
   PlayerPos: {fileID: 1813071856}
   PlayerController: {fileID: 1813071849}
   targetPos: {x: 0, y: 0, z: 0}
-  offset: -12
+  offset: -10
   offsetY: 8
   smoothTimeX: 0.3
-  SpeedLerpY: 4
+  SpeedLerpY: 0.8
   "Ytol\xE9rance": 0.5
   timeUp: 0.7
 --- !u!1 &1076958521
