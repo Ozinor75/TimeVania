@@ -3,7 +3,10 @@ guid: 602af011f91d67e48a2e93e95651d07d
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
-  - _FX_Debug: {fileID: 2800000, guid: 65314d01c6abc4d409e34df25f9882f4, type: 3}
+  - _BatteryCrank: {fileID: 2800000, guid: 4336ccfe5fdae814c9a02e7653bff6cf, type: 3}
+  - _BatteryBase: {fileID: 2800000, guid: 4336ccfe5fdae814c9a02e7653bff6cf, type: 3}
+  - _UnstableBoltFX: {fileID: 2800000, guid: ddc70fc7a4a640a46a84f0f53ca67172, type: 3}
+  - _StableBoltFX: {fileID: 2800000, guid: 925dee1a36cf6b941a02988f204a0105, type: 3}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 
