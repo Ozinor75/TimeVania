@@ -47,7 +47,10 @@ public class ColliderController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Checkpoint"))
+        {
             playerController.tempRespawn = other.transform.GetChild(0);
+            playerController.tempRespawn.position = playerController.transform.position;
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {

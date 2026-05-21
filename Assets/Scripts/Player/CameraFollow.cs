@@ -19,7 +19,6 @@ public class CameraFollow : MonoBehaviour
     public float offsetY;
     private void Start()
     {
-        // toFollow = GameObject.FindGameObjectWithTag("Player").transform;
         currentDepthOffset = depthOffset;
         cam = GetComponent<Camera>();
         confiner = FindFirstObjectByType<CinemachineConfiner2D>();
