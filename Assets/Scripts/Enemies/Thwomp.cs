@@ -25,14 +25,18 @@ public class Thwomp : MonoBehaviour
     private void Start()
     {
         manager = FindFirstObjectByType<GlobalTime>();
+        ResetMovement();
     }
     
     void Update()
     {
-        t += Time.deltaTime  * manager.active;
-        t %= duration * 2;
-        r = t / duration;
+        if (canMove)
+        {
+            t += Time.deltaTime  * manager.active;
+            t %= duration * 2;
+            r = t / duration;
         
-        thwomp.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
+            thwomp.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
+        }
     }
 }

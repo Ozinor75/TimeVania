@@ -473483,7 +473483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalTime
   worldTime: 1
-  speed: 5
+  speed: 3
   slow: 0.5
   basic: 1
   active: 0
@@ -474523,6 +474523,26 @@ PrefabInstance:
     - target: {fileID: 1681619343937044881, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: musicDefault.Path
+      value: event:/music_Default
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: musicDefault.Guid.Data1
+      value: -769033125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: musicDefault.Guid.Data2
+      value: 1189633729
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: musicDefault.Guid.Data3
+      value: 362521742
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: musicDefault.Guid.Data4
+      value: -491596894
       objectReference: {fileID: 0}
     - target: {fileID: 2172650544462054247, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: globalTime

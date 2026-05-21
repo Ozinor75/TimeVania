@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2477827257657286428}
   - component: {fileID: 6752188057165609929}
+  - component: {fileID: 1415331657135621427}
   m_Layer: 0
   m_Name: ActivationTrigger
   m_TagString: Untagged
@@ -78,6 +79,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1415331657135621427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901365522774128740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2968d4ece09f284bb7641de96f05020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwompActivationTrigger
+  movable: {fileID: 1861486276291271672}
 --- !u!1 &2767039718927009997
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bf3dd6f2b185a469113abd088414f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  canMove: 0
   thwomp: {fileID: 7367629148049724085}
   start: {fileID: 3662519002246213663}
   end: {fileID: 3230074373538747135}
