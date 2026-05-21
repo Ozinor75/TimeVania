@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BatteryBackCaseMat
+  m_Shader: {fileID: 4800000, guid: 3a9e1ce009908d143b0763b2ce229d72, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BatteryBody:
+        m_Texture: {fileID: 2800000, guid: a01385e950ee03c488660056452914aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CloseCap:
+        m_Texture: {fileID: 2800000, guid: ac5d2e33c90b4a04bbda6378c9bc638f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CloseCap1:
+        m_Texture: {fileID: 2800000, guid: ff973625bc9fddf46980f8b476dc7965, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ExtBody:
+        m_Texture: {fileID: 2800000, guid: 8d3f5936d202d524eb662d9e65d77f7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ExtCap:
+        m_Texture: {fileID: 2800000, guid: ac5d2e33c90b4a04bbda6378c9bc638f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _IntBody:
+        m_Texture: {fileID: 2800000, guid: 98204bf76b687754d8718d9a3946658f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _StartCloseCap:
+        m_Texture: {fileID: 2800000, guid: ff973625bc9fddf46980f8b476dc7965, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ActiveLevel: 5
+    - _ColorMask: 15
+    - _IsBackground: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _TotalLevel: 5
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _BaseColor: {r: 1, g: 0.8196079, b: 0.11764707, a: 1}
+    - _BatteryColor: {r: 0.14650144, g: 0.103462085, b: 0.2924528, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

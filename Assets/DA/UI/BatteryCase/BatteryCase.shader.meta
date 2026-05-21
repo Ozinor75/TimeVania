@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3a9e1ce009908d143b0763b2ce229d72
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _IntBody: {fileID: 2800000, guid: 4ba35876c2cab6345b8d3f1056913810, type: 3}
+  - _ExtBody: {fileID: 2800000, guid: 4ba35876c2cab6345b8d3f1056913810, type: 3}
+  - _ExtCap: {fileID: 2800000, guid: 4ba35876c2cab6345b8d3f1056913810, type: 3}
+  - _CloseCap: {fileID: 2800000, guid: 4ba35876c2cab6345b8d3f1056913810, type: 3}
+  - _CloseCap1: {fileID: 2800000, guid: 4ba35876c2cab6345b8d3f1056913810, type: 3}
+  - _StartCloseCap: {fileID: 2800000, guid: 4ba35876c2cab6345b8d3f1056913810, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

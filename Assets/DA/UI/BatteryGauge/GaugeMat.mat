@@ -40,11 +40,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BatteryBase:
-        m_Texture: {fileID: 2800000, guid: 4336ccfe5fdae814c9a02e7653bff6cf, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7d611076352158b448ae234ed9ae6996, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BatteryCrank:
         m_Texture: {fileID: 2800000, guid: 4ba35876c2cab6345b8d3f1056913810, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BatteryExt:
+        m_Texture: {fileID: 2800000, guid: a01385e950ee03c488660056452914aa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FX_Debug:
@@ -56,15 +60,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _StableBoltFX:
-        m_Texture: {fileID: 2800000, guid: 677b03417b1fc7745b9d7e6f9879dbb4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 942d27e6ad5150040bb5f55937b8ff7c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SuperchargedFX:
-        m_Texture: {fileID: 2800000, guid: 3ccae72f2dc89a74c830fc7c6957bc91, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7290b7d1f77bad542bc9e9f632890906, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UnstableBoltFX:
-        m_Texture: {fileID: 2800000, guid: ddc70fc7a4a640a46a84f0f53ca67172, type: 3}
+        m_Texture: {fileID: 2800000, guid: 688a57e387def8f4197eeeae84564b86, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -73,7 +77,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ActiveLevel: 2
+    - _ActiveLevel: 5
     - _ColorMask: 15
     - _Scale: 6
     - _Stencil: 0
@@ -81,20 +85,21 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
+    - _Strenght: -0.331
     - _TimeScale: 1
     - _TotalLevel: 5
     - _UseUIAlphaClip: 0
     - __dirty: 0
     - _gaugeSpeed: 1
-    - _gaugeValue: 0.90239006
+    - _gaugeValue: 0.99491704
     m_Colors:
     - _ActiveOnTotalLevels: {r: 1, g: 5, b: 0, a: 0}
     - _BZZSize: {r: 0.1, g: 0.6, b: 0, a: 0}
-    - _BaseColor: {r: 0, g: 1, b: 0.9831882, a: 1}
-    - _BoltColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0, g: 0.92156863, b: 1, a: 1}
+    - _BoltColor: {r: 1.4142135, g: 1.4142135, b: 1.4142135, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorBack: {r: 0.5298319, g: 0, b: 1, a: 0}
-    - _CrankColor: {r: 0, g: 0, b: 0, a: 1}
+    - _CrankColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Gradient: {r: 0.1, g: 0.2, b: 0, a: 0}
     - _InitialSize: {r: 1, g: 0.9, b: 0, a: 0}
     - _InitialSize1: {r: 0.05, g: 0.3, b: 0, a: 0}

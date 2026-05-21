@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 602af011f91d67e48a2e93e95651d07d
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _BatteryCrank: {fileID: 2800000, guid: 4ba35876c2cab6345b8d3f1056913810, type: 3}
+  - _BatteryBase: {fileID: 2800000, guid: 7d611076352158b448ae234ed9ae6996, type: 3}
+  - _UnstableBoltFX: {fileID: 2800000, guid: 688a57e387def8f4197eeeae84564b86, type: 3}
+  - _StableBoltFX: {fileID: 2800000, guid: 942d27e6ad5150040bb5f55937b8ff7c, type: 3}
+  - _SuperchargedFX: {fileID: 2800000, guid: 7290b7d1f77bad542bc9e9f632890906, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
