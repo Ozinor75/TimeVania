@@ -285,6 +285,7 @@ MonoBehaviour:
   timer: 120
   maxTimer: 120
   criticalTimer: 10
+  chargingSpeed: 0
   batteryBoostValue: 0
   powerUpAbsorptionBoostValue: 0
   batterySizeBoost: 0
@@ -342,6 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ColliderController
   spikeDamage: 0
   twompDamage: 0
+  enemy1Damage: 0
   collider: {fileID: 0}
   isOnPlatform: 0
 --- !u!114 &1657122687099652793
@@ -930,7 +932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2720949168075622216, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2720949168075622216, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1010,7 +1012,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1512364358890633674, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1512364358890633674, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1038,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3941330414661794431, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3941330414661794431, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1054,7 +1056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7900092880499670663, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7900092880499670663, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1086,7 +1088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8856224577396996387, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8856224577396996387, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
