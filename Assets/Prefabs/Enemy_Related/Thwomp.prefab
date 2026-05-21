@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3772609164394411348}
   m_Layer: 0
   m_Name: SpikesCollider
-  m_TagString: Enemy
+  m_TagString: Twomp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7367629148049724085}
+  m_Father: {fileID: 6126739868751070557}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!60 &3772609164394411348
 PolygonCollider2D:
@@ -220,7 +220,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6126739868751070557}
-  - {fileID: 3255450908296401527}
   m_Father: {fileID: 7817943310629340641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5619101060693318145
@@ -378,7 +377,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: aee291625cbca544d9ab61c5cec575a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3255450908296401527}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aee291625cbca544d9ab61c5cec575a0, type: 3}
 --- !u!4 &6126739868751070557 stripped

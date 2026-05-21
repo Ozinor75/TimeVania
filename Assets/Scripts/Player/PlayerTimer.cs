@@ -60,6 +60,14 @@ public class PlayerTimer : MonoBehaviour
     {
         isCharging = false;
     }
+
+    public void ChangeTime(float value, bool isPositive)
+    {
+        if (isPositive)
+            t += value;
+        else
+            t -= value;
+    }
     void Start()
     {
         spawner = FindObjectsOfType<Spawner>();
