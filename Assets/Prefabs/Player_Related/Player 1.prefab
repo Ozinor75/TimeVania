@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 9187246286537576538}
   - component: {fileID: 1657122687099652793}
   - component: {fileID: 4639681108543911620}
-  - component: {fileID: 9153145552031445892}
+  - component: {fileID: 8148159146242361571}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -470,15 +470,11 @@ MonoBehaviour:
   timer: 90
   maxTimer: 0
   criticalTimer: 10
-  batteryBoostValue: 0
-  powerUpAbsorptionBoostValue: 0
   t: 0
   tMult: 0
   text: {fileID: 0}
   isCharging: 0
   energyMaterial: {fileID: 0}
-  batterySizeBoost: 0
-  powerUpAbsorptionBoost: 0
 --- !u!114 &8614554792051596572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,8 +532,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f6bdd521d3d66b42b81054d9f35cc9d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CrushRespawn
-  crushTolerence: 0.1
+  m_EditorClassIdentifier: Assembly-CSharp::CrushDetection
+  crushTolerence: 0
 --- !u!114 &4639681108543911620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,7 +559,7 @@ MonoBehaviour:
   - {fileID: 9000474306733302121}
   - {fileID: 313801103656450536}
   - {fileID: 7367837285061650636}
---- !u!114 &9153145552031445892
+--- !u!114 &8148159146242361571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -572,9 +568,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1120417498359201754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 854f8a38b206bee448a2bbe4fd4d34f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 493e11319f45e904d8c1da772f093956, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSave
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFeedback
+  landing:
+    m_PersistentCalls:
+      m_Calls: []
+  takeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  pushback:
+    m_PersistentCalls:
+      m_Calls: []
+  powerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  amelio:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1423131936869618407
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +792,13 @@ MonoBehaviour:
       Data3: 1946342529
       Data4: -2004626210
     Path: event:/Start
+  musicDefault:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &8908928796990002077
 MonoBehaviour:
   m_ObjectHideFlags: 0
