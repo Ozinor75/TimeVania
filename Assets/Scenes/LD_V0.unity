@@ -2734,6 +2734,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraOffsetTrigger (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Offset.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8762584789036400770, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
       propertyPath: m_LocalPosition.x
       value: 152.5
@@ -467717,6 +467733,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1813071856}
     - target: {fileID: 2882878381231422216, guid: 4a51ab6b5967c5043a82ac7d2279e084, type: 3}
+      propertyPath: smoothTimeX
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882878381231422216, guid: 4a51ab6b5967c5043a82ac7d2279e084, type: 3}
       propertyPath: PlayerController
       value: 
       objectReference: {fileID: 1813071849}
@@ -469669,6 +469689,22 @@ PrefabInstance:
     - target: {fileID: 6199152758180513210, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
       propertyPath: m_Name
       value: CameraOffsetTrigger (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8762584789036400770, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
       propertyPath: m_LocalPosition.x
@@ -474546,11 +474582,11 @@ PrefabInstance:
       objectReference: {fileID: 1593792122}
     - target: {fileID: 6012680405393787321, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: timer
-      value: 900
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6012680405393787321, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: maxTimer
-      value: 900
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8614554792051596572, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: gravity
@@ -475819,6 +475855,22 @@ PrefabInstance:
     - target: {fileID: 6199152758180513210, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
       propertyPath: m_Name
       value: CameraOffsetTrigger (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244779632036679259, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8762584789036400770, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
       propertyPath: m_LocalPosition.x
