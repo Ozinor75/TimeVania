@@ -18,6 +18,8 @@ TagManager:
   - Enemy
   - Photo
   - Twomp
+  - Enemy1
+  - Spike
   layers:
   - Default
   - TransparentFX

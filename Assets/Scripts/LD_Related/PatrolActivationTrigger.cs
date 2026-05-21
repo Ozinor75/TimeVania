@@ -1,9 +1,8 @@
-using System;
 using UnityEngine;
 
-public class ActivationTrigger : MonoBehaviour
+public class PatrolActivationTrigger : MonoBehaviour
 {
-    public PlatformMovement movable;
+    public PatrolMovement movable;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
