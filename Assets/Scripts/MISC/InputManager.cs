@@ -95,6 +95,18 @@ public class InputManager : MonoBehaviour
             ActivateStation.Invoke();
         }
         
+        if (playerControls.Player.Station.WasPressedThisFrame() && playerController.boostTrigger != null)
+        {
+            if (playerController.boostTrigger.CompareTag("SizeBoost"))
+            {
+                playerController.boostTrigger.GetComponent<BatterySizeBoost>().MakeBoost();
+            }
+            else
+            {
+                playerController.boostTrigger.GetComponent<AbsorptionBoost>().MakeBoost();
+            }
+        }
+        
         if (playerControls.Player.Hook.WasPressedThisFrame())
         {
             UseHook.Invoke();

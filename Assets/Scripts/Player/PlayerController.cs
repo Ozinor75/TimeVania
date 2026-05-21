@@ -50,7 +50,9 @@ public class PlayerController : MonoBehaviour
     [Header("Player Debug")]
     public bool isGrounded = true;
     [HideInInspector] public Vector2 hookStickDirection;
+    public Transform boostTrigger;
     public bool onStation = false;
+    public bool onBoost = false;
     public bool isCharging = false;
     private bool isDashing = false;
     public bool isTouchable = true;

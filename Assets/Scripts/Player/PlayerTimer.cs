@@ -11,8 +11,8 @@ public class PlayerTimer : MonoBehaviour
 
     public float chargingSpeed;
     
-    public int batteryBoostValue;
-    public int powerUpAbsorptionBoostValue;
+    public float batteryBoostValue;
+    public float powerUpAbsorptionBoostValue;
     
     [Header("Debug")]
     public int batterySizeBoost;
