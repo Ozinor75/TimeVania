@@ -20,6 +20,8 @@ TagManager:
   - Twomp
   - Enemy1
   - Spike
+  - SizeBoost
+  - AbsorptionBoost
   layers:
   - Default
   - TransparentFX
