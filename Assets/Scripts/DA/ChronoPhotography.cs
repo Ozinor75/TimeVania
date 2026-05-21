@@ -48,11 +48,17 @@ public class ChronoPhotography : MonoBehaviour
                     listOfShoots.Remove(listOfShoots[0]);
                 }
                 
-                for (int i = 0; i <= listOfShoots[listOfShoots.Count - 1].transform.childCount; i++)
+                for (int i = 0; i <= listOfShoots[listOfShoots.Count - 1].transform.childCount - 1; i++)
                 {
                     Transform child = listOfShoots[listOfShoots.Count - 1].transform.GetChild(i);
-                    child.GetComponent<SkinnedMeshRenderer>().materials[0].SetColor("_MainColor", CalculateColor(colorIndex));
-                    child.GetComponent<SkinnedMeshRenderer>().materials[1].SetColor("_MainColor", CalculateColor(colorIndex));
+                    
+                    if (child.GetComponent<SkinnedMeshRenderer>() == true)
+                    {
+                        SkinnedMeshRenderer skinMesh = child.GetComponent<SkinnedMeshRenderer>();
+                        skinMesh.enabled = true;
+                        skinMesh.materials[0].SetColor("_MainColor", CalculateColor(colorIndex));
+                        skinMesh.materials[1].SetColor("_MainColor", CalculateColor(colorIndex));
+                    }
                     // child.GetComponent<SkinnedMeshRenderer>().materials[2].SetColor("_MainColor", CalculateColor(listOfShoots.Count));
                 }
             }
