@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public InputManager inputManager;
     public CustomInputs playerControls;
     private PlayerFeedback playerFeedback;
+    private ColliderController colliderController;
     public Rigidbody2D rb;
     private CapsuleCollider2D selfCollider;
     public PlayerTimer timerController;
@@ -105,6 +106,7 @@ public class PlayerController : MonoBehaviour
         Physics2D.gravity = new Vector2(0, -playerBoost.gravity); //supprimer cette ligne
         playerSound = FindFirstObjectByType<PlayerSound>();
         playerFeedback = FindFirstObjectByType<PlayerFeedback>();
+        colliderController = FindFirstObjectByType<ColliderController>();
         line = GetComponent<LineRenderer>();
         
         timerController = GetComponent<PlayerTimer>();
@@ -238,6 +240,7 @@ public class PlayerController : MonoBehaviour
         timerController.t = timerController.timer;
         isRespawning = false;
         CanMove = true;
+        colliderController.isOnPlatform = false;
     }
     public void CrushRespawn()
     {
