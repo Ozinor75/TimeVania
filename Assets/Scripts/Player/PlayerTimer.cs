@@ -97,4 +97,9 @@ public class PlayerTimer : MonoBehaviour
         //     tSec = 0f;
         // }
     }
+
+    public void DivideMult()
+    {
+        
+    }
 }

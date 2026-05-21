@@ -91,7 +91,7 @@ Material:
     - _UseUIAlphaClip: 0
     - __dirty: 0
     - _gaugeSpeed: 1
-    - _gaugeValue: 0.5803692
+    - _gaugeValue: 0.8737719
     m_Colors:
     - _ActiveOnTotalLevels: {r: 1, g: 5, b: 0, a: 0}
     - _BZZSize: {r: 0.1, g: 0.6, b: 0, a: 0}

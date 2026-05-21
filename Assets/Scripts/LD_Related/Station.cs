@@ -9,6 +9,7 @@ public class Station : MonoBehaviour
     public GameObject roomTrigger;
     public Transform camPoint;
     private PlayerController player;
+    public GameObject ToFollow;
     private LineRenderer line;
     private CameraFollow cameraFollow;
 
@@ -69,6 +70,6 @@ public class Station : MonoBehaviour
     {
         isCharging = false;
         line.enabled = false;
-        cameraFollow.ChangeMode(player.transform, cameraFollow.depthOffset);
+        cameraFollow.ChangeMode(ToFollow.transform, cameraFollow.depthOffset);
     }
 }
