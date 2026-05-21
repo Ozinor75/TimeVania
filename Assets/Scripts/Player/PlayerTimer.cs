@@ -8,6 +8,8 @@ public class PlayerTimer : MonoBehaviour
     public float timer;
     public float maxTimer;
     public float criticalTimer;
+
+    public float chargingSpeed;
     
     public int batteryBoostValue;
     public int powerUpAbsorptionBoostValue;
@@ -38,7 +40,7 @@ public class PlayerTimer : MonoBehaviour
     {
         while (t < timer)
         {
-            t++;
+            t = t + chargingSpeed;
             yield return null;
         }
 
