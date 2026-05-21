@@ -409100,6 +409100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewBattery
       objectReference: {fileID: 0}
+    - target: {fileID: 3111450100607449066, guid: d3cf964bf1c383c43b222c0d9ae2673a, type: 3}
+      propertyPath: activeLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3497796964016751245, guid: d3cf964bf1c383c43b222c0d9ae2673a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
