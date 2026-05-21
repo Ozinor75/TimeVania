@@ -5,6 +5,10 @@ using UnityEngine.Rendering;
 
 public class ColliderController : MonoBehaviour
 {
+    [Header("Damage Values")]
+    public int spikeDamage;
+    
+    [Header("Debug")]
     public CapsuleCollider2D collider;
     public RaycastHit2D groundHit;
     public RaycastHit2D rightSlideHit;
@@ -13,6 +17,7 @@ public class ColliderController : MonoBehaviour
     
     private PlayerController playerController;
     private PlayerSound playerSound;
+    private 
     
     void Start()
     {
@@ -38,6 +43,12 @@ public class ColliderController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && playerController.isTouchable)
         {
+            switch (other.gameObject.tag)
+            {
+                case "Spike":
+                    
+                    break;
+            }
             playerController.Pushback(other.transform.position);
             playerController.MakeIFrame();
         }
