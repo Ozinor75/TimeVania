@@ -407098,6 +407098,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1120417498359201754, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1813071864}
+    - targetCorrespondingSourceObject: {fileID: 1120417498359201754, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1813071865}
   m_SourcePrefab: {fileID: 100100000, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
 --- !u!114 &1813071848 stripped
 MonoBehaviour:
@@ -407171,6 +407174,18 @@ MonoBehaviour:
   delta: 0
   t: 0
   UseRightStick: 0
+--- !u!114 &1813071865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419705141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf6e58c85567c54589bd06f0d16ce3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSave
 --- !u!1 &1824893948
 GameObject:
   m_ObjectHideFlags: 0
