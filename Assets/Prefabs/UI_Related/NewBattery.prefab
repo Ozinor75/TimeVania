@@ -168,13 +168,13 @@ MonoBehaviour:
   gaugeMat: {fileID: 2100000, guid: f46e055452299ab4b8b50f0c18876b33, type: 2}
   caseMat: {fileID: 2100000, guid: c8b38eac2156b004cbf9821b637922dd, type: 2}
   backCaseMat: {fileID: 2100000, guid: 1393c08db7ee8d34f9bd694f5eee6371, type: 2}
-  activeLevel: 5
+  activeLevel: 2
   totalLevels: 5
-  colors:
-  - {r: 0.23053293, g: 0.14773941, b: 0.3773585, a: 1}
-  - {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
-  - {r: 1, g: 0.8193089, b: 0.11792451, a: 1}
-  - {r: 1, g: 0.8196079, b: 0.11764707, a: 1}
+  starLevel: 0
+  caseColors:
+  - {r: 0.23137257, g: 0.14901961, b: 0.37647063, a: 1}
+  - {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
+  - {r: 0.8018868, g: 0.5913708, b: 0.011347434, a: 1}
 --- !u!1 &5095475818740263755
 GameObject:
   m_ObjectHideFlags: 0

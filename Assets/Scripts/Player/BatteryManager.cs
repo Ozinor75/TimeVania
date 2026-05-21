@@ -17,9 +17,9 @@ public class BatteryManager : MonoBehaviour
     public int activeLevel;
     public int totalLevels;
 
-    public List<Color> colors = new List<Color>();
-    
+    public int starLevel;
 
+    public List<Color> caseColors = new List<Color>();
     private float r;
     
     void Start()
@@ -51,7 +51,7 @@ public class BatteryManager : MonoBehaviour
         caseMat.SetFloat("_ActiveLevel", activeLevel);
         backCaseMat.SetFloat("_ActiveLevel", activeLevel);
         
-        caseMat.SetColor("_BaseColor", colors[activeLevel - 2]);
-        backCaseMat.SetColor("_BaseColor", colors[activeLevel - 2]);
+        caseMat.SetColor("_BaseColor", caseColors[starLevel]);
+        backCaseMat.SetColor("_BaseColor", caseColors[starLevel]);
     }
 }
