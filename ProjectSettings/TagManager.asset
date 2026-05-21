@@ -17,6 +17,7 @@ TagManager:
   - Checkpoint
   - Enemy
   - Photo
+  - Twomp
   layers:
   - Default
   - TransparentFX

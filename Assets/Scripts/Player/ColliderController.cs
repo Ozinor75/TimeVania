@@ -7,6 +7,7 @@ public class ColliderController : MonoBehaviour
 {
     [Header("Damage Values")]
     public int spikeDamage;
+    public int twompDamage;
     
     [Header("Debug")]
     public CapsuleCollider2D collider;
@@ -16,14 +17,17 @@ public class ColliderController : MonoBehaviour
     public bool isOnPlatform;
     
     private PlayerController playerController;
+    private PlayerFeedback playerFeedback;
     private PlayerSound playerSound;
-    private 
+    private PlayerTimer playerTimer;
     
     void Start()
     {
         Physics2D.queriesStartInColliders = false;
         collider = GetComponent<CapsuleCollider2D>();
         playerController = GetComponent<PlayerController>();
+        playerFeedback = GetComponent<PlayerFeedback>();
+        playerTimer = GetComponent<PlayerTimer>();
         playerSound = FindFirstObjectByType<PlayerSound>();
         
         playerController.wallJumpDir = 0;
@@ -41,16 +45,28 @@ public class ColliderController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)      // ICI RAYCAST
     {
-        if (other.gameObject.CompareTag("Enemy") && playerController.isTouchable)
+        if (playerController.isTouchable)
         {
             switch (other.gameObject.tag)
             {
                 case "Spike":
-                    
+                {
+                    playerFeedback.InvokeEvent(playerFeedback.takeDamage);
+                    playerTimer.ChangeTime(spikeDamage, false);
+                    playerController.Pushback(other.transform.position);
+                    playerController.MakeIFrame();
                     break;
+                }
+                
+                case "Twomp":
+                {
+                    playerFeedback.InvokeEvent(playerFeedback.takeDamage);
+                    playerTimer.ChangeTime(twompDamage, false);
+                    playerController.Pushback(other.transform.position);
+                    playerController.MakeIFrame();
+                    break;
+                }
             }
-            playerController.Pushback(other.transform.position);
-            playerController.MakeIFrame();
         }
     }
     

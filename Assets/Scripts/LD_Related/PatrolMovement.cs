@@ -16,15 +16,23 @@ public class PatrolMovement : MonoBehaviour
     public GlobalTime manager;
     
     [Header("Debug")]
+    public float totalDistance;
     public bool isForth =  true;
     public Transform currentEnd;
+    public float ratio;
+
     void Start()
     {
         manager = FindFirstObjectByType<GlobalTime>();
-        
+
         //curve.postWrapMode = WrapMode.PingPong;
         t = startOffset;
         i = 0;
+        for (int j = 0; j < wayPoints.Length - 1; j++)
+        {
+            totalDistance += Vector3.Distance(wayPoints[j].position, wayPoints[j + 1].position);
+        }
+        ratio = Vector3.Distance(wayPoints[0].position, wayPoints[1].position) / totalDistance;
     }
 
     // Update is called once per frame
@@ -32,7 +40,7 @@ public class PatrolMovement : MonoBehaviour
     {
         t += Time.deltaTime  * manager.active;
         //t %= duration * 2;
-        r = t / duration;
+        r = (t / (duration * ratio));
 
         if (i < wayPoints.Length - 1 && r >= 1)
         {
@@ -53,6 +61,7 @@ public class PatrolMovement : MonoBehaviour
                 else
                     i--;
             }
+            ratio = Vector3.Distance(wayPoints[i].position, wayPoints[i + 1].position) / totalDistance;
         }
         if (isForth)
             movable.position = Vector3.Lerp(wayPoints[i].position, wayPoints[i + 1].position, curve.Evaluate(r));
