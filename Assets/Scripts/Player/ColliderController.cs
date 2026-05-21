@@ -8,6 +8,7 @@ public class ColliderController : MonoBehaviour
     [Header("Damage Values")]
     public int spikeDamage;
     public int twompDamage;
+    public int enemy1Damage;
     
     [Header("Debug")]
     public CapsuleCollider2D collider;
@@ -62,6 +63,15 @@ public class ColliderController : MonoBehaviour
                 {
                     playerFeedback.InvokeEvent(playerFeedback.takeDamage);
                     playerTimer.ChangeTime(twompDamage, false);
+                    playerController.Pushback(other.transform.position);
+                    playerController.MakeIFrame();
+                    break;
+                }
+
+                case "Enemy1":
+                {
+                    playerFeedback.InvokeEvent(playerFeedback.takeDamage);
+                    playerTimer.ChangeTime(enemy1Damage, false);
                     playerController.Pushback(other.transform.position);
                     playerController.MakeIFrame();
                     break;
