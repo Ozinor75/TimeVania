@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlatformMovement : MonoBehaviour
 {
     [Header("Boundaries")]
+    public bool canMove;
     public Transform movable;
     public Transform start;
     public Transform end;
@@ -11,7 +12,7 @@ public class PlatformMovement : MonoBehaviour
     public float duration;
     public float startOffset;
     private float t;
-    private float r;
+    public float r;
 
     [Header("Time")]
     public GlobalTime manager;
@@ -19,6 +20,7 @@ public class PlatformMovement : MonoBehaviour
     private void Start()
     {
         manager = FindFirstObjectByType<GlobalTime>();
+        ResetMovement();
         
         curve.postWrapMode = WrapMode.PingPong;
         t = startOffset;
@@ -26,10 +28,20 @@ public class PlatformMovement : MonoBehaviour
 
     void Update()
     {
-        t += Time.deltaTime  * manager.active;
-        t %= duration * 2;
-        r = t / duration;
+        if (canMove)
+        {
+            t += Time.deltaTime * manager.active;
+            t %= duration * 2;
+            r = t / duration;
         
+            movable.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
+        }
+    }
+    
+    public void ResetMovement()
+    {
+        r = 0;
         movable.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
+        canMove = false;
     }
 }
