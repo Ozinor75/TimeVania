@@ -15,35 +15,34 @@ public class CameraFollow : MonoBehaviour
     public float depthOffset;
     public float currentDepthOffset;
     public float heightOffset;
-    public float HorizontalOffset;
-    public float VerticalOffset;
+    private float VerticalOffset = 0f;
+    public float offsetY;
     private void Start()
     {
         // toFollow = GameObject.FindGameObjectWithTag("Player").transform;
         currentDepthOffset = depthOffset;
         cam = GetComponent<Camera>();
-        // cinemachineCamera = FindFirstObjectByType<CinemachinePositionComposer>();
         confiner = FindFirstObjectByType<CinemachineConfiner2D>();
-        // cinemachineCamera.TargetOffset.x = HorizontalOffset;
     }
     
     void FixedUpdate()
     {
         Vector3 self2Dpos = new Vector3(transform.position.x, transform.position.y + heightOffset, - currentDepthOffset);
-        Vector3 other2Dpos = new Vector3(toFollow.transform.position.x, toFollow.transform.position.y + heightOffset, - currentDepthOffset);
+        Vector3 other2Dpos = new Vector3(toFollow.transform.position.x, toFollow.transform.position.y + heightOffset + VerticalOffset, - currentDepthOffset);
         transform.position = Vector3.Lerp(self2Dpos,
             other2Dpos, followTime * Time.fixedDeltaTime);
     }
 
     public void ChangeVerticalOffset(float offset)
     {
-        // cinemachineCamera.TargetOffset.y = offset;
+        VerticalOffset = offset;
+    }
+
+    public void CancelVerticalOffset()
+    {
+        VerticalOffset = 0;
     }
     
-    public void ChangeHorizontalOffset(float offset)
-    {
-        // cinemachineCamera.TargetOffset.x = offset;
-    }
     public void ChangeMode(Transform go, float depth)
     {
         toFollow = go;

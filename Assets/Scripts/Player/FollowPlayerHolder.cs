@@ -6,21 +6,23 @@ public class FollowPlayerHolder : MonoBehaviour
     public Transform PlayerPos;
     public PlayerController PlayerController;
     public CustomInputs playerControls;
-    public Vector3 targetPos;
-    private Vector3 realVelocity = new Vector3(2, 0, 0) ;
 
+    [Header("X Axis")]
     public float offset = 3f;
-    public float offsetY = 10f;
     public float smoothTimeX = 0.25f;
-    public float SpeedLerpY = 5f;
-    private float LerpTimeY = 0f;
-    public float Ytolérance = 70f;
-    private float realOffset = 0f;
-    private float realOffsetY = 0f;
+    private float velocityX = 0f;
+    private float targetOffsetX = 0f;
 
+    [Header("Y Axis")]
+    public float offsetY = 10f;
+    public float smoothTimeY = 0.3f; 
+    public float timeUp = 0.5f;      
+    public float Ytolérance = 70f;
+
+    private float velocityY = 0f;
     private float timer;
-    public float timeUp;
-    
+    private bool isRecovering = false;
+
     private void OnEnable()
     {
         if (playerControls == null)
@@ -28,6 +30,7 @@ public class FollowPlayerHolder : MonoBehaviour
         
         playerControls.Enable();
     }
+
     private void OnDisable()
     {
         playerControls.Disable();
@@ -38,40 +41,69 @@ public class FollowPlayerHolder : MonoBehaviour
         timer = timeUp;
     }
     
-    // Update is called once per frame
     void Update()
     {   
-        if (playerControls.Player.Direction.ReadValue<Vector2>().x > 0.1)
-            realOffset = -offset;
-        else if (playerControls.Player.Direction.ReadValue<Vector2>().x < -0.1)
-            realOffset = offset;
+        float inputX = playerControls.Player.Direction.ReadValue<Vector2>().x;
+        if (inputX > 0.1f)
+            targetOffsetX = -offset;
+        else if (inputX < -0.1f)
+            targetOffsetX = offset;
         else
-            realOffset = 0f;
+            targetOffsetX = 0f;
 
-        // float distanceY = PlayerPos.position.y - transform.position.y;
+        float targetX = PlayerPos.position.x + targetOffsetX;
+        float newX = Mathf.SmoothDamp(transform.position.x, targetX, ref velocityX, smoothTimeX);
+        float targetY = PlayerPos.position.y;
+        float newY = transform.position.y;
 
-        // if (!PlayerController.isGrounded) 
-        // {
-        //     timer -= Time.deltaTime;
-        //     if (timer < 0f)
-        //     {
-        //         Debug.Log("timer");
-        //         LerpTimeY = 1f;
-        //         realOffsetY = -offsetY;
-        //     }
-        // }
-        // else
-        // {
-            timer = timeUp;
-            LerpTimeY = SpeedLerpY * Time.deltaTime; 
-            realOffsetY = 0f;
-        // }
-        
-        targetPos = new Vector3(PlayerPos.position.x + realOffset, PlayerPos.position.y + realOffsetY, PlayerPos.position.z);
-        
-        float newX = Mathf.SmoothDamp(transform.position.x, targetPos.x, ref realVelocity.x, smoothTimeX);
-        float newY = Mathf.Lerp(transform.position.y, targetPos.y, LerpTimeY);
-        
+        if (PlayerController.isGrounded)
+        {
+            if (timer < 0f || isRecovering)
+            {
+                isRecovering = true;
+                timer = timeUp;
+            }
+
+            if (isRecovering)
+            {
+                newY = Mathf.SmoothDamp(transform.position.y, targetY, ref velocityY, smoothTimeY);
+                
+                if (Mathf.Abs(transform.position.y - targetY) < 0.05f)
+                {
+                    isRecovering = false;
+                    newY = targetY;
+                    velocityY = 0f;
+                }
+            }
+            else
+            {
+                newY = targetY;
+                velocityY = 0f;
+                timer = timeUp;
+            }
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+
+            if (timer < 0f)
+            {
+                float downTargetY = targetY - offsetY;
+                newY = Mathf.SmoothDamp(transform.position.y, downTargetY, ref velocityY, smoothTimeY);
+            }
+            else
+            {
+                if (isRecovering)
+                {
+                    newY = Mathf.SmoothDamp(transform.position.y, targetY, ref velocityY, smoothTimeY);
+                }
+                else
+                {
+                    newY = targetY;
+                    velocityY = 0f;
+                }
+            }
+        }
         transform.position = new Vector3(newX, newY, 0f);
     }
 }

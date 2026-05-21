@@ -14,13 +14,13 @@ public class CameraVerticalOffset : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            cameraFollow.ChangeVerticalOffset(cameraFollow.VerticalOffset);
+            cameraFollow.ChangeVerticalOffset(cameraFollow.offsetY);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        cameraFollow.ChangeVerticalOffset(0f);
+        cameraFollow.CancelVerticalOffset();
     }
 
     // Update is called once per frame
