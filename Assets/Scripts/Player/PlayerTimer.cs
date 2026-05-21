@@ -44,9 +44,6 @@ public class PlayerTimer : MonoBehaviour
 
         if (t > timer)
             t = timer;
-        
-        StopCharging();
-        
         yield break;
     }
 
