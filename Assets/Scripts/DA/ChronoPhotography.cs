@@ -8,55 +8,52 @@ public class ChronoPhotography : MonoBehaviour
 {
     
     private GlobalTime manager;
-    private float t;
+    public float t;
     private int colorIndex;
     public float catchRate;
     public float albumSize;
     public Material photoMaterial;
     public List<Color> colors = new List<Color>(3);
     
-    public List<GameObject> subjects;
-    private List<List<GameObject>> listOfShoots = new List<List<GameObject>>();
-    private Transform parent;
+    // public List<GameObject> subjects;
+    public GameObject subject;
+    // private List<List<GameObject>> listOfShoots = new List<List<GameObject>>();
+    public List<GameObject> listOfShoots = new List<GameObject>();
+    // private Transform parent;
     
     private void Start()
     {
         t = 0;
         manager = FindFirstObjectByType<GlobalTime>();
-
-        for (int i = 0; i < subjects.Count; i++)
-        {
-            listOfShoots.Add(new List<GameObject>());
-        }
     }
 
     void Update()
     {
         t += Time.deltaTime * manager.active;
-
+        
         if (t >= catchRate)
         {
             colorIndex++;
             colorIndex %= (int)albumSize;
+            t = 0f;
             
             if (manager.active != 1)
             {
-                t = 0f;
+                listOfShoots.Add(Instantiate(subject, subject.transform.position, subject.transform.rotation));
+                // listOfShoots.GetComponent<Animator>().enabled = false;
                 
-                for (int i = 0; i < listOfShoots.Count; i++)
+                if (listOfShoots.Count > albumSize)
                 {
-                    Transform parent = subjects[i].transform.parent;
-                    listOfShoots[i].Add(Instantiate(subjects[i], parent.position, parent.rotation));
-                    listOfShoots[i][listOfShoots[i].Count - 1].transform.localScale *= 50;
-                    listOfShoots[i][listOfShoots[i].Count - 1].GetComponent<MeshRenderer>().enabled = true;
-                    
-                    listOfShoots[i][listOfShoots[i].Count - 1].GetComponent<MeshRenderer>().material.SetColor("_MainColor", CalculateColor(colorIndex));
-                    
-                    if (listOfShoots[i].Count > albumSize)
-                    {
-                        Destroy(listOfShoots[i][0]);
-                        listOfShoots[i].Remove(listOfShoots[i][0]);
-                    }
+                    Destroy(listOfShoots[0]);
+                    listOfShoots.Remove(listOfShoots[0]);
+                }
+                
+                for (int i = 0; i <= listOfShoots[listOfShoots.Count - 1].transform.childCount; i++)
+                {
+                    Transform child = listOfShoots[listOfShoots.Count - 1].transform.GetChild(i);
+                    child.GetComponent<SkinnedMeshRenderer>().materials[0].SetColor("_MainColor", CalculateColor(colorIndex));
+                    child.GetComponent<SkinnedMeshRenderer>().materials[1].SetColor("_MainColor", CalculateColor(colorIndex));
+                    // child.GetComponent<SkinnedMeshRenderer>().materials[2].SetColor("_MainColor", CalculateColor(listOfShoots.Count));
                 }
             }
             
@@ -66,10 +63,10 @@ public class ChronoPhotography : MonoBehaviour
                 
                 for (int i = 0; i < listOfShoots.Count; i++)
                 {
-                    if (listOfShoots[i].Count > 0)
+                    if (listOfShoots.Count > 0)
                     {
-                        Destroy(listOfShoots[i][0]);
-                        listOfShoots[i].Remove(listOfShoots[i][0]);
+                        Destroy(listOfShoots[0]);
+                        listOfShoots.Remove(listOfShoots[0]);
                     }
                 }
             }

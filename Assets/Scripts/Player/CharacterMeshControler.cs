@@ -6,6 +6,9 @@ public class CharacterMeshControler : MonoBehaviour
     private Rigidbody2D rb;
     private CameraFollow cameraFollow;
     public Animator playerAnimator;
+
+    public Transform chronoMesh;
+    // public Animator chronoAnimator;
     
     void Start()
     {
@@ -18,24 +21,24 @@ public class CharacterMeshControler : MonoBehaviour
         if (rb.linearVelocityX > 0.1f)
         {
             mesh.rotation = Quaternion.Euler(0f, -90f, 0f);
-            // cameraFollow.ChangeHorizontalOffset(cameraFollow.HorizontalOffset); à enlever
+            chronoMesh.rotation = Quaternion.Euler(0f, -90f, 0f);
         }
         else if (rb.linearVelocityX < -0.1f)
         {
             mesh.rotation = Quaternion.Euler(0f, 90f, 0f);
-            // cameraFollow.ChangeHorizontalOffset(-cameraFollow.HorizontalOffset); à enlever
+            chronoMesh.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
     }
 
     public void SetMoving()
     {
         playerAnimator.SetBool("IsMoving", true);
-        Debug.Log("SETTING SPRINT ANIM");
+        // chronoAnimator.SetBool("IsMoving", true);
     }
     
     public void SetNotMoving()
     {
         playerAnimator.SetBool("IsMoving", false);
-        Debug.Log("RESETING SPRINT ANIM");
+        // chronoAnimator.SetBool("IsMoving", false);
     }
 }

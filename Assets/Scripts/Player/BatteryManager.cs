@@ -51,7 +51,7 @@ public class BatteryManager : MonoBehaviour
         caseMat.SetFloat("_ActiveLevel", activeLevel);
         backCaseMat.SetFloat("_ActiveLevel", activeLevel);
         
-        caseMat.SetColor("_BaseColor", colors[activeLevel - 2]);
-        backCaseMat.SetColor("_BaseColor", colors[activeLevel - 2]);
+        // caseMat.SetColor("_BaseColor", colors[activeLevel - 2]);
+        // backCaseMat.SetColor("_BaseColor", colors[activeLevel - 2]);
     }
 }
