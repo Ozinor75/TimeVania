@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5230360761276791242}
   m_Layer: 0
   m_Name: AbsorptionBoost
-  m_TagString: SizeBoost
+  m_TagString: AbsorptionBoost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8755165aadfb26488959eb1e063194d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbsorptionBoost
-  buttonUI: {fileID: 0}
+  buttonUI: {fileID: 2129353872980145412}
 --- !u!1 &2129353872980145412
 GameObject:
   m_ObjectHideFlags: 0

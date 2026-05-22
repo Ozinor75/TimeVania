@@ -21,6 +21,8 @@ public class InputManager : MonoBehaviour
     public CustomInputs playerControls;
     private PlayerController playerController;
     private RLDtimer rldtimer;
+    private bool IsDivided = true;
+    
     private void OnEnable()
     {
         if (playerControls == null)
@@ -45,16 +47,24 @@ public class InputManager : MonoBehaviour
         {
             if (playerController.isGrounded)
             {
-                Movement.Invoke();
+                if (IsDivided)
+                {
+                    Movement.Invoke();
+                    IsDivided =  false;
+                }
                 isMoving = true;
             }
         }
-
+        
         if (!(playerControls.Player.Direction.ReadValue<Vector2>() != Vector2.zero) && isMoving)
         {
             {
+                if (!IsDivided)
+                {
+                    StopMovement.Invoke();
+                    IsDivided = true;
+                }
                 isMoving = false;
-                StopMovement.Invoke();
             }
         }
         
@@ -122,6 +132,6 @@ public class InputManager : MonoBehaviour
         {
             SaveSystem.Load();
             Debug.Log("Load");
-        }
+        } 
     }
 }

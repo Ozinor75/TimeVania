@@ -26,6 +26,8 @@ public class AbsorptionBoost : MonoBehaviour
         batteryManager.starLevel++;
         playerTimer.powerUpAbsorptionBoost++;
         batteryManager.UpdateBattery();
+        playerController.boostTrigger = null;
+        Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
