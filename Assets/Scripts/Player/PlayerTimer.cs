@@ -85,12 +85,18 @@ public class PlayerTimer : MonoBehaviour
             t -= Time.deltaTime * tMult * MultDeMult;
         
         tSec += Time.deltaTime;
+
+        // if (t > maxTimer) faire marcher ça, prcq ça s'appelle en boucle
+        // {
+        //     t = maxTimer;
+        //     Debug.Log("MaxTimer");
+        // }
         
-        if (t > criticalTimer)
-            text.text = t.ToString(" ");
-        
-        else
-            text.text = t.ToString("0.00");
+        // if (t > criticalTimer)
+        //     text.text = t.ToString(" ");
+        //
+        // else
+        //     text.text = t.ToString("0.00");
 
         if (t <= 0)
         {

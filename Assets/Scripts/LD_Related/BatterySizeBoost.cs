@@ -25,7 +25,10 @@ public class BatterySizeBoost : MonoBehaviour
     {
         batteryManager.activeLevel++;
         playerTimer.batterySizeBoost++;
-        playerTimer.timer = playerTimer.maxTimer + (((playerTimer.batteryBoostValue / 100) * playerTimer.maxTimer) * playerTimer.batterySizeBoost);
+        playerTimer.maxTimer +=
+            (((playerTimer.batteryBoostValue / 100) * playerTimer.maxTimer) * playerTimer.batterySizeBoost);
+        // playerTimer.timer = playerTimer.maxTimer + (((playerTimer.batteryBoostValue / 100) * playerTimer.maxTimer) * playerTimer.batterySizeBoost);
+        playerTimer.timer = playerTimer.maxTimer;
         playerTimer.t = playerTimer.timer;
         batteryManager.UpdateBattery();
         playerController.boostTrigger = null;
