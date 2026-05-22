@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: UltraHigh_Plasma
-  m_Shader: {fileID: 4800000, guid: af924401a2d0ed14da91f74d7ea6a94d, type: 3}
+  m_Shader: {fileID: 4800000, guid: b015eac7ecec67043b261a4a5e5475ee, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,20 +23,33 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BatteryBase:
+        m_Texture: {fileID: 2800000, guid: 120fdf3a4079803448d8705ae5120209, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Bolt1:
+        m_Texture: {fileID: 2800000, guid: 942d27e6ad5150040bb5f55937b8ff7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Bolt2:
+        m_Texture: {fileID: 2800000, guid: 688a57e387def8f4197eeeae84564b86, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Bolt3:
+        m_Texture: {fileID: 2800000, guid: f80c56b9c5d2bee478895c97dd3b0f7b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Bolt4:
+        m_Texture: {fileID: 2800000, guid: f80c56b9c5d2bee478895c97dd3b0f7b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Scale: 6
-    - _TimeScale: 1
     - __dirty: 0
-    m_Colors:
-    - _ColorBack: {r: 0.5298319, g: 0, b: 1, a: 0}
-    - _Gradient: {r: 0.1, g: 0.2, b: 0, a: 0}
-    - _MainColor: {r: 0.11764706, g: 0.11764706, b: 0.27450982, a: 0}
-    - _PulseColor: {r: 0.6705885, g: 0, b: 1, a: 0}
-    - _PusleColor: {r: 0, g: 0, b: 0, a: 0}
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

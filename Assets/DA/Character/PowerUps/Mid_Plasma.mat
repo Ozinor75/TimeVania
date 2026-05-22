@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mid_Plasma
-  m_Shader: {fileID: 4800000, guid: af924401a2d0ed14da91f74d7ea6a94d, type: 3}
+  m_Shader: {fileID: 4800000, guid: b015eac7ecec67043b261a4a5e5475ee, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,6 +23,26 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BatteryBase:
+        m_Texture: {fileID: 2800000, guid: 120fdf3a4079803448d8705ae5120209, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Bolt1:
+        m_Texture: {fileID: 2800000, guid: 688a57e387def8f4197eeeae84564b86, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Bolt2:
+        m_Texture: {fileID: 2800000, guid: 942d27e6ad5150040bb5f55937b8ff7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Bolt3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Bolt4:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
