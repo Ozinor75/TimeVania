@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: ca89fc10150258449bbaa42da3f7df73
+guid: af924401a2d0ed14da91f74d7ea6a94d
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
+  - _BatteryBase: {fileID: 2800000, guid: 7d611076352158b448ae234ed9ae6996, type: 3}
   - _Bolt1: {fileID: 2800000, guid: 688a57e387def8f4197eeeae84564b86, type: 3}
   - _Bolt2: {fileID: 2800000, guid: 942d27e6ad5150040bb5f55937b8ff7c, type: 3}
-  - _Bolt3: {fileID: 2800000, guid: 942d27e6ad5150040bb5f55937b8ff7c, type: 3}
+  - _Bolt4: {fileID: 2800000, guid: 942d27e6ad5150040bb5f55937b8ff7c, type: 3}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 

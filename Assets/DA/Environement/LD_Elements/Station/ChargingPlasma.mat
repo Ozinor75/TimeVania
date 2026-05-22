@@ -7,14 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mid_Skin
-  m_Shader: {fileID: 4800000, guid: ca89fc10150258449bbaa42da3f7df73, type: 3}
+  m_Name: ChargingPlasma
+  m_Shader: {fileID: 4800000, guid: af924401a2d0ed14da91f74d7ea6a94d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 0
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -23,6 +23,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BatteryBase:
+        m_Texture: {fileID: 2800000, guid: 120fdf3a4079803448d8705ae5120209, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Bolt1:
         m_Texture: {fileID: 2800000, guid: 688a57e387def8f4197eeeae84564b86, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -32,7 +36,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Bolt3:
-        m_Texture: {fileID: 2800000, guid: 688a57e387def8f4197eeeae84564b86, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4ba35876c2cab6345b8d3f1056913810, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Bolt4:
+        m_Texture: {fileID: 2800000, guid: f80c56b9c5d2bee478895c97dd3b0f7b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -41,20 +49,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AnimationSpeed: 4
-    - _CellGradient: 0.364
-    - _CellSize: 0.1
-    - _Cutoff: 0.5
-    - _Sacle: 6
-    - _Scale: 6
-    - _TimeScale: 1
     - __dirty: 0
-    m_Colors:
-    - _BoltColor: {r: 0, g: 0.5958762, b: 1, a: 0}
-    - _ColorBack: {r: 1, g: 0.12406197, b: 0, a: 0}
-    - _MainColor: {r: 0, g: 1, b: 1, a: 0}
-    - _PointColor: {r: 1, g: 1, b: 1, a: 0}
-    - _PusleColor: {r: 0.26425362, g: 0.8050314, b: 0, a: 0}
-    - _SecColor: {r: 1, g: 1, b: 1, a: 0}
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
