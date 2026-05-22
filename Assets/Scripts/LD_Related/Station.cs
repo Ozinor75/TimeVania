@@ -16,6 +16,7 @@ public class Station : MonoBehaviour
     public GameObject buttonUI;
     private bool onTrigger = false;
     private bool isCharging = false;
+    public Transform rayPoint;
     
     void Start()
     {
@@ -23,7 +24,7 @@ public class Station : MonoBehaviour
         line = GetComponent<LineRenderer>();
         cameraFollow = FindAnyObjectByType<CameraFollow>();
         
-        line.SetPosition(0, transform.position);
+        line.SetPosition(0, rayPoint.position);
         line.enabled = false;
     }
     
