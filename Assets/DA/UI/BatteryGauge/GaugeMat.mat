@@ -86,12 +86,12 @@ Material:
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
     - _Strenght: -0.331
-    - _TimeScale: 1
+    - _TimeScale: 0.5
     - _TotalLevel: 5
     - _UseUIAlphaClip: 0
     - __dirty: 0
     - _gaugeSpeed: 1
-    - _gaugeValue: 0.56922925
+    - _gaugeValue: 0
     m_Colors:
     - _ActiveOnTotalLevels: {r: 1, g: 5, b: 0, a: 0}
     - _BZZSize: {r: 0.1, g: 0.6, b: 0, a: 0}

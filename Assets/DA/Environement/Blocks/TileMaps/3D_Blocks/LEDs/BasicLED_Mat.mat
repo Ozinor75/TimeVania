@@ -36,7 +36,7 @@ Material:
     - PixelSnap: 0
     - _Frequency: 2
     - _TimeOn: 1
-    - _TimeScale: 1
+    - _TimeScale: 0.5
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _LED_Color: {r: 32, g: 25.09804, b: 0, a: 1}
