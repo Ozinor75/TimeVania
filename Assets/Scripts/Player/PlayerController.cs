@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     public bool onStation = false;
     public bool onBoost = false;
     public bool isCharging = false;
+    public bool isStarting;
     private bool isDashing = false;
     public bool isTouchable = true;
     public bool isRespawning = false;
@@ -97,6 +98,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        isStarting = true;
         Physics2D.queriesStartInColliders = false;
         // Physics2D.gravity = new Vector2(0, -35); //remplacer playerBoost par la valeur en publique
         
@@ -122,6 +124,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(BlackFade());
         Respawn();
         playerSound.MusicDefault();
+        isStarting = false;
     }
 
     public IEnumerator BlackFade()
@@ -132,7 +135,6 @@ public class PlayerController : MonoBehaviour
             blackScreen.color = blackScreenColor;
             yield return null;
         }
-        Respawn();
     }
     
     void FixedUpdate()
@@ -237,7 +239,8 @@ public class PlayerController : MonoBehaviour
     }
     public void Respawn()
     {
-        inputManager.ActivateStation.Invoke();
+        if (!isStarting)
+            inputManager.ActivateStation.Invoke();
         timerController.tMult = playerBoost.baseConsumptionMult;
         timerController.t = timerController.timer;
         isRespawning = false;
