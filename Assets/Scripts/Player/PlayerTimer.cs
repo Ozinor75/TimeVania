@@ -20,6 +20,7 @@ public class PlayerTimer : MonoBehaviour
     
     public float t;
     public float tMult;
+    private float MultDeMult;
     public TextMeshProUGUI text;
 
     private float tSec = 0f;
@@ -72,6 +73,7 @@ public class PlayerTimer : MonoBehaviour
         spawner = FindObjectsOfType<Spawner>();
         batteryManager = FindObjectOfType<BatteryManager>();
         t = timer;
+        DivideMult();
     }
     
     void Update()
@@ -80,7 +82,7 @@ public class PlayerTimer : MonoBehaviour
             t = 0f;
         
         if (!isCharging && t > 0f)
-            t -= Time.deltaTime * tMult;
+            t -= Time.deltaTime * tMult * MultDeMult;
         
         tSec += Time.deltaTime;
         
@@ -97,6 +99,7 @@ public class PlayerTimer : MonoBehaviour
                 sp.Spawn();
             }
         }
+        Debug.Log(MultDeMult*tMult);
 
         // if (tSec >= 0.2f)
         // {
@@ -107,6 +110,12 @@ public class PlayerTimer : MonoBehaviour
 
     public void DivideMult()
     {
-        
+        MultDeMult = 0.5f;
+    }
+
+    public void MultiplyMult()
+    {
+        MultDeMult = 1f;
+        // Debug.Log(tMult);
     }
 }

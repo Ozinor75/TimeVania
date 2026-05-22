@@ -170,7 +170,7 @@ public class ColliderController : MonoBehaviour
     public void SetPlatformParent(Transform parent)
     {
         transform.SetParent((parent));
-        Debug.Log("SetPlatformParent");
+        // Debug.Log("SetPlatformParent");
         isOnPlatform = true;
     }
 

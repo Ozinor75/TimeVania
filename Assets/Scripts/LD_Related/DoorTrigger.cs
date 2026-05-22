@@ -63,7 +63,7 @@ public class DoorTrigger : MonoBehaviour
         {
             if (current != start.position)
             {
-                Debug.Log("RATIO = " + ratio);
+                // Debug.Log("RATIO = " + ratio);
                 t += Time.deltaTime  * manager.active;
                 r = (t / (duration * ratio));
                 movable.position = Vector3.Lerp(current, start.position, curve.Evaluate(r));
