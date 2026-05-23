@@ -11,8 +11,8 @@ public class PlayerTimer : MonoBehaviour
 
     public float chargingSpeed;
     
-    public int batteryBoostValue;
-    public int powerUpAbsorptionBoostValue;
+    public float batteryBoostValue;
+    public float powerUpAbsorptionBoostValue;
     
     [Header("Debug")]
     public int batterySizeBoost;
@@ -20,6 +20,7 @@ public class PlayerTimer : MonoBehaviour
     
     public float t;
     public float tMult;
+    private float MultDeMult;
     public TextMeshProUGUI text;
 
     private float tSec = 0f;
@@ -72,6 +73,7 @@ public class PlayerTimer : MonoBehaviour
         spawner = FindObjectsOfType<Spawner>();
         batteryManager = FindObjectOfType<BatteryManager>();
         t = timer;
+        DivideMult();
     }
     
     void Update()
@@ -80,15 +82,21 @@ public class PlayerTimer : MonoBehaviour
             t = 0f;
         
         if (!isCharging && t > 0f)
-            t -= Time.deltaTime * tMult;
+            t -= Time.deltaTime * tMult * MultDeMult;
         
         tSec += Time.deltaTime;
+
+        // if (t > maxTimer) faire marcher ça, prcq ça s'appelle en boucle
+        // {
+        //     t = maxTimer;
+        //     Debug.Log("MaxTimer");
+        // }
         
-        if (t > criticalTimer)
-            text.text = t.ToString(" ");
-        
-        else
-            text.text = t.ToString("0.00");
+        // if (t > criticalTimer)
+        //     text.text = t.ToString(" ");
+        //
+        // else
+        //     text.text = t.ToString("0.00");
 
         if (t <= 0)
         {
@@ -97,6 +105,7 @@ public class PlayerTimer : MonoBehaviour
                 sp.Spawn();
             }
         }
+        Debug.Log(MultDeMult*tMult);
 
         // if (tSec >= 0.2f)
         // {
@@ -107,6 +116,12 @@ public class PlayerTimer : MonoBehaviour
 
     public void DivideMult()
     {
-        
+        MultDeMult = 0.5f;
+    }
+
+    public void MultiplyMult()
+    {
+        MultDeMult = 1f;
+        // Debug.Log(tMult);
     }
 }

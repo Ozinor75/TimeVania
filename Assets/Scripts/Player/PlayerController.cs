@@ -50,7 +50,9 @@ public class PlayerController : MonoBehaviour
     [Header("Player Debug")]
     public bool isGrounded = true;
     [HideInInspector] public Vector2 hookStickDirection;
+    public Transform boostTrigger;
     public bool onStation = false;
+    public bool onBoost = false;
     public bool isCharging = false;
     private bool isDashing = false;
     public bool isTouchable = true;
@@ -331,7 +333,7 @@ public class PlayerController : MonoBehaviour
     }
     public void GroundPlayer()
     {
-        Debug.Log("GroundPlayer");
+        // Debug.Log("GroundPlayer");
         isGrounded = true;
         coyotE = coyotETimer;
         isJumping = false;
@@ -343,7 +345,7 @@ public class PlayerController : MonoBehaviour
     }
     public void UngroundPlayer()
     {
-        Debug.Log("UnGroundPlayer");
+        // Debug.Log("UnGroundPlayer");
         canDoubleJump = true;
         isGrounded = false;
         lockGroundCheck = true;
@@ -352,7 +354,7 @@ public class PlayerController : MonoBehaviour
     }    
     public void UngroundJumpPlayer()
     {
-        Debug.Log("UnGroundPlayer");
+        // Debug.Log("UnGroundPlayer");
         canDoubleJump = true;
         isGrounded = false;
         lockGroundCheck = true;
