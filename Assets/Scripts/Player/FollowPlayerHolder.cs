@@ -4,7 +4,6 @@ using UnityEngine.Serialization;
 public class FollowPlayerHolder : MonoBehaviour
 {
     public Transform PlayerPos;
-    public PlayerController PlayerController;
     public CustomInputs playerControls;
     
     public Vector3 targetPos;
@@ -12,10 +11,11 @@ public class FollowPlayerHolder : MonoBehaviour
 
     public float offset = 3f;
     public float offsetY = 10f;
-    public float smoothTimeX = 0.25f;
     
-    public float smoothTimeY = 0.3f;
-    private float velocityY = 0f;
+    public float smoothTimeX = 0.25f;
+    public float smoothTimeY = 0.3f; // Retour à la petite valeur classique
+    private float velocityY = 0f;    // Retour de la vélocité pour l'axe Y
+    
     private bool isRecovering = false;
     
     private float realOffset = 0f;
@@ -23,6 +23,8 @@ public class FollowPlayerHolder : MonoBehaviour
 
     private float timer;
     public float timeUp;
+
+    private bool Ground;
     
     private void OnEnable()
     {
@@ -41,7 +43,7 @@ public class FollowPlayerHolder : MonoBehaviour
         timer = timeUp;
     }
     
-    void Update()
+    void LateUpdate()
     {   
         if (playerControls.Player.Direction.ReadValue<Vector2>().x > 0.1)
             realOffset = -offset;
@@ -53,12 +55,12 @@ public class FollowPlayerHolder : MonoBehaviour
         float targetY = PlayerPos.position.y;
         float newY = transform.position.y;
 
-        if (PlayerController.isGrounded)
+        if (Ground)
         {
-            if (timer < 0f || isRecovering)
+            if (timer < 0f && !isRecovering)
             {
                 isRecovering = true;
-                timer = timeUp;
+                velocityY = 0f;
             }
 
             if (isRecovering)
@@ -73,6 +75,8 @@ public class FollowPlayerHolder : MonoBehaviour
                     velocityY = 0f;
                     realOffsetY = 0f;
                 }
+                
+                timer = timeUp; 
             }
             else
             {
@@ -85,6 +89,7 @@ public class FollowPlayerHolder : MonoBehaviour
         else
         {
             timer -= Time.deltaTime;
+            Debug.Log(timer);
 
             if (timer < 0f)
             {
@@ -113,5 +118,14 @@ public class FollowPlayerHolder : MonoBehaviour
         float newX = Mathf.SmoothDamp(transform.position.x, targetPos.x, ref realVelocity.x, smoothTimeX);
         
         transform.position = new Vector3(newX, newY, 0f);
+    }
+
+    public void ThereIsGround()
+    {
+        Ground = true;
+    }    
+    public void NoGround()
+    {
+        Ground = false;
     }
 }
