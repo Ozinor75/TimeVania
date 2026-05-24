@@ -34,7 +34,7 @@ public class Station : MonoBehaviour
         line.SetPosition(0, rayPoint.position);
         line.enabled = false;
 
-        StartCoroutine(MaterializePlayer());
+        // StartCoroutine(MaterializePlayer());
     }
     
     void Update()
@@ -94,7 +94,6 @@ public class Station : MonoBehaviour
         spawnFX.enabled = false;
         yield return new WaitForSeconds(0.5f);
         spawnFX2.enabled = false;
-        Debug.Log("End");
         yield break;
     }
 }

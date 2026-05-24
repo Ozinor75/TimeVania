@@ -5915,7 +5915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 181116127351755827, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 290757784848108357, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13822,7 +13822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 181116127351755827, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 290757784848108357, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13891,6 +13891,18 @@ PrefabInstance:
     - target: {fileID: 4121840537294890982, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: m_Points.Array.data[5].y
       value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857062685925986419, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857062685925986419, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
+      propertyPath: m_Range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857062685925986419, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
+      propertyPath: m_Intensity
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4890688016264171696, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: ToFollow
@@ -714813,7 +714825,7 @@ Light:
   serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.01
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -714852,7 +714864,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -717687,7 +717699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 181116127351755827, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4890688016264171696, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: cameraDepth
@@ -720443,7 +720455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2078864960
 Transform:
   m_ObjectHideFlags: 0
@@ -722059,7 +722071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 181116127351755827, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4890688016264171696, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: cameraDepth
