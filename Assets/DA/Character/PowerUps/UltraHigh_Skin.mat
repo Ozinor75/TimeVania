@@ -45,6 +45,7 @@ Material:
     - _CellGradient: 0.722
     - _CellSize: 0.031
     - _Cutoff: 0.5
+    - _GlobalSpeed: 0
     - _Sacle: 6
     - _Scale: 16
     - _TimeScale: 1

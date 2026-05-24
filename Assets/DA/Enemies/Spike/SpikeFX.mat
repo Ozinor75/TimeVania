@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UnstableEnergyFX
+  m_Name: SpikeFX
   m_Shader: {fileID: 4800000, guid: f7b6fece4eb1ebd4eaa0384c0cb71d39, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _StableBoltFX:
-        m_Texture: {fileID: 2800000, guid: 7290b7d1f77bad542bc9e9f632890906, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9e932a1acac7c054781ce569ecfe2e12, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _StableBoltFX1:
@@ -36,7 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UnstableBoltFX:
-        m_Texture: {fileID: 2800000, guid: f80c56b9c5d2bee478895c97dd3b0f7b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8a285a892da13e54a804c8d53b0c9ddd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -48,6 +48,7 @@ Material:
     - _TimeScale: 1
     - __dirty: 0
     m_Colors:
+    - _BoltColor: {r: 8, g: 0.8000002, b: 0.8000002, a: 1}
     - _Color0: {r: 4, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
