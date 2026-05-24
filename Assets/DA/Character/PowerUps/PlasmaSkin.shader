@@ -1,3 +1,5 @@
+// Upgrade NOTE: upgraded instancing buffer 'Plasma' to new syntax.
+
 // Made with Amplify Shader Editor v1.9.2
 // Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "Plasma"
@@ -6,6 +8,7 @@ Shader "Plasma"
 	{
 		_BeamColor("BeamColor", Color) = (0.5531816,0,1,1)
 		_SoftColor("SoftColor", Color) = (0,0,1,1)
+		_TimeScale("TimeScale", Float) = 0
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
@@ -19,6 +22,7 @@ Shader "Plasma"
 		CGPROGRAM
 		#include "UnityShaderVariables.cginc"
 		#pragma target 3.0
+		#pragma multi_compile_instancing
 		#pragma surface surf Unlit keepalpha addshadow fullforwardshadows 
 		struct Input
 		{
@@ -27,6 +31,11 @@ Shader "Plasma"
 
 		uniform float4 _BeamColor;
 		uniform float4 _SoftColor;
+
+		UNITY_INSTANCING_BUFFER_START(Plasma)
+			UNITY_DEFINE_INSTANCED_PROP(float, _TimeScale)
+#define _TimeScale_arr Plasma
+		UNITY_INSTANCING_BUFFER_END(Plasma)
 
 
 		float2 voronoihash78( float2 p )
@@ -73,7 +82,8 @@ Shader "Plasma"
 		{
 			float4 blendOpSrc75 = _BeamColor;
 			float4 blendOpDest75 = _SoftColor;
-			float mulTime81 = _Time.y * 1.5;
+			float _TimeScale_Instance = UNITY_ACCESS_INSTANCED_PROP(_TimeScale_arr, _TimeScale);
+			float mulTime81 = _Time.y * _TimeScale_Instance;
 			float time78 = ( mulTime81 * 1.0 );
 			float2 voronoiSmoothId78 = 0;
 			float2 appendResult82 = (float2(( mulTime81 * 0.5 ) , ( mulTime81 * 0.2 )));
@@ -132,9 +142,10 @@ Node;AmplifyShaderEditor.SimpleAddOpNode;42;1685.969,-470.7086;Inherit;True;2;2;
 Node;AmplifyShaderEditor.StandardSurfaceOutputNode;20;1900.195,-468.5442;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;Plasma;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Back;0;False;;0;False;;False;0;False;;0;False;;False;0;Opaque;0.5;True;True;0;False;Opaque;;Geometry;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;2;5;False;;10;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
 Node;AmplifyShaderEditor.SimpleTimeNode;81;-1026.131,-338.026;Inherit;False;1;0;FLOAT;1.5;False;1;FLOAT;0
 Node;AmplifyShaderEditor.DynamicAppendNode;82;-590.2981,-436.1371;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.ColorNode;38;487.5735,-635.6727;Inherit;False;Property;_SoftColor;SoftColor;1;0;Create;True;0;0;0;False;0;False;0,0,1,1;0,1,1,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;40;487.3776,-805.9418;Inherit;False;Property;_BeamColor;BeamColor;0;0;Create;True;0;0;0;False;0;False;0.5531816,0,1,1;1,1,1,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;38;487.5735,-635.6727;Inherit;False;Property;_SoftColor;SoftColor;1;0;Create;True;0;0;0;False;0;False;0,0,1,1;0.5019608,0,1,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;40;487.3776,-805.9418;Inherit;False;Property;_BeamColor;BeamColor;0;0;Create;True;0;0;0;False;0;False;0.5531816,0,1,1;0,0,1,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.VoronoiNode;78;-200.7895,-366.0347;Inherit;False;0;0;1;3;3;False;1;False;False;False;4;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT;6;False;3;FLOAT;0;False;3;FLOAT;0;FLOAT2;1;FLOAT2;2
+Node;AmplifyShaderEditor.RangedFloatNode;88;-1191.417,-348.5569;Inherit;False;InstancedProperty;_TimeScale;TimeScale;2;0;Create;True;0;0;0;False;0;False;0;1;0;0;0;1;FLOAT;0
 WireConnection;84;0;81;0
 WireConnection;83;0;81;0
 WireConnection;79;1;82;0
@@ -159,9 +170,10 @@ WireConnection;73;1;63;0
 WireConnection;42;0;62;0
 WireConnection;42;1;73;0
 WireConnection;20;2;42;0
+WireConnection;81;0;88;0
 WireConnection;82;0;83;0
 WireConnection;82;1;84;0
 WireConnection;78;0;79;0
 WireConnection;78;1;77;0
 ASEEND*/
-//CHKSM=A231EF893013934FB4B364F84A4CA24E039EE54D
+//CHKSM=6ED0B11CD9A2D973F06951B5C5208B131266105B
