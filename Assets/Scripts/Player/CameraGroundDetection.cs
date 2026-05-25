@@ -8,11 +8,11 @@ public class CameraGroundDetection : MonoBehaviour
 
     void Update()
     {
-        CheckGround();
-        if (isGrounded)
-            cameraHolder.ThereIsGround();
-        else
-            cameraHolder.NoGround();
+        // CheckGround();
+        // if (isGrounded)
+        //     cameraHolder.ThereIsGround();
+        // else
+        //     cameraHolder.NoGround();
     }
 
     void CheckGround()
