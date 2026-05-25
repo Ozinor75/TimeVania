@@ -29,7 +29,7 @@ public class CameraFollow : MonoBehaviour
     private float VerticalOffset = 0f;
 
     [Header("Distance Limits")]
-    public float maxDistance = 10f; // La distance maximale autorisée
+    public float maxDistance = 10f;
 
     private void OnEnable()
     {
@@ -69,14 +69,12 @@ public class CameraFollow : MonoBehaviour
 
         float newX = Mathf.SmoothDamp(targetPos.x, toFollow.position.x + realOffset, ref realVelocity.x, smoothTimeX);
         targetPos = new Vector3(newX, toFollow.position.y, 0f);
-
-        Vector3 self2Dpos = new Vector3(transform.position.x, transform.position.y + heightOffset, -currentDepthOffset);
-        Vector3 other2Dpos = new Vector3(targetPos.x, targetPos.y + heightOffset + VerticalOffset, -currentDepthOffset);
-        Vector3 desiredCameraPos = Vector3.Lerp(self2Dpos, other2Dpos, followTime * Time.fixedDeltaTime);
+        Vector3 currentCamPos = transform.position;
+        Vector3 desiredPos = new Vector3(targetPos.x, targetPos.y + heightOffset + VerticalOffset, -currentDepthOffset);
+        Vector3 smoothedPos = Vector3.Lerp(currentCamPos, desiredPos, followTime * Time.deltaTime);
         Vector2 focusCenter = new Vector2(toFollow.position.x, toFollow.position.y + heightOffset + VerticalOffset);
-        Vector2 currentDistanceVector = new Vector2(desiredCameraPos.x, desiredCameraPos.y) - focusCenter;
-        Vector2 clampedDistance = Vector2.ClampMagnitude(currentDistanceVector, maxDistance);
-
+        Vector2 distanceVector = new Vector2(smoothedPos.x, smoothedPos.y) - focusCenter;
+        Vector2 clampedDistance = Vector2.ClampMagnitude(distanceVector, maxDistance);
         transform.position = new Vector3(focusCenter.x + clampedDistance.x, focusCenter.y + clampedDistance.y, -currentDepthOffset);
     }
 
