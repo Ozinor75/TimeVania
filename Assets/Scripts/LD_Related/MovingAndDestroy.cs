@@ -15,8 +15,13 @@ public class MovingAndDestroy : MonoBehaviour
     public Transform start;
     public Transform end;
     
+    [Header("DA")]
+    public MeshRenderer LED;
+    private Material LED_mat;
+    
     private void Start()
     {
+        LED_mat = LED.materials[1];
         manager = FindFirstObjectByType<GlobalTime>();
         worldEvents = FindFirstObjectByType<WorldEvents>();
     }
@@ -33,5 +38,8 @@ public class MovingAndDestroy : MonoBehaviour
             worldEvents.platformDestroyed.Invoke();
             Destroy(gameObject);
         }
+        
+        LED_mat.SetFloat("_Ratio", r);
     }
 }
+
