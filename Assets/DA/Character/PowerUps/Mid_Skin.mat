@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Bolt1:
-        m_Texture: {fileID: 2800000, guid: 688a57e387def8f4197eeeae84564b86, type: 3}
+        m_Texture: {fileID: 2800000, guid: 638d26fbe7790f8499955824ae63621d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Bolt2:
-        m_Texture: {fileID: 2800000, guid: 942d27e6ad5150040bb5f55937b8ff7c, type: 3}
+        m_Texture: {fileID: 2800000, guid: f80c56b9c5d2bee478895c97dd3b0f7b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Bolt3:
@@ -45,12 +45,13 @@ Material:
     - _CellGradient: 0.364
     - _CellSize: 0.1
     - _Cutoff: 0.5
+    - _GlobalSpeed: 1
     - _Sacle: 6
     - _Scale: 6
     - _TimeScale: 1
     - __dirty: 0
     m_Colors:
-    - _BoltColor: {r: 0, g: 0.5958762, b: 1, a: 0}
+    - _BoltColor: {r: 0.72000015, g: 3.9727056, b: 7.2, a: 1}
     - _ColorBack: {r: 1, g: 0.12406197, b: 0, a: 0}
     - _MainColor: {r: 0, g: 1, b: 1, a: 0}
     - _PointColor: {r: 1, g: 1, b: 1, a: 0}
