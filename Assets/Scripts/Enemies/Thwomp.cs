@@ -16,6 +16,8 @@ public class Thwomp : MonoBehaviour
     private float t;
     private float r;
 
+    [Header("Da")] public MeshRenderer jetFX;
+
     public void ResetMovement()
     {
         r = 0;
@@ -37,6 +39,13 @@ public class Thwomp : MonoBehaviour
             r = t / duration;
         
             thwomp.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
+
+            if (r >= 1f && jetFX.enabled)
+                jetFX.enabled = false;
+
+            if (r < 1f && !jetFX.enabled)
+                jetFX.enabled = true;
+
         }
     }
 }
