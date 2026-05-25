@@ -16,9 +16,14 @@ public class PlatformMovement : MonoBehaviour
 
     [Header("Time")]
     public GlobalTime manager;
+    
+    [Header("DA")]
+    public MeshRenderer LED;
+    private Material LED_mat;
 
     private void Start()
     {
+        LED_mat = LED.materials[1];
         manager = FindFirstObjectByType<GlobalTime>();
         ResetMovement();
         
@@ -35,6 +40,7 @@ public class PlatformMovement : MonoBehaviour
             r = t / duration;
         
             movable.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
+            LED_mat.SetFloat("_Ratio", r);
         }
     }
     

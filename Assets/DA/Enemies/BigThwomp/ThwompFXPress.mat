@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TempPlatformSecMat
-  m_Shader: {fileID: 4800000, guid: 27a4feffd83dabd43ae86a6a27bf61d0, type: 3}
+  m_Name: ThwompFXPress
+  m_Shader: {fileID: 4800000, guid: f7b6fece4eb1ebd4eaa0384c0cb71d39, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -43,10 +43,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _LEDsShape:
-        m_Texture: {fileID: 2800000, guid: a21638020a0ae79469645012af7d2f5b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -63,8 +59,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _ShadowDetailShape:
-        m_Texture: {fileID: 0}
+    - _StableBoltFX:
+        m_Texture: {fileID: 2800000, guid: 94a6f5f081eabbc439f81c5af4ec3a4d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UnstableBoltFX:
+        m_Texture: {fileID: 2800000, guid: a35e6ffec61611a428c58bfc3a6f0732, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -73,6 +73,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BaseSpeed: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -80,27 +81,20 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LightSize: 0.735
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Preset: 0
-    - _ShadowBias: 0
-    - _ShadowSize: 0.804
-    - _ShadowStrenght: 0.679
-    - _ShadowTilling: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TimeScale: 1
     - _UVSec: 0
-    - _UseCustomColor: 1
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _BaseColor: {r: 0.32941175, g: 0.32941175, b: 0.32941175, a: 0}
+    - _BoltColor: {r: 5.9921575, g: 0.18823533, b: 0.18823533, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _LEDsColor: {r: 4, g: 4, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -16,20 +16,28 @@ public class SpawingPlatform : MonoBehaviour
     public float trackDuration;
     private GameObject go;
     private float t;
+
+    [Header("DA")]
+    public Light spawnLight;
     
     private void Start()
     {
+        spawnLight.enabled = false;
         manager = FindFirstObjectByType<GlobalTime>();
     }
     
     void Update()
     {
         t += Time.deltaTime * manager.active;
+
+        if (t >= timeToSpawn * (8 / 10))
+            spawnLight.enabled = true;
         
         if (t >= timeToSpawn)
         {
             Spawn();
             t = 0;
+            spawnLight.enabled = false;
         }
     }
 
