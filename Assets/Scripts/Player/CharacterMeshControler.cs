@@ -13,6 +13,8 @@ public class CharacterMeshControler : MonoBehaviour
     public Animator playerAnimator;
 
     public Transform chronoMesh;
+
+    private RaycastHit2D selfRay;
     // public Animator chronoAnimator;
     
     void Start()
@@ -21,37 +23,33 @@ public class CharacterMeshControler : MonoBehaviour
         player = GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         cameraFollow = FindFirstObjectByType<CameraFollow>();
+        Physics2D.queriesStartInColliders = false;
     }
     
     void Update()
     {
-        if (player.isGrounded && !playerAnimator.GetBool("Ground"))
-        {
+        selfRay = Physics2D.Raycast(rb.position, Vector2.down, 0.3f);
+        
+        if (selfRay && !playerAnimator.GetBool("Ground"))
             SetGrounded();
-            SetNotFalling();
-        }
-            
-        if (!player.isGrounded && playerAnimator.GetBool("Ground"))
+        if (!selfRay && playerAnimator.GetBool("Ground"))
             SetNotGrounded();
         
-        if (Mathf.Abs(rb.linearVelocityX) > sensi  && !playerAnimator.GetBool("IsMoving") && !playerAnimator.GetBool("Jump"))
+        if (Mathf.Abs(rb.linearVelocityX) > 0.1f  && !playerAnimator.GetBool("IsMoving"))
             SetMoving();
-        if (Mathf.Abs(rb.linearVelocityX) < sensi && playerAnimator.GetBool("IsMoving"))
+        if (Mathf.Abs(rb.linearVelocityX) < 0.1f && playerAnimator.GetBool("IsMoving"))
             SetNotMoving();
         
-
-        // if (playerControls.Player.Jump.ReadValue<bool>() == true)
-        if (player.isJumping == true && rb.linearVelocityY > 0f && !playerAnimator.GetBool("Jump"))
-        {
-            SetNotMoving();
+        
+        if (player.isJumping && !playerAnimator.GetBool("Jump") && !selfRay)
             SetJumping();
-        }
-
-        if (rb.linearVelocityY < 0f)
-        {
+        if (!player.isJumping && playerAnimator.GetBool("Jump"))
             SetNotJumping();
+
+        if (rb.linearVelocityY < -0.1f && !playerAnimator.GetBool("IsFalling"))
             SetFalling();
-        }
+        if (!(rb.linearVelocityY < -0.1f) && playerAnimator.GetBool("IsFalling"))
+            SetNotFalling();
         
         if (rb.linearVelocityX > 0.1f)
         {
@@ -74,9 +72,17 @@ public class CharacterMeshControler : MonoBehaviour
 
     private IEnumerator RecoverDamage()
     {
-        yield return new WaitForSeconds(1f);
-        energyMat.SetFloat("_DamageT", 0f);
-        Debug.Log("END DAMAGE");
+        Debug.Log("START DAMAGE RECOVER");
+        float t = 1f;
+
+        while (t >= 0f)
+        {
+            t -= Time.deltaTime;
+            energyMat.SetFloat("_DamageT", t);
+            yield return null;
+        }
+        
+        Debug.Log("END RECOVER");
         yield break;
     }
 
@@ -101,6 +107,8 @@ public class CharacterMeshControler : MonoBehaviour
     public void SetGrounded()
     {
         playerAnimator.SetBool("Ground", true);
+        SetNotJumping();
+        SetNotFalling();
     }
     public void SetNotGrounded()
     {

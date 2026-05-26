@@ -83,6 +83,7 @@ Material:
     m_Floats:
     - _AnimationSpeed: 5
     - _BumpScale: 1
+    - _CSpeed: 0.5
     - _CellGradient: 1
     - _CellSize: 0.5
     - _ConsuptionSpeed: 1
@@ -109,9 +110,9 @@ Material:
     - _BeamColor: {r: 1, g: 1, b: 1, a: 1}
     - _BoltColor: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 0, g: 0.9093275, b: 1, a: 1}
-    - _DamageColor: {r: 0.99960023, g: 0.019991985, b: 0.019991985, a: 1}
+    - _DamageColor: {r: 0.95, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 1, g: 0, b: 1, a: 0.1960784}
-    - _SoftColor: {r: 0, g: 0.9, b: 1, a: 1}
+    - _SoftColor: {r: 0, g: 0.95, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
