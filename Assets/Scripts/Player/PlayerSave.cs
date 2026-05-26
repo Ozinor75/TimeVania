@@ -10,6 +10,7 @@ public class PlayerSave : MonoBehaviour
     {
         playerController.savePoint = playerController.respawnPoint.position;
         data.lastStation = playerController.savePoint;
+        data.canDash = playerController.canDash;
         data.activeLevel = batteryManager.activeLevel;
         data.starLevel = batteryManager.starLevel;
     }
@@ -18,6 +19,7 @@ public class PlayerSave : MonoBehaviour
     {
         Debug.Log("PLAYER POSITION DATA = " +  data.lastStation.x + "," + data.lastStation.y + "," + data.activeLevel + "," + data.starLevel);
         playerController.transform.position = data.lastStation;
+        playerController.canDash =  data.canDash;
         batteryManager.activeLevel = data.activeLevel;
         batteryManager.starLevel = data.starLevel;
         batteryManager.UpdateBattery();
@@ -42,6 +44,7 @@ public class PlayerSave : MonoBehaviour
 public struct PlayerSaveData
 {
     public Vector2 lastStation;
+    public bool canDash;
     public int activeLevel;
     public int starLevel;
 }
