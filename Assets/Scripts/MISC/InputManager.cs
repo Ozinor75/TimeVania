@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent Downgrade;
     public UnityEvent GearReleased;
     public UnityEvent ActivateStation;
+    public UnityEvent AutoDestroy;
     public UnityEvent UseHook;
     
     [Header("Passive Actions")]
@@ -20,7 +21,9 @@ public class InputManager : MonoBehaviour
 
     public CustomInputs playerControls;
     private PlayerController playerController;
-    private RLDtimer rldtimer;
+    private PlayerTimer playerTimer;
+    private float timer = 3f;
+    private float t = 0f;
     private bool IsDivided = true;
     
     private void OnEnable()
@@ -37,7 +40,8 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         playerController = FindAnyObjectByType<PlayerController>();
-        rldtimer = FindAnyObjectByType<RLDtimer>();
+        playerTimer = FindAnyObjectByType<PlayerTimer>();
+        t = timer;
     }
 
     // Update is called once per frame
@@ -74,10 +78,10 @@ public class InputManager : MonoBehaviour
             Jump.Invoke();
         }
 
-        if (playerControls.Player.Dash.WasPressedThisFrame() && playerController.timerController.t > playerController.dashCost && playerControls.Player.Direction.ReadValue<Vector2>() != Vector2.zero)
+        if (playerControls.Player.Dash.WasPressedThisFrame() && playerController.timerController.t > playerController.dashCost && playerControls.Player.Direction.ReadValue<Vector2>() != Vector2.zero && playerController.canDash)
         {
             // Debug.Log("Dashing");
-            //Dash.Invoke();
+            Dash.Invoke();
         }
 
         if (playerControls.Player.Upgrade.WasPressedThisFrame()/* && playerController.activePreset == PlayerPresets.*/)
@@ -114,6 +118,17 @@ public class InputManager : MonoBehaviour
             else
             {
                 playerController.boostTrigger.GetComponent<AbsorptionBoost>().MakeBoost();
+            }
+        }
+
+        if (playerControls.Player.L3Click.IsPressed() && playerControls.Player.R3Click.IsPressed())
+        {
+            t -= Time.deltaTime;
+            if (t < 0f)
+            {
+                playerTimer.TimerNull();
+                // playerController.MakeRespawn();
+                t = timer;
             }
         }
         

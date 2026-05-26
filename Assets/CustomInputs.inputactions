@@ -11,7 +11,7 @@
                     "type": "Value",
                     "id": "035967f5-081c-40aa-911a-a9a3af6f9ab9",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.8,max=1)",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -91,6 +91,24 @@
                     "name": "Load",
                     "type": "Button",
                     "id": "f98e8b3d-23fe-432c-882e-1fb631a395fc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "L3 Click",
+                    "type": "Button",
+                    "id": "c4383268-85b5-4e2b-aeb0-1f348b34116e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "R3 Click",
+                    "type": "Button",
+                    "id": "ad0e4f1b-39de-433b-9f62-5bab8cca3f6f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -414,6 +432,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Load",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "abd32ab2-dd5e-4bbd-a2d6-679f283d833c",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L3 Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2576dde6-e5bf-4991-925e-543504953086",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R3 Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

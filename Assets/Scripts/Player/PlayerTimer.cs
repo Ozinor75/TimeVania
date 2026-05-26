@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using TMPro;
 public class PlayerTimer : MonoBehaviour
 {
     public float timer;
@@ -127,5 +126,10 @@ public class PlayerTimer : MonoBehaviour
     {
         MultDeMult = 1f;
         // Debug.Log(tMult);
+    }
+
+    public void TimerNull()
+    {
+        t = 0f;
     }
 }

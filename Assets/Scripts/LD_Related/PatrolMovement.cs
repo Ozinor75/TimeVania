@@ -43,11 +43,11 @@ public class PatrolMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (canMove)
         {
-            t += Time.deltaTime * manager.active;
+            t += Time.fixedDeltaTime * manager.active;
             //t %= duration * 2;
             r = (t / (duration * ratio));
 

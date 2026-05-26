@@ -3,7 +3,6 @@ using UnityEngine;
 using System;
 using System.IO;
 // using UnityEditor.Overlays; ça empêche de build
-using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
 {
@@ -39,6 +38,7 @@ public class SaveSystem : MonoBehaviour
 
     public static void Load()
     {
+        Debug.Log("TEST LOAD");
         string saveContent = File.ReadAllText(SaveFileName());
 
         saveData = JsonUtility.FromJson<SaveData>(saveContent);
