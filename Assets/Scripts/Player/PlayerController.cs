@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Vector2 movement;
     public Vector2 StartPos; //pos de départ pour restart
     public bool CanMove = false;
+    public bool canDash = false;
     private float t = 0f;
     
     [HideInInspector] public Vector2 platformVelocity = Vector2.zero;
@@ -363,6 +364,7 @@ public class PlayerController : MonoBehaviour
     }
     public void MakeDash()
     {
+        Debug.Log("Making Dash");
         Vector3[] posArray = new Vector3[2];
         Vector2 endPos = playerControls.Player.Direction.ReadValue<Vector2>().normalized;
         Vector2 test = new Vector2(transform.position.x, transform.position.y + 0.3f);

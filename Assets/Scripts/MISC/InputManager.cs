@@ -74,10 +74,10 @@ public class InputManager : MonoBehaviour
             Jump.Invoke();
         }
 
-        if (playerControls.Player.Dash.WasPressedThisFrame() && playerController.timerController.t > playerController.dashCost && playerControls.Player.Direction.ReadValue<Vector2>() != Vector2.zero)
+        if (playerControls.Player.Dash.WasPressedThisFrame() && playerController.timerController.t > playerController.dashCost && playerControls.Player.Direction.ReadValue<Vector2>() != Vector2.zero && playerController.canDash)
         {
             // Debug.Log("Dashing");
-            //Dash.Invoke();
+            Dash.Invoke();
         }
 
         if (playerControls.Player.Upgrade.WasPressedThisFrame()/* && playerController.activePreset == PlayerPresets.*/)
