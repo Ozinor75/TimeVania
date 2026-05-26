@@ -30,14 +30,14 @@ public class SpawingPlatform : MonoBehaviour
     {
         t += Time.deltaTime * manager.active;
 
-        if (t >= timeToSpawn * (8 / 10))
+        if (t >= timeToSpawn * 0.8f)
             spawnLight.enabled = true;
         
         if (t >= timeToSpawn)
         {
             Spawn();
-            t = 0;
             spawnLight.enabled = false;
+            t = 0;
         }
     }
 
@@ -51,6 +51,5 @@ public class SpawingPlatform : MonoBehaviour
         go.GetComponent<MovingAndDestroy>().manager = manager;
         go.GetComponent<MovingAndDestroy>().duration = trackDuration;
         go.GetComponent<MovingAndDestroy>().curve = movementCurve;
-        
     }
 }

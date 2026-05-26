@@ -21,6 +21,8 @@ public class PatrolMovement : MonoBehaviour
     public bool isForth =  true;
     public Transform currentEnd;
     public float ratio;
+    public Material LED_mat;
+    
     void Start()
     {
         manager = FindFirstObjectByType<GlobalTime>();
@@ -50,6 +52,7 @@ public class PatrolMovement : MonoBehaviour
             t += Time.fixedDeltaTime * manager.active;
             //t %= duration * 2;
             r = (t / (duration * ratio));
+            LED_mat.SetFloat("_Ratio", r);
 
             if (i < wayPoints.Length - 1 && r >= 1)
             {

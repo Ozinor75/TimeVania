@@ -77,7 +77,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ActiveLevel: 2
+    - _ActiveLevel: 3
     - _ColorMask: 15
     - _Scale: 6
     - _Stencil: 0
@@ -91,7 +91,7 @@ Material:
     - _UseUIAlphaClip: 0
     - __dirty: 0
     - _gaugeSpeed: 1
-    - _gaugeValue: 0.7450284
+    - _gaugeValue: 0.6495944
     m_Colors:
     - _ActiveOnTotalLevels: {r: 1, g: 5, b: 0, a: 0}
     - _BZZSize: {r: 0.1, g: 0.6, b: 0, a: 0}
