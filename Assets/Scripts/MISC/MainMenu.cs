@@ -23,7 +23,8 @@ public class MainMenu : MonoBehaviour
     
     public void LoadGame()
     {
-        SceneManager.LoadScene("LD_V0.5");
+        if (File.Exists(Application.persistentDataPath + "/save" + ".json"))
+            SceneManager.LoadScene("LD_V0.5");
     }
 
     public void QuitGame()
