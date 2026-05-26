@@ -4,25 +4,29 @@ public class PlayerSave : MonoBehaviour
 {
     private PlayerController playerController;
     private PlayerTimer playerTimer;
+    private BatteryManager batteryManager;
 
     public void Save(ref PlayerSaveData data)
     {
-        data.lastStation = new Vector2(playerController.respawnPoint.position.x, playerController.respawnPoint.position.y);
-        data.batterySizeBoost = playerTimer.batterySizeBoost;
-        data.powerUpAbsorptionBoost = playerTimer.powerUpAbsorptionBoost;
+        playerController.savePoint = playerController.respawnPoint.position;
+        data.lastStation = playerController.savePoint;
+        data.activeLevel = batteryManager.activeLevel;
+        data.starLevel = batteryManager.starLevel;
     }
 
     public void Load(PlayerSaveData data)
     {
-        Debug.Log("PLAYER POSITION DATA = " +  data.lastStation.x + "," + data.lastStation.y + "," + data.batterySizeBoost);
+        Debug.Log("PLAYER POSITION DATA = " +  data.lastStation.x + "," + data.lastStation.y + "," + data.activeLevel + "," + data.starLevel);
         playerController.transform.position = data.lastStation;
-        playerTimer.batterySizeBoost = data.batterySizeBoost;
-        playerTimer.powerUpAbsorptionBoost = data.powerUpAbsorptionBoost;
+        batteryManager.activeLevel = data.activeLevel;
+        batteryManager.starLevel = data.starLevel;
+        batteryManager.UpdateBattery();
     }
     void Start()
     {
         playerController = FindFirstObjectByType<PlayerController>();
         playerTimer = FindFirstObjectByType<PlayerTimer>();
+        batteryManager = FindFirstObjectByType<BatteryManager>();
     }
     
 
@@ -38,6 +42,6 @@ public class PlayerSave : MonoBehaviour
 public struct PlayerSaveData
 {
     public Vector2 lastStation;
-    public int batterySizeBoost;
-    public int powerUpAbsorptionBoost;
+    public int activeLevel;
+    public int starLevel;
 }
