@@ -75,6 +75,7 @@ public class Station : MonoBehaviour
             line.enabled = true;
             player.respawnPoint = transform;
             cameraFollow.ChangeMode(camPoint, cameraDepth);
+            SaveSystem.Save();
         }
     }
 
