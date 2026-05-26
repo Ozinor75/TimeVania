@@ -46,7 +46,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BaseSpeed: 1
-    - _TimeScale: 1
+    - _TimeScale: 0.5
     - __dirty: 0
     m_Colors:
     - _BoltColor: {r: 8, g: 0.8000002, b: 0.8000002, a: 1}

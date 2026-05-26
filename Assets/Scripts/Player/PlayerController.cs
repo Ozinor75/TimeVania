@@ -295,12 +295,11 @@ public class PlayerController : MonoBehaviour
 
             hookStickDirection = playerControls.Player.HookDirection.ReadValue<Vector2>();
         }
-        //
+        
         // float targetSpeedX = movementLeftRight * effectiveSpeed;
         // float currentAccel = (Mathf.Abs(movementLeftRight) > minJoystick) ? acceleration : deceleration;
         // currentSpeedX = Mathf.MoveTowards(currentSpeedX, targetSpeedX, currentAccel * Time.deltaTime);
         movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
-        
         
         if (timerController.t <= 0 && !isRespawning) StartCoroutine(MakeRespawn());
 

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class CharacterMeshControler : MonoBehaviour
 {
-    public float sensi;
     public Transform mesh;
     private PlayerController player;
     private Rigidbody2D rb;

@@ -235,6 +235,9 @@ MonoBehaviour:
   effectiveSpeed: 0
   dashCost: 6
   dashBoxSize: {x: 0.1, y: 0.05}
+  acceleration: 25
+  deceleration: 40
+  minJoystick: 0
   pushbackForceX: 10
   pushbackForceY: 15
   pushbackDuration: 0.3
@@ -245,6 +248,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   timerController: {fileID: 0}
   globalTime: {fileID: 0}
+  savePoint: {x: 0, y: 0}
   respawnPoint: {fileID: 0}
   tempRespawn: {fileID: 0}
   isGrounded: 0
@@ -253,6 +257,7 @@ MonoBehaviour:
   onStation: 0
   onBoost: 0
   isCharging: 0
+  isStarting: 0
   isTouchable: 1
   isRespawning: 0
   isJumping: 0
@@ -261,6 +266,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   StartPos: {x: 0, y: 0}
   CanMove: 0
+  canDash: 0
   platformVelocity: {x: 0, y: 0}
   DoubleJumpCapacity: 0
   hasDoubleJumped: 0
@@ -296,7 +302,7 @@ MonoBehaviour:
   tMult: 0
   text: {fileID: 0}
   isCharging: 0
-  energyMaterial: {fileID: 0}
+  energyMaterial: {fileID: 2100000, guid: 00dad1b4b994c6f4eae834fc6a69ad77, type: 2}
 --- !u!114 &8614554792051596572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMeshControler
   sensi: 0.5
   mesh: {fileID: 3472953907728547062}
-  energyMat: {fileID: 0}
+  energyMat: {fileID: 2100000, guid: 00dad1b4b994c6f4eae834fc6a69ad77, type: 2}
   playerAnimator: {fileID: 1197999487735532046}
   chronoMesh: {fileID: 7169655947009523681}
 --- !u!114 &9187246286537576538

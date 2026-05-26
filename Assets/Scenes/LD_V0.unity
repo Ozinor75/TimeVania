@@ -720542,6 +720542,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1197999487735532046, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197999487735532046, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1657122687099652793, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: crushTolerence
       value: 0.8
@@ -720634,6 +720642,10 @@ PrefabInstance:
       propertyPath: energyMat
       value: 
       objectReference: {fileID: 2100000, guid: 00dad1b4b994c6f4eae834fc6a69ad77, type: 2}
+    - target: {fileID: 5797519430575624856, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6012680405393787321, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: text
       value: 
@@ -728804,6 +728816,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  AutoDestroy:
+    m_PersistentCalls:
+      m_Calls: []
   UseHook:
     m_PersistentCalls:
       m_Calls: []
