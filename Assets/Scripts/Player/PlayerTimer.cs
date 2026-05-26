@@ -124,4 +124,9 @@ public class PlayerTimer : MonoBehaviour
         MultDeMult = 1f;
         // Debug.Log(tMult);
     }
+
+    public void TimerNull()
+    {
+        t = 0f;
+    }
 }

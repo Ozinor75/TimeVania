@@ -13,6 +13,7 @@ public class Thwomp : MonoBehaviour
     public GlobalTime manager;
     public AnimationCurve curve;
     public float duration;
+    public float startOffset;
     private float t;
     private float r;
 
@@ -28,6 +29,7 @@ public class Thwomp : MonoBehaviour
     {
         manager = FindFirstObjectByType<GlobalTime>();
         ResetMovement();
+        t = startOffset; 
     }
     
     void Update()
