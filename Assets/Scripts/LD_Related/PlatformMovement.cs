@@ -31,11 +31,11 @@ public class PlatformMovement : MonoBehaviour
         t = startOffset;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (canMove)
         {
-            t += Time.deltaTime * manager.active;
+            t += Time.fixedDeltaTime * manager.active;
             t %= duration * 2;
             r = t / duration;
         
