@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
     public float dashCost;
     public Vector2 dashBoxSize;
     
+    [Header("Movement Progression")]
+    public float acceleration = 25f;
+    public float deceleration = 40f;
+    public float minJoystick;
+    private float currentSpeedX = 0f;
+    
     [Header("Pushback")]
     public float pushbackForceX = 10f;
     public float pushbackForceY = 6f;
@@ -54,6 +60,7 @@ public class PlayerController : MonoBehaviour
     public bool onStation = false;
     public bool onBoost = false;
     public bool isCharging = false;
+    public bool isStarting;
     private bool isDashing = false;
     public bool isTouchable = true;
     public bool isRespawning = false;
@@ -98,15 +105,15 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        isStarting = true;
         Physics2D.queriesStartInColliders = false;
-        // Physics2D.gravity = new Vector2(0, -35); //remplacer playerBoost par la valeur en publique
         
         inputManager = FindAnyObjectByType<InputManager>();
         selfCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         
         playerBoost = GetComponent<PlayerBoost>();
-        Physics2D.gravity = new Vector2(0, -playerBoost.gravity); //supprimer cette ligne
+        Physics2D.gravity = new Vector2(0, -playerBoost.gravity);
         playerSound = FindFirstObjectByType<PlayerSound>();
         playerFeedback = FindFirstObjectByType<PlayerFeedback>();
         colliderController = FindFirstObjectByType<ColliderController>();
@@ -115,7 +122,7 @@ public class PlayerController : MonoBehaviour
         timerController = GetComponent<PlayerTimer>();
         timerController.tMult = playerBoost.baseConsumptionMult;
         
-        StartPos = transform.position; //sauvegarde position de départ
+        StartPos = transform.position;
         
         blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
         blackScreenColor = Color.black;
@@ -123,6 +130,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(BlackFade());
         Respawn();
         playerSound.MusicDefault();
+        isStarting = false;
     }
 
     public IEnumerator BlackFade()
@@ -133,12 +141,11 @@ public class PlayerController : MonoBehaviour
             blackScreen.color = blackScreenColor;
             yield return null;
         }
-        Respawn();
     }
     
     void FixedUpdate()
     {
-        Physics2D.gravity = new Vector2(0, -playerBoost.gravity); //Enlever cette ligne
+        Physics2D.gravity = new Vector2(0, -playerBoost.gravity); 
         if (isPushedBack)
         {
             rb.linearVelocity = new Vector2(pushbackVelocity.x, rb.linearVelocityY);
@@ -238,12 +245,14 @@ public class PlayerController : MonoBehaviour
     }
     public void Respawn()
     {
-        inputManager.ActivateStation.Invoke();
+        if (!isStarting)
+            inputManager.ActivateStation.Invoke();
         timerController.tMult = playerBoost.baseConsumptionMult;
         timerController.t = timerController.timer;
         isRespawning = false;
         CanMove = true;
         colliderController.isOnPlatform = false;
+        currentSpeedX = 0f;
     }
     public void CrushRespawn()
     {
@@ -275,8 +284,12 @@ public class PlayerController : MonoBehaviour
 
             hookStickDirection = playerControls.Player.HookDirection.ReadValue<Vector2>();
         }
-        
+        //
+        // float targetSpeedX = movementLeftRight * effectiveSpeed;
+        // float currentAccel = (Mathf.Abs(movementLeftRight) > minJoystick) ? acceleration : deceleration;
+        // currentSpeedX = Mathf.MoveTowards(currentSpeedX, targetSpeedX, currentAccel * Time.deltaTime);
         movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
+        
         
         if (timerController.t <= 0 && !isRespawning) StartCoroutine(MakeRespawn());
 
@@ -323,6 +336,7 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
             t = 0f;
             rb.linearVelocity = pushbackVelocity;
+            currentSpeedX = 0f;
             playerFeedback.InvokeEvent(playerFeedback.pushback);
             playerSound.HurtSound();
         }
@@ -372,6 +386,7 @@ public class PlayerController : MonoBehaviour
 
         rb.gravityScale = 0f;
         rb.linearVelocity = Vector2.zero;
+        currentSpeedX = 0f;
         posArray[0] = test;
             
         if (checkDash)

@@ -97,7 +97,7 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""035967f5-081c-40aa-911a-a9a3af6f9ab9"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone(min=0.8,max=1)"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
@@ -177,6 +177,24 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Load"",
                     ""type"": ""Button"",
                     ""id"": ""f98e8b3d-23fe-432c-882e-1fb631a395fc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""L3 Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4383268-85b5-4e2b-aeb0-1f348b34116e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""R3 Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad0e4f1b-39de-433b-9f62-5bab8cca3f6f"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -502,6 +520,28 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Load"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abd32ab2-dd5e-4bbd-a2d6-679f283d833c"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""L3 Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2576dde6-e5bf-4991-925e-543504953086"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""R3 Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -568,6 +608,8 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         m_Player_HookDirection = m_Player.FindAction("HookDirection", throwIfNotFound: true);
         m_Player_Save = m_Player.FindAction("Save", throwIfNotFound: true);
         m_Player_Load = m_Player.FindAction("Load", throwIfNotFound: true);
+        m_Player_L3Click = m_Player.FindAction("L3 Click", throwIfNotFound: true);
+        m_Player_R3Click = m_Player.FindAction("R3 Click", throwIfNotFound: true);
         // DEBUG
         m_DEBUG = asset.FindActionMap("DEBUG", throwIfNotFound: true);
         m_DEBUG_TimerReset = m_DEBUG.FindAction("TimerReset", throwIfNotFound: true);
@@ -663,6 +705,8 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_HookDirection;
     private readonly InputAction m_Player_Save;
     private readonly InputAction m_Player_Load;
+    private readonly InputAction m_Player_L3Click;
+    private readonly InputAction m_Player_R3Click;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -714,6 +758,14 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Load".
         /// </summary>
         public InputAction @Load => m_Wrapper.m_Player_Load;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/L3Click".
+        /// </summary>
+        public InputAction @L3Click => m_Wrapper.m_Player_L3Click;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/R3Click".
+        /// </summary>
+        public InputAction @R3Click => m_Wrapper.m_Player_R3Click;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -770,6 +822,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Load.started += instance.OnLoad;
             @Load.performed += instance.OnLoad;
             @Load.canceled += instance.OnLoad;
+            @L3Click.started += instance.OnL3Click;
+            @L3Click.performed += instance.OnL3Click;
+            @L3Click.canceled += instance.OnL3Click;
+            @R3Click.started += instance.OnR3Click;
+            @R3Click.performed += instance.OnR3Click;
+            @R3Click.canceled += instance.OnR3Click;
         }
 
         /// <summary>
@@ -811,6 +869,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @Load.started -= instance.OnLoad;
             @Load.performed -= instance.OnLoad;
             @Load.canceled -= instance.OnLoad;
+            @L3Click.started -= instance.OnL3Click;
+            @L3Click.performed -= instance.OnL3Click;
+            @L3Click.canceled -= instance.OnL3Click;
+            @R3Click.started -= instance.OnR3Click;
+            @R3Click.performed -= instance.OnR3Click;
+            @R3Click.canceled -= instance.OnR3Click;
         }
 
         /// <summary>
@@ -1028,6 +1092,20 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLoad(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "L3 Click" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnL3Click(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "R3 Click" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnR3Click(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DEBUG" which allows adding and removing callbacks.
