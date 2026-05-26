@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CharacterMeshControler : MonoBehaviour
@@ -8,6 +9,7 @@ public class CharacterMeshControler : MonoBehaviour
     private Rigidbody2D rb;
     private CameraFollow cameraFollow;
     private CustomInputs playerControls;
+    public Material energyMat;
     public Animator playerAnimator;
 
     public Transform chronoMesh;
@@ -15,6 +17,7 @@ public class CharacterMeshControler : MonoBehaviour
     
     void Start()
     {
+        energyMat.SetFloat("_DamageT", 0f);
         player = GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         cameraFollow = FindFirstObjectByType<CameraFollow>();
@@ -60,6 +63,21 @@ public class CharacterMeshControler : MonoBehaviour
             mesh.rotation = Quaternion.Euler(0f, 90f, 0f);
             chronoMesh.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
+    }
+
+    public void TakeDamage()
+    {
+        energyMat.SetFloat("_DamageT", 1f);
+        StopAllCoroutines();
+        StartCoroutine(RecoverDamage());
+    }
+
+    private IEnumerator RecoverDamage()
+    {
+        yield return new WaitForSeconds(1f);
+        energyMat.SetFloat("_DamageT", 0f);
+        Debug.Log("END DAMAGE");
+        yield break;
     }
 
     public void SetMoving()
