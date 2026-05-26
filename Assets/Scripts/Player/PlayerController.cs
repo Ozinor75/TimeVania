@@ -166,8 +166,8 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded || coyotE >= 0f)
         {
-            rb.linearVelocityY = playerBoost.jumpForce;
             isJumping = true;
+            rb.linearVelocityY = playerBoost.jumpForce;
             UngroundJumpPlayer();
             coyotE = 0f;
             Debug.Log("Jump");
@@ -175,34 +175,34 @@ public class PlayerController : MonoBehaviour
                 timerController.t -= jumpCost;
         }
         
-        else if (isWallSliding && !hasWallJumped && WallJumpCapacity)
-        {
-            // rb.linearVelocity = new Vector2(playerBoost.jumpForce * Mathf.Sign(wallJumpDir) / 2, playerBoost.jumpForce / 2);
-            rb.linearVelocityX = playerBoost.jumpForce * Mathf.Sign(wallJumpDir) / 2;
-            rb.linearVelocityY= playerBoost.jumpForce / 2;
-            isJumping = true;
-            isWallSliding = false;
-            hasWallJumped = true;
-            UngroundPlayer();
-            coyotE = 0f;
-            Debug.Log("W Jump");
-            
-            if (!timerController.isCharging)
-                timerController.t -= jumpCost;
-        }
+        // else if (isWallSliding && !hasWallJumped && WallJumpCapacity)
+        // {
+        //     // rb.linearVelocity = new Vector2(playerBoost.jumpForce * Mathf.Sign(wallJumpDir) / 2, playerBoost.jumpForce / 2);
+        //     rb.linearVelocityX = playerBoost.jumpForce * Mathf.Sign(wallJumpDir) / 2;
+        //     rb.linearVelocityY= playerBoost.jumpForce / 2;
+        //     isJumping = true;
+        //     isWallSliding = false;
+        //     hasWallJumped = true;
+        //     UngroundPlayer();
+        //     coyotE = 0f;
+        //     Debug.Log("W Jump");
+        //     
+        //     if (!timerController.isCharging)
+        //         timerController.t -= jumpCost;
+        // }
         
-        else if (canDoubleJump && !hasDoubleJumped && DoubleJumpCapacity)
-        {
-            rb.linearVelocityY = playerBoost.jumpForce;
-            isJumping = true;
-            canDoubleJump = false;
-            hasDoubleJumped = true;
-            lockGroundCheck = true;
-            Debug.Log("D Jump");
-            
-            if (!timerController.isCharging)
-                timerController.t -= doubleJumpCost;
-        }
+        // else if (canDoubleJump && !hasDoubleJumped && DoubleJumpCapacity)
+        // {
+        //     rb.linearVelocityY = playerBoost.jumpForce;
+        //     isJumping = true;
+        //     canDoubleJump = false;
+        //     hasDoubleJumped = true;
+        //     lockGroundCheck = true;
+        //     Debug.Log("D Jump");
+        //     
+        //     if (!timerController.isCharging)
+        //         timerController.t -= doubleJumpCost;
+        // }
     }
     
     public IEnumerator MakeRespawn()

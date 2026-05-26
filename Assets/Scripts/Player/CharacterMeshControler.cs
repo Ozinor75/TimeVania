@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class CharacterMeshControler : MonoBehaviour
 {
+    public float sensi;
     public Transform mesh;
+    private PlayerController player;
     private Rigidbody2D rb;
     private CameraFollow cameraFollow;
+    private CustomInputs playerControls;
     public Animator playerAnimator;
 
     public Transform chronoMesh;
@@ -12,12 +15,41 @@ public class CharacterMeshControler : MonoBehaviour
     
     void Start()
     {
+        player = GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         cameraFollow = FindFirstObjectByType<CameraFollow>();
     }
     
     void Update()
     {
+        if (player.isGrounded && !playerAnimator.GetBool("Ground"))
+        {
+            SetGrounded();
+            SetNotFalling();
+        }
+            
+        if (!player.isGrounded && playerAnimator.GetBool("Ground"))
+            SetNotGrounded();
+        
+        if (Mathf.Abs(rb.linearVelocityX) > sensi  && !playerAnimator.GetBool("IsMoving") && !playerAnimator.GetBool("Jump"))
+            SetMoving();
+        if (Mathf.Abs(rb.linearVelocityX) < sensi && playerAnimator.GetBool("IsMoving"))
+            SetNotMoving();
+        
+
+        // if (playerControls.Player.Jump.ReadValue<bool>() == true)
+        if (player.isJumping == true && rb.linearVelocityY > 0f && !playerAnimator.GetBool("Jump"))
+        {
+            SetNotMoving();
+            SetJumping();
+        }
+
+        if (rb.linearVelocityY < 0f)
+        {
+            SetNotJumping();
+            SetFalling();
+        }
+        
         if (rb.linearVelocityX > 0.1f)
         {
             mesh.rotation = Quaternion.Euler(0f, -90f, 0f);
@@ -33,12 +65,47 @@ public class CharacterMeshControler : MonoBehaviour
     public void SetMoving()
     {
         playerAnimator.SetBool("IsMoving", true);
-        // chronoAnimator.SetBool("IsMoving", true);
     }
-    
     public void SetNotMoving()
     {
         playerAnimator.SetBool("IsMoving", false);
-        // chronoAnimator.SetBool("IsMoving", false);
+    }
+
+    public void SetJumping()
+    {
+        playerAnimator.SetBool("Jump", true);
+    }
+    public void SetNotJumping()
+    {
+        playerAnimator.SetBool("Jump", false);
+    }
+
+    public void SetGrounded()
+    {
+        playerAnimator.SetBool("Ground", true);
+    }
+    public void SetNotGrounded()
+    {
+        playerAnimator.SetBool("Ground", false);
+    }
+    
+    public void SetFalling()
+    {
+        playerAnimator.SetBool("IsFalling", true);
+    }
+    public void SetNotFalling()
+    {
+        playerAnimator.SetBool("IsFalling", false);
+    }
+    
+    private void OnEnable()
+    {
+        if (playerControls == null)
+            playerControls = new CustomInputs();
+        playerControls.Enable();
+    }
+    private void OnDisable()
+    {
+        playerControls.Disable();
     }
 }
