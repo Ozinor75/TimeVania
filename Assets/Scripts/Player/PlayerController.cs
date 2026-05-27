@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
     public float movementUpDown;
     public float movementLeftRight;
     [HideInInspector] public Vector2 movement;
+    public Vector2 savePoint;
     public Vector2 StartPos; //pos de départ pour restart
     public bool CanMove = false;
     public bool canDash = false;
