@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 180042882997617972}
   - component: {fileID: 6364145593505121446}
   - component: {fileID: 2926501490598147355}
+  - component: {fileID: 8809585241663480022}
   m_Layer: 0
   m_Name: SizeBoost
   m_TagString: SizeBoost
@@ -142,6 +143,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatterySizeBoost
   buttonUI: {fileID: 7107590046470904635}
+  isUsed: 0
+--- !u!114 &8809585241663480022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917393942503569547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58691efb3b85ab4bb1684aeaf6bebe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoostSave
 --- !u!1 &7107590046470904635
 GameObject:
   m_ObjectHideFlags: 0

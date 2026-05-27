@@ -10,7 +10,8 @@ public class AbsorptionBoost : MonoBehaviour
     private BatteryManager batteryManager;
     
     public GameObject buttonUI;
-    private bool onTrigger;
+    public bool onTrigger;
+    public bool isUsed;
     
     void Start()
     {
@@ -25,6 +26,7 @@ public class AbsorptionBoost : MonoBehaviour
     {
         batteryManager.starLevel++;
         playerTimer.powerUpAbsorptionBoost++;
+        isUsed = true;
         SaveSystem.Save();
         batteryManager.UpdateBattery();
         playerController.boostTrigger = null;

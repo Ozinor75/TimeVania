@@ -19,6 +19,7 @@ public class PlayerSave : MonoBehaviour
     {
         Debug.Log("PLAYER POSITION DATA = " +  data.lastStation.x + "," + data.lastStation.y + "," + data.activeLevel + "," + data.starLevel);
         playerController.transform.position = data.lastStation;
+        playerController.respawnPoint.position = data.lastStation;
         playerController.canDash =  data.canDash;
         batteryManager.activeLevel = data.activeLevel;
         batteryManager.starLevel = data.starLevel;
