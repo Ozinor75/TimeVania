@@ -62,3 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6df01451f0f5c64fb3665a98a049e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  SlowDistortionStr: -50
+  SpeedDistortionStr: 50
+  BaseDistortionStr: 0

@@ -1,16 +1,34 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PostProcessControl : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private PostProcessProfile camProfile;
+
+    public float SlowDistortionStr;
+    public float SpeedDistortionStr;
+    public float BaseDistortionStr;
+    
+    
     void Start()
     {
-        
+        camProfile = GetComponent<PostProcessVolume>().profile;
+        ResetParameters();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSlowedParameters()
     {
-        
+        camProfile.GetSetting<ColorGrading>().saturation.value = SlowDistortionStr;
+    }
+
+    public void SetAccelParameters()
+    {
+        camProfile.GetSetting<ColorGrading>().saturation.value = SpeedDistortionStr;
+    }
+
+    public void ResetParameters()
+    {
+        camProfile.GetSetting<ColorGrading>().saturation.value = BaseDistortionStr;
     }
 }

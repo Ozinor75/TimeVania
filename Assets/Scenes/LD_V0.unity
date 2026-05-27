@@ -3139,7 +3139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &122140282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6360,6 +6360,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51358e7ae0cc2fb47b5dcab22db14265, type: 3}
+--- !u!114 &225219606 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1589277746704621972, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
+  m_PrefabInstance: {fileID: 2771440931558263417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6df01451f0f5c64fb3665a98a049e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!4 &226004171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8762584789036400770, guid: 019691dda9d732840b9b88e5268c9857, type: 3}
@@ -728316,6 +728327,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 678910359312298579, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f24137381f418c438ce250ead6d156e, type: 2}
     - target: {fileID: 1120417498359201754, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -728347,6 +728362,10 @@ PrefabInstance:
     - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: musicDefault.Guid.Data4
       value: -491596894
+      objectReference: {fileID: 0}
+    - target: {fileID: 2172650544462054247, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: canDash
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2172650544462054247, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: jumpCost
@@ -728934,7 +728953,7 @@ Light:
   serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.01
+  m_Intensity: 0.001
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -735707,7 +735726,6 @@ GameObject:
   - component: {fileID: 2082925447}
   - component: {fileID: 2082925449}
   - component: {fileID: 2082925448}
-  - component: {fileID: 2082925450}
   m_Layer: 5
   m_Name: OverlayScreen
   m_TagString: Untagged
@@ -735772,21 +735790,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082925446}
   m_CullTransparentMesh: 1
---- !u!114 &2082925450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082925446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e2a6295ed5ee1542b3c7a686dbc39dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  speedColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0.05882353}
-  slowColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0.05882353}
 --- !u!1001 &2087481764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -737750,10 +737753,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlobalPostProcess
       objectReference: {fileID: 0}
-    - target: {fileID: 859873248853908814, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7690943897862387286, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -738080,9 +738079,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2082925450}
-        m_TargetAssemblyTypeName: OverlayScript, Assembly-CSharp
-        m_MethodName: SetSpeed
+      - m_Target: {fileID: 1599428731}
+        m_TargetAssemblyTypeName: TexturesManager, Assembly-CSharp
+        m_MethodName: ChangeMaterialSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -738092,9 +738091,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1599428731}
-        m_TargetAssemblyTypeName: TexturesManager, Assembly-CSharp
-        m_MethodName: ChangeMaterialSpeed
+      - m_Target: {fileID: 225219606}
+        m_TargetAssemblyTypeName: PostProcessControl, Assembly-CSharp
+        m_MethodName: SetAccelParameters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -738143,9 +738142,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2082925450}
-        m_TargetAssemblyTypeName: OverlayScript, Assembly-CSharp
-        m_MethodName: SetSlow
+      - m_Target: {fileID: 1599428731}
+        m_TargetAssemblyTypeName: TexturesManager, Assembly-CSharp
+        m_MethodName: ChangeMaterialSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -738155,9 +738154,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1599428731}
-        m_TargetAssemblyTypeName: TexturesManager, Assembly-CSharp
-        m_MethodName: ChangeMaterialSpeed
+      - m_Target: {fileID: 225219606}
+        m_TargetAssemblyTypeName: PostProcessControl, Assembly-CSharp
+        m_MethodName: SetSlowedParameters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -738218,9 +738217,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2082925450}
-        m_TargetAssemblyTypeName: OverlayScript, Assembly-CSharp
-        m_MethodName: SetBase
+      - m_Target: {fileID: 1599428731}
+        m_TargetAssemblyTypeName: TexturesManager, Assembly-CSharp
+        m_MethodName: ChangeMaterialSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -738230,9 +738229,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1599428731}
-        m_TargetAssemblyTypeName: TexturesManager, Assembly-CSharp
-        m_MethodName: ChangeMaterialSpeed
+      - m_Target: {fileID: 225219606}
+        m_TargetAssemblyTypeName: PostProcessControl, Assembly-CSharp
+        m_MethodName: ResetParameters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
