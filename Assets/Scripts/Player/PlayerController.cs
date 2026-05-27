@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.IO;
 using NUnit.Framework.Internal;
 using UnityEditor;
 using UnityEngine;
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private LineRenderer line;
     private Image blackScreen;
     private Color blackScreenColor;
+    public Vector2 savePoint;
     public Transform respawnPoint;
     public Transform tempRespawn;
 
@@ -68,7 +70,6 @@ public class PlayerController : MonoBehaviour
     public float movementUpDown;
     public float movementLeftRight;
     [HideInInspector] public Vector2 movement;
-    public Vector2 savePoint;
     public Vector2 StartPos; //pos de départ pour restart
     public bool CanMove = false;
     public bool canDash = false;
@@ -127,13 +128,22 @@ public class PlayerController : MonoBehaviour
         
         blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
         blackScreenColor = Color.black;
-        
+
+        StartCoroutine(LoadStart());
         StartCoroutine(BlackFade());
         Respawn();
         playerSound.MusicDefault();
         isStarting = false;
     }
-
+    
+    public IEnumerator LoadStart()
+    {
+        if (File.Exists(Application.persistentDataPath + "/save" + ".json"))
+        {
+            yield return new WaitForSecondsRealtime(0.05f);
+            SaveSystem.Load();
+        }
+    }
     public IEnumerator BlackFade()
     {
         while (blackScreenColor.a > 0f)
