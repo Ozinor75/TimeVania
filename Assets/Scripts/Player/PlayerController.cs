@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = true;
     [HideInInspector] public Vector2 hookStickDirection;
     public Transform boostTrigger;
+    public Transform doorTrigger;
     public bool onStation = false;
     public bool onBoost = false;
     public bool isCharging = false;
@@ -173,6 +174,8 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = movement;
         else if (CanMove && isJumping)
             rb.linearVelocityX = movement.x;
+        else if (!CanMove && !isJumping)
+            rb.linearVelocity = Vector2.zero;
         
         if (rb.linearVelocityY < 0f && isJumping)
         {

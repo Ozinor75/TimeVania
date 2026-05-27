@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
@@ -7,6 +8,7 @@ public class DoorTrigger : MonoBehaviour
     public Transform movable;
     public Transform start;
     public Transform end;
+    public Transform anchor;
     public Vector3 current;
     public AnimationCurve curve;
     public float duration;
@@ -15,25 +17,47 @@ public class DoorTrigger : MonoBehaviour
     private float r;
     private bool isOpening = false;
 
-    [Header("Time")]
+    [Header("References")]
     public GlobalTime manager;
+    public GameObject buttonUI;
+    private PlayerController playerController;
+    private CameraFollow cameraFollow;
 
     [Header("Debug")]
     public float totalDistance;
     public float currentDistance;
     public float ratio;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private IEnumerator Cinematic()
+    {
+        cameraFollow.maxDistance = 1000f;
+        cameraFollow.toFollow = anchor;
+        playerController.CanMove = false;
+        yield return new WaitForSeconds(1f);
+        isOpening = true;
+        yield return new WaitForSeconds(1f);
+        cameraFollow.toFollow = playerController.GetComponent<Transform>();
+        playerController.doorTrigger = null;
+        playerController.CanMove = true;
+        yield return new WaitForSeconds(1f);
+        cameraFollow.maxDistance = 5f;
+    }
+
+    public void OpenDoor()
     {
         t = startOffset;
         current = movable.position;
         currentDistance = Vector3.Distance(movable.position, end.position);
         ratio = Vector3.Distance(movable.position, end.position) / totalDistance;
-        if (!other.CompareTag("Wall") && !other.CompareTag("Ground"))
-            isOpening = true;
+        StartCoroutine(Cinematic());
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        playerController.doorTrigger = transform;
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        playerController.doorTrigger = null;
         t = startOffset;
         current = movable.position;
         currentDistance = Vector3.Distance(movable.position, start.position);
@@ -44,6 +68,8 @@ public class DoorTrigger : MonoBehaviour
     private void Start()
     {
         manager = FindFirstObjectByType<GlobalTime>();
+        cameraFollow = FindFirstObjectByType<CameraFollow>();
+        playerController = FindFirstObjectByType<PlayerController>();
         t = startOffset;
         current = start.position;
         totalDistance =  Vector3.Distance(start.position, end.position);
