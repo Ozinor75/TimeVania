@@ -25,7 +25,6 @@ public class AbsorptionBoost : MonoBehaviour
     {
         batteryManager.starLevel++;
         playerTimer.powerUpAbsorptionBoost++;
-        SaveSystem.Save();
         batteryManager.UpdateBattery();
         playerController.boostTrigger = null;
         Destroy(gameObject);

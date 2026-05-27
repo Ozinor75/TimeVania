@@ -51,6 +51,7 @@ public class PlayerTimer : MonoBehaviour
 
     public void StartCharging()
     {
+        Debug.Log("Starting Charging");
         isCharging = true;
         StartCoroutine(Charging());
     }
