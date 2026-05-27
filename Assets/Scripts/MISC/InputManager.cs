@@ -22,8 +22,6 @@ public class InputManager : MonoBehaviour
     public CustomInputs playerControls;
     private PlayerController playerController;
     private PlayerTimer playerTimer;
-    private float timer = 3f;
-    private float t = 0f;
     private bool IsDivided = true;
     
     private void OnEnable()
@@ -41,7 +39,6 @@ public class InputManager : MonoBehaviour
     {
         playerController = FindAnyObjectByType<PlayerController>();
         playerTimer = FindAnyObjectByType<PlayerTimer>();
-        t = timer;
     }
 
     // Update is called once per frame
@@ -123,13 +120,7 @@ public class InputManager : MonoBehaviour
 
         if (playerControls.Player.L3Click.IsPressed() && playerControls.Player.R3Click.IsPressed())
         {
-            t -= Time.deltaTime;
-            if (t < 0f)
-            {
-                playerTimer.TimerNull();
-                // playerController.MakeRespawn();
-                t = timer;
-            }
+            playerTimer.TimerNull();
         }
         
         if (playerControls.Player.Hook.WasPressedThisFrame())
