@@ -561,6 +561,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6d190bcc730084d4aab2ae724da3b9ab, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 518f007102de0054cbd8462fbbad85e0, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a5effae8121cc5c459fce2713a3ca198, type: 2}
     - target: {fileID: 919132149155446097, guid: 518f007102de0054cbd8462fbbad85e0, type: 3}
       propertyPath: m_Name
       value: Door
@@ -609,7 +613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -617,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
       propertyPath: m_LocalRotation.z
@@ -629,7 +633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -639,6 +643,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6652725513331149018, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a5effae8121cc5c459fce2713a3ca198, type: 2}
+    - target: {fileID: -6652725513331149018, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d190bcc730084d4aab2ae724da3b9ab, type: 2}
     - target: {fileID: 919132149155446097, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
       propertyPath: m_Name
       value: Button
@@ -646,7 +658,11 @@ PrefabInstance:
     - target: {fileID: 5924245513674848945, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6d190bcc730084d4aab2ae724da3b9ab, type: 2}
+      objectReference: {fileID: 2100000, guid: e8a9dc703ed927048bba2c77dbbc7768, type: 2}
+    - target: {fileID: 5924245513674848945, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a5effae8121cc5c459fce2713a3ca198, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -691,7 +707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc0417c6bd1aef749b4f36f386414289, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc0417c6bd1aef749b4f36f386414289, type: 3}
       propertyPath: m_LocalRotation.x
@@ -699,7 +715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc0417c6bd1aef749b4f36f386414289, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc0417c6bd1aef749b4f36f386414289, type: 3}
       propertyPath: m_LocalRotation.z
@@ -711,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc0417c6bd1aef749b4f36f386414289, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc0417c6bd1aef749b4f36f386414289, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -733,6 +749,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorWall
       objectReference: {fileID: 0}
+    - target: {fileID: 2894611381727396851, guid: cc0417c6bd1aef749b4f36f386414289, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: eac955911734b9640ac12c47eb739b25, type: 2}
+    - target: {fileID: 2894611381727396851, guid: cc0417c6bd1aef749b4f36f386414289, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 727d9699753a0eb41974f2ead2612240, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
