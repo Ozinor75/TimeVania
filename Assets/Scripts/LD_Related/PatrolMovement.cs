@@ -35,6 +35,7 @@ public class PatrolMovement : MonoBehaviour
             totalDistance += Vector3.Distance(wayPoints[j].position, wayPoints[j + 1].position);
         }
         ratio = Vector3.Distance(wayPoints[0].position, wayPoints[1].position) / totalDistance;
+        wayPoints[1].GetChild(0).transform.GetChild(1).GetComponent<MeshRenderer>().material.SetFloat("_Ratio", ratio);
     }
     
     public void ResetMovement()

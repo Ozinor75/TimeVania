@@ -14,6 +14,7 @@ public class ChronoPhotography : MonoBehaviour
     public float albumSize;
     public Material photoMaterial;
     public List<Color> colors = new List<Color>(3);
+    public Animator body;
     
     // public List<GameObject> subjects;
     public GameObject subject;
@@ -39,8 +40,12 @@ public class ChronoPhotography : MonoBehaviour
             
             if (manager.active != 1)
             {
+                AnimatorStateInfo state = body.GetCurrentAnimatorStateInfo(0);
                 listOfShoots.Add(Instantiate(subject, subject.transform.position, subject.transform.rotation));
-                // listOfShoots.GetComponent<Animator>().enabled = false;
+                GameObject lastSubject = listOfShoots[listOfShoots.Count - 1];
+                lastSubject.GetComponent<Animator>().Play(state.fullPathHash, 0, state.normalizedTime);
+                lastSubject.GetComponent<Animator>().Update(0);
+                lastSubject.GetComponent<Animator>().enabled = false;
                 
                 if (listOfShoots.Count > albumSize)
                 {
@@ -48,9 +53,9 @@ public class ChronoPhotography : MonoBehaviour
                     listOfShoots.Remove(listOfShoots[0]);
                 }
                 
-                for (int i = 0; i <= listOfShoots[listOfShoots.Count - 1].transform.childCount - 1; i++)
+                for (int i = 0; i <= lastSubject.transform.childCount - 1; i++)
                 {
-                    Transform child = listOfShoots[listOfShoots.Count - 1].transform.GetChild(i);
+                    Transform child = lastSubject.transform.GetChild(i);
                     
                     if (child.GetComponent<SkinnedMeshRenderer>() == true)
                     {
@@ -59,13 +64,12 @@ public class ChronoPhotography : MonoBehaviour
                         skinMesh.materials[0].SetColor("_MainColor", CalculateColor(colorIndex));
                         skinMesh.materials[1].SetColor("_MainColor", CalculateColor(colorIndex));
                     }
-                    // child.GetComponent<SkinnedMeshRenderer>().materials[2].SetColor("_MainColor", CalculateColor(listOfShoots.Count));
                 }
             }
             
             else
             {
-                t = catchRate / 4 * 3;
+                t = (catchRate / 4) * 3;
                 
                 for (int i = 0; i < listOfShoots.Count; i++)
                 {
