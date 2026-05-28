@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7690943897862387286
 Transform:
   m_ObjectHideFlags: 0
@@ -62,6 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6df01451f0f5c64fb3665a98a049e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  SlowDistortionStr: -50
-  SpeedDistortionStr: 50
+  SlowDistortionStr: -25
+  SpeedDistortionStr: 25
   BaseDistortionStr: 0
