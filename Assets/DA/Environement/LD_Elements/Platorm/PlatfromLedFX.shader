@@ -6,7 +6,7 @@ Shader "PlatfromLedFX"
 {
 	Properties
 	{
-		[HideInInspector][PerRendererData]_Ratio("Ratio", Float) = 0.5
+		[HideInInspector][PerRendererData]_Ratio("Ratio", Float) = 0.9
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
 
@@ -99,7 +99,7 @@ Shader "PlatfromLedFX"
 		{
 			Gradient gradient21 = NewGradient( 0, 2, 2, float4( 1, 1, 0, 0 ), float4( 0, 0, 0, 1 ), 0, 0, 0, 0, 0, 0, float2( 1, 0 ), float2( 1, 1 ), 0, 0, 0, 0, 0, 0 );
 			float _Ratio_Instance = UNITY_ACCESS_INSTANCED_PROP(_Ratio_arr, _Ratio);
-			o.Emission = SampleGradient( gradient21, ( _Ratio_Instance % 1.0 ) ).rgb;
+			o.Emission = SampleGradient( gradient21, _Ratio_Instance ).rgb;
 			o.Alpha = 1;
 		}
 
@@ -113,13 +113,10 @@ Version=19200
 Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;352.7565,-41.01384;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;PlatfromLedFX;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;Back;0;False;;0;False;;False;0;False;;0;False;;False;0;Opaque;0.5;True;True;0;False;Opaque;;Geometry;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;0;0;False;;0;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
 Node;AmplifyShaderEditor.GradientSampleNode;20;-50.42273,79.23856;Inherit;True;2;0;OBJECT;;False;1;FLOAT;0;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.GradientNode;21;-354.4227,67.23856;Inherit;False;0;2;2;1,1,0,0;0,0,0,1;1,0;1,1;0;1;OBJECT;0
-Node;AmplifyShaderEditor.RangedFloatNode;3;-572.6198,197.893;Inherit;False;InstancedProperty;_Ratio;Ratio;0;2;[HideInInspector];[PerRendererData];Create;True;0;0;0;False;0;False;0.5;1;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.LerpOp;22;-497.0673,-29.35025;Inherit;False;3;0;FLOAT;0;False;1;FLOAT;1;False;2;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleRemainderNode;23;-362.0673,188.6497;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;3;-545.6198,183.893;Inherit;False;InstancedProperty;_Ratio;Ratio;0;2;[HideInInspector];[PerRendererData];Create;True;0;0;0;False;0;False;0.9;0.03790321;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleRemainderNode;23;-356.0673,280.6497;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
 WireConnection;0;2;20;0
 WireConnection;20;0;21;0
-WireConnection;20;1;23;0
-WireConnection;22;2;3;0
-WireConnection;23;0;3;0
+WireConnection;20;1;3;0
 ASEEND*/
-//CHKSM=D3913A3E17EDFEF96F598551953453A5B70200FC
+//CHKSM=85E7D2FE8A3765B3EF9AFA8FCBB1DE683DE00179
