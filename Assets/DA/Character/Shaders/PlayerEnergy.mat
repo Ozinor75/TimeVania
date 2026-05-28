@@ -88,7 +88,7 @@ Material:
     - _CellSize: 0.5
     - _ConsuptionSpeed: 1
     - _Cutoff: 0.5
-    - _DamageT: 0
+    - _DamageT: -0.008421157
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
