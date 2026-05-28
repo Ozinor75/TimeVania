@@ -686685,7 +686685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6229448170805832035, guid: d00f90a6340a7ff4b9dc62b5d12f911f, type: 3}
       propertyPath: offset
-      value: -10
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 6229448170805832035, guid: d00f90a6340a7ff4b9dc62b5d12f911f, type: 3}
       propertyPath: offsetY
@@ -686705,7 +686705,7 @@ PrefabInstance:
       objectReference: {fileID: 1813071856}
     - target: {fileID: 6229448170805832035, guid: d00f90a6340a7ff4b9dc62b5d12f911f, type: 3}
       propertyPath: followTime
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6229448170805832035, guid: d00f90a6340a7ff4b9dc62b5d12f911f, type: 3}
       propertyPath: depthOffset
@@ -686717,7 +686717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6229448170805832035, guid: d00f90a6340a7ff4b9dc62b5d12f911f, type: 3}
       propertyPath: smoothTimeX
-      value: 0.2
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 6229448170805832035, guid: d00f90a6340a7ff4b9dc62b5d12f911f, type: 3}
       propertyPath: heightOffset
@@ -708447,7 +708447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 859873248853908814, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7690943897862387286, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
       propertyPath: m_LocalPosition.x
