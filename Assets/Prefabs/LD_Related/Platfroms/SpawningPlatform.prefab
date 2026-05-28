@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1566818496017357093}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00000008940697, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 3.5}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,8 +43,8 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 0, a: 1}
-  m_Intensity: 100
-  m_Range: 0.35
+  m_Intensity: 20
+  m_Range: 0.75
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -238,6 +238,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   trackDuration: 2
   spawnLight: {fileID: 6787249195011028156}
+  LED_Part: {fileID: 1137379283707624940}
 --- !u!1001 &5264669697634471289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7133a5228ecd80e4283dc5827b7e685f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7133a5228ecd80e4283dc5827b7e685f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -307,6 +308,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7133a5228ecd80e4283dc5827b7e685f, type: 3}
+--- !u!23 &1137379283707624940 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5100068591777345685, guid: 7133a5228ecd80e4283dc5827b7e685f, type: 3}
+  m_PrefabInstance: {fileID: 5264669697634471289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5658038798097410706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7133a5228ecd80e4283dc5827b7e685f, type: 3}
