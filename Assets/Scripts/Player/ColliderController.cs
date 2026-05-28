@@ -148,8 +148,11 @@ public class ColliderController : MonoBehaviour
         {
             if (groundHit.collider.CompareTag("Ground") || groundHit.collider.CompareTag("Wall"))
             {
-                if (!playerController.isGrounded && !playerController.isJumping) // isjUmping modif
+                if (!playerController.isGrounded && !playerController.isJumping)
+                {
                     playerController.GroundPlayer();
+                    isOnPlatform = false;
+                }// isjUmping modif
                 if (isOnPlatform)
                 {
                     ClearPlatformParent();
