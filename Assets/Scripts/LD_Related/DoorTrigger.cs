@@ -13,9 +13,11 @@ public class DoorTrigger : MonoBehaviour
     public AnimationCurve curve;
     public float duration;
     public float startOffset;
+    private float d;
     private float t;
     private float r;
     private bool isOpening = false;
+    private bool isUsable = true;
 
     [Header("References")]
     public GlobalTime manager;
@@ -33,36 +35,59 @@ public class DoorTrigger : MonoBehaviour
         cameraFollow.maxDistance = 1000f;
         cameraFollow.toFollow = anchor;
         playerController.CanMove = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
+        d = 1f;
         isOpening = true;
-        yield return new WaitForSeconds(1f);
-        cameraFollow.toFollow = playerController.GetComponent<Transform>();
-        playerController.doorTrigger = null;
-        playerController.CanMove = true;
-        yield return new WaitForSeconds(1f);
-        cameraFollow.maxDistance = 5f;
-    }
-
-    public void OpenDoor()
-    {
-        t = startOffset;
-        current = movable.position;
-        currentDistance = Vector3.Distance(movable.position, end.position);
-        ratio = Vector3.Distance(movable.position, end.position) / totalDistance;
-        StartCoroutine(Cinematic());
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        playerController.doorTrigger = transform;
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        playerController.doorTrigger = null;
+        while (r <= 1)
+        {
+            yield return null;
+        }
+        yield return new WaitForSecondsRealtime(0.5f);
         t = startOffset;
         current = movable.position;
         currentDistance = Vector3.Distance(movable.position, start.position);
         ratio = Vector3.Distance(movable.position, start.position) / totalDistance;
+        r = 0;
+        d = duration;
         isOpening = false;
+        yield return new WaitForSecondsRealtime(0.7f);
+        cameraFollow.toFollow = playerController.GetComponent<Transform>();
+        playerController.CanMove = true;
+        yield return new WaitForSecondsRealtime(1f);
+        cameraFollow.maxDistance = 5f;
+        while (r <= 1)
+        {
+            yield return null;
+        }
+        isUsable = true;
+    }
+
+    public void OpenDoor()
+    {
+        if (isUsable)
+        {
+            isUsable = false;
+            buttonUI.SetActive(false);
+            r = 0;
+            t = startOffset;
+            current = movable.position;
+            currentDistance = Vector3.Distance(movable.position, end.position);
+            ratio = Vector3.Distance(movable.position, end.position) / totalDistance;
+            StartCoroutine(Cinematic());
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        playerController.doorTrigger = transform;
+        if (isUsable)
+        {
+            buttonUI.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        buttonUI.SetActive(false);
+        playerController.doorTrigger = null;
     }
 
     private void Start()
@@ -71,6 +96,7 @@ public class DoorTrigger : MonoBehaviour
         cameraFollow = FindFirstObjectByType<CameraFollow>();
         playerController = FindFirstObjectByType<PlayerController>();
         t = startOffset;
+        d = duration;
         current = start.position;
         totalDistance =  Vector3.Distance(start.position, end.position);
         
@@ -81,7 +107,7 @@ public class DoorTrigger : MonoBehaviour
         if (isOpening)
         {
             t += Time.deltaTime  * manager.active;
-            r = (t / (duration * ratio));
+            r = (t / (d * ratio));
         
             movable.position = Vector3.Lerp(current, end.position, curve.Evaluate(r));
         }
@@ -91,10 +117,9 @@ public class DoorTrigger : MonoBehaviour
             {
                 // Debug.Log("RATIO = " + ratio);
                 t += Time.deltaTime  * manager.active;
-                r = (t / (duration * ratio));
+                r = (t / (d * ratio));
                 movable.position = Vector3.Lerp(current, start.position, curve.Evaluate(r));
             }
-                
         }
     }
 }

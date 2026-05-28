@@ -5,6 +5,8 @@ using UnityEngine.Rendering;
 
 public class ColliderController : MonoBehaviour
 {
+    public float platformCoyote;
+
     [Header("Damage Values")]
     public int spikeDamage;
     public int twompDamage;
@@ -16,11 +18,13 @@ public class ColliderController : MonoBehaviour
     public RaycastHit2D rightSlideHit;
     public RaycastHit2D leftSlideHit;
     public bool isOnPlatform;
+    public float t;
     
     private PlayerController playerController;
     private PlayerFeedback playerFeedback;
     private PlayerSound playerSound;
     private PlayerTimer playerTimer;
+    private MovingAndDestroy movingAndDestroy;
     
     void Start()
     {
@@ -32,6 +36,7 @@ public class ColliderController : MonoBehaviour
         playerSound = FindFirstObjectByType<PlayerSound>();
         
         playerController.wallJumpDir = 0;
+        t = 0;
     }
 
     private void FixedUpdate()
@@ -146,15 +151,25 @@ public class ColliderController : MonoBehaviour
                 if (!playerController.isGrounded && !playerController.isJumping) // isjUmping modif
                     playerController.GroundPlayer();
                 if (isOnPlatform)
+                {
                     ClearPlatformParent();
+                }
             }
             
-            else if ((groundHit.collider.CompareTag("Moving") || groundHit.collider.CompareTag("Missile")) && !playerController.isRespawning)
+            else if ((groundHit.collider.CompareTag("Moving") || groundHit.collider.CompareTag("Missile") || groundHit.collider.CompareTag("TempMoving")) && !playerController.isRespawning)
             {
                 if (!playerController.isGrounded)
                     playerController.GroundPlayer();
                 if (!isOnPlatform)
+                {
                     SetPlatformParent(groundHit.transform);
+                    if (groundHit.collider.CompareTag("TempMoving"))
+                    {
+                        Debug.Log("ON PLATFORM TEST");
+                        movingAndDestroy = groundHit.collider.transform.GetComponentInParent<MovingAndDestroy>();
+                        movingAndDestroy.isOnPlatform = true;
+                    }
+                }
             }
         }
 
