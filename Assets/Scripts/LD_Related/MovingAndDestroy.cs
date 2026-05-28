@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MovingAndDestroy : MonoBehaviour
@@ -19,6 +20,7 @@ public class MovingAndDestroy : MonoBehaviour
     public MeshRenderer LED;
     private Material LED_mat;
     
+    public bool isOnPlatform = false;
     private void Start()
     {
         LED_mat = LED.materials[1];
@@ -33,9 +35,10 @@ public class MovingAndDestroy : MonoBehaviour
         
         movable.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
 
-        if (t > duration)
+        if (movable.position == end.position)
         {
-            worldEvents.platformDestroyed.Invoke();
+            if (isOnPlatform)
+                worldEvents.platformDestroyed.Invoke();
             Destroy(gameObject);
         }
         

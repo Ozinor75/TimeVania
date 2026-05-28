@@ -130,6 +130,6 @@ public class PlayerTimer : MonoBehaviour
 
     public void TimerNull()
     {
-        t = 0f;
+        tMult *= 10f;
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7569201676964548021}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Moving
+  m_TagString: TempMoving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6316147765578780295}
   m_Layer: 0
   m_Name: Temp_Platform
-  m_TagString: Moving
+  m_TagString: TempMoving
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   start: {fileID: 0}
   end: {fileID: 0}
   LED: {fileID: 8351946796248061071}
+  isOnPlatform: 0
 --- !u!1 &6074849064781976462
 GameObject:
   m_ObjectHideFlags: 0
