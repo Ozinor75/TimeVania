@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8693828017678770858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1693375460059919885}
+  - component: {fileID: 2099636239529003189}
+  - component: {fileID: 116792765175774214}
+  - component: {fileID: 3910929030403253030}
+  m_Layer: 0
+  m_Name: GlobalManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1693375460059919885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693828017678770858}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -38.92279, y: -17.28458, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2099636239529003189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693828017678770858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536ddbbc79e55b044b5c1d676a889b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlobalTime
+  worldTime: 1
+  speed: 2.5
+  slow: 0.5
+  basic: 1
+  active: 0
+--- !u!114 &116792765175774214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693828017678770858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef726497318c772439a3b548322b08c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  player: {fileID: 0}
+  platformDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ColliderController, Assembly-CSharp
+        m_MethodName: ClearPlatformParent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  missileDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9187246286537576538, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+        m_TargetAssemblyTypeName: ColliderController, Assembly-CSharp
+        m_MethodName: ClearPlatformParent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3910929030403253030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693828017678770858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2649ba7aea48b9642af2f10d7bddefef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TexturesManager
+  materials:
+  - {fileID: 2100000, guid: f46e055452299ab4b8b50f0c18876b33, type: 2}
+  - {fileID: 2100000, guid: 35ed92b739d0ee447a74aacfad2bc959, type: 2}
+  - {fileID: 2100000, guid: abdb29fffd2ab3246b59e94bd9048a05, type: 2}
+  - {fileID: 2100000, guid: 82c6c487f1c2cc64ca19e60b74e632ae, type: 2}
+  - {fileID: 2100000, guid: c4964c48f4cabc74e97a3a7de1208223, type: 2}
+  - {fileID: 2100000, guid: a337016097f2f484890ab718f4d3f31b, type: 2}
+  - {fileID: 2100000, guid: a57cf4f9157e98943b9a9760371f7673, type: 2}
+  - {fileID: 2100000, guid: ab43eb1f2949f6d439abd5a7106a0a46, type: 2}
+  - {fileID: 2100000, guid: 67172fcb356a3894584b787d063d699c, type: 2}
+  - {fileID: 2100000, guid: 15b647c30863db644b79c6f923128eb2, type: 2}
