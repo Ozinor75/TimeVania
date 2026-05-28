@@ -41,7 +41,6 @@ public class MovingAndDestroy : MonoBehaviour
                 worldEvents.platformDestroyed.Invoke();
             Destroy(gameObject);
         }
-        
         LED_mat.SetFloat("_Ratio", r);
     }
 }

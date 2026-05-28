@@ -23,7 +23,10 @@ public class PlayerSave : MonoBehaviour
         playerController.canDash =  data.canDash;
         batteryManager.activeLevel = data.activeLevel;
         batteryManager.starLevel = data.starLevel;
+        playerTimer.batterySizeBoost = batteryManager.activeLevel - 2;
+        playerTimer.powerUpAbsorptionBoost = batteryManager.starLevel;
         batteryManager.UpdateBattery();
+        playerTimer.UpdateTimer();
     }
     void Start()
     {

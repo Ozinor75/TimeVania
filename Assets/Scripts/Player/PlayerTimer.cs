@@ -67,6 +67,12 @@ public class PlayerTimer : MonoBehaviour
         else
             t -= value;
     }
+
+    public void UpdateTimer()
+    {
+        timer = maxTimer + (((batteryBoostValue / 100) * maxTimer) * batterySizeBoost);
+        t = timer;
+    }
     void Start()
     {
         spawner = FindObjectsOfType<Spawner>();
