@@ -33,7 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Ratio: 1
+    - _Ratio: 0.037903212
     - _Ratio1: 1
     - __dirty: 0
     m_Colors: []

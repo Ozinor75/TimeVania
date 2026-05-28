@@ -117,6 +117,11 @@ public class InputManager : MonoBehaviour
                 playerController.boostTrigger.GetComponent<AbsorptionBoost>().MakeBoost();
             }
         }
+        
+        if (playerControls.Player.Station.WasPressedThisFrame() && playerController.doorTrigger != null)
+        {
+            playerController.doorTrigger.GetComponent<DoorTrigger>().OpenDoor();
+        }
 
         if (playerControls.Player.L3Click.IsPressed() && playerControls.Player.R3Click.IsPressed())
         {

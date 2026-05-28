@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5645955030528981110}
   - component: {fileID: 7646006201744037611}
   - component: {fileID: 5230360761276791242}
+  - component: {fileID: 3563659334342714076}
   m_Layer: 0
   m_Name: AbsorptionBoost
   m_TagString: AbsorptionBoost
@@ -142,6 +143,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbsorptionBoost
   buttonUI: {fileID: 2129353872980145412}
+  onTrigger: 0
+  isUsed: 0
+--- !u!114 &3563659334342714076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361596953080054514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58691efb3b85ab4bb1684aeaf6bebe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoostSave
 --- !u!1 &2129353872980145412
 GameObject:
   m_ObjectHideFlags: 0

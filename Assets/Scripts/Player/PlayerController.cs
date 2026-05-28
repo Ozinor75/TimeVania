@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = true;
     [HideInInspector] public Vector2 hookStickDirection;
     public Transform boostTrigger;
+    public Transform doorTrigger;
     public bool onStation = false;
     public bool onBoost = false;
     public bool isCharging = false;
@@ -173,6 +174,8 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = movement;
         else if (CanMove && isJumping)
             rb.linearVelocityX = movement.x;
+        else if (!CanMove && !isJumping)
+            rb.linearVelocity = Vector2.zero;
         
         if (rb.linearVelocityY < 0f && isJumping)
         {
@@ -295,12 +298,11 @@ public class PlayerController : MonoBehaviour
 
             hookStickDirection = playerControls.Player.HookDirection.ReadValue<Vector2>();
         }
-        //
+        
         // float targetSpeedX = movementLeftRight * effectiveSpeed;
         // float currentAccel = (Mathf.Abs(movementLeftRight) > minJoystick) ? acceleration : deceleration;
         // currentSpeedX = Mathf.MoveTowards(currentSpeedX, targetSpeedX, currentAccel * Time.deltaTime);
         movement = new Vector2(movementLeftRight * effectiveSpeed, rb.linearVelocityY);
-        
         
         if (timerController.t <= 0 && !isRespawning) StartCoroutine(MakeRespawn());
 

@@ -5,6 +5,8 @@ using UnityEngine.Rendering;
 
 public class ColliderController : MonoBehaviour
 {
+    public float platformCoyote;
+
     [Header("Damage Values")]
     public int spikeDamage;
     public int twompDamage;
@@ -16,11 +18,13 @@ public class ColliderController : MonoBehaviour
     public RaycastHit2D rightSlideHit;
     public RaycastHit2D leftSlideHit;
     public bool isOnPlatform;
+    public float t;
     
     private PlayerController playerController;
     private PlayerFeedback playerFeedback;
     private PlayerSound playerSound;
     private PlayerTimer playerTimer;
+    private MovingAndDestroy movingAndDestroy;
     
     void Start()
     {
@@ -32,6 +36,7 @@ public class ColliderController : MonoBehaviour
         playerSound = FindFirstObjectByType<PlayerSound>();
         
         playerController.wallJumpDir = 0;
+        t = 0;
     }
 
     private void FixedUpdate()
@@ -39,8 +44,8 @@ public class ColliderController : MonoBehaviour
         if (!playerController.lockGroundCheck)
         {
             CheckGrounded();
-            if (playerController.WallJumpCapacity)
-                CheckSliding();
+            // if (playerController.WallJumpCapacity)
+            //     CheckSliding();
         }
     }
 
@@ -95,44 +100,44 @@ public class ColliderController : MonoBehaviour
         
     }
 
-    public void CheckSliding()
-    {
-        rightSlideHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.right, 0.2f);
-        leftSlideHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, -Vector2.right, 0.2f);
-
-        if (!playerController.isGrounded)
-        {
-            if (rightSlideHit && rightSlideHit.collider.CompareTag("Ground"))
-            { 
-                playerController.isWallSliding = true;
-                playerController.canDoubleJump = false;
-                playerController.wallJumpDir = -1;
-                playerController.CanMove = false;
-                // Debug.Log("Wall at Right");
-            }
-
-            else if (leftSlideHit && leftSlideHit.collider.CompareTag("Ground"))
-            {
-                playerController.isWallSliding = true;
-                playerController.canDoubleJump = false;
-                playerController.wallJumpDir = 1;
-                playerController.CanMove = false;
-                // Debug.Log("Wall at Left");
-            }
-
-            else
-            {
-                playerController.isWallSliding = false;
-                playerController.CanMove = true;
-            }
-        }
-        
-        else
-        {
-            playerController.isWallSliding = false;
-            playerController.CanMove = true;
-        }
-    }
+    // public void CheckSliding()
+    // {
+    //     rightSlideHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, Vector2.right, 0.2f);
+    //     leftSlideHit = Physics2D.CapsuleCast(playerController.rb.position, collider.size * 0.9f, CapsuleDirection2D.Vertical, 0f, -Vector2.right, 0.2f);
+    //
+    //     if (!playerController.isGrounded)
+    //     {
+    //         if (rightSlideHit && rightSlideHit.collider.CompareTag("Ground"))
+    //         { 
+    //             playerController.isWallSliding = true;
+    //             playerController.canDoubleJump = false;
+    //             playerController.wallJumpDir = -1;
+    //             playerController.CanMove = false;
+    //             // Debug.Log("Wall at Right");
+    //         }
+    //
+    //         else if (leftSlideHit && leftSlideHit.collider.CompareTag("Ground"))
+    //         {
+    //             playerController.isWallSliding = true;
+    //             playerController.canDoubleJump = false;
+    //             playerController.wallJumpDir = 1;
+    //             playerController.CanMove = false;
+    //             // Debug.Log("Wall at Left");
+    //         }
+    //
+    //         else
+    //         {
+    //             playerController.isWallSliding = false;
+    //             playerController.CanMove = true;
+    //         }
+    //     }
+    //     
+    //     else
+    //     {
+    //         playerController.isWallSliding = false;
+    //         playerController.CanMove = true;
+    //     }
+    // }
     
     public void CheckGrounded()
     {
@@ -146,15 +151,25 @@ public class ColliderController : MonoBehaviour
                 if (!playerController.isGrounded && !playerController.isJumping) // isjUmping modif
                     playerController.GroundPlayer();
                 if (isOnPlatform)
+                {
                     ClearPlatformParent();
+                }
             }
             
-            else if ((groundHit.collider.CompareTag("Moving") || groundHit.collider.CompareTag("Missile")) && !playerController.isRespawning)
+            else if ((groundHit.collider.CompareTag("Moving") || groundHit.collider.CompareTag("Missile") || groundHit.collider.CompareTag("TempMoving")) && !playerController.isRespawning)
             {
                 if (!playerController.isGrounded)
                     playerController.GroundPlayer();
                 if (!isOnPlatform)
+                {
                     SetPlatformParent(groundHit.transform);
+                    if (groundHit.collider.CompareTag("TempMoving"))
+                    {
+                        Debug.Log("ON PLATFORM TEST");
+                        movingAndDestroy = groundHit.collider.transform.GetComponentInParent<MovingAndDestroy>();
+                        movingAndDestroy.isOnPlatform = true;
+                    }
+                }
             }
         }
 

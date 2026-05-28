@@ -12,6 +12,4 @@ public class WorldEvents : MonoBehaviour
     {
         player = FindFirstObjectByType<PlayerController>().gameObject;
     }
-
-
 }

@@ -235,6 +235,9 @@ MonoBehaviour:
   effectiveSpeed: 0
   dashCost: 6
   dashBoxSize: {x: 0.1, y: 0.05}
+  acceleration: 25
+  deceleration: 40
+  minJoystick: 0
   pushbackForceX: 10
   pushbackForceY: 15
   pushbackDuration: 0.3
@@ -245,6 +248,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   timerController: {fileID: 0}
   globalTime: {fileID: 0}
+  savePoint: {x: 0, y: 0}
   respawnPoint: {fileID: 0}
   tempRespawn: {fileID: 0}
   isGrounded: 0
@@ -253,6 +257,7 @@ MonoBehaviour:
   onStation: 0
   onBoost: 0
   isCharging: 0
+  isStarting: 0
   isTouchable: 1
   isRespawning: 0
   isJumping: 0
@@ -261,6 +266,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   StartPos: {x: 0, y: 0}
   CanMove: 0
+  canDash: 0
   platformVelocity: {x: 0, y: 0}
   DoubleJumpCapacity: 0
   hasDoubleJumped: 0
@@ -296,7 +302,7 @@ MonoBehaviour:
   tMult: 0
   text: {fileID: 0}
   isCharging: 0
-  energyMaterial: {fileID: 0}
+  energyMaterial: {fileID: 2100000, guid: 00dad1b4b994c6f4eae834fc6a69ad77, type: 2}
 --- !u!114 &8614554792051596572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,8 +334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0eb4c0eeaefa7b40ac2a5ce7ec1aafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMeshControler
-  sensi: 0.5
   mesh: {fileID: 3472953907728547062}
+  energyMat: {fileID: 2100000, guid: 00dad1b4b994c6f4eae834fc6a69ad77, type: 2}
   playerAnimator: {fileID: 1197999487735532046}
   chronoMesh: {fileID: 7169655947009523681}
 --- !u!114 &9187246286537576538
@@ -401,7 +407,19 @@ MonoBehaviour:
       m_Calls: []
   takeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3874806513861814070}
+        m_TargetAssemblyTypeName: CharacterMeshControler, Assembly-CSharp
+        m_MethodName: TakeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   pushback:
     m_PersistentCalls:
       m_Calls: []
@@ -603,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: m_LocalPosition.z
@@ -745,6 +763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRigged
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1512364358890633674, guid: 2c71902f1890a704d9dc8559358b7523, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -863,11 +885,11 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 6c1f26a6feeccbd4a9b5d7325d790cf4, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 1
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -1239,7 +1261,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
