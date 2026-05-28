@@ -90,6 +90,10 @@ public class PlayerTimer : MonoBehaviour
             t -= Time.deltaTime * tMult * MultDeMult;
         
         tSec += Time.deltaTime;
+        
+        energyMaterial.SetFloat("_CSpeed", tMult * MultDeMult);
+        // Debug.Log(energyMaterial.GetFloat("_CSpeed"));
+        
 
         // if (t > maxTimer) faire marcher ça, prcq ça s'appelle en boucle
         // {
