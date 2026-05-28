@@ -18,13 +18,13 @@ public class MainMenu : MonoBehaviour
     {
         if (File.Exists(Application.persistentDataPath + "/save" + ".json"))
             File.Delete(Application.persistentDataPath + "/save" + ".json");
-        SceneManager.LoadScene("LD_V0.5");
+        SceneManager.LoadScene("LD_Soutenance Blanche");
     }
     
     public void LoadGame()
     {
         if (File.Exists(Application.persistentDataPath + "/save" + ".json"))
-            SceneManager.LoadScene("LD_V0.5");
+            SceneManager.LoadScene("LD_Soutenance Blanche");
     }
 
     public void QuitGame()
