@@ -24,17 +24,20 @@ public class AbsorptionBoost : MonoBehaviour
 
     public void MakeBoost()
     {
-        batteryManager.starLevel++;
-        playerTimer.powerUpAbsorptionBoost++;
-        isUsed = true;
-        SaveSystem.Save();
-        batteryManager.UpdateBattery();
-        playerController.boostTrigger = null;
-        Destroy(gameObject);
+        if (!isUsed)
+        {
+            batteryManager.starLevel++;
+            playerTimer.powerUpAbsorptionBoost++;
+            isUsed = true;
+            SaveSystem.Save();
+            batteryManager.UpdateBattery();
+            playerController.boostTrigger = null;
+            buttonUI.SetActive(false);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isUsed)
         {
             onTrigger = true;
             playerController.boostTrigger = transform;
