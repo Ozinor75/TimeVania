@@ -61,6 +61,12 @@ public class ChronoPhotography : MonoBehaviour
                     {
                         SkinnedMeshRenderer skinMesh = child.GetComponent<SkinnedMeshRenderer>();
                         skinMesh.enabled = true;
+                        
+                        List<Material> testcata = new List<Material>(2);
+                        testcata.Add(photoMaterial);
+                        testcata.Add(photoMaterial);
+                        skinMesh.SetMaterials(testcata);
+                        
                         skinMesh.materials[0].SetColor("_MainColor", CalculateColor(colorIndex));
                         skinMesh.materials[1].SetColor("_MainColor", CalculateColor(colorIndex));
                     }

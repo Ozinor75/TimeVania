@@ -12,9 +12,10 @@ public class CharacterMeshControler : MonoBehaviour
     public Animator playerAnimator;
 
     public Transform chronoMesh;
-
     private RaycastHit2D selfRay;
-    // public Animator chronoAnimator;
+
+    public SkinnedMeshRenderer baseHelmet;
+    public MeshRenderer dashHelmet;
     
     void Start()
     {
@@ -23,6 +24,12 @@ public class CharacterMeshControler : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         cameraFollow = FindFirstObjectByType<CameraFollow>();
         Physics2D.queriesStartInColliders = false;
+
+        if (player.canDash)
+            SetDashHelmet();
+        else
+            SetBaseHelmet();
+        
     }
     
     void Update()
@@ -132,5 +139,17 @@ public class CharacterMeshControler : MonoBehaviour
     private void OnDisable()
     {
         playerControls.Disable();
+    }
+    
+    public void SetBaseHelmet()
+    {
+        baseHelmet.enabled = true;
+        dashHelmet.enabled = false;
+    }
+    
+    public void SetDashHelmet()
+    {
+        baseHelmet.enabled = false;
+        dashHelmet.enabled = true;
     }
 }
