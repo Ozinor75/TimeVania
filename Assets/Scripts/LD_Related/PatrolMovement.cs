@@ -22,7 +22,7 @@ public class PatrolMovement : MonoBehaviour
     [Header("Debug")]
     public float totalDistance;
     public bool isForth =  true;
-    private bool isLoop;
+    public bool isLoop;
     public Transform currentEnd;
     public float ratio;
     public Material LED_mat;
@@ -61,12 +61,13 @@ public class PatrolMovement : MonoBehaviour
             if (LED_mat != null)
                 LED_mat.SetFloat("_Ratio", r);
 
-            if (i < wayPoints.Length - 1 && r >= 1)
+            if ((i < wayPoints.Length - 1 && r >= 1) || (i < wayPoints.Length && loopMode && r >= 1))
             {
                 if (isLoop)
                 {
+                    Debug.Log("IS LOOP FALSE");
                     isLoop = false;
-                    i = 0;
+                    i = -1;
                 }
                 r = 0f;
                 t = startOffset;
