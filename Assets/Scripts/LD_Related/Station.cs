@@ -7,13 +7,14 @@ public class Station : MonoBehaviour
 {
     public float cameraDepth = 12f;
 
-    [Header("DA Related")]
+    [Header("GP Related")]
     public GameObject roomTrigger;
     public Transform camPoint;
     private PlayerController player;
     public GameObject ToFollow;
     private CameraFollow cameraFollow;
     public GameObject buttonUI;
+    public bool isPlayerStation = false;
     private bool onTrigger = false;
     private bool isCharging = false;
 
@@ -73,6 +74,8 @@ public class Station : MonoBehaviour
         {
             isCharging = true;
             line.enabled = true;
+            player.respawnPoint.GetComponent<Station>().isPlayerStation = false;
+            isPlayerStation = true;
             player.respawnPoint = transform;
             cameraFollow.ChangeMode(camPoint, cameraDepth);
             SaveSystem.Save();
