@@ -127,11 +127,11 @@ public class PlayerController : MonoBehaviour
         
         StartPos = transform.position;
         
-        blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
-        blackScreenColor = Color.black;
+        //blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
+        //blackScreenColor = Color.black;
 
         StartCoroutine(LoadStart());
-        StartCoroutine(BlackFade());
+        //StartCoroutine(BlackFade());
         Respawn();
         playerSound.MusicDefault();
         isStarting = false;
@@ -235,25 +235,27 @@ public class PlayerController : MonoBehaviour
         if (transform.parent != null)
             transform.SetParent(null);
         playerSound.Death();
-        while (blackScreenColor.a < 1f)
-        {
-            blackScreenColor.a += Time.deltaTime;
-            blackScreen.color = blackScreenColor;
-            yield return null;
-        }
-
+        //while (blackScreenColor.a < 1f)
+        //{
+            //blackScreenColor.a += Time.deltaTime;
+            //blackScreen.color = blackScreenColor;
+            //yield return null;
+        //}
+        
+        // to do 
+        
         if (transform.parent != null)
         {
             transform.SetParent(null);
         }
         rb.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
         yield return new WaitForSeconds(1f);
-        while (blackScreenColor.a > 0f)
-        {
-            blackScreenColor.a -= Time.deltaTime;
-            blackScreen.color = blackScreenColor;
-            yield return null;
-        }
+        //while (blackScreenColor.a > 0f)
+        //{
+            //blackScreenColor.a -= Time.deltaTime;
+            //blackScreen.color = blackScreenColor;
+            //yield return null;
+        //}
         Respawn();
         playerSound.StartSound();
     }
