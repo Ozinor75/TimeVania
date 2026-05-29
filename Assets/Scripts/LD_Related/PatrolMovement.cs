@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PatrolMovement : MonoBehaviour
 {
+    [Header("Change Mode")] 
+    public bool loopMode;
+    
     [Header("Boundaries")]
     public bool canMove;
     public Transform movable;
@@ -19,6 +22,7 @@ public class PatrolMovement : MonoBehaviour
     [Header("Debug")]
     public float totalDistance;
     public bool isForth =  true;
+    private bool isLoop;
     public Transform currentEnd;
     public float ratio;
     public Material LED_mat;
@@ -59,12 +63,25 @@ public class PatrolMovement : MonoBehaviour
 
             if (i < wayPoints.Length - 1 && r >= 1)
             {
+                if (isLoop)
+                {
+                    isLoop = false;
+                    i = 0;
+                }
                 r = 0f;
                 t = startOffset;
                 if (isForth)
                 {
                     if (i == wayPoints.Length - 2)
-                        isForth = false;
+                    {
+                        if (loopMode)
+                        {
+                            isLoop = true;
+                            i++;
+                        }
+                        else
+                            isForth = false;
+                    }
                     else
                         i++;
                 }
@@ -76,12 +93,22 @@ public class PatrolMovement : MonoBehaviour
                     else
                         i--;
                 }
-
-                ratio = Vector3.Distance(wayPoints[i].position, wayPoints[i + 1].position) / totalDistance;
+                if (!isLoop)
+                    ratio = Vector3.Distance(wayPoints[i].position, wayPoints[i + 1].position) / totalDistance;
+                else 
+                    ratio = Vector3.Distance(wayPoints[i].position, wayPoints[0].position) / totalDistance;
             }
 
             if (isForth)
-                movable.position = Vector3.Lerp(wayPoints[i].position, wayPoints[i + 1].position, curve.Evaluate(r));
+            {
+                if (!isLoop)
+                {
+                    Debug.Log("R = " + r);
+                    movable.position = Vector3.Lerp(wayPoints[i].position, wayPoints[i + 1].position, curve.Evaluate(r));
+                }
+                else
+                    movable.position = Vector3.Lerp(wayPoints[i].position, wayPoints[0].position, curve.Evaluate(r));
+            }
             else
                 movable.position = Vector3.Lerp(wayPoints[i + 1].position, wayPoints[i].position, curve.Evaluate(r));
         }
