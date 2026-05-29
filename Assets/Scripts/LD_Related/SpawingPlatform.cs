@@ -19,11 +19,14 @@ public class SpawingPlatform : MonoBehaviour
 
     [Header("DA")]
     public Light spawnLight;
+    public MeshRenderer LED_Part;
+    private Material LED_Mat;
     
     private void Start()
     {
         spawnLight.enabled = false;
         manager = FindFirstObjectByType<GlobalTime>();
+        LED_Mat = LED_Part.material;
     }
     
     void Update()
@@ -31,12 +34,16 @@ public class SpawingPlatform : MonoBehaviour
         t += Time.deltaTime * manager.active;
 
         if (t >= timeToSpawn * 0.8f)
+        {
+            LED_Mat.SetFloat("_Ratio", 0f);
             spawnLight.enabled = true;
-        
+        }
+            
         if (t >= timeToSpawn)
         {
             Spawn();
             spawnLight.enabled = false;
+            LED_Mat.SetFloat("_Ratio", 1f);
             t = 0;
         }
     }
