@@ -83,8 +83,7 @@ public class PlayerTimer : MonoBehaviour
     
     void Update()
     {
-        if (t < 0f)
-            t = 0f;
+        t = Mathf.Clamp(t, 0f, timer);
         
         if (!isCharging && t > 0f)
             t -= Time.deltaTime * tMult * MultDeMult;
@@ -93,13 +92,6 @@ public class PlayerTimer : MonoBehaviour
         
         energyMaterial.SetFloat("_CSpeed", tMult * MultDeMult);
         // Debug.Log(energyMaterial.GetFloat("_CSpeed"));
-        
-
-        // if (t > maxTimer) faire marcher ça, prcq ça s'appelle en boucle
-        // {
-        //     t = maxTimer;
-        //     Debug.Log("MaxTimer");
-        // }
         
         // if (t > criticalTimer)
         //     text.text = t.ToString(" ");

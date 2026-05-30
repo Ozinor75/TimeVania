@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     [Header("Player Stats")]
     public float effectiveSpeed;
     public float dashCost;
-    public Vector2 dashBoxSize;
+    public float dashBoxSize;
+    public float DashDecalage;
     
     [Header("Movement Progression")]
     public float acceleration = 25f;
@@ -396,8 +397,22 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Making Dash");
         Vector3[] posArray = new Vector3[2];
         Vector2 endPos = playerControls.Player.Direction.ReadValue<Vector2>().normalized;
-        Vector2 test = new Vector2(transform.position.x, transform.position.y + 0.3f);
-        RaycastHit2D checkDash = Physics2D.CircleCast(test, 0.1f, endPos, playerBoost.dashDistance);
+        Vector2 test = new Vector2(transform.position.x, transform.position.y + DashDecalage);
+        Vector2 perp = new Vector2(-endPos.y, endPos.x) * dashBoxSize;
+    
+        // 2. Définition des 4 coins de la zone balayée par le CircleCast
+        Vector2 startTop = test + perp;
+        Vector2 startBottom = test - perp;
+        Vector2 endDebugTop = startTop + (endPos * playerBoost.dashDistance);
+        Vector2 endDebugBottom = startBottom + (endPos * playerBoost.dashDistance);
+
+        // 3. Dessin des lignes (affichées pendant 2 secondes pour bien les voir dans la fenêtre Scene)
+        float debugTime = 2f;
+        Debug.DrawLine(startTop, endDebugTop, Color.red, debugTime);       // Ligne supérieure
+        Debug.DrawLine(startBottom, endDebugBottom, Color.red, debugTime); // Ligne inférieure
+        Debug.DrawLine(endDebugTop, endDebugBottom, Color.red, debugTime); // Capot avant
+        Debug.DrawLine(startTop, startBottom, Color.red, debugTime);
+        RaycastHit2D checkDash = Physics2D.CircleCast(test, dashBoxSize, endPos, playerBoost.dashDistance);
 
         rb.gravityScale = 0f;
         rb.linearVelocity = Vector2.zero;
@@ -409,7 +424,7 @@ public class PlayerController : MonoBehaviour
         
         else
         {
-            endPos *= playerBoost.airSpeed;
+            endPos *= playerBoost.dashDistance;
             endPos += rb.position;
         }
         
