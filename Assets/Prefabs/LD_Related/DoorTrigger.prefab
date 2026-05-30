@@ -564,7 +564,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 518f007102de0054cbd8462fbbad85e0, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: a5effae8121cc5c459fce2713a3ca198, type: 2}
+      objectReference: {fileID: 2100000, guid: c365ab2da28b0ee48bbaa4b66103e06a, type: 2}
     - target: {fileID: 919132149155446097, guid: 518f007102de0054cbd8462fbbad85e0, type: 3}
       propertyPath: m_Name
       value: Door
@@ -662,7 +662,7 @@ PrefabInstance:
     - target: {fileID: 5924245513674848945, guid: e886372aa95f89d4491c5abceb06699f, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: a5effae8121cc5c459fce2713a3ca198, type: 2}
+      objectReference: {fileID: 2100000, guid: c365ab2da28b0ee48bbaa4b66103e06a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
