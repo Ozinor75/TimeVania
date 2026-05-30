@@ -421,6 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 6036895381446001941}
   wayPoints:
@@ -457,6 +458,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -1049,7 +1051,7 @@ PrefabInstance:
     - target: {fileID: 4781230084329259086, guid: feb11e4de9f7a524f96f5f2ee3af094e, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 727d9699753a0eb41974f2ead2612240, type: 2}
+      objectReference: {fileID: 2100000, guid: c365ab2da28b0ee48bbaa4b66103e06a, type: 2}
     - target: {fileID: 8306360259169177218, guid: feb11e4de9f7a524f96f5f2ee3af094e, type: 3}
       propertyPath: m_LocalScale.x
       value: 50

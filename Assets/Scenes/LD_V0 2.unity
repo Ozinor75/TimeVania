@@ -1157,6 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1531087252}
   wayPoints:
@@ -1191,6 +1192,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -1549,6 +1551,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6776009373789625164, guid: 82769bf3a5e469049976248cfca22f24, type: 3}
   m_PrefabInstance: {fileID: 812723419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &76093585 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4285660484889650764, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+  m_PrefabInstance: {fileID: 1813071847}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &79950192 stripped
 Transform:
@@ -3044,7 +3051,6 @@ RectTransform:
   m_Children:
   - {fileID: 1593792121}
   - {fileID: 2078452972}
-  - {fileID: 2082925447}
   - {fileID: 1331299390}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7408,6 +7414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 818133733}
   wayPoints:
@@ -7442,6 +7449,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -11744,6 +11752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 412194537}
   wayPoints:
@@ -11778,6 +11787,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -687924,6 +687934,17 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &798706498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1589277746704621972, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
+  m_PrefabInstance: {fileID: 1891030543}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6df01451f0f5c64fb3665a98a049e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &802082742
 GameObject:
   m_ObjectHideFlags: 0
@@ -690129,6 +690150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 0}
   wayPoints: []
@@ -690143,6 +690165,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -692683,6 +692706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 500328579}
   wayPoints:
@@ -692717,6 +692741,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -694368,6 +694393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1030759087}
   wayPoints:
@@ -694402,6 +694428,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -695470,6 +695497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1355252291}
   wayPoints:
@@ -695506,6 +695534,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -702923,6 +702952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1627471061}
   wayPoints:
@@ -702964,6 +702994,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -703677,6 +703708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 0}
   wayPoints: []
@@ -703691,6 +703723,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -704113,6 +704146,14 @@ PrefabInstance:
     - target: {fileID: 4890688016264171696, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: cameraDepth
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236379949955881198, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236379949955881198, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8306122002357114341, guid: e53986ef9cda22049ac6f79115e1742d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -705457,6 +705498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1455412210}
   wayPoints:
@@ -705492,6 +705534,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -707142,6 +707185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 18410846}
   wayPoints:
@@ -707177,6 +707221,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -712605,6 +712650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1726716910}
   wayPoints:
@@ -712644,6 +712690,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -714640,6 +714687,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 890675599061eeb48bedc4a3b889fb58, type: 2}
+    - target: {fileID: 4639681108543911620, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: subject
+      value: 
+      objectReference: {fileID: 76093585}
     - target: {fileID: 6012680405393787321, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: text
       value: 
@@ -714675,6 +714726,14 @@ PrefabInstance:
     - target: {fileID: 6012680405393787321, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: powerUpAbsorptionBoostValue
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508746000995231067, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: m_Name
+      value: PlayerRiggedPhoto
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508746000995231067, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8614554792051596572, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: gravity
@@ -717178,7 +717237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 859873248853908814, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7690943897862387286, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -721006,7 +721065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2078452972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -721192,97 +721251,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1726716906}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2082925446
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2082925447}
-  - component: {fileID: 2082925449}
-  - component: {fileID: 2082925448}
-  - component: {fileID: 2082925450}
-  m_Layer: 5
-  m_Name: OverlayScreen
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2082925447
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082925446}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 122140285}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 449.6}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2082925448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082925446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 2100000, guid: 0290ad2f10682df418d1ea1b92e5277c, type: 2}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2082925449
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082925446}
-  m_CullTransparentMesh: 1
---- !u!114 &2082925450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082925446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e2a6295ed5ee1542b3c7a686dbc39dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  speedColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0.05882353}
-  slowColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0.05882353}
 --- !u!1 &2092203853
 GameObject:
   m_ObjectHideFlags: 0
@@ -723651,9 +723619,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2082925450}
-        m_TargetAssemblyTypeName: OverlayScript, Assembly-CSharp
-        m_MethodName: SetSpeed
+      - m_Target: {fileID: 798706498}
+        m_TargetAssemblyTypeName: PostProcessControl, Assembly-CSharp
+        m_MethodName: SetAccelParameters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -723714,9 +723682,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2082925450}
-        m_TargetAssemblyTypeName: OverlayScript, Assembly-CSharp
-        m_MethodName: SetSlow
+      - m_Target: {fileID: 798706498}
+        m_TargetAssemblyTypeName: PostProcessControl, Assembly-CSharp
+        m_MethodName: SetSlowedParameters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -723789,9 +723757,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2082925450}
-        m_TargetAssemblyTypeName: OverlayScript, Assembly-CSharp
-        m_MethodName: SetBase
+      - m_Target: {fileID: 798706498}
+        m_TargetAssemblyTypeName: PostProcessControl, Assembly-CSharp
+        m_MethodName: ResetParameters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

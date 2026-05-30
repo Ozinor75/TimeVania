@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 5365414334812953433}
   wayPoints:
@@ -83,8 +84,10 @@ MonoBehaviour:
   manager: {fileID: 0}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
+  LED_mat: {fileID: 0}
 --- !u!1 &3705101602485829719
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +427,7 @@ PrefabInstance:
     - target: {fileID: -7940890140657273707, guid: e47804c3cb7813b4699197a5155d4923, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ef4c442c079e334199e778acde03267, type: 2}
+      objectReference: {fileID: 2100000, guid: 641ef875bd0bb544ebdc9dca5a6eeb7a, type: 2}
     - target: {fileID: -7807651809372328922, guid: e47804c3cb7813b4699197a5155d4923, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

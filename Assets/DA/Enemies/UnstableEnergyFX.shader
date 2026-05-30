@@ -1,8 +1,8 @@
-// Upgrade NOTE: upgraded instancing buffer 'UnstableEnergyFX' to new syntax.
+// Upgrade NOTE: upgraded instancing buffer 'EnergyFX' to new syntax.
 
 // Made with Amplify Shader Editor v1.9.2
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "UnstableEnergyFX"
+Shader "EnergyFX"
 {
 	Properties
 	{
@@ -35,10 +35,10 @@ Shader "UnstableEnergyFX"
 		uniform sampler2D _StableBoltFX;
 		uniform float4 _BoltColor;
 
-		UNITY_INSTANCING_BUFFER_START(UnstableEnergyFX)
+		UNITY_INSTANCING_BUFFER_START(EnergyFX)
 			UNITY_DEFINE_INSTANCED_PROP(float, _TimeScale)
-#define _TimeScale_arr UnstableEnergyFX
-		UNITY_INSTANCING_BUFFER_END(UnstableEnergyFX)
+#define _TimeScale_arr EnergyFX
+		UNITY_INSTANCING_BUFFER_END(EnergyFX)
 
 		inline half4 LightingUnlit( SurfaceOutput s, half3 lightDir, half atten )
 		{
@@ -148,7 +148,7 @@ Node;AmplifyShaderEditor.SimpleTimeNode;7;-2198.848,-38.87268;Inherit;False;1;0;
 Node;AmplifyShaderEditor.SimpleAddOpNode;3;-962.5995,-312.1111;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.ColorNode;17;-969.9434,-78.19241;Inherit;False;Property;_BoltColor;BoltColor;2;1;[HDR];Create;True;0;0;0;False;0;False;1,0,0,1;1,0,0,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;16;-722.7418,-314.3923;Inherit;True;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.StandardSurfaceOutputNode;2;-486.8217,-310.8983;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;UnstableEnergyFX;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Off;0;False;;0;False;;False;0;False;;0;False;;False;0;Transparent;0.5;True;True;0;False;Transparent;;Transparent;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;2;5;False;;10;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
+Node;AmplifyShaderEditor.StandardSurfaceOutputNode;2;-486.8217,-310.8983;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;EnergyFX;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Off;0;False;;0;False;;False;0;False;;0;False;;False;0;Transparent;0.5;True;True;0;False;Transparent;;Transparent;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;2;5;False;;10;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;4;-1177.164,-314.3072;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;6;-1178.082,-87.93687;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.DynamicAppendNode;15;-1816.514,-65.2542;Inherit;False;FLOAT2;4;0;FLOAT;0.73;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
@@ -178,4 +178,4 @@ WireConnection;15;1;10;0
 WireConnection;19;1;15;0
 WireConnection;13;1;14;0
 ASEEND*/
-//CHKSM=A6EC6D9D59D982AF9557FF719B4D9151CE770273
+//CHKSM=E3D72EA0036AB608309267B3F4199D67BD2BCEDA

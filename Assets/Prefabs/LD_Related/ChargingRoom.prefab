@@ -193,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 1643985472789594428}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 2.5}
+  m_LocalPosition: {x: 0, y: -4.5, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -218,6 +218,7 @@ MonoBehaviour:
   camPoint: {fileID: 290757784848108357}
   ToFollow: {fileID: 0}
   buttonUI: {fileID: 3246420219489483954}
+  isPlayerStation: 0
   coneFX: {fileID: 5664428931295105050}
   sphereFX: {fileID: 1091214402189731814}
   rayPoint: {fileID: 7501667226249329647}
@@ -667,7 +668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d7ecce8dd4fdf14ab0dcd96d91f2970, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d7ecce8dd4fdf14ab0dcd96d91f2970, type: 3}
       propertyPath: m_LocalRotation.w

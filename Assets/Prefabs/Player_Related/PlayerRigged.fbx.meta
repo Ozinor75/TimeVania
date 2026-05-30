@@ -35,7 +35,7 @@ ModelImporter:
       takeName: FinalPlayerRig|Fall_Animation
       internalID: -3857336455164170382
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 31
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -93,7 +93,7 @@ ModelImporter:
       takeName: FinalPlayerRig|Jump_Animation
       internalID: -3672809827534534106
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 38
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
