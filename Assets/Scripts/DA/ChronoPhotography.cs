@@ -16,11 +16,8 @@ public class ChronoPhotography : MonoBehaviour
     public List<Color> colors = new List<Color>(3);
     public Animator body;
     
-    // public List<GameObject> subjects;
     public GameObject subject;
-    // private List<List<GameObject>> listOfShoots = new List<List<GameObject>>();
     public List<GameObject> listOfShoots = new List<GameObject>();
-    // private Transform parent;
     
     private void Start()
     {

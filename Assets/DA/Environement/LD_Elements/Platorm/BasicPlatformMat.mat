@@ -89,7 +89,7 @@ Material:
     - _Roughness: 0
     - _ShadowBias: 0
     - _ShadowSize: 0.5
-    - _ShadowStrenght: 0.286
+    - _ShadowStrenght: 0.25
     - _ShadowTilling: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

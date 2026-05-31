@@ -78,7 +78,6 @@ public class CharacterMeshControler : MonoBehaviour
 
     private IEnumerator RecoverDamage()
     {
-        Debug.Log("START DAMAGE RECOVER");
         float t = 1f;
 
         while (t >= 0f)
@@ -87,8 +86,6 @@ public class CharacterMeshControler : MonoBehaviour
             energyMat.SetFloat("_DamageT", t);
             yield return null;
         }
-        
-        Debug.Log("END RECOVER");
         yield break;
     }
 

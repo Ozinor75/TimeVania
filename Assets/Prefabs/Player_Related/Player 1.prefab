@@ -109,7 +109,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a7dfe070526dbc4f81c08c74f86e5ae, type: 2}
+  - {fileID: 2100000, guid: 4f24137381f418c438ce250ead6d156e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -394,7 +394,7 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 1, a: 0.15686275}
   - {r: 1, g: 1, b: 0, a: 0.15686275}
   body: {fileID: 1197999487735532046}
-  subject: {fileID: 7508746000995231067}
+  subject: {fileID: 4285660484889650764}
   listOfShoots: []
 --- !u!114 &8148159146242361571
 MonoBehaviour:

@@ -44,6 +44,7 @@ public class Station : MonoBehaviour
         {
             coneFX.LookAt(player.transform.position);
             sphereFX.LookAt(player.transform.position);
+            line.SetPosition(0, rayPoint.position);
             line.SetPosition(1, player.transform.position);
         }
     }

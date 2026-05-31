@@ -1157,6 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1531087252}
   wayPoints:
@@ -1191,6 +1192,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -2053,7 +2055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &96500036
 Transform:
   m_ObjectHideFlags: 0
@@ -4989,10 +4991,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8669184207075672440, guid: 091187a730318d94393baba461839240, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7279,6 +7277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 818133733}
   wayPoints:
@@ -7313,6 +7312,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -11673,6 +11673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 412194537}
   wayPoints:
@@ -11707,6 +11708,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -689672,6 +689674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 0}
   wayPoints: []
@@ -689686,6 +689689,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -692226,6 +692230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 500328579}
   wayPoints:
@@ -692260,6 +692265,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -693832,6 +693838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1030759087}
   wayPoints:
@@ -693866,6 +693873,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -694934,6 +694942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1355252291}
   wayPoints:
@@ -694970,6 +694979,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -695239,14 +695249,13 @@ Transform:
   m_GameObject: {fileID: 1076958521}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25566, y: -2.83028, z: -1.55627}
+  m_LocalPosition: {x: 2.25566, y: -2.83028, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 167846569}
   - {fileID: 1870354325}
   - {fileID: 2011841085}
-  - {fileID: 1918767214}
   - {fileID: 1434096596}
   - {fileID: 2113400948}
   - {fileID: 1894553924}
@@ -702419,6 +702428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1627471061}
   wayPoints:
@@ -702460,6 +702470,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -703171,6 +703182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 0}
   wayPoints: []
@@ -703185,6 +703197,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -703728,6 +703741,7 @@ Transform:
   - {fileID: 285679680}
   - {fileID: 104570526}
   - {fileID: 966335308}
+  - {fileID: 1918767214}
   m_Father: {fileID: 1076958522}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1434096597
@@ -704951,6 +704965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1455412210}
   wayPoints:
@@ -704986,6 +705001,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -706636,6 +706652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 18410846}
   wayPoints:
@@ -706671,6 +706688,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -708398,10 +708416,6 @@ PrefabInstance:
     - target: {fileID: 859873248853908814, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
       propertyPath: m_Name
       value: GlobalPostProcess
-      objectReference: {fileID: 0}
-    - target: {fileID: 859873248853908814, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7690943897862387286, guid: adf7d0d8beca9cc4c904a112c01a501c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -712140,6 +712154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5788532fff7de542a3ebd7ac24ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolMovement
+  loopMode: 0
   canMove: 0
   movable: {fileID: 1726716910}
   wayPoints:
@@ -712179,6 +712194,7 @@ MonoBehaviour:
   manager: {fileID: 1599428728}
   totalDistance: 0
   isForth: 1
+  isLoop: 0
   currentEnd: {fileID: 0}
   ratio: 0
   LED_mat: {fileID: 0}
@@ -713982,6 +713998,10 @@ PrefabInstance:
     - target: {fileID: 1770516672583003778, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: musicDefault.Guid.Data4
       value: -491596894
+      objectReference: {fileID: 0}
+    - target: {fileID: 2172650544462054247, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: canDash
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2172650544462054247, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: jumpCost
@@ -717082,7 +717102,7 @@ Transform:
   - {fileID: 788318178}
   - {fileID: 326011619}
   - {fileID: 376029820}
-  m_Father: {fileID: 1076958522}
+  m_Father: {fileID: 1434096596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1918767215
 MonoBehaviour:
@@ -720260,7 +720280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2078452972
 RectTransform:
   m_ObjectHideFlags: 0
