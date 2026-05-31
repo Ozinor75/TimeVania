@@ -714041,11 +714041,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2452293245864450624, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 177.5
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 2452293245864450624, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 157
+      value: 153.5
       objectReference: {fileID: 0}
     - target: {fileID: 2452293245864450624, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -714134,6 +714134,10 @@ PrefabInstance:
     - target: {fileID: 8614554792051596572, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: groundSpeed
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614554792051596572, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
+      propertyPath: dashDistance
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8614554792051596572, guid: c7412fd441745bc468ab063dc83324b0, type: 3}
       propertyPath: boostedConsumptionMult

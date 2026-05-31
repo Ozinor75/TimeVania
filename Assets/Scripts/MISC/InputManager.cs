@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,6 +22,7 @@ public class InputManager : MonoBehaviour
     private PlayerController playerController;
     private PlayerTimer playerTimer;
     private bool IsDivided = true;
+    private bool isMid = true;
     
     private void OnEnable()
     {
@@ -81,21 +81,41 @@ public class InputManager : MonoBehaviour
             Dash.Invoke();
         }
 
-        if (playerControls.Player.Upgrade.WasPressedThisFrame()/* && playerController.activePreset == PlayerPresets.*/)
+        bool isUpgradeHeld = playerControls.Player.Upgrade.IsPressed();
+        bool isDowngradeHeld = playerControls.Player.Downgrade.IsPressed();
+        
+        if (playerControls.Player.Upgrade.WasPressedThisFrame())
         {
-            // Debug.Log("Upgrading");
             Upgrade.Invoke();
+            isMid = false;
         }
-        
-        if (playerControls.Player.Downgrade.WasPressedThisFrame()/* && playerController.activePreset == PlayerPresets.Mid*/)
+        else if (playerControls.Player.Downgrade.WasPressedThisFrame())
         {
-            // Debug.Log("Downgrading");
             Downgrade.Invoke();
+            isMid = false;
         }
         
-        if (playerControls.Player.Upgrade.WasReleasedThisFrame() || playerControls.Player.Downgrade.WasReleasedThisFrame())
+        if (playerControls.Player.Upgrade.WasReleasedThisFrame())
         {
-            // Debug.Log("Gear Released");
+            if (isDowngradeHeld)
+            {
+                Downgrade.Invoke();
+                isMid = false;
+            }
+        }        
+
+        if (playerControls.Player.Downgrade.WasReleasedThisFrame())
+        {
+            if (isUpgradeHeld)
+            {
+                Upgrade.Invoke();
+                isMid = false;
+            }
+        }
+        
+        if (!isUpgradeHeld && !isDowngradeHeld && !isMid)
+        {
+            isMid = true;
             GearReleased.Invoke();
         }
 

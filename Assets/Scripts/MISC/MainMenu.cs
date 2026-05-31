@@ -30,13 +30,19 @@ public class MainMenu : MonoBehaviour
     {
         if (File.Exists(Application.persistentDataPath + "/save" + ".json"))
             File.Delete(Application.persistentDataPath + "/save" + ".json");
-        SceneManager.LoadScene("LD_Soutenance Blanche");
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
     
     public void LoadGame()
     {
         if (File.Exists(Application.persistentDataPath + "/save" + ".json"))
-            SceneManager.LoadScene("LD_Soutenance Blanche");
+        {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            int nextSceneIndex = currentSceneIndex + 1;
+            SceneManager.LoadScene(nextSceneIndex);
+        }
     }
 
     public void QuitGame()
