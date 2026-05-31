@@ -11,7 +11,7 @@ public class CharacterMeshControler : MonoBehaviour
     public Material energyMat;
     public Animator playerAnimator;
 
-    public Transform chronoMesh;
+    // public Transform chronoMesh;
     private RaycastHit2D selfRay;
 
     public SkinnedMeshRenderer baseHelmet;
@@ -60,12 +60,12 @@ public class CharacterMeshControler : MonoBehaviour
         if (rb.linearVelocityX > 0.1f)
         {
             mesh.rotation = Quaternion.Euler(0f, -90f, 0f);
-            chronoMesh.rotation = Quaternion.Euler(0f, -90f, 0f);
+            // chronoMesh.rotation = Quaternion.Euler(0f, -90f, 0f);
         }
         else if (rb.linearVelocityX < -0.1f)
         {
             mesh.rotation = Quaternion.Euler(0f, 90f, 0f);
-            chronoMesh.rotation = Quaternion.Euler(0f, 90f, 0f);
+            // chronoMesh.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
     }
 

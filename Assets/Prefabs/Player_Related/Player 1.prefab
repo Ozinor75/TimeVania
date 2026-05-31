@@ -234,7 +234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectiveSpeed: 0
   dashCost: 6
-  dashBoxSize: {x: 0.1, y: 0.05}
+  dashBoxSize: 0
+  DashDecalage: 0
   acceleration: 25
   deceleration: 40
   minJoystick: 0
@@ -338,7 +339,6 @@ MonoBehaviour:
   mesh: {fileID: 3472953907728547062}
   energyMat: {fileID: 2100000, guid: 00dad1b4b994c6f4eae834fc6a69ad77, type: 2}
   playerAnimator: {fileID: 1197999487735532046}
-  chronoMesh: {fileID: 7169655947009523681}
   baseHelmet: {fileID: 6107717484821376472}
   dashHelmet: {fileID: 2004745519122475608}
 --- !u!114 &9187246286537576538
