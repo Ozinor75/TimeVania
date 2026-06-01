@@ -83,12 +83,12 @@ Material:
     m_Floats:
     - _AnimationSpeed: 5
     - _BumpScale: 1
-    - _CSpeed: 0.75
+    - _CSpeed: 0.5
     - _CellGradient: 1
     - _CellSize: 0.5
     - _ConsuptionSpeed: 1
     - _Cutoff: 0.5
-    - _DamageT: -0.000990293
+    - _DamageT: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
