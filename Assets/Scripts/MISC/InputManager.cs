@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent Downgrade;
     public UnityEvent GearReleased;
     public UnityEvent ActivateStation;
+    public UnityEvent FinalStation;
     public UnityEvent AutoDestroy;
     public UnityEvent UseHook;
     
@@ -126,11 +127,22 @@ public class InputManager : MonoBehaviour
             ActivateStation.Invoke();
         }
         
+        if (playerControls.Player.Station.WasPressedThisFrame() && playerController.onFinal)
+        {
+            // Debug.Log("Station Pressed");
+            playerController.isCharging = true;
+            FinalStation.Invoke();
+        }
+        
         if (playerControls.Player.Station.WasPressedThisFrame() && playerController.boostTrigger != null)
         {
             if (playerController.boostTrigger.CompareTag("SizeBoost"))
             {
                 playerController.boostTrigger.GetComponent<BatterySizeBoost>().MakeBoost();
+            }
+            else if (playerController.boostTrigger.CompareTag("DashBoost"))
+            {
+                playerController.boostTrigger.GetComponent<DashBoost>().MakeBoost();
             }
             else
             {

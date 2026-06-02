@@ -10,10 +10,12 @@ public class PlayerSound : MonoBehaviour
     [Header("Prefabs")] 
     public EventReference footsteps;
     public EventReference jump;
+    public EventReference landing;
     public EventReference swift;
     public EventReference slow;
     public EventReference dash;
     public EventReference activateStation;
+    public EventReference crush;
     public EventReference death;
     public EventReference hurt;
     public EventReference reload;
@@ -42,6 +44,10 @@ public class PlayerSound : MonoBehaviour
     public void HurtSound()
     {
         PlayOneShot(hurt, transform.position, 1f);
+    }
+    public void CrushSound()
+    {
+        PlayOneShot(crush, transform.position, 1f);
     }
     public void Reload()
     {

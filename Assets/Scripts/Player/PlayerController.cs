@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     public Transform boostTrigger;
     public Transform doorTrigger;
     public bool onStation = false;
+    public bool onFinal = false;
     public bool onBoost = false;
     public bool isCharging = false;
     public bool isStarting;
@@ -144,7 +145,7 @@ public class PlayerController : MonoBehaviour
         if (File.Exists(Application.persistentDataPath + "/save" + ".json"))
         {
             yield return new WaitForSecondsRealtime(0.05f);
-            SaveSystem.Load();
+            //SaveSystem.Load();
         }
     }
     

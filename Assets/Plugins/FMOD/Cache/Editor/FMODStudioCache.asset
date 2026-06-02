@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7456017633269078515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Landing
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Landing
+  Guid:
+    Data1: 126808236
+    Data2: 1317455419
+    Data3: -939476329
+    Data4: 1623130301
+  Banks:
+  - {fileID: 6696325524013396998}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-6727796851332776025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,13 +246,16 @@ MonoBehaviour:
   - {fileID: 4097713451274193918}
   - {fileID: 1674916324820305080}
   - {fileID: 8561962492307875421}
+  - {fileID: 5802182271781675052}
+  - {fileID: -7456017633269078515}
+  - {fileID: 2741370893867802824}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6696325524013396998}
   StringsBanks:
   - {fileID: 3786339355727469764}
   cacheVersion: 131859
-  cacheTime: 639149020311662341
+  cacheTime: 639160300282530141
   SerializableEventsDict:
   - key: event:/Swift
     index: 0
@@ -255,6 +285,12 @@ MonoBehaviour:
     index: 12
   - key: event:/Start
     index: 13
+  - key: event:/BigConsumption
+    index: 14
+  - key: event:/Landing
+    index: 15
+  - key: event:/Crush
+    index: 16
 --- !u!114 &1212828321285297565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +345,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 991
+--- !u!114 &2741370893867802824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Crush
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Crush
+  Guid:
+    Data1: 1639258576
+    Data2: 1251470333
+    Data3: -1009964869
+    Data4: 1057527698
+  Banks:
+  - {fileID: 6696325524013396998}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &3786339355727469764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,10 +387,10 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639149020311662341
+  lastModified: 639160300282530141
   FileSizes:
   - Name: 
-    Value: 1304
+    Value: 1434
   Exists: 1
 --- !u!114 &4097713451274193918
 MonoBehaviour:
@@ -383,6 +446,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 634
+--- !u!114 &5802182271781675052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BigConsumption
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/BigConsumption
+  Guid:
+    Data1: 822402971
+    Data2: 1231635626
+    Data3: -593290839
+    Data4: -1843544162
+  Banks:
+  - {fileID: 6696325524013396998}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &6640804329700079263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +515,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639149020311645566
+  lastModified: 639160300282525162
   FileSizes: []
   Exists: 1
 --- !u!114 &6745927660535523549
