@@ -77,7 +77,7 @@ public class CameraFollow : MonoBehaviour
             realOffset = -offset;
         else if (playerControls.Player.Direction.ReadValue<Vector2>().x < -0.1 && !playerController.isCharging && playerController.CanMove)
             realOffset = offset;
-        else if (playerController.isCharging || (playerControls.Player.Direction.ReadValue<Vector2>().x < 0.1 && playerControls.Player.Direction.ReadValue<Vector2>().x > -0.1) || !playerController.CanMove)
+        else if (playerController.isCharging || (playerControls.Player.Direction.ReadValue<Vector2>().x < 0.1 && playerControls.Player.Direction.ReadValue<Vector2>().x > -0.1) || !playerController.CanMove || playerController.onFinal)
             realOffset = 0f;
 
         float newX = Mathf.SmoothDamp(targetPos.x, toFollow.position.x + realOffset, ref realVelocity.x, smoothTimeX);
