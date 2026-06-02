@@ -9,7 +9,7 @@ public class ChargingRoom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Exiting Station");
+            // Debug.Log("Exiting Station");
             ExitStation.Invoke();
         }
     }

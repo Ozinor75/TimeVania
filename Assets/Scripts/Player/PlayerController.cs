@@ -237,23 +237,19 @@ public class PlayerController : MonoBehaviour
         if (transform.parent != null)
             transform.SetParent(null);
         playerSound.Death();
-        //while (blackScreenColor.a < 1f)
-        //{
-            //blackScreenColor.a += Time.deltaTime;
-            //blackScreen.color = blackScreenColor;
-            //yield return null;
-        //}
-        
-        // to do 
         
         if (transform.parent != null)
         {
             transform.SetParent(null);
         }
+        
+        // playparticle explode
+        // wait
+        // setdeathscreen
         rb.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
         yield return new WaitForSeconds(1f);
-        Debug.Log("die screen");
-        yield return new WaitForSeconds(3f);
+        // resetscreen
+        yield return new WaitForSeconds(1f);
         Respawn();
         playerSound.StartSound();
     }

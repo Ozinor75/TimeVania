@@ -35,7 +35,7 @@ public class Station : MonoBehaviour
         line.SetPosition(0, rayPoint.position);
         line.enabled = false;
 
-        // StartCoroutine(MaterializePlayer());
+        StartCoroutine(MaterializePlayer());
     }
     
     void Update()
