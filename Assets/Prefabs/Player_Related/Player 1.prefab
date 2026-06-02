@@ -270,7 +270,7 @@ MonoBehaviour:
   CanMove: 0
   canDash: 0
   platformVelocity: {x: 0, y: 0}
-  deathParticle: {fileID: 0}
+  deathParticle: {fileID: 3539007983771213942}
   DoubleJumpCapacity: 0
   hasDoubleJumped: 0
   canDoubleJump: 0
