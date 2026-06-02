@@ -59,7 +59,7 @@ public class CrushDetection : MonoBehaviour
     
     void Crush()
     {
-        Debug.Log("Crush");
+        // Debug.Log("Crush");
         playerController.CrushRespawn();
     }
 }

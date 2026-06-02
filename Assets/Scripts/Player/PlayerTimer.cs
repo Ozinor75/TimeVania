@@ -106,7 +106,7 @@ public class PlayerTimer : MonoBehaviour
                 sp.Spawn();
             }
         }
-        Debug.Log(MultDeMult*tMult);
+        // Debug.Log(MultDeMult*tMult);
 
         // if (tSec >= 0.2f)
         // {
