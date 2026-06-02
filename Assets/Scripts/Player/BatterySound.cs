@@ -7,6 +7,7 @@ public class BatterySound : MonoBehaviour
     [Header("Prefabs")] 
     public EventReference loseCharge;
     public EventReference tickingTimer;
+    public EventReference bigConsumption;
     
     private EventInstance loseChargeInstance;
     private EventInstance tickingTimerInstance;

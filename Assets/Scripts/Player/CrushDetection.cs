@@ -8,6 +8,7 @@ public class CrushDetection : MonoBehaviour
     private CapsuleCollider2D crushCollider;
     private CapsuleCollider2D mainCollider;
     private PlayerController playerController;
+    private PlayerSound playerSound;
     private Rigidbody2D rb;
     private bool inCrushZone;
 
@@ -16,6 +17,7 @@ public class CrushDetection : MonoBehaviour
         mainCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
+        playerSound = GetComponent<PlayerSound>();
     }
 
     private void Update()
@@ -61,5 +63,6 @@ public class CrushDetection : MonoBehaviour
     {
         Debug.Log("Crush");
         playerController.CrushRespawn();
+        playerSound.CrushSound();
     }
 }
