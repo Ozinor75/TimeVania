@@ -113,6 +113,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "F5",
+                    "type": "Button",
+                    "id": "c5af618f-56ff-429b-9df1-9aff9c06bb55",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "F6",
+                    "type": "Button",
+                    "id": "895580af-4e56-4f33-abb8-dc774ac9d8e5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "F7",
+                    "type": "Button",
+                    "id": "e79b1d11-bb6c-496a-b800-d1a32a56ccdf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "F9",
+                    "type": "Button",
+                    "id": "74431283-1e9a-4335-a359-0db8361b7d22",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -421,6 +457,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Save",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d417cbd-b9bd-4a1f-9007-fb6aad0f5f43",
+                    "path": "<Keyboard>/f5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c160a1bd-7466-44f9-afcf-22ae6babc4f7",
+                    "path": "<Keyboard>/f6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F6",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d5561af-069f-4bd4-9456-c40d889fb75f",
+                    "path": "<Keyboard>/f7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F7",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5822ca24-2ac8-443b-a819-4f18d6f554be",
+                    "path": "<Keyboard>/f9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F9",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

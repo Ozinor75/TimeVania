@@ -23,11 +23,12 @@ TagManager:
   - SizeBoost
   - AbsorptionBoost
   - TempMoving
+  - DashBoost
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - death
+  - 
   - Water
   - UI
   - Ground

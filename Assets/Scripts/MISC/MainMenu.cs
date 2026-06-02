@@ -58,8 +58,9 @@ public class MainMenu : MonoBehaviour
     {
         OptionsData.isFxOn = !OptionsData.isFxOn;
         if  (OptionsData.isFxOn)
-            fx.text = "Enabled";
-        else
             fx.text = "Disabled";
+        else
+            fx.text = "Enabled";
+
     }
 }
