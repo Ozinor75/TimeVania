@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -163,6 +164,26 @@ public class InputManager : MonoBehaviour
         {
             SaveSystem.Load();
             Debug.Log("Load");
+        } 
+        
+        if (playerControls.Player.F5.WasPressedThisFrame())
+        {
+            playerController.transform.position = new Vector3(207.5f, 156.5f, 0f);
+        } 
+        
+        if (playerControls.Player.F6.WasPressedThisFrame())
+        {
+            playerController.transform.position = new Vector3(-95f, 185.5f, 0f);
+        } 
+        
+        if (playerControls.Player.F7.WasPressedThisFrame())
+        {
+            playerController.transform.position = new Vector3(89f, -128.25f, 0f);
+        } 
+        
+        if (playerControls.Player.F9.WasPressedThisFrame())
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         } 
     }
 }

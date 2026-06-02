@@ -199,6 +199,42 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""F5"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5af618f-56ff-429b-9df1-9aff9c06bb55"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""F6"",
+                    ""type"": ""Button"",
+                    ""id"": ""895580af-4e56-4f33-abb8-dc774ac9d8e5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""F7"",
+                    ""type"": ""Button"",
+                    ""id"": ""e79b1d11-bb6c-496a-b800-d1a32a56ccdf"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""F9"",
+                    ""type"": ""Button"",
+                    ""id"": ""74431283-1e9a-4335-a359-0db8361b7d22"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -512,6 +548,50 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""6d417cbd-b9bd-4a1f-9007-fb6aad0f5f43"",
+                    ""path"": ""<Keyboard>/f5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""F5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c160a1bd-7466-44f9-afcf-22ae6babc4f7"",
+                    ""path"": ""<Keyboard>/f6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""F6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d5561af-069f-4bd4-9456-c40d889fb75f"",
+                    ""path"": ""<Keyboard>/f7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""F7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5822ca24-2ac8-443b-a819-4f18d6f554be"",
+                    ""path"": ""<Keyboard>/f9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""F9"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""10700030-0296-4edf-876f-04686ad7bafd"",
                     ""path"": ""<Keyboard>/f2"",
                     ""interactions"": """",
@@ -610,6 +690,10 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         m_Player_Load = m_Player.FindAction("Load", throwIfNotFound: true);
         m_Player_L3Click = m_Player.FindAction("L3 Click", throwIfNotFound: true);
         m_Player_R3Click = m_Player.FindAction("R3 Click", throwIfNotFound: true);
+        m_Player_F5 = m_Player.FindAction("F5", throwIfNotFound: true);
+        m_Player_F6 = m_Player.FindAction("F6", throwIfNotFound: true);
+        m_Player_F7 = m_Player.FindAction("F7", throwIfNotFound: true);
+        m_Player_F9 = m_Player.FindAction("F9", throwIfNotFound: true);
         // DEBUG
         m_DEBUG = asset.FindActionMap("DEBUG", throwIfNotFound: true);
         m_DEBUG_TimerReset = m_DEBUG.FindAction("TimerReset", throwIfNotFound: true);
@@ -707,6 +791,10 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Load;
     private readonly InputAction m_Player_L3Click;
     private readonly InputAction m_Player_R3Click;
+    private readonly InputAction m_Player_F5;
+    private readonly InputAction m_Player_F6;
+    private readonly InputAction m_Player_F7;
+    private readonly InputAction m_Player_F9;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -766,6 +854,22 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/R3Click".
         /// </summary>
         public InputAction @R3Click => m_Wrapper.m_Player_R3Click;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/F5".
+        /// </summary>
+        public InputAction @F5 => m_Wrapper.m_Player_F5;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/F6".
+        /// </summary>
+        public InputAction @F6 => m_Wrapper.m_Player_F6;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/F7".
+        /// </summary>
+        public InputAction @F7 => m_Wrapper.m_Player_F7;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/F9".
+        /// </summary>
+        public InputAction @F9 => m_Wrapper.m_Player_F9;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -828,6 +932,18 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @R3Click.started += instance.OnR3Click;
             @R3Click.performed += instance.OnR3Click;
             @R3Click.canceled += instance.OnR3Click;
+            @F5.started += instance.OnF5;
+            @F5.performed += instance.OnF5;
+            @F5.canceled += instance.OnF5;
+            @F6.started += instance.OnF6;
+            @F6.performed += instance.OnF6;
+            @F6.canceled += instance.OnF6;
+            @F7.started += instance.OnF7;
+            @F7.performed += instance.OnF7;
+            @F7.canceled += instance.OnF7;
+            @F9.started += instance.OnF9;
+            @F9.performed += instance.OnF9;
+            @F9.canceled += instance.OnF9;
         }
 
         /// <summary>
@@ -875,6 +991,18 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @R3Click.started -= instance.OnR3Click;
             @R3Click.performed -= instance.OnR3Click;
             @R3Click.canceled -= instance.OnR3Click;
+            @F5.started -= instance.OnF5;
+            @F5.performed -= instance.OnF5;
+            @F5.canceled -= instance.OnF5;
+            @F6.started -= instance.OnF6;
+            @F6.performed -= instance.OnF6;
+            @F6.canceled -= instance.OnF6;
+            @F7.started -= instance.OnF7;
+            @F7.performed -= instance.OnF7;
+            @F7.canceled -= instance.OnF7;
+            @F9.started -= instance.OnF9;
+            @F9.performed -= instance.OnF9;
+            @F9.canceled -= instance.OnF9;
         }
 
         /// <summary>
@@ -1106,6 +1234,34 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnR3Click(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "F5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnF5(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "F6" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnF6(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "F7" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnF7(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "F9" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnF9(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DEBUG" which allows adding and removing callbacks.

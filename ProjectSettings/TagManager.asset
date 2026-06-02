@@ -22,6 +22,8 @@ TagManager:
   - Spike
   - SizeBoost
   - AbsorptionBoost
+  - TempMoving
+  - DashBoost
   layers:
   - Default
   - TransparentFX
