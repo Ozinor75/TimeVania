@@ -64,9 +64,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/music_Default
+  m_Name: event:/Music_Default
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/music_Default
+  Path: event:/Music_Default
   Guid:
     Data1: -769033125
     Data2: 1189633729
@@ -161,7 +161,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 274
 --- !u!114 &-601902922531702461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +261,6 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: -3766677203194751514}
   - {fileID: -601902922531702461}
-  - {fileID: 8235936562795282531}
   - {fileID: -4113354837015055367}
   - {fileID: 8548534996124600088}
   - {fileID: -4308939537276028740}
@@ -282,42 +281,40 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 5821090540875448786}
   cacheVersion: 131859
-  cacheTime: 639160366674330486
+  cacheTime: 639160359733547548
   SerializableEventsDict:
   - key: event:/Swift
     index: 0
   - key: event:/LoseCharge
     index: 1
-  - key: event:/music
-    index: 2
   - key: event:/Jump
-    index: 3
+    index: 2
   - key: event:/ActivateStation
+    index: 3
+  - key: event:/Music_Default
     index: 4
-  - key: event:/music_Default
-    index: 5
   - key: event:/Dash
-    index: 6
+    index: 5
   - key: event:/BigConsumption
-    index: 7
+    index: 6
   - key: event:/Landing
-    index: 8
+    index: 7
   - key: event:/Death
-    index: 9
+    index: 8
   - key: event:/Hurt
-    index: 10
+    index: 9
   - key: event:/Footsteps
-    index: 11
+    index: 10
   - key: event:/Reload
-    index: 12
+    index: 11
   - key: event:/TickingTimer
-    index: 13
+    index: 12
   - key: event:/Crush
-    index: 14
+    index: 13
   - key: event:/Slow
-    index: 15
+    index: 14
   - key: event:/Start
-    index: 16
+    index: 15
 --- !u!114 &134836338034282096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,7 +465,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639160366674270156
+  lastModified: 639160359733527140
   FileSizes: []
   Exists: 1
 --- !u!114 &5821090540875448786
@@ -486,10 +483,10 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639160366674330486
+  lastModified: 639160359733547548
   FileSizes:
   - Name: 
-    Value: 1434
+    Value: 1392
   Exists: 1
 --- !u!114 &6598552698628149137
 MonoBehaviour:
@@ -518,33 +515,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 991
---- !u!114 &8235936562795282531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/music
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/music
-  Guid:
-    Data1: 177344540
-    Data2: 1337115455
-    Data3: -1658523516
-    Data4: 147084934
-  Banks:
-  - {fileID: 4958145954654692136}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &8548534996124600088
 MonoBehaviour:
   m_ObjectHideFlags: 0

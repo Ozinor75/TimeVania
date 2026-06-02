@@ -24,6 +24,7 @@ TagManager:
   - AbsorptionBoost
   - TempMoving
   - DashBoost
+  - WinScreen
   layers:
   - Default
   - TransparentFX

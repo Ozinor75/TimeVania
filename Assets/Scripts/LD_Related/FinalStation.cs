@@ -1,4 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FinalStation : MonoBehaviour
 {
@@ -8,6 +12,7 @@ public class FinalStation : MonoBehaviour
     private PlayerController player;
     public GameObject ToFollow;
     private CameraFollow cameraFollow;
+    private Image winScreen;
     public GameObject buttonUI;
     public bool isPlayerStation = false;
     private bool onTrigger = false;
@@ -22,6 +27,7 @@ public class FinalStation : MonoBehaviour
     
     void Start()
     {
+        winScreen = GameObject.FindGameObjectWithTag("WinScreen").GetComponent<Image>();
         player = FindFirstObjectByType<PlayerController>();
         cameraFollow = FindAnyObjectByType<CameraFollow>();
     }
@@ -48,11 +54,19 @@ public class FinalStation : MonoBehaviour
         }
     }
 
+    public IEnumerator Finale()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        SceneManager.LoadScene("Main_Menu");
+    }
     public void MakeFinale()
     {
         if (onTrigger)
         {
+            player.CanMove = false;
+            winScreen.enabled = true;
             SaveSystem.Save();
+            StartCoroutine(Finale());
         }
     }
 }
