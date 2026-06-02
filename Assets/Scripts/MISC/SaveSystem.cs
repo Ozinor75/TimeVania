@@ -34,7 +34,7 @@ public class SaveSystem : MonoBehaviour
     {
         PlayerSave playerSave = FindFirstObjectByType<PlayerSave>();
         BoostSave[] boostSave = FindObjectsOfType<BoostSave>();
-        Debug.Log("TEST SAVE");
+        // Debug.Log("TEST SAVE");
         saveData.boostSaveData.isUsed = new bool[boostSave.Length];
         playerSave.Save(ref saveData.playerSaveData);
         for (int i = 0; i < boostSave.Length; i++)
@@ -42,12 +42,12 @@ public class SaveSystem : MonoBehaviour
             boostSave[i].i = i;
             boostSave[i].Save(ref saveData.boostSaveData);
         }
-        Debug.Log("LAST STATION = " + saveData.playerSaveData.lastStation.x + ", " + saveData.playerSaveData.lastStation.y);
+        // Debug.Log("LAST STATION = " + saveData.playerSaveData.lastStation.x + ", " + saveData.playerSaveData.lastStation.y);
     }
 
     public static void Load()
     {
-        Debug.Log("TEST LOAD");
+        // Debug.Log("TEST LOAD");
         string saveContent = File.ReadAllText(SaveFileName());
 
         saveData = JsonUtility.FromJson<SaveData>(saveContent);

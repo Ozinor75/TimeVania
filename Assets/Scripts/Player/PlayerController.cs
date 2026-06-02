@@ -79,18 +79,19 @@ public class PlayerController : MonoBehaviour
     
     [HideInInspector] public Vector2 platformVelocity = Vector2.zero;
 
-    [Header("DoubleJump & WallJump")]
-    
-    public bool DoubleJumpCapacity = true;
+    [Header("DA")]
+    public ParticleSystem deathParticle;
+    // public GameObject deathScreen;
+    [HideInInspector]public bool DoubleJumpCapacity = true;
     [HideInInspector] public bool hasDoubleJumped;
     [HideInInspector] public bool canDoubleJump;
-    public float doubleJumpCost;
+    [HideInInspector]public float doubleJumpCost;
 
-    public bool WallJumpCapacity = true;
-    public bool isWallSliding;
+    [HideInInspector]public bool WallJumpCapacity = true;
+    [HideInInspector]public bool isWallSliding;
     [HideInInspector] public bool hasWallJumped;
     [HideInInspector] public float wallJumpDir;
-    public float jumpCost;
+    [HideInInspector]public float jumpCost;
     
     [HideInInspector] public bool lockGroundCheck;
     private float lockGroundCheckDuration = 0.1f;
@@ -109,6 +110,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        deathParticle.Stop();
         isStarting = true;
         Physics2D.queriesStartInColliders = false;
         
@@ -128,11 +130,10 @@ public class PlayerController : MonoBehaviour
         
         StartPos = transform.position;
         
-        //blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
-        //blackScreenColor = Color.black;
+        blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
+        blackScreenColor = Color.white;
 
         StartCoroutine(LoadStart());
-        //StartCoroutine(BlackFade());
         Respawn();
         playerSound.MusicDefault();
         isStarting = false;
@@ -243,13 +244,21 @@ public class PlayerController : MonoBehaviour
             transform.SetParent(null);
         }
         
-        // playparticle explode
-        // wait
-        // setdeathscreen
+        // DEATH
+        deathParticle.Play();
+        
+        yield return new WaitForSeconds(1.5f);
+        blackScreenColor.a = 1f;
+        blackScreen.color = blackScreenColor;
+        
+        yield return new WaitForSeconds(1f);
         rb.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
+        
         yield return new WaitForSeconds(1f);
-        // resetscreen
-        yield return new WaitForSeconds(1f);
+        blackScreenColor.a = 0f;
+        blackScreen.color = blackScreenColor;
+        deathParticle.Stop();
+        
         Respawn();
         playerSound.StartSound();
     }

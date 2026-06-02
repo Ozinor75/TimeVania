@@ -22,11 +22,12 @@ TagManager:
   - Spike
   - SizeBoost
   - AbsorptionBoost
+  - TempMoving
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - death
   - Water
   - UI
   - Ground
