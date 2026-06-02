@@ -40,7 +40,7 @@ public class PlatformMovement : MonoBehaviour
             r = t / duration;
         
             movable.position = Vector3.Lerp(start.position, end.position, curve.Evaluate(r));
-            LED_mat.SetFloat("_Ratio", r);
+            // LED_mat.SetFloat("_Ratio", r);
         }
     }
     

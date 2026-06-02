@@ -49,7 +49,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Scaler: 6
+    - _Scaler: 12
     - _TimeScale: 1
     - __dirty: 0
     m_Colors:

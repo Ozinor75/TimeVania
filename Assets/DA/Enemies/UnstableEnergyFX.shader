@@ -139,7 +139,7 @@ Shader "EnergyFX"
 }
 /*ASEBEGIN
 Version=19200
-Node;AmplifyShaderEditor.SamplerNode;8;-1462.069,-315.3369;Inherit;True;Property;_UnstableBoltFX;UnstableBoltFX;0;0;Create;True;0;0;0;False;0;False;-1;688a57e387def8f4197eeeae84564b86;d13d15d7b203f534188da67d6930ba16;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SamplerNode;8;-1462.069,-315.3369;Inherit;True;Property;_UnstableBoltFX;UnstableBoltFX;0;0;Create;True;0;0;0;False;0;False;-1;688a57e387def8f4197eeeae84564b86;688a57e387def8f4197eeeae84564b86;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SamplerNode;11;-1459.502,-90.16734;Inherit;True;Property;_StableBoltFX;StableBoltFX;1;0;Create;True;0;0;0;False;0;False;-1;None;7a170cdb7cc88024cb628cfcdbb6705c;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.DynamicAppendNode;14;-1827.033,-265.2095;Inherit;False;FLOAT2;4;0;FLOAT;0.95;False;1;FLOAT;0.02;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;5;-1994.891,-250.5563;Inherit;False;3;3;0;FLOAT;0;False;1;FLOAT;3;False;2;FLOAT;0;False;1;FLOAT;0
@@ -178,4 +178,4 @@ WireConnection;15;1;10;0
 WireConnection;19;1;15;0
 WireConnection;13;1;14;0
 ASEEND*/
-//CHKSM=E3D72EA0036AB608309267B3F4199D67BD2BCEDA
+//CHKSM=CFABACCDE1F52D1B274013C8FDD7FF687FA1E6F3

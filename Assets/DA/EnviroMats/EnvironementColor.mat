@@ -121,7 +121,7 @@ Material:
     - _Roughness: 0
     - _ShadowBias: 0.258
     - _ShadowDetailStrenght: 0.378
-    - _ShadowSize: 0.99
+    - _ShadowSize: 0.95
     - _ShadowStrenght: 0.5
     - _ShadowStrength: 0.578
     - _ShadowTilling: 1

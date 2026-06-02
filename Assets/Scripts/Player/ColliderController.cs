@@ -49,7 +49,7 @@ public class ColliderController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)      // ICI RAYCAST
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (playerController.isTouchable)
         {
@@ -167,7 +167,7 @@ public class ColliderController : MonoBehaviour
                     SetPlatformParent(groundHit.transform);
                     if (groundHit.collider.CompareTag("TempMoving"))
                     {
-                        Debug.Log("ON PLATFORM TEST");
+                        // Debug.Log("ON PLATFORM TEST");
                         movingAndDestroy = groundHit.collider.transform.GetComponentInParent<MovingAndDestroy>();
                         movingAndDestroy.isOnPlatform = true;
                     }
@@ -187,7 +187,6 @@ public class ColliderController : MonoBehaviour
     public void SetPlatformParent(Transform parent)
     {
         transform.SetParent((parent));
-        // Debug.Log("SetPlatformParent");
         isOnPlatform = true;
     }
 

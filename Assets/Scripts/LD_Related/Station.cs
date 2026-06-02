@@ -90,15 +90,15 @@ public class Station : MonoBehaviour
         cameraFollow.ChangeMode(ToFollow.transform, cameraFollow.depthOffset);
     }
 
-    public IEnumerator MaterializePlayer()
-    {
-        spawnFX.enabled = true;
-        yield return new WaitForSeconds(1f);
-        spawnFX2.enabled = true;
-        yield return new WaitForSeconds(1f);
-        spawnFX.enabled = false;
-        yield return new WaitForSeconds(0.5f);
-        spawnFX2.enabled = false;
-        yield break;
-    }
+    // public IEnumerator MaterializePlayer()
+    // {
+    //     spawnFX.enabled = true;
+    //     yield return new WaitForSeconds(1f);
+    //     spawnFX2.enabled = true;
+    //     yield return new WaitForSeconds(1f);
+    //     spawnFX.enabled = false;
+    //     yield return new WaitForSeconds(0.5f);
+    //     spawnFX2.enabled = false;
+    //     yield break;
+    // }
 }

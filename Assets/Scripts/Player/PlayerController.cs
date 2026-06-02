@@ -79,18 +79,19 @@ public class PlayerController : MonoBehaviour
     
     [HideInInspector] public Vector2 platformVelocity = Vector2.zero;
 
-    [Header("DoubleJump & WallJump")]
-    
-    public bool DoubleJumpCapacity = true;
+    [Header("DA")]
+    public ParticleSystem deathParticle;
+    // public GameObject deathScreen;
+    [HideInInspector]public bool DoubleJumpCapacity = true;
     [HideInInspector] public bool hasDoubleJumped;
     [HideInInspector] public bool canDoubleJump;
-    public float doubleJumpCost;
+    [HideInInspector]public float doubleJumpCost;
 
-    public bool WallJumpCapacity = true;
-    public bool isWallSliding;
+    [HideInInspector]public bool WallJumpCapacity = true;
+    [HideInInspector]public bool isWallSliding;
     [HideInInspector] public bool hasWallJumped;
     [HideInInspector] public float wallJumpDir;
-    public float jumpCost;
+    [HideInInspector]public float jumpCost;
     
     [HideInInspector] public bool lockGroundCheck;
     private float lockGroundCheckDuration = 0.1f;
@@ -109,6 +110,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        deathParticle.Stop();
         isStarting = true;
         Physics2D.queriesStartInColliders = false;
         
@@ -128,11 +130,10 @@ public class PlayerController : MonoBehaviour
         
         StartPos = transform.position;
         
-        //blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
-        //blackScreenColor = Color.black;
+        blackScreen = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Image>();
+        blackScreenColor = Color.white;
 
         StartCoroutine(LoadStart());
-        //StartCoroutine(BlackFade());
         Respawn();
         playerSound.MusicDefault();
         isStarting = false;
@@ -146,6 +147,7 @@ public class PlayerController : MonoBehaviour
             SaveSystem.Load();
         }
     }
+    
     public IEnumerator BlackFade()
     {
         while (blackScreenColor.a > 0f)
@@ -193,7 +195,7 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocityY = playerBoost.jumpForce;
             UngroundJumpPlayer();
             coyotE = 0f;
-            Debug.Log("Jump");
+            // Debug.Log("Jump");
             if (!timerController.isCharging)
                 timerController.t -= jumpCost;
         }
@@ -230,33 +232,33 @@ public class PlayerController : MonoBehaviour
     
     public IEnumerator MakeRespawn()
     {
-        Debug.Log("Respawn");
+        // Debug.Log("Respawn");
         isRespawning = true;
         CanMove = false;
         if (transform.parent != null)
             transform.SetParent(null);
         playerSound.Death();
-        //while (blackScreenColor.a < 1f)
-        //{
-            //blackScreenColor.a += Time.deltaTime;
-            //blackScreen.color = blackScreenColor;
-            //yield return null;
-        //}
-        
-        // to do 
         
         if (transform.parent != null)
         {
             transform.SetParent(null);
         }
-        rb.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
+        
+        // DEATH
+        deathParticle.Play();
+        
+        yield return new WaitForSeconds(1.5f);
+        blackScreenColor.a = 1f;
+        blackScreen.color = blackScreenColor;
+        
         yield return new WaitForSeconds(1f);
-        //while (blackScreenColor.a > 0f)
-        //{
-            //blackScreenColor.a -= Time.deltaTime;
-            //blackScreen.color = blackScreenColor;
-            //yield return null;
-        //}
+        rb.position = new Vector2(respawnPoint.position.x, respawnPoint.position.y);
+        
+        yield return new WaitForSeconds(1f);
+        blackScreenColor.a = 0f;
+        blackScreen.color = blackScreenColor;
+        deathParticle.Stop();
+        
         Respawn();
         playerSound.StartSound();
     }
@@ -298,7 +300,6 @@ public class PlayerController : MonoBehaviour
         {
             movementLeftRight = playerControls.Player.Direction.ReadValue<Vector2>().x;
             movementUpDown = playerControls.Player.Direction.ReadValue<Vector2>().y;
-
             hookStickDirection = playerControls.Player.HookDirection.ReadValue<Vector2>();
         }
         
@@ -337,6 +338,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(iFrameDuration);
         isTouchable = true;
     }
+    
     public void Pushback(Vector2 hitPosition)
     {
         if (isTouchable)
@@ -357,6 +359,7 @@ public class PlayerController : MonoBehaviour
             playerSound.HurtSound();
         }
     }
+    
     public void ExitStation()
     {
         onStation =  false;
@@ -383,6 +386,7 @@ public class PlayerController : MonoBehaviour
         // coyotE = 0f;
         effectiveSpeed = playerBoost.airSpeed;
     }    
+    
     public void UngroundJumpPlayer()
     {
         // Debug.Log("UnGroundPlayer");
@@ -392,26 +396,28 @@ public class PlayerController : MonoBehaviour
         coyotE = 0f;
         effectiveSpeed = playerBoost.airSpeed;
     }
+    
     public void MakeDash()
+    
     {
-        Debug.Log("Making Dash");
+        // Debug.Log("Making Dash");
         Vector3[] posArray = new Vector3[2];
         Vector2 endPos = playerControls.Player.Direction.ReadValue<Vector2>().normalized;
         Vector2 test = new Vector2(transform.position.x, transform.position.y + DashDecalage);
-        Vector2 perp = new Vector2(-endPos.y, endPos.x) * dashBoxSize;
+        // Vector2 perp = new Vector2(-endPos.y, endPos.x) * dashBoxSize;
     
-        // 2. Définition des 4 coins de la zone balayée par le CircleCast
-        Vector2 startTop = test + perp;
-        Vector2 startBottom = test - perp;
-        Vector2 endDebugTop = startTop + (endPos * playerBoost.dashDistance);
-        Vector2 endDebugBottom = startBottom + (endPos * playerBoost.dashDistance);
+        // // 2. Définition des 4 coins de la zone balayée par le CircleCast
+        // Vector2 startTop = test + perp;
+        // Vector2 startBottom = test - perp;
+        // Vector2 endDebugTop = startTop + (endPos * playerBoost.dashDistance);
+        // Vector2 endDebugBottom = startBottom + (endPos * playerBoost.dashDistance);
 
-        // 3. Dessin des lignes (affichées pendant 2 secondes pour bien les voir dans la fenêtre Scene)
-        float debugTime = 2f;
-        Debug.DrawLine(startTop, endDebugTop, Color.red, debugTime);       // Ligne supérieure
-        Debug.DrawLine(startBottom, endDebugBottom, Color.red, debugTime); // Ligne inférieure
-        Debug.DrawLine(endDebugTop, endDebugBottom, Color.red, debugTime); // Capot avant
-        Debug.DrawLine(startTop, startBottom, Color.red, debugTime);
+        // // 3. Dessin des lignes (affichées pendant 2 secondes pour bien les voir dans la fenêtre Scene)
+        // float debugTime = 2f;
+        // Debug.DrawLine(startTop, endDebugTop, Color.red, debugTime);       // Ligne supérieure
+        // Debug.DrawLine(startBottom, endDebugBottom, Color.red, debugTime); // Ligne inférieure
+        // Debug.DrawLine(endDebugTop, endDebugBottom, Color.red, debugTime); // Capot avant
+        // Debug.DrawLine(startTop, startBottom, Color.red, debugTime);
         RaycastHit2D checkDash = Physics2D.CircleCast(test, dashBoxSize, endPos, playerBoost.dashDistance);
 
         rb.gravityScale = 0f;
@@ -428,14 +434,14 @@ public class PlayerController : MonoBehaviour
             endPos += rb.position;
         }
         
-        Debug.DrawLine(test, endPos, Color.green);
+        // Debug.DrawLine(test, endPos, Color.green);
         
         posArray[1] = endPos;
         line.SetPositions(posArray);
         line.enabled = true;
         
-        rb.position = endPos;
         rb.gravityScale = 1f;
+        rb.position = endPos;
         if (!timerController.isCharging)
             timerController.t -= dashCost;
         StartCoroutine(DashLine());

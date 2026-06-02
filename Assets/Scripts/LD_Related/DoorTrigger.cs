@@ -76,6 +76,7 @@ public class DoorTrigger : MonoBehaviour
             StartCoroutine(Cinematic());
         }
     }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         playerController.doorTrigger = transform;
@@ -84,6 +85,7 @@ public class DoorTrigger : MonoBehaviour
             buttonUI.SetActive(true);
         }
     }
+    
     private void OnTriggerExit2D(Collider2D other)
     {
         buttonUI.SetActive(false);
@@ -115,7 +117,6 @@ public class DoorTrigger : MonoBehaviour
         {
             if (current != start.position)
             {
-                // Debug.Log("RATIO = " + ratio);
                 t += Time.deltaTime  * manager.active;
                 r = (t / (d * ratio));
                 movable.position = Vector3.Lerp(current, start.position, curve.Evaluate(r));

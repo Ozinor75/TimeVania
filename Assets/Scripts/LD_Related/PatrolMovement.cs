@@ -57,15 +57,12 @@ public class PatrolMovement : MonoBehaviour
             t += Time.fixedDeltaTime * manager.active;
             // t %= duration * 2;
             r = (t / (duration * ratio));
-            
-            if (LED_mat != null)
-                LED_mat.SetFloat("_Ratio", r);
 
             if ((i < wayPoints.Length - 1 && r >= 1) || (i < wayPoints.Length && loopMode && r >= 1))
             {
                 if (isLoop)
                 {
-                    Debug.Log("IS LOOP FALSE");
+                    // Debug.Log("IS LOOP FALSE");
                     isLoop = false;
                     i = -1;
                 }
@@ -104,7 +101,7 @@ public class PatrolMovement : MonoBehaviour
             {
                 if (!isLoop)
                 {
-                    Debug.Log("R = " + r);
+                    // Debug.Log("R = " + r);
                     movable.position = Vector3.Lerp(wayPoints[i].position, wayPoints[i + 1].position, curve.Evaluate(r));
                 }
                 else
