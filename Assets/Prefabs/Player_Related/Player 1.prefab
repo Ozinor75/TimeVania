@@ -257,6 +257,7 @@ MonoBehaviour:
   boostTrigger: {fileID: 0}
   doorTrigger: {fileID: 0}
   onStation: 0
+  onFinal: 0
   onBoost: 0
   isCharging: 0
   isStarting: 0
@@ -508,6 +509,13 @@ MonoBehaviour:
       Data3: -64456831
       Data4: 1608282691
     Path: event:/Jump
+  landing:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   swift:
     Guid:
       Data1: 1225578760
@@ -536,6 +544,13 @@ MonoBehaviour:
       Data3: -1638401652
       Data4: 1264748327
     Path: event:/ActivateStation
+  crush:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   death:
     Guid:
       Data1: 317594036

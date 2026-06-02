@@ -44,7 +44,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8676839009679381390}
-  - component: {fileID: 4121840537294890982}
   - component: {fileID: 9162327820624150475}
   m_Layer: 0
   m_Name: StationTrigger
@@ -68,52 +67,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8306122002357114341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &4121840537294890982
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771876441218992161}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 10, y: -10}
-  - {x: 10, y: 10}
-  - {x: -15, y: 10}
-  - {x: -15, y: -10}
-  - {x: 10, y: -10}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &9162327820624150475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,9 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4b4c9eb46ce734d86f3810d0a74e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinalRoom
-  cameraDepth: 12
+  cameraDepth: 50
   ToFollow: {fileID: 0}
-  cameraPoint: {fileID: 0}
+  cameraPoint: {fileID: 290757784848108357}
 --- !u!1 &1643985472789594428
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5e34607cf82594d9db14df4c77750e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinalStation
-  cameraDepth: 12
   roomTrigger: {fileID: 0}
   camPoint: {fileID: 0}
   ToFollow: {fileID: 0}
