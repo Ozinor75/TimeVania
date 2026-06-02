@@ -235,6 +235,24 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""1"",
+                    ""type"": ""Button"",
+                    ""id"": ""004a5d54-1a3b-456a-9ad8-5c8c46dd3487"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""2"",
+                    ""type"": ""Button"",
+                    ""id"": ""5c98bafd-7d78-40cf-9839-0f945c6c275d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -592,6 +610,28 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""98a6d748-3692-4e1f-98a8-8e8dd023a2be"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa05c39c-1119-4e3f-a454-4d4ff00eb81c"",
+                    ""path"": ""<Keyboard>/numpad2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""10700030-0296-4edf-876f-04686ad7bafd"",
                     ""path"": ""<Keyboard>/f2"",
                     ""interactions"": """",
@@ -694,6 +734,8 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         m_Player_F6 = m_Player.FindAction("F6", throwIfNotFound: true);
         m_Player_F7 = m_Player.FindAction("F7", throwIfNotFound: true);
         m_Player_F9 = m_Player.FindAction("F9", throwIfNotFound: true);
+        m_Player__1 = m_Player.FindAction("1", throwIfNotFound: true);
+        m_Player__2 = m_Player.FindAction("2", throwIfNotFound: true);
         // DEBUG
         m_DEBUG = asset.FindActionMap("DEBUG", throwIfNotFound: true);
         m_DEBUG_TimerReset = m_DEBUG.FindAction("TimerReset", throwIfNotFound: true);
@@ -795,6 +837,8 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_F6;
     private readonly InputAction m_Player_F7;
     private readonly InputAction m_Player_F9;
+    private readonly InputAction m_Player__1;
+    private readonly InputAction m_Player__2;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -871,6 +915,14 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @F9 => m_Wrapper.m_Player_F9;
         /// <summary>
+        /// Provides access to the underlying input action "Player/_1".
+        /// </summary>
+        public InputAction @_1 => m_Wrapper.m_Player__1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/_2".
+        /// </summary>
+        public InputAction @_2 => m_Wrapper.m_Player__2;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -944,6 +996,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @F9.started += instance.OnF9;
             @F9.performed += instance.OnF9;
             @F9.canceled += instance.OnF9;
+            @_1.started += instance.On_1;
+            @_1.performed += instance.On_1;
+            @_1.canceled += instance.On_1;
+            @_2.started += instance.On_2;
+            @_2.performed += instance.On_2;
+            @_2.canceled += instance.On_2;
         }
 
         /// <summary>
@@ -1003,6 +1061,12 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
             @F9.started -= instance.OnF9;
             @F9.performed -= instance.OnF9;
             @F9.canceled -= instance.OnF9;
+            @_1.started -= instance.On_1;
+            @_1.performed -= instance.On_1;
+            @_1.canceled -= instance.On_1;
+            @_2.started -= instance.On_2;
+            @_2.performed -= instance.On_2;
+            @_2.canceled -= instance.On_2;
         }
 
         /// <summary>
@@ -1262,6 +1326,20 @@ public partial class @CustomInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnF9(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void On_1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void On_2(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DEBUG" which allows adding and removing callbacks.

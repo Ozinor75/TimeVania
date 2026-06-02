@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DashBoost : MonoBehaviour
 {
+    private CharacterMeshControler meshControler;
     private PlayerSound playerSound;
     private PlayerFeedback playerFeedback;
     private PlayerController playerController;
@@ -14,6 +15,7 @@ public class DashBoost : MonoBehaviour
     
     void Start()
     {
+        meshControler = FindFirstObjectByType<CharacterMeshControler>();
         playerController = FindFirstObjectByType<PlayerController>();
         playerSound = FindFirstObjectByType<PlayerSound>();
         playerTimer = FindFirstObjectByType<PlayerTimer>();
@@ -25,6 +27,7 @@ public class DashBoost : MonoBehaviour
     {
         if (!isUsed)
         {
+            meshControler.SetDashHelmet();
             playerController.canDash = true;
             isUsed = true;
             SaveSystem.Save();

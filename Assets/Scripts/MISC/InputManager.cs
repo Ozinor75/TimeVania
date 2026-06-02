@@ -193,6 +193,16 @@ public class InputManager : MonoBehaviour
             playerController.transform.position = new Vector3(89f, -128.25f, 0f);
         } 
         
+        if (playerControls.Player._1.WasPressedThisFrame())
+        {
+            playerController.transform.position = new Vector3(163.5f, 309f, 0f);
+        } 
+        
+        if (playerControls.Player._2.WasPressedThisFrame())
+        {
+            playerController.transform.position = new Vector3(75f, 289f, 0f);
+        } 
+        
         if (playerControls.Player.F9.WasPressedThisFrame())
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
