@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
         if (File.Exists(Application.persistentDataPath + "/save" + ".json"))
         {
             yield return new WaitForSecondsRealtime(0.05f);
-            //SaveSystem.Load();
+            SaveSystem.Load();
         }
     }
     
